@@ -38,12 +38,11 @@ conda install -c bioconda kaiju
 https://github.com/nygenome/taxmaps
 
 conda create -n taxmaps python=2.7
-conda install numpy
+pip install numpy==1.7
 conda install -c bioconda samtools
 conda install -c bioconda cutadapt
 conda install -c bioconda prinseq
-conda install -c bioconda java-jdk
-conda install -c hcc gem
+conda install -c bioconda gem3-mapper
 conda install -c bioconda krona
 
 # MetaOthello
