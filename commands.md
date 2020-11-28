@@ -50,8 +50,11 @@ conda env create -f DeepMicrobes/install.yml
 conda activate DeepMicrobes
 -->
     wget -P /mnt/fass1/kirsten/deepMicrobes -O "weights_species.tar.gz" https://onedrive.gimhoy.com/sharepoint/aHR0cHM6Ly9tYWlsMnN5c3VlZHVjbi1teS5zaGFyZXBvaW50LmNvbS86dTovZy9wZXJzb25hbC9saWFuZ3F4N19tYWlsMl9zeXN1X2VkdV9jbi9FU0EtWnZwdVlqcEZqTHlkb2U2Tzl2OEJLOW5PbnFrdkdvOWpuaW56VGE5V0tnP2U9dGo2b3Vo.weights_species.tar.gz
+    
     tar -xzvf weights_species.tar.gz
+    
     wget -P /mnt/fass1/kirsten/deepMicrobes https://github.com/MicrobeLab/DeepMicrobes-data/raw/master/vocabulary/tokens_merged_12mers.txt.gz
+    
     gunzip tokens_merged_12mers.txt.gz
 
     export PATH=/home/re85gih/projectClassification/DeepMicrobes/pipelines:$PATH
