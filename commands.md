@@ -2,19 +2,19 @@
 
 # Tool-Version Table
 - Kaiju 1.7.4
-- diamond version 0.9.14
-- Kraken2
+- Kraken version 2.0.7-beta
 - Centrifuge
-- taxMaps
+- taxMaps v0.2
 - DeepMicrobes
 - MetaOthello
-- k-SLAM
-- CLARK
-- CCMetagen
+- k-SLAM 1.0
+- CLARK Version: 1.2.5
+- CCMetagen v1.2.3
 # Tools
 ## Kaiju
 <!-- conda install -c bioconda kaiju in projectMAIN -->
     wget -P /mnt/fass1/kirsten "http://kaiju.binf.ku.dk/database/kaiju_db_refseq_2020-05-25.tgz"
+
 ## taxMaps
 <!-- 
 conda create -n taxmaps python=2.7
@@ -38,9 +38,6 @@ conda install -c bioconda krona
     wget -P /mnt/fass1/kirsten/taxmaps "ftp://ftp.nygenome.org/taxmaps/Indexes/refseq_complete_bacarchvir/*"
     wget -P /mnt/fass1/kirsten/taxmaps "ftp://ftp.nygenome.org/taxmaps/Indexes/taxonomy.tbl.gz"
 
-
-## Diamond
-
 ## DeepMicrobes
 <!-- 
 https://github.com/MicrobeLab/DeepMicrobes/blob/master/document/install.md
@@ -48,6 +45,9 @@ https://github.com/MicrobeLab/DeepMicrobes/blob/master/document/install.md
 git clone https://github.com/MicrobeLab/DeepMicrobes.git
 conda env create -f DeepMicrobes/install.yml
 conda activate DeepMicrobes
+
+changed path to python in file!
+/home/re85gih/miniconda3/envs/DeepMicrobes/bin/python
 -->
     wget -P /mnt/fass1/kirsten/deepMicrobes -O "weights_species.tar.gz" https://onedrive.gimhoy.com/sharepoint/aHR0cHM6Ly9tYWlsMnN5c3VlZHVjbi1teS5zaGFyZXBvaW50LmNvbS86dTovZy9wZXJzb25hbC9saWFuZ3F4N19tYWlsMl9zeXN1X2VkdV9jbi9FU0EtWnZwdVlqcEZqTHlkb2U2Tzl2OEJLOW5PbnFrdkdvOWpuaW56VGE5V0tnP2U9dGo2b3Vo.weights_species.tar.gz
     
@@ -62,14 +62,13 @@ conda activate DeepMicrobes
     export PATH=/home/re85gih/projectClassification/DeepMicrobes:$PATH
 
 ## k-SLAM
-<!-- vllt. muss ich auch nur SLAM --parse-taxonomy names.dmp nodes.dmp --output-file taxDB machen? not sure-->
-    install_slam.sh /mnt/fass1/kirsten bacteria
+    install_slam.sh /mnt/fass1/kirsten/kslam bacteria
 
 ### CLARK
-<!-- path to databse is /mnt/fass1/kirsten -->
+    set_targets.sh /mnt/fass1/kirsten/clark /mnt/fass1/kirsten/kslam/bacteria
+<!-- Geht so nicht, weil das keine fasta-Files in bacteria sind?-->
 
 ## CCMetagen
-<!-- ich kann anscheinend die ncbi_nr_2020-06-30 nutzen?-->
-<!-- aber vielleicht muss ich mit kma n eigenen Index bauen?
-kma_index -i nt_taxid.fas -o ncbi_nt -NI -Sparse TG-->
+    wget -P /mnt/fass1/kirsten/ccmetagen http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip
+    unzip ncbi_nt_kma
 
