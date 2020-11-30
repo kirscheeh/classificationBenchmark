@@ -1,22 +1,23 @@
-# Projektarbeit
+# Project Module / Master Thesis
 
-## Literaturrecherche: Tools
-- Kraken(2) 2014(2019)
-- MegaBLAST 2008
-- Bracken 2017
-- CLARK-S 2016
-- Taxonomer http://taxonomer.com/ --> pathogen detection and host mRNA expression profiling
-- taxMaps --> short reads
-- MetaOthello 2017
-- k-SLAM 2016
-- NBC 2010libre
+Benchmarking different classification tools for the usability on long reads.
 
-## Literaturrecherche: Maße zum Vergleich der Tools
-- Aus dem Benachmark-Paper (Simon H. Ye et. al, 2019)
-  - Custom Database, Memory Required, Time Required
-  - Precision (Proportion of TP species in the sample divided by number of distinct species actually in the sample) and Recall --> Precision-Recall curve --> AUPR
-    - AUPR is biased towars low-precision, high-recall classifiers
-  - F1-Score?
-  - ROC Curves are less informative in this context because false negatives are poorly identified here
-  -  it is also important to evaluate how accurately the abundance of each species or genera in the resulting classification reflects the abundance of each species in the original biological sample (‘‘ground truth’’)
-  -  Abundance can be consid-ered either as the relative abundance of reads from each taxa(‘‘raw’’) or by inferring abundance of the number of individualsfrom each taxa by correcting read counts for genome size (‘‘cor-rected’’). --> some 
+## Tools
+|     Tool     |   Version  |   Type  |         Approach        |                       Reference                      |
+|:------------:|:----------:|:-------:|:-----------------------:|:----------------------------------------------------:|
+|     Kaiju    |    1.7.4   | Protein |   FM-Index, Alignment   |               http://kaiju.binf.ku.dk/               |
+|    Kraken2   | 2.0.7-beta |   DNA   |          k-mer          |         http://ccb.jhu.edu/software/kraken2/         |
+|  Centrifuge  |    1.0.4   |   DNA   |         FM-Index        | https://ccb.jhu.edu/software/centrifuge/manual.shtml |
+|    taxMaps   |     0.2    |   DNA   |         FM-Index        |          https://github.com/nygenome/taxmaps         |
+| DeepMicrobes |            |   DNA   | Machine Learning, k-mer |      https://github.com/MicrobeLab/DeepMicrobes      |
+|  MetaOthello |            |   DNA   |          k-mer          |         https://github.com/xa6xa6/metaOthello        |
+|    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |
+|     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |
+|   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |
+
+## Metrics
+- AUPR
+- Abundace Profile Similarity
+- Runttime, Database Size, Memory, ...
+
+

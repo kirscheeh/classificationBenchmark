@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# This script calculates the area under a precision-recall curve
+# This script calculates the area under a precision-recall curve for two given lists as input
 #
 # @Kirsten
 
