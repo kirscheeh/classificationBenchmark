@@ -1,15 +1,20 @@
 <!-- This file contains the commands used after the tools have been successfully installed. It contains downloading the mandatory databases, weights or indices.-->
 
-# Tool-Versions and Conda-Environment
-- Kaiju 1.7.4 --> projectMAIN
-- Kraken version 2.0.7-beta--> projectMAIN
-- Centrifuge version 1.0.4 --> classification
-- taxMaps v0.2 --> taxmaps
-- DeepMicrobes --> DeepMicrobes
-- MetaOthello --> projectMAIN
-- k-SLAM 1.0 --> kslam
-- CLARK Version: 1.2.5 --> projectMAIN
-- CCMetagen v1.2.3 --> projectMAIN
+# Tool-Specs
+
+|     Tool     |   Version  |   Type  |         Approach        |                       Reference                      |   conda  |
+|:------------:|:----------:|:-------:|:-----------------------:|:----------------------------------------------------:|:--------:|
+|     Kaiju    |    1.7.4   | Protein |   FM-Index, Alignment   |               http://kaiju.binf.ku.dk/               |projectMAIN|
+|    Kraken2   | 2.0.7-beta |   DNA   |          k-mer          |         http://ccb.jhu.edu/software/kraken2/         |projectMAIN|
+|  Centrifuge  |    1.0.4   |   DNA   |         FM-Index        | https://ccb.jhu.edu/software/centrifuge/manual.shtml |classification|
+|    taxMaps   |     0.2    |   DNA   |         FM-Index        |          https://github.com/nygenome/taxmaps         |taxmaps|
+| DeepMicrobes |            |   DNA   | Machine Learning, k-mer |      https://github.com/MicrobeLab/DeepMicrobes      |DeepMicrobes|
+|  MetaOthello |            |   DNA   |          k-mer          |         https://github.com/xa6xa6/metaOthello        |projectMAIN|
+|    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |kslam|
+|     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
+|   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |projectMAIN|
+
+
 # Tools
 ## Kaiju
 _Installation_
@@ -100,8 +105,7 @@ _Installation_
 
 _Preparation_
 
-    wget -P /mnt/fass1/kirsten/ccmetagen http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip
-    unzip ncbi_nt_kma
+    DAMN IT, i dunno what to do
 
 ## NBC
     http://nbc.ece.drexel.edu/newJob.php
@@ -118,4 +122,5 @@ _Installation_
 
 _Preparation_
 
-    Scheitert am Viren-Schutz von Google-Drive
+    Scheitert am Viren-Schutz von Google-Drive bei wget
+
