@@ -133,8 +133,4 @@ _Installation_
 
     conda install -c bioconda diamond
 
-## Prophyle
-_Installation_
-
-    conda install -c bioconda prophyle
 
