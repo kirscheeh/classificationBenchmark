@@ -15,6 +15,7 @@ This file contains the commands used after the tools have been successfully inst
 |     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |projectMAIN|
 |   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
+| NBC           |           | DNA | |http://nbc.ece.drexel.edu/| Webserver |
 
 
 # Tools
@@ -131,4 +132,9 @@ _Preparation_
 _Installation_
 
     conda install -c bioconda diamond
+
+## Prophyle
+_Installation_
+
+    conda install -c bioconda prophyle
 
