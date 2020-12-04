@@ -1,4 +1,5 @@
-<!-- This file contains the commands used after the tools have been successfully installed. It contains downloading the mandatory databases, weights or indices.-->
+<!-- 
+This file contains the commands used after the tools have been successfully installed. It contains downloading the mandatory databases, weights or indices.-->
 
 # Tool-Specs
 
@@ -8,11 +9,12 @@
 |    Kraken2   | 2.0.7-beta |   DNA   |          k-mer          |         http://ccb.jhu.edu/software/kraken2/         |projectMAIN|
 |  Centrifuge  |    1.0.4   |   DNA   |         FM-Index        | https://ccb.jhu.edu/software/centrifuge/manual.shtml |classification|
 |    taxMaps   |     0.2    |   DNA   |         FM-Index        |          https://github.com/nygenome/taxmaps         |taxmaps|
-| DeepMicrobes |            |   DNA   | Machine Learning, k-mer |      https://github.com/MicrobeLab/DeepMicrobes      |DeepMicrobes|
-|  MetaOthello |            |   DNA   |          k-mer          |         https://github.com/xa6xa6/metaOthello        |projectMAIN|
+| DeepMicrobes |git rev. 43b654b  |DNA| Machine Learning, k-mer |      https://github.com/MicrobeLab/DeepMicrobes      |DeepMicrobes|
+|  MetaOthello |git rev. 15ded5e  |DNA|          k-mer          |         https://github.com/xa6xa6/metaOthello        |projectMAIN|
 |    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |kslam|
 |     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |projectMAIN|
+|   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
 
 
 # Tools
@@ -95,17 +97,18 @@ _Installation_
 
 _Preparation_
 
-    set_targets.sh /mnt/fass1/kirsten/clark /mnt/fass1/kirsten/kslam/bacteria
-<!-- Geht so nicht, weil das keine fasta-Files in bacteria sind?-->
+    Der bumms geht nicht, will auf kslam verweisen, aber das ist irgendwie was anderes?
+
 
 ## CCMetagen
+<!-- Maybe gonna use the webserver?-->
 _Installation_
 
     conda install -c bioconda ccmetagen
 
 _Preparation_
 
-    DAMN IT, i dunno what to do
+    I'm gonna need the reads to map them to the ncbi database (the one in kslamclark?)
 
 ## NBC
     http://nbc.ece.drexel.edu/newJob.php
@@ -123,4 +126,9 @@ _Installation_
 _Preparation_
 
     Scheitert am Viren-Schutz von Google-Drive bei wget
+
+## Diamond
+_Installation_
+
+    conda install -c bioconda diamond
 

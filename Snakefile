@@ -1,5 +1,8 @@
 # Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
 
+workdir: "path/to/workdir" #optional: parent of git repository
+configfile: "projectmaster/config.json"
+
 rule all:
     pass
 

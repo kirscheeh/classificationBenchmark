@@ -14,10 +14,11 @@ Benchmarking different classification tools for the usability on long reads.
 |    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |
 |     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |
+|      NCB     |            |   DNA   |                         |               http://nbc.ece.drexel.edu/             |
 
 ## Metrics
 - AUPR
 - Abundace Profile Similarity
-- Runttime, Database Size, Memory, ...
+- Runtime, Database Size, Memory, ...
 
 
