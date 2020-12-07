@@ -134,3 +134,17 @@ _Installation_
     conda install -c bioconda diamond
 
 
+## CAT and BAT
+_Installation_
+
+    conda install -c bioconda cat
+
+_Preparation_
+<!-- needs specific diamond version
+grep version 2020-06-18.CAT_prepare.fresh.log
+-->
+    wget tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
+    wget tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
+
+    grep version 2020-06-18.CAT_prepare.fresh.log
+
