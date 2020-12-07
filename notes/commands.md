@@ -16,6 +16,8 @@ This file contains the commands used after the tools have been successfully inst
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |projectMAIN|
 |   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/| Webserver |
+|CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| catbat|
+
 
 
 # Tools
@@ -98,7 +100,10 @@ _Installation_
 
 _Preparation_
 
-    Der bumms geht nicht, will auf kslam verweisen, aber das ist irgendwie was anderes?
+    # 07.12.2020
+    # KL - set up DB for Jasmin
+    /data/prostlocal2/projects/jb_chlamydomonasvirome_mittag/clark/CLARKSCV1.2.6.1/set_targets.sh /data/fass1/database/clark_db bacteria viruses
+
 
 
 ## CCMetagen
@@ -109,7 +114,7 @@ _Installation_
 
 _Preparation_
 
-    I'm gonna need the reads to map them to the ncbi database (the one in kslamclark?)
+    I'm gonna need the reads to map them to the ncbi database 
 
 ## NBC
     http://nbc.ece.drexel.edu/newJob.php
@@ -140,11 +145,9 @@ _Installation_
     conda install -c bioconda cat
 
 _Preparation_
-<!-- needs specific diamond version
-grep version 2020-06-18.CAT_prepare.fresh.log
--->
-    wget tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
-    wget tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
 
+    wget -P /mnt/fass1/kirsten/catbat tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
+    tar -xvzf CAT_prepare_20200618.tar.gz
+    
     grep version 2020-06-18.CAT_prepare.fresh.log
 

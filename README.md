@@ -16,6 +16,7 @@ Benchmarking different classification tools for the usability on long reads.
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |
 |   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/|
+|CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| 
 
 ## Metrics
 - AUPR -- Area under Precision-Recall-Curve

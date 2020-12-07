@@ -1,0 +1,10 @@
+# path to folder where generated ourtputs should be saved
+path: [/mnt/prostlocal2/projects/NAMEofFOLDER]
+
+# path to the folders where the needed databases and/or indices are located
+dataIndex: [taxmaps: /mnt/fass1/kirsten/taxmaps, deepmicrobes: /mnt/fass1/kirsten/deepmicrobes, kaiju: /mnt/fass1/kirsten/kaiju, kslam: /mnt/fass1/kirsten/kslam, kraken2: /mnt/fass1/databse/kraken2-databse, centrifuge: /mnt/fass1/database/dairy_minion, clark: /mnt/fass1/database/clark_db, metaothello: /mnt/fass1/kirsten/metaothello] #missing: diamond, ccmetagen
+
+# incorporated tools
+classification: [kaiju, diamond, taxmaps, deepmicrobes, kslam, kraken2, centrifuge, clark, metaothello]
+
+samples: []

@@ -7,27 +7,38 @@ This script creates the structure of folders used in this project for reproducib
 
 @Kirsten, 02.12.2020
 """
-# absolute paths!
-#DATABASE="/your/path/to/location/database"
-RESULTS="/your/place/to/location/results" # optionally, this is the parent folder of this git repository
+
 
 #####################################################################################
 
 import os
 
-# in the future: incoorportate a separate file where the user can gather the used tools
-tools = ["kaiju", "kraken2", "centrifuge", "taxmaps", "kslam", "deepmicrobes", "clark", "ccmetagen", "metaothello", "nbc", "megablast"]
+config = open("config.yaml", "r").read()
+variables = config.split('\n')
 
-def generate_folders(path):
+# filter comments and empty entries
+variables = [x for x in variables if not "#" in x and not '' == x]
+# get path to main folder
+for x in variables:
+    if "path" in x:
+        path = x.split("[")[1][:-2]
+        classification_path=path+"/classification"
+    if "classification" in x:
+        classification_tools = x.split("[")[1][:-1].split(", ")
+
+def generate_folder(path, folders=[]):
     if os.path.exists(path):
         print("This folder already exists!", path)
     else:
         os.mkdir(path)
-        for tool in tools:
-            print(tool)
-            os.mkdir(path+"/"+tool)
+    
+    if len(folders)>0:
+        for folder in folders:
+            generate_folder(path+"/"+folder)
 
-generate_folders(RESULTS)
+generate_folder(path)
+generate_folder(classification_path, classification_tools)
+
 
 
 

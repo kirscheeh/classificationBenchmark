@@ -1,7 +1,10 @@
 # Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
 
-workdir: "path/to/workdir" #optional: parent of git repository
-configfile: "projectmaster/config.json"
+configfile: "projectmaster/config.yaml"
+
+rule create:
+    shell:
+        'python structure.py'
 
 rule all:
     pass
