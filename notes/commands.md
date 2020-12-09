@@ -18,13 +18,13 @@ This file contains the commands used after the tools have been successfully inst
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/| Webserver |
 |CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| catbat|
 
-
+conda 4.7.5, snakemake 3.10.0
 
 # Tools
 ## Kaiju
 _Installation_
 
-    conda install -c bioconda kaiju in projectMAIN
+    conda install -c bioconda kaiju
 
 _Preparation_   
 
@@ -87,6 +87,7 @@ _Preparation_
 ## k-SLAM
 _Installation_
 
+    conda install -c anaconda boost=1.64
     conda install -c bioconda k-slam
 
 _Preparation_
@@ -104,17 +105,16 @@ _Preparation_
     # KL - set up DB for Jasmin
     /data/prostlocal2/projects/jb_chlamydomonasvirome_mittag/clark/CLARKSCV1.2.6.1/set_targets.sh /data/fass1/database/clark_db bacteria viruses
 
-
-
 ## CCMetagen
-<!-- Maybe gonna use the webserver?-->
 _Installation_
-
+    
+    conda install -c etetoolkit ete3
     conda install -c bioconda ccmetagen
 
 _Preparation_
 
-    I'm gonna need the reads to map them to the ncbi database 
+    wget -P /mnt/fass1/kirsten/ccmetagen http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip
+    unzip ncbi_nt_kma
 
 ## NBC
     http://nbc.ece.drexel.edu/newJob.php
@@ -129,9 +129,6 @@ _Installation_
 
     git clone https://github.com/xa6xa6/metaOthello/
 
-_Preparation_
-
-    Scheitert am Viren-Schutz von Google-Drive bei wget
 
 ## Diamond
 _Installation_
@@ -149,5 +146,5 @@ _Preparation_
     wget -P /mnt/fass1/kirsten/catbat tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
     tar -xvzf CAT_prepare_20200618.tar.gz
     
-    grep version 2020-06-18.CAT_prepare.fresh.log
+<!-- grep version 2020-06-18.CAT_prepare.fresh.log-->
 

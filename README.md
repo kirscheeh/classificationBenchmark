@@ -1,8 +1,9 @@
 # Project Module / Master Thesis
 
-Benchmarking different classification tools for the usability on long reads.
+Benchmarking different classification tools for their usability on metagenomic long reads.
 
 ## Tools
+### Classificaiton Tools
 |     Tool     |   Version  |   Type  |         Approach        |                       Reference                      |
 |:------------:|:----------:|:-------:|:-----------------------:|:----------------------------------------------------:|
 |     Kaiju    |    1.7.4   | Protein |   FM-Index, Alignment   |               http://kaiju.binf.ku.dk/               |
@@ -17,6 +18,11 @@ Benchmarking different classification tools for the usability on long reads.
 |   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/|
 |CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| 
+### Others
+|Tools|Version|Reference|
+|:-------:|:-------:|:-------:|
+|conda|4.7.5|https://docs.anaconda.com/|
+|snakemake|3.10.0|https://snakemake.readthedocs.io/en/stable/|
 
 ## Metrics
 - AUPR -- Area under Precision-Recall-Curve
