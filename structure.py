@@ -8,7 +8,6 @@ This script creates the structure of folders used in this project for reproducib
 @Kirsten, 02.12.2020
 """
 
-
 #####################################################################################
 
 import os
