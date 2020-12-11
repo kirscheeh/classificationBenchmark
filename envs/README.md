@@ -4,3 +4,4 @@ projectMAIN main.yml
 taxmaps taxmaps.yml
 DeepMicrobes deepmicobes.yml
 kslam kslam.yml
+catbat catbat.yml

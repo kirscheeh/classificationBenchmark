@@ -133,3 +133,15 @@ rule ccmetagen:
         # -i    path to kma result
         # -ef   extended output file that includes percentage of classified reads
         'CCMetagen.py  -o {output} -r RefSeq -i {database} -ef y'
+
+rule catbat:
+    input:
+        pass
+    output:
+        pass
+    conda:
+        '/home/re85gih/projectClassification/projectmaster/envs/catbat.yml'
+    shell:
+        'CAT contigs -c {input} -d {databse} -t {taxonomy} -o {output}',
+        'CAT bins -b {input} -d {database} -t {taxonomy} -o {output}',
+        'CAT add_names -i {ORF2LCA / classification file} -o {output file} -t {taxonomy folder} --only_official'

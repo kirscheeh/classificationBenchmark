@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 """
-This script calculates a desired seed length given a file containing reads and the percentage that the seed should make up to the average length of the reads.
-"""
+This script returns the seed length a classifier should use regarding the median length of the input reads and considering the percentage the seed should make up for of this length.
 
+@Kirsten, 12/2020
+"""
+# tools to use it: entrifuge, kaiju?
 # TODO
 # - File einlesen
 # - Durchschnittliche Readlänge berechnen --> vllt. wegen der Laufzeit nur jeden 2. Read angucken?
