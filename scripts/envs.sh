@@ -9,8 +9,7 @@ while read -r line; do
     echo "# Last Update:" $(date)
   elif [[ ! "$line" == "" ]]; then
     IFS=' ' read -r -a array <<< "$line"
-    $CONDA env export --name ${array[0]} > ${array[1]} && echo "$CONDA env export --name ${array[0]} > ${array[1]}" || echo "Building ${array[1]} failed."
-    
+    $CONDA env export --name ${array[0]} > ../envs/${array[1]} && echo "${array[0]} ${array[1]}" || echo "Building ${array[1]} failed."
   fi
 done < "$input" > ../envs/current.md
 
