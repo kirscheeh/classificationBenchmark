@@ -23,7 +23,6 @@ Common approaches to solve this task k-mer based algorithms or algorithm based o
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/|
 |    taxMaps   |     0.2    |   DNA   |         FM-Index        |          https://github.com/nygenome/taxmaps         |
 
-
 #### Protein-Level Classification
 ##### Diamond
 ##### Kaiju
@@ -45,9 +44,19 @@ The used index <tt>kaiju_db_refseq_2020-05-25</tt> was downloaded from <tt>http:
 ##### CCMetagen
 ##### Centrifuge
 ##### CLARK
+<tt>CLARK</tt>[clark]() is a taxonomic classification tool for metagenomic samples of any format (reads, contigs, scaffolds, assemblies, ...). The method is based on discriminative *k*-mers which is used in supervised sequence classification. <br>
+The bacterial (and virus) databse was build using the script <tt>set_targets.sh</tt> as of 7/12/2020.
+
+    CLARK -k INT (--long) -m 0 -O {input} -R {output} -D {databse}
+    
+    # Parameters
+        # -k        k-mer size, has to be between 2 and 32, default:31 
+        # --long    for long reads (only for full mode)
+        # -m        mode of execution
+
 ##### DeepMicrobes
 ##### Kraken2
-The taxonomic sequence classifier <tt> Kraken2 </tt> [Kraken2]() examines *k*-mers of a query sequence and uses those information to query a database. During the query, the *k*-mers are mapped to the lowest common ancestor of the genomes that contain a given *k*-mer [Kraken2](). 
+The taxonomic sequence classifier <tt> Kraken2 </tt> [Kraken2]() examines *k*-mers of a query sequence and uses those information to query a database. During the query, the *k*-mers are mapped to the lowest common ancestor of the genomes that contain a given *k*-mer [Kraken2](). <br>
 ??? Ich will die bestehende DB nutzen, aber da steht nicht wie und woher die kam ???
 
     kraken2 (--confidence X) --db kraken2-database --unclassified-out FILENAME_UN --report REPORT_NAME --output {output} {input}
@@ -60,7 +69,7 @@ The taxonomic sequence classifier <tt> Kraken2 </tt> [Kraken2]() examines *k*-me
         # --report              prints report with aggregate counts/cladde to file
         
 ##### k-SLAM
-<tt> k-SLAM</tt> [kslam]() uses an alignment based approach for metagenomic analysis. To built thes alignments, a *k*-mer based approach s use. The found alignments of reads and genome are validated by using the Smith-Waterman algorithm. By identifying the lowest common ancestor, the taxonomy of the sample is concluded [kslam]().
+<tt> k-SLAM</tt> [kslam]() uses an alignment based approach for metagenomic analysis. To built thes alignments, a *k*-mer based approach s use. The found alignments of reads and genome are validated by using the Smith-Waterman algorithm. By identifying the lowest common ancestor, the taxonomy of the sample is concluded [kslam](). <br>
 A database of bacteria was built using the <tt>install_slam.sh</tt> script as of 28/11/2020.
 
     SLAM --db {databse} (--min-alignment-score INT) --output-file {output} {input}
@@ -73,7 +82,7 @@ A database of bacteria was built using the <tt>install_slam.sh</tt> script as of
 ##### MetaOthello
 ##### NBC
 ##### taxMaps
-<tt>taxMaps</tt> [taxMaps]() is a classification tool designed for short read metagenomic samples. It consists of several steps preceding the actual task of taxonomic classification. There is the preprocessing with quality trimming and adapter cutting as well as mapping. Here, only the taxonomic classification is done. The approach is based on the FM-Index [taxMaps](). <!-- Index last edited: 06/03/2018-->
+<tt>taxMaps</tt> [taxMaps]() is a classification tool designed for short read metagenomic samples. It consists of several steps preceding the actual task of taxonomic classification. There is the preprocessing with quality trimming and adapter cutting as well as mapping. Here, only the taxonomic classification is done. The approach is based on the FM-Index [taxMaps](). <br> <!-- Index last edited: 06/03/2018-->
 A pre-built index (refseq_complete_bacarchive) is used which was downloaded from <tt>ftp://ftp.nygenome.org/taxmaps/Indexes/</tt> as of 27/11/2020. The taxonomy table was downloaded from there as well.
 
     taxMaps -f {input} -t taxonomy.tbl.gz -d taxmaps/*.gem.* --cov -o {output}
@@ -107,3 +116,5 @@ A pre-built index (refseq_complete_bacarchive) is used which was downloaded from
 [taxMaps](http://www.genome.org/cgi/doi/10.1101/gr.225276.117) Corvelo, A., Clarke, W. E., Robine, N., & Zody, M. C. (2018). taxMaps: comprehensive and highly accurate taxonomic classification of short-read data in reasonable time. *Genome research*, 28(5), 751-758.
 
 [kslam](https://doi.org/10.1093/nar/gkw1248) Ainsworth, D., Sternberg, M. J., Raczy, C., & Butcher, S. A. (2017). k-SLAM: accurate and ultra-fast taxonomic classification and gene identification for large metagenomic data sets. *Nucleic acids research*, 45(4), 1649-1656.
+
+[clark](https://doi.org/10.1186/s12864-015-1419-2) Ounit, R., Wanamaker, S., Close, T. J., & Lonardi, S. (2015). CLARK: fast and accurate classification of metagenomic and genomic sequences using discriminative k-mers. *BMC genomics*, 16(1), 236.
