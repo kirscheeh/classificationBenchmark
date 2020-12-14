@@ -14,6 +14,10 @@ rule centrifuge:
         pass
     output:
         pass
+    benchmark:
+        pass #repeat("benchmarks/{sample}.bwa.benchmark.txt", 3 für 3 runs
+    log:
+        pass #log folder?
     conda:
         '/home/re85gih/projectClassification/projectmaster/envs/centrifuge.yml'
     shell:
@@ -132,7 +136,8 @@ rule ccmetagen:
         # -r    reference database
         # -i    path to kma result
         # -ef   extended output file that includes percentage of classified reads
-        'CCMetagen.py  -o {output} -r RefSeq -i {database} -ef y'
+        # -c    minimum coverage
+        'CCMetagen.py  -o {output} -r RefSeq -i {database} -ef y -c INT'
 
 rule catbat:
     input:

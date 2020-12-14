@@ -13,7 +13,7 @@ This file contains the commands used after the tools have been successfully inst
 |  MetaOthello |git rev. 15ded5e  |DNA|          k-mer          |         https://github.com/xa6xa6/metaOthello        |projectMAIN|
 |    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |kslam|
 |     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
-|   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |projectMAIN|
+|   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |diamond|
 |   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/| Webserver |
 |CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| catbat|
@@ -133,9 +133,14 @@ _Installation_
 ## Diamond
 _Installation_
 
-    conda install -c bioconda diamond
+    conda install -c conda-forge boost-cpp=1.70.0
+    conda install -c bioconda diamond=2.0.5
 
+_Preparation_
 
+    diamond makedb --in /mnt/fass1/genomes/new_bacteria/bacteria_blast_db/proteome/full_proteome_bacteria.faa -d nr --taxonmap /mnt/fass1/genomes/new_bacteria/bacteria_blast_db/prot_accession2taxid.txt --taxonnames names.dmp --taxonnodes nodes.dmp
+
+<!-- bisschen tricky, die richtige Version rauszufinden, bei den vorherigen ging taxonnames nicht-->
 ## CAT and BAT
 _Installation_
 
