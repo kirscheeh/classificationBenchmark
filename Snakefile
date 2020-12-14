@@ -36,7 +36,7 @@ rule kraken2:
         # --unclassified-out    prints unclassified sequences to filename
         # --classified-out      prints classified sequences to filename
         # --output              prints output to filename
-        # --report              prints report with aggregate counts/clasde to file
+        # --report              prints report with aggregate counts/clade to file
         'kraken2 (--confidence X) --db /mnt/fass1/database/kraken2-database --unclassified-out FILENAME_UN (--classified-out FILENAME_C) --report REPORT_NAME --output {output} {input}'
 
 rule kaiju:
