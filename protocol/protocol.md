@@ -10,7 +10,7 @@ Common approaches to solve this task k-mer based algorithms or algorithm based o
 |     Tool     |   Version  |   Type  |         Approach        |                       Reference                      |
 |:------------:|:----------:|:-------:|:-----------------------:|:----------------------------------------------------:|
 |CAT and BAT   | 5.1.2           | Protein ||https://github.com/dutilh/CAT| 
-|   Diamond    | 0.9.14          | Protein |        Alignment       | http://www.diamondsearch.org/index.php               |
+|   Diamond    | 2.0.5          | Protein |        Alignment       | http://www.diamondsearch.org/index.php               |
 |     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  |               http://kaiju.binf.ku.dk/               |
 |   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)|       https://github.com/vrmarcelino/CCMetagen       |
 |  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | https://ccb.jhu.edu/software/centrifuge/manual.shtml |
@@ -32,9 +32,13 @@ The database files <tt>CAT_prepare_20200618</tt> are downloaded from <tt>tbb.bio
     'CAT contigs -c {input} -d {databse} -t {taxonomy} -o {output}',
     'CAT bins -b {input} -d {database} -t {taxonomy} -o {output}',
     'CAT add_names -i {ORF2LCA / classification file} -o {output file} -t {taxonomy folder} --only_official'
+
 ##### Diamond
-This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data.
-db erstellt am 14.12.2020, files sind aber anscheinend von 27.7.2019
+This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data. <br>
+The database was created on 14/12/2020 with the <tt>diamond makedb</tt> command and sequences downloaded on 27/7/2019 (genomes/bacteria...)
+
+    diamond blastx --db {database} -g {input} --taxonlist {database_list} -o {output}
+
 ##### Kaiju
 <tt>Kaiju</tt> [Kaiju]() is a fast and sensitive tool for taxonomic classification of metagenomic samples that uses a reference-database of annotated protein-coding genes of microbial genomes. The DNA reads are translated into the six reading frames and split according to the stop codons. The resulting fragments are sorted regarding their length and due to the usage of the Ferragina and Mazini-Index (FM-Index), exact matches can be searched between read and database-reference in effient time [Kaiju]().
 The used index <tt>kaiju_db_refseq_2020-05-25</tt> was downloaded from <tt>http://kaiju.binf.ku.dk/server</tt> as of 28/11/2020.
@@ -51,7 +55,7 @@ The used index <tt>kaiju_db_refseq_2020-05-25</tt> was downloaded from <tt>http:
 
 #### DNA-Level Classification
 ##### CCMetagen
-This classifier uses a *k*-mer alignment (KMA) [kma]() mapping method and produces ranked taxonomic classification results.<br>
+This classifier uses a *k*-mer alignment (KMA) [kma]() mapping method and produces ranked taxonomic classification results [ccmetagen]().<br>
 The used indexed database <tt>ncbi_nt_kma</tt> was downloaded from <tt>http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/</tt> as of 08/12/2020.
 
     CCMetagen.py  -o {output} -r RefSeq -i {database} -ef FLOAT -c INT
@@ -63,7 +67,7 @@ The used indexed database <tt>ncbi_nt_kma</tt> was downloaded from <tt>http://ww
         # -c    minimum coverage of the reference sequence
 
 ##### Centrifuge
-<tt>Centrifuge</tt> is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found [centrifuge](). <br>
+<tt>Centrifuge</tt> [centrifuge]() is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found [centrifuge](). <br>
 The used indices <tt>b_compressed</tt> are downloaded from <tt>ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/old-indices/</tt> as of 12/09/2019.
 
     centrifuge -f -x INDEX_FILE {input} --report-file LOCATION_OF_REPORT --min-hitlen INT -S {output}
@@ -111,7 +115,23 @@ A database of bacteria was built using the <tt>install_slam.sh</tt> script as of
 
 ##### MegaBLAST ???
 ##### MetaOthello
+The probabilistic hashin classifier <tt>MetaOthello</tt> employs a new data structure that helps to identify a taxon based on its *k*-mer [metaothello]().
+The used index was downloaded from <tt>https://drive.google.com/open?id=0BxgO-FKbbXRIa0Flc3Q4bWtycGM</tt> as of 7/12/2020.
+
+
+    ./classifier \
+    <path_to_bacterial_index> \
+    {output} \
+    <Kmer_length> \
+    <threads_num> \
+    fq \
+    SE \
+    <bacterial_speciesId2taxoInfo_file> \ 
+    <NCBI_names_file> \
+    {input} \
+    
 ##### NBC
+The <tt>NBC</tt> taxonomic classifier implemented the naïve bayes classifier for metagenomic samples. These classifiers are based on the Bayes theorem. This tool is used as a webserver with <tt>http://nbc.ece.drexel.edu/</tt>
 ##### taxMaps
 <tt>taxMaps</tt> [taxMaps]() is a classification tool designed for short read metagenomic samples. It consists of several steps preceding the actual task of taxonomic classification. There is the preprocessing with quality trimming and adapter cutting as well as mapping. Here, only the taxonomic classification is done. The approach is based on the FM-Index [taxMaps](). <br> <!-- Index last edited: 06/03/2018-->
 A pre-built index (refseq_complete_bacarchive) is used which was downloaded from <tt>ftp://ftp.nygenome.org/taxmaps/Indexes/</tt> as of 27/11/2020. The taxonomy table was downloaded from there as well.
@@ -130,6 +150,7 @@ A pre-built index (refseq_complete_bacarchive) is used which was downloaded from
 
 ### Metrics
 Introduction on diffivulties regarding the comparison of different tools with differents databases etc
+
 #### Area-Under-Precision-Recall Curve
 The Area-Under-Precision-Recall curve (AUPR) is a metric that combines the most important measures for metagenomic classification: precision and recall [[1]](). Precision is defined as $precision=\frac{TP}{TP+FP}$, i.e. the ratio between true positive (TP) classification results and the total numer of classification results that are reported as true, inclusing falsly positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. $recall=\frac{TP}{TP+FN}$. <br>
 The AUPR curve can be used to evaluate precision and recall across different abundance thresholds. If the threshold are chosen accordingly in the range from 0-1.0, the AUPR returns a single metric considering precision and recall. In short: This metric considers the number of correctly identified species [[1]]().
@@ -141,6 +162,7 @@ For this metric, a ground-truth is needed.
 #### Computational Requirements
 Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime and amount of memory. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task and the memory usage in MiB.
 # Results and Discussion
+## Installation
 # Conclusion
 # Additional Information
 
@@ -163,3 +185,9 @@ Additionally to the quality of the different classifiers, the computational requ
 [centrifuge](https://doi.org/10.1101%2Fgr.210641.116) Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.
 
 [kma](https://doi.org/10.1186/s12859-018-2336-6) Clausen, P. T., Aarestrup, F. M., & Lund, O. (2018). Rapid and precise alignment of raw reads against redundant databases with KMA. *BMC bioinformatics*, 19(1), 1-8.
+
+[ccmetagen](https://doi.org/10.1186/s13059-020-02014-2) Marcelino, V. R., Clausen, P. T., Buchmann, J. P., Wille, M., Iredell, J. R., Meyer, W., ... & Holmes, E. C. (2020). CCMetagen: comprehensive and accurate identification of eukaryotes and prokaryotes in metagenomic data. *Genome Biology*, 21(1), 1-15.
+
+[metaothello](https://doi.org/10.1093/bioinformatics/btx432) Liu, X., Yu, Y., Liu, J., Elliott, C. F., Qian, C., & Liu, J. (2018). A novel data structure to support ultra-fast taxonomic classification of metagenomic sequences with k-mer signatures. *Bioinformatics*, 34(1), 171-178.
+
+[nbc](https://doi.org/10.1093/bioinformatics/btq619) Rosen, G. L., Reichenberger, E. R., & Rosenfeld, A. M. (2011). NBC: the Naive Bayes Classification tool webserver for taxonomic classification of metagenomic reads. *Bioinformatics*, 27(1), 127-129.

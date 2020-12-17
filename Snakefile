@@ -150,3 +150,23 @@ rule catbat:
         'CAT contigs -c {input} -d {databse} -t {taxonomy} -o {output}',
         'CAT bins -b {input} -d {database} -t {taxonomy} -o {output}',
         'CAT add_names -i {ORF2LCA / classification file} -o {output file} -t {taxonomy folder} --only_official'
+
+rule diamond:
+    input:
+        pass
+    output:
+        pass 
+    conda:
+        '/home/re85gih/projectClassification/projectmaster/envs/main.yml'
+    shell:
+        'diamond blastx --db {database} -g {input} --taxonlist {database_list} -o {output}' #there are options for hit length, kinda?
+
+rule metaothello:
+    input:
+        pass
+    output:
+        pass 
+    conda:
+        '/home/re85gih/projectClassification/projectmaster/envs/main.yml'
+    shell:
+        classifier {index} {output} 31 THREADS FA/FQ SE/PE spec2tax ncbiNames {input}

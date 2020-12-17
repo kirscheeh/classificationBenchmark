@@ -129,6 +129,15 @@ _Installation_
 
     git clone https://github.com/xa6xa6/metaOthello/
 
+_Preparation_
+
+    # k-mers
+    https://drive.google.com/open?id=0BxgO-FKbbXRIa0Flc3Q4bWtycGM
+    # species2tasID
+    https://drive.google.com/open?id=0BxgO-FKbbXRIc3FkLVFvMlpVVGM
+    # NCBI names
+    https://drive.google.com/open?id=0BxgO-FKbbXRIUFI2dHlBMXZhdTA
+
 
 ## Diamond
 _Installation_
