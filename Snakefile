@@ -1,15 +1,14 @@
 # Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
 
-configfile: "projectmaster/config.yaml"
+configfile: "config.yaml"
 
-rule create:
-    shell:
-        'python structure.py'
+# creating the project structure
+#rule create:
+#    shell:
+#        'python structure.py'
 
-rule all:
-    pass
-
-rule centrifuge:
+#rule all:
+"""rule centrifuge:
     input:
         pass
     output:
@@ -169,4 +168,4 @@ rule metaothello:
     conda:
         '/home/re85gih/projectClassification/projectmaster/envs/main.yml'
     shell:
-        classifier {index} {output} 31 THREADS FA/FQ SE/PE spec2tax ncbiNames {input}
+        classifier {index} {output} 31 THREADS FA/FQ SE/PE spec2tax ncbiNames {input}"""

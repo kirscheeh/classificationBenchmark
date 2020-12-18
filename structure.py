@@ -20,7 +20,7 @@ variables = [x for x in variables if not "#" in x and not '' == x]
 # get path to main folder
 for x in variables:
     if "path" in x:
-        path = x.split("[")[1][:-2]
+        path = x.split("[")[1][:-1]
         classification_path=path+"/classification"
     if "classification" in x:
         classification_tools = x.split("[")[1][:-1].split(", ")
@@ -29,6 +29,7 @@ def generate_folder(path, folders=[]):
     if os.path.exists(path):
         print("This folder already exists!", path)
     else:
+        print(path)
         os.mkdir(path)
     
     if len(folders)>0:
