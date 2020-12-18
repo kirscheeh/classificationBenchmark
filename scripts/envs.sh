@@ -14,12 +14,5 @@ while read -r line; do
   fi
 done < "$INPUT" > "$CURRENT"
 
-mv *.yml ../envs/
+mv *.yaml ../envs/
 mv "$CURRENT" "$INPUT"
-
-function whatthehell() {
-  echo "what am i doing here?"
-  if [[ $1 -ge 9000 ]]; then
-    echo "level of boredom:" $1
-  fi
-} 
