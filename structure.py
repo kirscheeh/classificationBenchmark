@@ -23,14 +23,14 @@ for x in variables:
         path = x.split("[")[1][:-1]
         classification_path=path+"/classification"
     if "classification" in x:
-        classification_tools = x.split("[")[1][:-1].split(", ")
+        classification_tools = x.split("{")[1][:-1].split(", ")
 
 def generate_folder(path, folders=[]):
     if os.path.exists(path):
         print("This folder already exists!", path)
     else:
         print(path)
-        os.mkdir(path)
+        #os.mkdir(path)
     
     if len(folders)>0:
         for folder in folders:

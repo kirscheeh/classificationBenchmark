@@ -1,7 +1,7 @@
 # TODO LIST
 - create a structure so that all is reproducible
-- script for seed length
 - protocol
+- install Jellyfish for MetaOthello
 
 - more information on benchmarking
   - leave one taxa out approach aka clade exclusion

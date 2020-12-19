@@ -128,6 +128,7 @@ _Installation_
 _Installation_
 
     git clone https://github.com/xa6xa6/metaOthello/
+    git clone https://github.com/gmarcais/Jellyfish.git
 
 _Preparation_
 
