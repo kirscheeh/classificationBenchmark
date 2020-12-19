@@ -1,4 +1,0 @@
-name: classification
-channels:
-  - defaults
-prefix: /home/re85gih/miniconda3/envs/projectMAIN/envs/classification
