@@ -144,7 +144,7 @@ rule taxmaps:
         db = DI['taxmaps']+"/*.gem.*",
         taxonomy = DI['taxmaps']+"/taxonomy.tbl.gz",
         nodes = DI['kaiju']+"/nodes.dmp",
-        files = '' 
+        files = ''
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.taxmaps.benchmark.txt'
     output:
@@ -171,7 +171,7 @@ rule taxmaps:
         else:
             print("TaxMaps -- Nothing to do here:", {params.runid}) 
 
-rule deepmicrobes: #this is goign to be fun...
+"""rule deepmicrobes: #this is goign to be fun...
     input:
         pass 
     output:
@@ -192,7 +192,7 @@ rule deepmicrobes: #this is goign to be fun...
         # make prediction on metagenome datasaet
         'predict_DeepMicrobes.sh -i sample.tfrec -b 8192 -l species -p 8 -m model_dir -o prefix' 
         # generate taxonomic profiles
-        'report_profile.sh -i predict.result.txt -o summarize.profile.txt -t 50 -l /path/to/DeepMicrobes/data/name2label.txt' 
+        'report_profile.sh -i predict.result.txt -o summarize.profile.txt -t 50 -l /path/to/DeepMicrobes/data/name2label.txt'"""
 
 rule kslam:
     input:
