@@ -236,6 +236,7 @@ rule clark:
         # -k        k-mer size, has to be between 2 and 32, default:31 
         # --long    for long reads (only for full mode)
         # -m        mode of execution
+
         if 'default' in {params.runid}:
             shell('CLARK --long -O {input.files} -R {output} -D {input.db} -n {threads}')
         elif 'medium' in {params.runid}:
@@ -243,7 +244,7 @@ rule clark:
         elif 'restrictive' in {params.runid}:
             pass
         else:
-            print("CLARK -- Nothing to do here:", {params.runid}
+            print("CLARK -- Nothing to do here:", {params.runid})
 
 rule kma:
     input:
@@ -288,7 +289,7 @@ rule ccmetagen:
         elif 'restrictive' in {params.runid}:
             pass
         else:
-            print("CCMetagen -- Nothing to do here:", {params.runid}
+            print("CCMetagen -- Nothing to do here:", {params.runid})
        
 
 rule catbat: #???
@@ -319,7 +320,7 @@ rule catbat: #???
         elif 'restrictive' in {params.runid}:
             pass
         else:
-            print("CAT&BAT -- Nothing to do here:", {params.runid}
+            print("CAT&BAT -- Nothing to do here:", {params.runid})
         
 
 rule diamond:
@@ -344,7 +345,7 @@ rule diamond:
         elif 'restrictive' in {params.runid}:
             pass
         else:
-            print("Diamond -- Nothing to do here:", {params.runid}
+            print("Diamond -- Nothing to do here:", {params.runid})
         
 
 
@@ -371,5 +372,5 @@ rule metaothello:
         elif 'restrictive' in {params.runid}:
             pass
         else:
-            print("MetaOthello -- Nothing to do here:", {params.runid}
+            print("MetaOthello -- Nothing to do here:", {params.runid})
         
