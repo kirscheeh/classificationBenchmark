@@ -9,4 +9,4 @@ dataIndex: {taxmaps: '/mnt/fass1/kirsten/taxmaps', deepmicrobes: '/mnt/fass1/kir
 
 classification: {kaiju, diamond, taxmaps, deepmicrobes, kslam, kraken2, centrifuge, clark, metaothello, benchmarks, catbat}
 
-samples: {gridion1: '/mnt/fass1/kirsten/data/gridion/gridion_ERR3152364.fastq.gz', gridion2: '/mnt/fass1/kirsten/data/gridion/gridion_ERR3152366.fastq.gz'}
+samples: {gridion1: '/mnt/fass1/kirsten/data/gridion/gridion_ERR3152364.fastq.gz', gridion2: '/mnt/fass1/kirsten/data/gridion/gridion_ERR3152366.fastq.gz', promethion1: '/mnt/fass1/kirsten/data/promethion/promethion_ERR3152365', promethion2: '/mnt/fass1/kirsten/data/promethion/promethion_ERR3152367'}

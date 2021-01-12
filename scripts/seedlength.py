@@ -33,3 +33,5 @@ else:
         else:
             avg = getAverage(fast[1:len(fast):2*int(sys.argv[3])])
 
+print(avg)
+return avg
