@@ -28,7 +28,7 @@ def getValues(file):
 predictions = np.array(getValues(args.predictions), dtype=float)
 #labels = np.array(getValues(args.labels), dtype=float)
 #predictions = np.array([0.65,0.1,0.15,0.43,0.97,0.24,0.82,0.7,0.32,0.84])
-labels = np.array([12, 12, 12, 12, 12, 12, 12, 12, 2, 2])
+labels = np.array([12, 12, 12, 12, 12, 12, 12, 12, 2, 2, 0])
 
 
 # sort the entries according to the predicted confidence
