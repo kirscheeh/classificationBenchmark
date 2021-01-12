@@ -1,7 +1,7 @@
-# path to folder where generated ourtputs should be saved, akak projext folder
-path: [/mnt/prostlocal2/projects/NAMEofFOLDER]
+# path to folder where generated ourtputs should be saved, aka project folder
+path: [/mnt/fass1/kirsten/result]
 # path to the folders where the needed databases and/or indices are located
-dataIndex: {taxmaps: '/mnt/fass1/kirsten/taxmaps', deepmicrobes: '/mnt/fass1/kirsten/deepmicrobes', kaiju: '/mnt/fass1/kirsten/kaiju', kslam: '/mnt/fass1/kirsten/kslam', kraken2: '/mnt/fass1/databse/kraken2-databse', centrifuge: '/mnt/fass1/database/dairy_minion', clark: '/mnt/fass1/database/clark_database', metaothello: '/mnt/fass1/kirsten/metaothello', diamond: '/mnt/fass1/kirsten/diamond', ccmetagen: '/mnt/fass1/kirsten/ccmetagen', catbat: '/mnt/fass1/kirsten/catbat'}
+dataIndex: {taxmaps: '/mnt/fass1/kirsten/taxmaps', deepmicrobes: '/mnt/fass1/kirsten/deepmicrobes', kaiju: '/mnt/fass1/kirsten/kaiju', kslam: '/mnt/fass1/kirsten/kslam', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/database/dairy_minion', clark: '/mnt/fass1/database/clark_database', metaothello: '/mnt/fass1/kirsten/metaothello', diamond: '/mnt/fass1/kirsten/diamond', ccmetagen: '/mnt/fass1/kirsten/ccmetagen', catbat: '/mnt/fass1/kirsten/catbat'}
 
 # incorporated tools
 
@@ -9,4 +9,4 @@ dataIndex: {taxmaps: '/mnt/fass1/kirsten/taxmaps', deepmicrobes: '/mnt/fass1/kir
 
 classification: {kaiju, diamond, taxmaps, deepmicrobes, kslam, kraken2, centrifuge, clark, metaothello, benchmarks, catbat}
 
-samples: {}
+samples: {gridion1: '/mnt/fass1/kirsten/data/gridion/gridion_ERR3152364.fastq.gz', gridion2: '/mnt/fass1/kirsten/data/gridion/gridion_ERR3152366.fastq.gz'}

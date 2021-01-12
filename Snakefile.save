@@ -1,15 +1,15 @@
-# Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
+# Snakefile for poject work of benchmarking different classification tools regarding their usability for long reads
 
 configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config['path']
-SAMPLES = "gridion_ERR3152364"
+SAMPLES = "/mnt/fass1/kirsten/data/gridion/gridion_ERR3152364.fastq.gz"
 
 RUNS="test"#RUNS='default medium restrictive'.split()
 
 rule all:
     input:
-       expand("/mnt/fass1/kirsten/result/classification/kraken2/{run}/{sample}_{run}.kraken2.classification", run=RUNS, sample=SAMPLES)
+       expand("/mnt/fass1/kirsten/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification", run=RUNS, sample=SAMPLES)
 
 # creating the project structure
 rule create:
@@ -50,7 +50,7 @@ def get_run(wildcards): #returns the current value of variable/wildcard run
 rule centrifuge:
     input:
         db = DI['centrifuge']+"/centrifuge_allBacteria_refseq_22-06-2019.fna", 
-        fastq = "/mnt/fass1/kirsten/data/gridion/{sample}.fastq.gz"
+        fastq = ''
     output:
         files = "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification",
         report= "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
@@ -58,8 +58,6 @@ rule centrifuge:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.centrifuge.benchmark.txt'
         # repeat() #repeat("benchmarks/{sample}.bwa.benchmark.txt", 3 für 3 runs
     threads: 8
-    params:
-        runid=get_run
     log:
         '{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log'
     conda:
@@ -83,7 +81,7 @@ rule centrifuge:
 rule kraken2:
     input:
         db = DI['kraken2'],
-        files = "/mnt/fass1/kirsten/data/gridion/{sample}.fastq.gz"
+        files = ''
     output:
         files = '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.classification',
         report= '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.report',
@@ -91,8 +89,6 @@ rule kraken2:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.kraken2.benchmark.txt'
     threads: 8
-    params:
-        runid=get_run
     log:
         '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.log'
     conda:
@@ -103,7 +99,7 @@ rule kraken2:
         # --classified-out      prints classified sequences to filename
         # --output              prints output to filename
         # --report              prints report with aggregate counts/clade to file
-        if 'test' in {params.runid}:#if 'default' in {params.runid}:
+        if 'default' in {params.runid}:
             shell('kraken2 --db {input.db} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
         elif 'medium' in {params.runid}: 
             print("Indeed")
@@ -122,8 +118,6 @@ rule kaiju:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.kaiju.benchmark.txt'
     threads: 8
-    params:
-        runid=get_run
     log:
         '{PATH}/classification/kaiju/{run}/{sample}_{run}.kaiju.log'
     conda:
@@ -156,8 +150,6 @@ rule taxmaps:
     output:
         files = '{PATH}/classification/taxmaps/{run}/{sample}_{run}.taxmaps.classification' 
     threads: 8
-    params:
-        runid=get_run
     log:
         '{PATH}/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log'
     conda:
@@ -211,8 +203,6 @@ rule kslam:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.kslam.benchmark.txt'
     threads: 8
-    params:
-        runid=get_run
     log:
         '{PATH}/classification/kslam/{run}/{sample}_{run}.kslam.log'
     conda:
@@ -238,8 +228,6 @@ rule clark:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt'
     threads: 8
-    params:
-	runid=get_run
     log:
         '{PATH}/classification/kslam/{run}/{sample}_{run}.clark.log'
     conda:
@@ -284,8 +272,6 @@ rule ccmetagen:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt'
     threads: 8
-    params:
-	runid=get_run
     log:
         '{PATH}/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log'
     conda:
@@ -319,8 +305,6 @@ rule catbat: #???
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.catbat.benchmark.txt'
     threads: 8
-    params:
-	runid=get_run
     log:
         '{PATH}/classification/catbat/{run}/{sample}_{run}.catbat.log'
     conda:
@@ -348,8 +332,6 @@ rule diamond:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt'
     threads: 8
-    params:
-	runid=get_run
     log:
         '{PATH}/classification/diamond/{run}/{sample}_{run}.diamond.log'
     conda:
@@ -378,8 +360,6 @@ rule metaothello:
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.metaothello.benchmark.txt'
     threads: 8
-    params:
-	runid=get_run
     log:
         '{PATH}/classification/metaothello/{run}/{sample}_{run}.metaothello.log'
     conda:

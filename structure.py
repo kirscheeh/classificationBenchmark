@@ -30,7 +30,7 @@ def generate_folder(path, folders=[]):
         print("This folder already exists!", path)
     else:
         print(path)
-        #os.mkdir(path)
+        os.mkdir(path)
     
     if len(folders)>0:
         for folder in folders:
