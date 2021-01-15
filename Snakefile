@@ -1,15 +1,18 @@
 # Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
 
 configfile: "config.yaml"
-DI= dict(config["dataIndex"])
-PATH = config['path']
-SAMPLES = "gridion_ERR3152364"
 
-RUNS="test"#RUNS='default medium restrictive'.split()
+DI= dict(config["dataIndex"])
+PATH = config["path"]
+SAMPLE_PATH = config["sample_path"]
+SAMPLES = list(config["samples"])
+TOOLS= 'centrifuge kraken2'.split(" ")#list(config["classification"])
+RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("/mnt/fass1/kirsten/result/classification/kraken2/{run}/{sample}_{run}.kraken2.classification", run=RUNS, sample=SAMPLES)
+       expand("{PATH}/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS)
+       expand("{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES)
 
 # creating the project structure
 rule create:
@@ -19,38 +22,10 @@ rule create:
 def get_run(wildcards): #returns the current value of variable/wildcard run
     return wildcards.run
 
-"""rule test:
-    input:
-        db = "/home/kirscheeh/university/projectCLASSIFICATION/test/centrifuge_allBacteria_refseq_22-06-2019.fna", 
-        fastq = '/home/kirscheeh/university/projectCLASSIFICATION/test/sample1.fastq'
-    output:
-        files = "/home/kirscheeh/university/projectCLASSIFICATION/test/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification",
-        report= "/home/kirscheeh/university/projectCLASSIFICATION/test/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
-    benchmark:
-        '/home/kirscheeh/university/projectCLASSIFICATION/test/classification/benchmarks/{run}/{sample}_{run}.centrifuge.benchmark.txt'
-    threads: 8
-    log:
-        '/home/kirscheeh/university/projectCLASSIFICATION/test/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log'
-    params:
-        runid = get_run
-    run:
-        # -q 				files are fastq
-    	# -x 				index files
-    	# --report-file 	generated report file
-    	# -S 				output file
-        # -f                query input files are (multi)fasta
-        #if {run} == "default":
-        if 'default' in {params.runid}:
-            shell('centrifuge -q -x {input.db} {input.fastq} --report-file {output.report} -S {output.files}')
-        elif '31mer' in {params.runid}: 
-            print("Indeed")
-        elif '50pmer' in {params.runid}: 
-            print("Sure")"""
-
 rule centrifuge:
     input:
         db = DI['centrifuge']+"/centrifuge_allBacteria_refseq_22-06-2019.fna", 
-        fastq = "/mnt/fass1/kirsten/data/gridion/{sample}.fastq.gz"
+        fastq = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files = "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification",
         report= "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
@@ -71,7 +46,7 @@ rule centrifuge:
     	# -S 				output file
         # -f                query input files are (multi)fasta
         
-        if 'test' in {params.runid}:#if 'default' in {params.runid}:
+        if 'default' in {params.runid}:
             shell('centrifuge -q -x {input.db} {input.fastq} --report-file {output.report} -S {output.files}')
         elif 'medium' in {params.runid}: 
             print("Sure")
@@ -80,10 +55,20 @@ rule centrifuge:
         else:
             print("Centrifuge -- Nothing to be done here:", {params.runid})
 
+rule kreport:
+    input:
+        db = DI['centrifuge']+"/centrifuge_allBacteria_refseq_22-06-2019.fna",
+        report="{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
+    output:
+        "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
+    shell:
+        'centrifuge-kreport -x {input.db} {input.report} > {output}'
+
+
 rule kraken2:
     input:
         db = DI['kraken2'],
-        files = "/mnt/fass1/kirsten/data/gridion/{sample}.fastq.gz"
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files = '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.classification',
         report= '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.report',
@@ -103,8 +88,9 @@ rule kraken2:
         # --classified-out      prints classified sequences to filename
         # --output              prints output to filename
         # --report              prints report with aggregate counts/clade to file
-        if 'test' in {params.runid}:#if 'default' in {params.runid}:
-            shell('kraken2 --db {input.db} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
+        
+        if 'default' in {params.runid}:
+            shell('kraken2 --db {input.db} --unclassified-out {output.unclassified} --report {output.report} --confidence 0.05 --threads {threads} --output {output.files} {input.files}')
         elif 'medium' in {params.runid}: 
             print("Indeed")
         elif 'restrictive' in {params.runid}: 
@@ -116,7 +102,7 @@ rule kaiju:
     input:
         db = DI['kaiju']+"/kaiju_db_refseq.fmi",
         nodes = DI['kaiju']+"/nodes.dmp",
-        files = ''
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files = '{PATH}/classification/kaiju/{run}/{sample}_{run}.kaiju.classification'
     benchmark:
@@ -150,7 +136,7 @@ rule taxmaps:
         db = DI['taxmaps']+"/*.gem.*",
         taxonomy = DI['taxmaps']+"/taxonomy.tbl.gz",
         nodes = DI['kaiju']+"/nodes.dmp",
-        files = ''
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.taxmaps.benchmark.txt'
     output:
@@ -205,7 +191,7 @@ rule taxmaps:
 rule kslam:
     input:
         db = DI['kslam']+"database",
-        files=""
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files = '{PATH}/classification/kslam/{run}/{sample}_{run}.kslam.classification' 
     benchmark:
@@ -232,14 +218,14 @@ rule kslam:
 rule clark:
     input:
         db = DI['clark'],
-        files=""
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files = '{PATH}/classification/clark/{run}/{sample}_{run}.clark.classification' 
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt'
     threads: 8
     params:
-	runid=get_run
+	    runid=get_run
     log:
         '{PATH}/classification/kslam/{run}/{sample}_{run}.clark.log'
     conda:
@@ -261,7 +247,7 @@ rule clark:
 rule kma:
     input:
         db = DI['ccmetagen'],
-        files = ""
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         '{PATH}/classification/ccmetagen/{sample}.kma.intermediate'
     benchmark:
@@ -277,7 +263,7 @@ rule kma:
 rule ccmetagen: 
     input:
         kma = DI['ccmetagen']+"/{sample}.kma.intermediate",
-        files=""
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files = '{PATH}/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification',
         report= '{PATH}/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report'
@@ -285,7 +271,7 @@ rule ccmetagen:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt'
     threads: 8
     params:
-	runid=get_run
+	    runid=get_run
     log:
         '{PATH}/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log'
     conda:
@@ -310,7 +296,7 @@ rule catbat: #???
     input:
         db = DI['catbat']+"/CAT_prepare_20200618",
         taxonomy = DI['catbat']+"/CAT_prepare_20200618/taxonomy",
-        files = "",
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         #contigs = '{PATH}/classification/catbat/contigs/{sample}_{run}.catbat.contigs',
         bins = '{PATH}/classification/catbat/bins/{sample}_{run}.catbat.bins',
@@ -320,7 +306,7 @@ rule catbat: #???
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.catbat.benchmark.txt'
     threads: 8
     params:
-	runid=get_run
+	    runid=get_run
     log:
         '{PATH}/classification/catbat/{run}/{sample}_{run}.catbat.log'
     conda:
@@ -342,14 +328,14 @@ rule catbat: #???
 rule diamond:
     input:
         db= DI['diamond'],
-        files=""
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         files='{PATH}/classification/diamond/{run}/{sample}_{run}.diamond.classification'
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt'
     threads: 8
     params:
-	runid=get_run
+	    runid=get_run
     log:
         '{PATH}/classification/diamond/{run}/{sample}_{run}.diamond.log'
     conda:
@@ -372,14 +358,14 @@ rule metaothello:
         db = DI['metaothello']+"/bacterial_31mer_L12.index",
         spec2tax = DI['metaothello']+"/bacterial_speciesId2taxoInfo.txt",
         ncbiNames = DI['metaothello']+"/names.dmp.scientific",
-        files=""
+        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
     output:
         '{PATH}/classification/metaothello/{run}/{sample}_{run}.metaothello.classification'
     benchmark:
         '{PATH}/classification/benchmarks/{run}/{sample}_{run}.metaothello.benchmark.txt'
     threads: 8
     params:
-	runid=get_run
+	    runid=get_run
     log:
         '{PATH}/classification/metaothello/{run}/{sample}_{run}.metaothello.log'
     conda:
@@ -393,4 +379,3 @@ rule metaothello:
             pass
         else:
             print("MetaOthello -- Nothing to do here:", {params.runid})
-        

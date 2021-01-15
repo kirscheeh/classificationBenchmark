@@ -6,7 +6,7 @@
 
 import numpy as np
 import argparse
-import getKraken2predictions as kraken
+#import getKraken2predictions as kraken
 import sys
 
 ### CLI ###
@@ -28,8 +28,8 @@ def getValues(file):
 #predictions = np.array(getValues(args.predictions), dtype=float)
 #labels = np.array(getValues(args.labels), dtype=float)
 #predictions = np.array(kraken.getProportions(sys.argv[1]))
-labels = np.array([12, 12, 12, 12, 12, 12, 12, 12, 2, 2, 0])
-predictions = np.array([0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0])
+labels = np.array([0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02, 0.0])
+predictions = np.array([0.1751, 0.12869999999999998, 0.11109999999999999, 0.1107, 0.056900000000000006, 0.0525, 0.044800000000000006, 0.1414, 0.0218, 0.02, 0.0913])
 
 
 # sort the entries according to the predicted confidence
