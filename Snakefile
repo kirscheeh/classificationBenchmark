@@ -11,8 +11,8 @@ RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("{PATH}/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS)
-       expand("{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES)
+       expand("/mnt/fass1/kirsten/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS),
+       expand("/mnt/fass1/kirsten/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES)
 
 # creating the project structure
 rule create:
@@ -23,9 +23,8 @@ def get_run(wildcards): #returns the current value of variable/wildcard run
     return wildcards.run
 
 rule centrifuge:
-    input:
-        db = DI['centrifuge']+"/centrifuge_allBacteria_refseq_22-06-2019.fna", 
-        fastq = "{SAMPLE_PATH}/{sample}.fastq.gz"
+    input: 
+        fastq = "/mnt/fass1/kirsten/data/{sample}.fastq"
     output:
         files = "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification",
         report= "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
@@ -34,7 +33,8 @@ rule centrifuge:
         # repeat() #repeat("benchmarks/{sample}.bwa.benchmark.txt", 3 für 3 runs
     threads: 8
     params:
-        runid=get_run
+        runid=get_run,
+	db = "/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed" 
     log:
         '{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log'
     conda:
@@ -47,7 +47,7 @@ rule centrifuge:
         # -f                query input files are (multi)fasta
         
         if 'default' in {params.runid}:
-            shell('centrifuge -q -x {input.db} {input.fastq} --report-file {output.report} -S {output.files}')
+            shell('centrifuge -q -x {params.db} {input.fastq} --report-file {output.report} -S {output.files}')
         elif 'medium' in {params.runid}: 
             print("Sure")
         elif 'restrictive' in {params.runid}: 
@@ -57,18 +57,19 @@ rule centrifuge:
 
 rule kreport:
     input:
-        db = DI['centrifuge']+"/centrifuge_allBacteria_refseq_22-06-2019.fna",
         report="{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
     output:
         "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
+    params:
+        db="/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed"
     shell:
-        'centrifuge-kreport -x {input.db} {input.report} > {output}'
+        'centrifuge-kreport -x {params.db} {input.report} > {output}'
 
 
 rule kraken2:
     input:
         db = DI['kraken2'],
-        files = "{SAMPLE_PATH}/{sample}.fastq.gz"
+        files = "/mnt/fass1/kirsten/data/{sample}.fastq"
     output:
         files = '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.classification',
         report= '{PATH}/classification/kraken2/{run}/{sample}_{run}.kraken2.report',
