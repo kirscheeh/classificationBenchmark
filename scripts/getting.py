@@ -1,8 +1,8 @@
 # Script with several useful functions  needed across the different scripts
 import os, yaml
-from numpy import array
-from numpy.linalg import norm
+import numpy as np
 config='../config.yaml'
+
 
 def get_species(config):
     if os.path.isfile(config):
@@ -36,7 +36,7 @@ def get_samples(config):
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
             samples = parsed_yaml['samples']
-        return samples
+            return samples
     else:
         print('Error! No config file', config)
 
@@ -70,14 +70,80 @@ def get_abundances(tool, report, config):
     print(predictions.values())
     return predictions
 
-get_abundances('kraken2', '../report/gridion_ERR3152364_test.kraken2.report', config)
-
 def get_ASP(tool, report, truth):
     pred = get_abundances(tool, report, config)
     try:
-        result=norm(truth-pred)
+        result=np.norm(truth-pred)
         print(result)
         return result
     except Exception:
         print("An error occured.")
+
+def get_numberReads(file, fastq=True):
+    with open(file, "r") as f:
+        lines = f.read().split("\n")
+        if fastq:
+            return len(lines)/4
+        else:
+            return len(lines)/2
+
+def get_sequences(file, fastq=True): #fastq is boolean
+    with open(file, "r") as f:
+        fast = f.read().split("\n")
+        if fastq:
+            seq = fast[1:len(fast):4]
+        else:
+            seq =fast[1:len(fast):2]
+    return seq
+
+def get_qualityStrings(file):
+    with open(file, "r") as f:
+        fast = f.read().split("\n")
+    return fast[3:len(fast):4]
+
+def get_seqLength(file, fastq=True, median=True): 
+    seq = get_sequences(file, fastq)
+    lengths = [len(x) for x in seq]
+    if median:        
+        return np.median(lengths)
+    else:
+        return round(lengths/len(lengths), 5)
+
+def get_quality(file, median): #phred64, might be really slow
+    qualSeq = get_qualityStrings(file)
+    qual = []
+    asciiValues = {chr(i):i-64 for i in range(64, 106)}#{chr(i):i-33 for i in range(33, 76)} # ascii mapped to Q-value
+    for seq in qualSeq:
+        current=0
+        for c in seq:
+            current+=asciiValues[c]
+        qual.append(current)
+    if median:
+        return statistics.median(qual)
+    else:
+        return round(qual/len(qual), 5)
+
+def get_qualityFast(file, ignoreSeq, ignoreChar, median): #ignoreX is int, gives number of characters and sequences that should be ignored to fasten up the process
+    qualSeq = get_qualityStrings(file)
+    asciiValues = {chr(i):i-64 for i in range(64, 106)}
+    qual=[]
+    for i in range(0, len(qualSeq), ignoreSeq):
+        current=0
+        for j in range(0, len(qualSeq[i]), ignoreChar):
+            try:
+                current+=asciiValues[qualSeq[i][j]]
+            except IndexError:
+                pass
+        qual.append(current)
+    if median:
+        return statistics.median(qual)
+    else:
+        return round(qual/len(qual), 5)
+
+
+
+
+
+
+
 
