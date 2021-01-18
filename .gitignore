@@ -1,4 +1,4 @@
-./snakemake*
+./snakemake/*
 .nfs*
 testingScripts/*
 scripts/__pycache__*
