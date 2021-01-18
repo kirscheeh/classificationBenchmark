@@ -105,9 +105,10 @@ def get_seqLength(file, fastq=True, median=True):
     seq = get_sequences(file, fastq)
     lengths = [len(x) for x in seq]
     if median:        
-        return np.median(lengths)
+        return int(np.median(lengths))
     else:
-        return round(lengths/len(lengths), 5)
+
+        return int(round(np.sum(lengths)/len(lengths), 0))
 
 def get_quality(file, median): #phred64, might be really slow
     qualSeq = get_qualityStrings(file)
@@ -119,9 +120,9 @@ def get_quality(file, median): #phred64, might be really slow
             current+=asciiValues[c]
         qual.append(current)
     if median:
-        return statistics.median(qual)
+        return np.median(qual)
     else:
-        return round(qual/len(qual), 5)
+        return int(round(np.sum(qual)/len(qual), 0))
 
 def get_qualityFast(file, ignoreSeq, ignoreChar, median): #ignoreX is int, gives number of characters and sequences that should be ignored to fasten up the process
     qualSeq = get_qualityStrings(file)
@@ -136,9 +137,9 @@ def get_qualityFast(file, ignoreSeq, ignoreChar, median): #ignoreX is int, gives
                 pass
         qual.append(current)
     if median:
-        return statistics.median(qual)
+        return np.median(qual)
     else:
-        return round(qual/len(qual), 5)
+        return round(qual/len(qual), 0)
 
 
 
