@@ -34,7 +34,7 @@ rule centrifuge:
     threads: 8
     params:
         runid=get_run,
-	db = "/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed" 
+	    db = "/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed" 
     log:
         '{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log'
     conda:
@@ -60,6 +60,8 @@ rule kreport:
         report="{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
     output:
         "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
+    conda:
+       '{PATH}/classificationBenchmark/envs/centrifuge.yaml'
     params:
         db="/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed"
     shell:
