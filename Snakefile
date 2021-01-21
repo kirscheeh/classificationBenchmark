@@ -11,8 +11,8 @@ RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("{path}/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH)
+       #expand("{path}/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path="/mnt/fass1/kirsten")
 
 # creating the project structure
 rule create:
@@ -24,7 +24,7 @@ def get_run(wildcards): #returns the current value of variable/wildcard run
 
 rule plot_readlength:
     input:
-        fastq = "{SAMPLE_PATH}/{sample}.fastq"
+#        fastq = "{SAMPLE_PATH}/{sample}.fastq",
         script = "{PATH}/classificationBenchmark/scripts/plotReadlength.py"
     output:
         plot = "{PATH}/stats/{sample}_readlength.png"
@@ -36,7 +36,7 @@ rule plot_readlength:
 
 rule centrifuge:
     input: 
-        fastq = "{SAMPLE_PATH}/{sample}.fastq"
+        fastq = "/mnt/fass1/kirsten/data/{sample}.fastq"
     output:
         files = "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification",
         report= "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
@@ -46,7 +46,7 @@ rule centrifuge:
     threads: 8
     params:
         runid=get_run,
-	    db = DI["centrifuge"]
+	db = DI["centrifuge"]+"/p_compressed"
     log:
         '{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log'
     conda:
@@ -75,9 +75,11 @@ rule kreport:
     conda:
        '{PATH}/classificationBenchmark/envs/centrifuge.yaml'
     params:
-        db = DI["centrifuge"]
+        db = DI["centrifuge"]+"/p_compressed"
+    log: 
+        "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
     shell:
-        'centrifuge-kreport -x {params.db} {input.report} > {output}'
+        'centrifuge-kreport -x {params.db} {input.report} > {log}'
 
 
 rule kraken2:
