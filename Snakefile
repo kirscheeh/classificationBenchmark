@@ -11,8 +11,8 @@ RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("/mnt/fass1/kirsten/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS),
-       expand("/mnt/fass1/kirsten/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES)
+       expand("{path}/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
 rule create:
@@ -22,9 +22,21 @@ rule create:
 def get_run(wildcards): #returns the current value of variable/wildcard run
     return wildcards.run
 
+rule plot_readlength:
+    input:
+        fastq = "{SAMPLE_PATH}/{sample}.fastq"
+        script = "{PATH}/classificationBenchmark/scripts/plotReadlength.py"
+    output:
+        plot = "{PATH}/stats/{sample}_readlength.png"
+    threads: 8
+    conda:
+        "{PATH}/classificationBenchmark/envs/centrifuge.yaml"
+    shell:
+        "python {input.script} {input.fastq} {output.plot}"
+
 rule centrifuge:
     input: 
-        fastq = "/mnt/fass1/kirsten/data/{sample}.fastq"
+        fastq = "{SAMPLE_PATH}/{sample}.fastq"
     output:
         files = "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.classification",
         report= "{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
@@ -34,7 +46,7 @@ rule centrifuge:
     threads: 8
     params:
         runid=get_run,
-	    db = "/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed" 
+	    db = DI["centrifuge"]
     log:
         '{PATH}/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log'
     conda:
@@ -63,7 +75,7 @@ rule kreport:
     conda:
        '{PATH}/classificationBenchmark/envs/centrifuge.yaml'
     params:
-        db="/mnt/fass1/kirsten/centrifuge/p_compressed/p_compressed"
+        db = DI["centrifuge"]
     shell:
         'centrifuge-kreport -x {params.db} {input.report} > {output}'
 

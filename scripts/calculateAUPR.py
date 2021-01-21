@@ -6,7 +6,6 @@
 
 import numpy as np
 import argparse
-#import getKraken2predictions as kraken
 import sys
 
 ### CLI ###
