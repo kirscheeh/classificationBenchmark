@@ -1,5 +1,6 @@
-#lines = readLines("/home/kirscheeh/Downloads/ERR3152364.fastq")
-lines= c("axcgtacgtcgatcga", "cagctacgatcgatcgatcg", "acastcgatcazc", "aczascgasczgzasc")
+#!/usr/bin/Rscript
+lines = readLines("/mnt/fass1/kirsten/data/gridion364.fastq")
+#lines= c("axcgtacgtcgatcga", "cagctacgatcgatcgatcg", "acastcgatcazc", "aczascgasczgzasc")
 seqLength <- c()
 for (i in 1:length(lines)){
   if (i %% 4 == 2)
@@ -9,7 +10,7 @@ for (i in 1:length(lines)){
   }
 }
 
-png(filename="/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/stats/gridion364_readlength.png", width=850, height=632)
+png(filename="/mnt/fass1/kirsten/result/classification/stats/gridion364_readlength.png", width=850, height=632)
 
 hist(seqLength, xaxt='n',yaxt='n', main="Distribution of read lengths for gridion364.fastq", breaks=1000, xlim=c(0, 20000), ylim=c(0, 30000), xlab="", ylab="", col="lightblue")
 title(xlab="read length", line=4, cex.lab=1.2)

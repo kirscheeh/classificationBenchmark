@@ -1,5 +1,5 @@
 # path to folder where generated ourtputs should be saved, aka project folder
-path: [/mnt/fass1/kirsten/]]
+path: [/mnt/fass1/kirsten]
 # path to the folders where the needed databases and/or indices are located
 dataIndex: {taxmaps: '/mnt/fass1/kirsten/taxmaps', deepmicrobes: '/mnt/fass1/kirsten/deepmicrobes', kaiju: '/mnt/fass1/kirsten/kaiju', kslam: '/mnt/fass1/kirsten/kslam', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/centrifuge/p_compressed', clark: '/mnt/fass1/database/clark_database', metaothello: '/mnt/fass1/kirsten/metaothello', diamond: '/mnt/fass1/kirsten/diamond', ccmetagen: '/mnt/fass1/kirsten/ccmetagen', catbat: '/mnt/fass1/kirsten/catbat'}
 
