@@ -4,15 +4,15 @@ configfile: "config.yaml"
 
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = list(config["samples"])
-TOOLS= 'centrifuge kraken2'.split(" ")#list(config["classification"])
+SAMPLES = "gridion364 gridion366".split(" ")#list(config["samples"])
+TOOLS= 'centrifuge kraken2 kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH)
-
+       expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 # creating the project structure
 rule create:
     shell:
@@ -118,7 +118,7 @@ rule kaiju:
     input:
         db = DI['kaiju']+"/kaiju_db_refseq.fmi",
         nodes = DI['kaiju']+"/nodes.dmp",
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
         files = '{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification'
     benchmark:
