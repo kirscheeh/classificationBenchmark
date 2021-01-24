@@ -12,7 +12,7 @@ for (i in 1:length(lines)){
 
 png(filename="/mnt/fass1/kirsten/result/classification/stats/gridion364_readlength.png", width=850, height=632)
 
-hist(seqLength, xaxt='n',yaxt='n', main="Distribution of read lengths for gridion364.fastq", breaks=1000, xlim=c(0, 20000), ylim=c(0, 30000), xlab="", ylab="", col="lightblue")
+hist(seqLength, xaxt='n',yaxt='n', main="Distribution of read lengths for gridion364.fastq", breaks=1000, xlim=c(0, 40000), , xlab="", ylab="", col="lightblue")
 title(xlab="read length", line=4, cex.lab=1.2)
 title(ylab="abundance", line=3.2, cex.lab=1.2)
 axis(side=2, las=1, col="grey")
