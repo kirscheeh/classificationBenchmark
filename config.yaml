@@ -11,4 +11,4 @@ classification: {kaiju, diamond, taxmaps, deepmicrobes, kslam, kraken2, centrifu
 
 samples: {gridion364: '/mnt/fass1/kirsten/data/gridion364.fastq.gz', gridion366: '/mnt/fass1/kirsten/data/gridion366.fastq.gz', promethion365: '/mnt/fass1/kirsten/data/promethion365.fastq.gz', promethion367: '/mnt/fass1/kirsten/data/promethion367.fastq.gz'}
 
-species: ['Bacillus subtilis', 'Listeria monocytogenes', 'Enterococcus faecalis', 'Staphylococcus aureus', 'Salmonella enterica', 'Escherichia coli', 'Pseudomonas aeruginosa', 'Lactobacillus fermentum', 'Saccharomyces cerevisiae', 'Cryptococcus neoformans', 'unclassified']
+species: ['Bacillus subtilis', 'Listeria monocytogenes', 'Enterococcus faecalis', 'Staphylococcus aureus', 'Salmonella enterica', 'Escherichia coli', 'Pseudomonas aeruginosa', 'Lactobacillus fermentum', 'Saccharomyces cerevisiae', 'Cryptococcus neoformans']
