@@ -208,7 +208,7 @@ rule taxmaps:
 rule kslam:
     input:
         db = DI['kslam']+"database",
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
         files = '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification' 
     benchmark:
