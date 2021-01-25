@@ -139,7 +139,7 @@ rule kaiju:
         # -m    minimum match length (default: 11)
         # -E    minimum e-value in Greedy mode (which is default)
         if 'default' in {params.runid}:
-            shell('kaiju -t {input.nodes} -f {input.db} -i {input.files} -o {output.files} -z {threads}')
+            shell('kaiju -t {input.nodes} -f {input.db} -i {input.files} -o {output.files} -z {threads} -v')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
