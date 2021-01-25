@@ -60,7 +60,7 @@ def calcAUPR():
         precision, recall, accuracy, thresh, h1, h2 = calculate_precision_recall(t, report)
         prec.append(precision)
         rec.append(recall)
-        print(precision, recall, rec[-1])
+        print(precision, recall, t)
         result.append(precision*abs(recall-rec[-1]))
     print(result)
 

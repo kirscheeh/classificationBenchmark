@@ -2,6 +2,8 @@
 import os, yaml
 import numpy as np
 config='../config.yaml'
+from numpy import array
+from numpy.linalg import norm
 
 
 def get_species(config):
@@ -71,13 +73,18 @@ def get_abundances(tool, report, config):
     return predictions
 
 def get_ASP(tool, report, truth):
-    pred = get_abundances(tool, report, config)
+    predi = get_abundances(tool, report, config).values()
+    pred=list(predi)
     try:
-        result=np.norm(truth-pred)
-        print(result)
-        return result
-    except Exception:
-        print("An error occured.")
+        t = np.array(truth)
+        p = np.array(pred)
+        l2 = np.sum(np.power((t-p),2))
+        print(l2)
+        return l2
+    except Exception as e:
+        print("An error occured.", e)
+
+get_ASP("kraken2", "../stats/promethion365_default.kraken2.report", [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02])
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:
