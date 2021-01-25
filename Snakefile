@@ -5,14 +5,14 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364 gridion366".split(" ")#list(config["samples"])
-TOOLS= 'centrifuge kraken2 kaiju'.split(" ")#list(config["classification"])
+TOOLS= 'diamond centrifuge kraken2 kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
        expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+      # expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 # creating the project structure
 rule create:
     shell:
@@ -139,7 +139,7 @@ rule kaiju:
         # -m    minimum match length (default: 11)
         # -E    minimum e-value in Greedy mode (which is default)
         if 'default' in {params.runid}:
-            shell('kaiju -t {input.nodes} -f {input.db} -i {input.files} -o {output.files} -z {threads}')
+            shell('kaiju -t {input.nodes} -f {input.db} -i {input.files} -o {output.files} -z {threads} -v')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -207,7 +207,7 @@ rule taxmaps:
 
 rule kslam:
     input:
-        db = DI['kslam']+"database",
+        db = DI['kslam'],
         files = "{PATH}/data/{sample}.fastq"
     output:
         files = '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification' 
@@ -235,7 +235,7 @@ rule kslam:
 rule clark:
     input:
         db = DI['clark'],
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
         files = '{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification' 
     benchmark:
@@ -344,23 +344,24 @@ rule catbat: #???
 
 rule diamond:
     input:
-        db= DI['diamond'],
-        files = "{PATH}/data/{sample}.fastq.gz"
+        #db= DI['diamond']+"/nr",
+        files = "{PATH}/data/{sample}.fastq"
     output:
         files='{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification'
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt'
     threads: 8
     params:
-	    runid=get_run
+        runid=get_run,
+        db = DI['diamond']+"/nr"
     log:
         '{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/diamond.yaml'
+        'envs/diamond.yaml'
     run:
         # 
         if 'default' in {params.runid}:
-            shell('diamond blastx --db {input.db} -q {input.files} -o {output.files} -p {threads} --log {output.report} --long-reads')
+            shell('diamond blastx --db {params.db} -q {input.files} -o {output.files} -p {threads} --log')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
