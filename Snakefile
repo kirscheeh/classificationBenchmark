@@ -150,17 +150,19 @@ rule kaiju:
 
 rule taxmaps:
     input:
-        db = DI['taxmaps']+"/*.gem.*",
+        db = DI['taxmaps']+"/refseq_complete_bacarchvir.lcak300.gem",
         taxonomy = DI['taxmaps']+"/taxonomy.tbl.gz",
         nodes = DI['kaiju']+"/nodes.dmp",
         files = "{PATH}/data/{sample}.fastq"
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.taxmaps.benchmark.txt'
     output:
-        files = '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.classification' 
+        o = '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.classification',
+	folder = '{PATH}/result/classification/taxmaps/{run}/{sample}' 
     threads: 8
     params:
-        runid=get_run
+        runid=get_run,
+	prefix = "{sample}_{run}.taxmaps.classification"
     log:
         '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log'
     conda:
@@ -176,7 +178,7 @@ rule taxmaps:
         if 'default' in {params.runid}:
             shell('export PERL5LIB=/home/re85gih/miniconda3/envs/taxmaps/opt/krona/lib/'),
             shell('export PATH=$PATH:/home/re85gih/projectClassification/taxmaps/'),
-            shell('taxMaps -f {input.files} (--phred64) -t {input.taxonomy} -d {input.db} -o {output.files}')
+            shell('taxMaps -f {input.files} -c {threads} -t {input.taxonomy} -d {input.db} -o {output.folder} -p {params.prefix}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -236,8 +238,9 @@ rule kslam:
         
 rule clark:
     input:
-        db = DI['clark'],
-        files = "{PATH}/data/{sample}.fastq"
+        db = DI['clark']+"/",
+        files = "{PATH}/data/{sample}.fastq",
+	targets = DI['clark']+"/targets.txt"
     output:
         files = '{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification' 
     benchmark:
@@ -255,7 +258,7 @@ rule clark:
         # -m        mode of execution
 
         if 'default' in {params.runid}:
-            shell('CLARK --long -O {input.files} -R {output} -D {input.db} -n {threads}')
+            shell('CLARK --long -O {input.files} -R {output} -D {input.db} -n {threads} -T {input.targets}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
