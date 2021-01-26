@@ -4,8 +4,8 @@ configfile: "config.yaml"
 
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364 gridion366".split(" ")#list(config["samples"])
-TOOLS= 'diamond centrifuge kraken2 kaiju'.split(" ")#list(config["classification"])
+SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
+TOOLS= 'diamond centrifuge kraken2 kaiju taxmaps clark'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
@@ -29,7 +29,7 @@ def get_run(wildcards): #returns the current value of variable/wildcard run
  #       plot = "{PATH}/result/stats/{sample}_readlength.png"
  #   threads: 8
 #    conda:
- #       "{PATH}/result/classificationBenchmark/envs/centrifuge.yaml"
+ #       "envs/centrifuge.yaml"
  #   shell:
 #        "python {input.script} {input.fastq} {output.plot}""""
 
@@ -49,7 +49,7 @@ rule centrifuge:
     log:
         "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log"
     conda:
-       "{PATH}/result/classificationBenchmark/envs/centrifuge.yaml"
+       "envs/centrifuge.yaml"
     run:
         # -q 				files are fastq
     	# -x 				index files
@@ -73,7 +73,7 @@ rule kreport:
     output:
         "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
     conda:
-       "{PATH}/result/classificationBenchmark/envs/centrifuge.yaml"
+       "envs/centrifuge.yaml"
     params:
         db = DI["centrifuge"]+"/p_compressed"
     log: 
@@ -98,7 +98,7 @@ rule kraken2:
     log:
         '{PATH}/result/classification/kraken2/{run}/{sample}_{run}.kraken2.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/main.yaml'
+        'envs/main.yaml'
     run:
         # --confidence          threshold that must be in [0,1]
         # --unclassified-out    prints unclassified sequences to filename
@@ -130,7 +130,7 @@ rule kaiju:
     log:
         '{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/main.yaml'
+        'envs/main.yaml'
     run:
         # -t    name of nodes.dmp file
         # -f    name of database (.fmi) file
@@ -153,7 +153,7 @@ rule taxmaps:
         db = DI['taxmaps']+"/*.gem.*",
         taxonomy = DI['taxmaps']+"/taxonomy.tbl.gz",
         nodes = DI['kaiju']+"/nodes.dmp",
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.taxmaps.benchmark.txt'
     output:
@@ -164,7 +164,7 @@ rule taxmaps:
     log:
         '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/taxmaps.yaml'
+        'envs/taxmaps.yaml' #{PATH}/result/classificationBenchmark/
     run:
         # -f        input fastq
         # -l        in preprocessing: minimum read length for mapping
@@ -174,6 +174,8 @@ rule taxmaps:
         # --cov     coverage histogram
         # -o        output directory
         if 'default' in {params.runid}:
+            shell('export PERL5LIB=/home/re85gih/miniconda3/envs/taxmaps/opt/krona/lib/'),
+            shell('export PATH=$PATH:/home/re85gih/projectClassification/taxmaps/'),
             shell('taxMaps -f {input.files} (--phred64) -t {input.taxonomy} -d {input.db} -o {output.files}')
         elif 'medium' in {params.runid}:
             pass
@@ -188,7 +190,7 @@ rule taxmaps:
     output:
         pass 
     conda:
-        '{PATH}/result/classificationBenchmark/envs/deepmicrobes.yaml'
+        'envs/deepmicrobes.yaml'
     shell:
         # --kmer        length of k-mers (default: 12) --> if i want to change that i might need to build my own index
         # --max_len     max length of sequences (default: 150)
@@ -210,7 +212,7 @@ rule kslam:
         db = DI['kslam'],
         files = "{PATH}/data/{sample}.fastq"
     output:
-        files = '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification' 
+        '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification' 
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kslam.benchmark.txt'
     threads: 8
@@ -219,7 +221,7 @@ rule kslam:
     log:
         '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/kslam.yaml'
+        'envs/kslam.yaml'
     run:
         # --db                      database file
         # --min-alignment-score     alignment score cutoff
@@ -246,7 +248,7 @@ rule clark:
     log:
         '{PATH}/result/classification/kslam/{run}/{sample}_{run}.clark.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/main.yaml'
+        'envs/main.yaml'
     run:
         # -k        k-mer size, has to be between 2 and 32, default:31 
         # --long    for long reads (only for full mode)
@@ -273,7 +275,7 @@ rule kma:
     log:
         '{PATH}/result/classification/ccmetagen/{sample}.kma.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/main.yaml'
+        'envs/main.yaml'
     run:
         'kma -i {input.files} -t_db {input.db} -o {output} -t {threads} -1t1 -mem_mode -and -ef'
 
@@ -292,7 +294,7 @@ rule ccmetagen:
     log:
         '{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/main.yaml'
+        'envs/main.yaml'
     run:
         # -m    mode
         # -r    reference database
@@ -327,7 +329,7 @@ rule catbat: #???
     log:
         '{PATH}/result/classification/catbat/{run}/{sample}_{run}.catbat.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/catbat.yaml'
+        'envs/catbat.yaml'
     run:
         #'CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}',
         if 'default' in {params.runid}:
@@ -359,9 +361,9 @@ rule diamond:
     conda:
         'envs/diamond.yaml'
     run:
-        # 
+        # --outfmt defines format as taxonomic classification
         if 'default' in {params.runid}:
-            shell('diamond blastx --db {params.db} -q {input.files} -o {output.files} -p {threads} --log')
+            shell('diamond blastx --db {params.db} -q {input.files} -o {output.files} -p {threads} --log --outfmt 102')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -387,7 +389,7 @@ rule metaothello:
     log:
         '{PATH}/result/classification/metaothello/{run}/{sample}_{run}.metaothello.log'
     conda:
-        '{PATH}/result/classificationBenchmark/envs/main.yaml'
+        'envs/main.yaml'
     run:
         if 'default' in {params.runid}:
             shell('classifier {input.db} {output} 31 {threads} FA/FQ SE/PE {input.spec2tax} {input.ncbiNames} {input.files}')

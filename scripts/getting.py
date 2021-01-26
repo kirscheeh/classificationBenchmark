@@ -84,6 +84,7 @@ def get_ASP(tool, report, truth):
     except Exception as e:
         print("An error occured.", e)
 
+print("ASP")
 get_ASP("kraken2", "../stats/promethion365_default.kraken2.report", [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02])
 
 def get_numberReads(file, fastq=True):

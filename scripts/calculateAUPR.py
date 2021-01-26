@@ -1,6 +1,10 @@
 import sys, getting
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 def calculate_precision_recall(threshold, report):
+    print(threshold)
     data=[]
     prediction=[]
     species =getting.get_species("../config.yaml")
@@ -13,12 +17,13 @@ def calculate_precision_recall(threshold, report):
         for line in lines:
             line = line.split("\t")
             if line[3] == "S":
+                name = str(line[-1].split(" ")[-2]+" "+line[-1].split(" ")[-1].split("\n")[0])
                 num_spec +=1
                 if float(line[0])>=float(threshold):
                     positives.append(line)
-                    print(line)
+                    #print(line)
                     pos +=1
-                    name = str(line[-1].split(" ")[-2]+" "+line[-1].split(" ")[-1].split("\n")[0])
+                    
                     prediction.append(1)                           
                 else:
                     neg+=1
@@ -32,7 +37,10 @@ def calculate_precision_recall(threshold, report):
     tp=0
     fp=0
     tn=0
+    fn=0
+    print(positives)
     for hit in positives:
+        
         splitted = hit[5].split(" ")
         name = splitted[len(hit[5].split(" "))-2]+" "+splitted[len(hit[5].split(" "))-1][:-1]
 
@@ -40,9 +48,9 @@ def calculate_precision_recall(threshold, report):
             tp+=1
         else:
             fp+=1
-    
-        tn = num_spec-len(true_species)
-        fn = len(true_species)-tp
+    print(tp, fp)
+    tn = num_spec-len(true_species)
+    fn = len(true_species)-tp
 
     recall = tp/(tp+fn)
     precision=tp/(tp+fp)
@@ -51,19 +59,31 @@ def calculate_precision_recall(threshold, report):
     return precision, recall, accuracy, threshold, prediction, data
 
 def calcAUPR():
-    threshold =sys.argv[1].split(" ")
+    threshold =list(np.arange(17, 20, 0.1))#sys.argv[1].split(" ")
     report = sys.argv[2]
     rec = [0]
     prec=[]
     result=[]
     for t in threshold:
         precision, recall, accuracy, thresh, h1, h2 = calculate_precision_recall(t, report)
+       
+        #print(rec)
+        #print(precision, recall, rec[-1], t)
+        result.append(precision*abs(recall-rec[-1]))
         prec.append(precision)
         rec.append(recall)
-        print(precision, recall, t)
-        result.append(precision*abs(recall-rec[-1]))
     print(result)
+    return rec, prec
 
+
+
+
+def plotting():
+    rec, prec = calcAUPR()
+    plt.plot(prec, rec[1:])
+    print("rec",rec)
+    print("prec",prec)
+    plt.show()
 
 
 
@@ -72,8 +92,8 @@ if not len(sys.argv) == 3:
     print("Something went wrong.")
     print("Usage: python calculateAUPR.python THRESHOLDs REPORT")
 else:
-
     calcAUPR()
+    plotting()
     #calculate_precision_recall()
 
 

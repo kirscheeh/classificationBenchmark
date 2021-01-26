@@ -15,7 +15,7 @@ Benchmarking different classification tools for their usability on metagenomic l
 |    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |
 |     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |
-|   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |
+|   Diamond    | 2.0.5     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/|
 |CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| 
 ### Others

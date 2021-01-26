@@ -14,7 +14,7 @@ This file contains the commands used after the tools have been successfully inst
 |    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |kslam|
 |     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |diamond|
-|   Diamond    | 0.9.14     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
+|   Diamond    | 2.0.5     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/| Webserver |
 |CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| catbat|
 
