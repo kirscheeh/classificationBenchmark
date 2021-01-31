@@ -10,6 +10,7 @@ dependencies:
   - blas=1.0=mkl
   - blast=2.5.0=hc0b0e79_3
   - boost=1.73.0=py38_11
+  - boost-cpp=1.69.0=h11c811c_1000
   - brotlipy=0.7.0=py38h27cfd23_1003
   - bzip2=1.0.8=h7b6447c_0
   - ca-certificates=2020.12.5=ha878542_0
