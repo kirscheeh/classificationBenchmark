@@ -5,7 +5,7 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'diamond centrifuge kraken2 kaiju taxmaps clark'.split(" ")#list(config["classification"])
+TOOLS= 'diamond centrifuge kraken2 kaiju clark'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
