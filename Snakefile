@@ -5,7 +5,7 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'diamond centrifuge kraken2 kaiju clark'.split(" ")#list(config["classification"])
+TOOLS= 'metaothello'#diamond centrifuge kraken2 kaiju clark'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
@@ -381,7 +381,7 @@ rule metaothello:
         db = DI['metaothello']+"/bacterial_31mer_L12.index",
         spec2tax = DI['metaothello']+"/bacterial_speciesId2taxoInfo.txt",
         ncbiNames = DI['metaothello']+"/names.dmp.scientific",
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
         '{PATH}/result/classification/metaothello/{run}/{sample}_{run}.metaothello.classification'
     benchmark:
@@ -395,7 +395,7 @@ rule metaothello:
         'envs/main.yaml'
     run:
         if 'default' in {params.runid}:
-            shell('classifier {input.db} {output} 31 {threads} FA/FQ SE/PE {input.spec2tax} {input.ncbiNames} {input.files}')
+            shell('/home/re85gih/projectClassification/metaOthello/classifier/classifier {input.db} {output} 31 {threads} FQ SE {input.spec2tax} {input.ncbiNames} {input.files}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
