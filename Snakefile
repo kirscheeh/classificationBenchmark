@@ -5,7 +5,7 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'metaothello'#diamond centrifuge kraken2 kaiju clark'.split(" ")#list(config["classification"])
+TOOLS= 'clark'#diamond centrifuge kraken2 kaiju clark'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
@@ -245,7 +245,7 @@ rule clark:
         files = '{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification' 
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt'
-    threads: 8
+    threads: 16
     params:
 	    runid=get_run
     log:
