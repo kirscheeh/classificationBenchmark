@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def calculate_precision_recall(threshold, report):
-    print(threshold)
+    #print(threshold)
     data=[]
     prediction=[]
     species =getting.get_species("../config.yaml")
@@ -38,7 +38,7 @@ def calculate_precision_recall(threshold, report):
     fp=0
     tn=0
     fn=0
-    print(positives)
+    #print(positives)
     for hit in positives:
         
         splitted = hit[5].split(" ")
@@ -51,12 +51,15 @@ def calculate_precision_recall(threshold, report):
     print(tp, fp)
     tn = num_spec-len(true_species)
     fn = len(true_species)-tp
-
-    recall = tp/(tp+fn)
-    precision=tp/(tp+fp)
-    accuracy = (tp+tn)/(tp+tn+fp+fn)
-    #print(precision, recall, accuracy, threshold)
-    return precision, recall, accuracy, threshold, prediction, data
+    try:
+        recall = tp/(tp+fn)
+        precision=tp/(tp+fp)
+        accuracy = (tp+tn)/(tp+tn+fp+fn)
+        #print(precision, recall, accuracy, threshold)
+        return precision, recall, accuracy, threshold, prediction, data
+    except ZeroDivisionError:
+        print("No hits.")
+        return 0
 
 def calcAUPR():
     threshold =list(np.arange(17, 20, 0.1))#sys.argv[1].split(" ")
@@ -65,18 +68,18 @@ def calcAUPR():
     prec=[]
     result=[]
     for t in threshold:
-        precision, recall, accuracy, thresh, h1, h2 = calculate_precision_recall(t, report)
+        try:
+            precision, recall, accuracy, thresh, h1, h2 = calculate_precision_recall(t, report)
        
-        #print(rec)
-        #print(precision, recall, rec[-1], t)
-        result.append(precision*abs(recall-rec[-1]))
-        prec.append(precision)
-        rec.append(recall)
+            #print(rec)
+            #print(precision, recall, rec[-1], t)
+            result.append(precision*abs(recall-rec[-1]))
+            prec.append(precision)
+            rec.append(recall)
+        except TypeError:
+            print("No hits.")
     print(result)
     return rec, prec
-
-
-
 
 def plotting():
     rec, prec = calcAUPR()
@@ -84,8 +87,6 @@ def plotting():
     print("rec",rec)
     print("prec",prec)
     plt.show()
-
-
 
 
 if not len(sys.argv) == 3: 
