@@ -5,7 +5,6 @@ config='../config.yaml'
 from numpy import array
 from numpy.linalg import norm
 
-
 def get_species(config):
     if os.path.isfile(config):
         with open(config, 'r') as c:
@@ -42,6 +41,18 @@ def get_samples(config):
     else:
         print('Error! No config file', config)
 
+def get_number_species(areport):
+    number=0
+    with open(areport, "r") as report:
+        lines = report.readlines()
+        print(len(lines))
+        for line in lines:
+            if line.split("\t")[2] == "S":
+                number+=1
+    return number
+
+print(get_number_species("../stats/gridion364_IgnoreQual.centrifuge.areport"))
+
 def get_tools_classification(config):
     if os.path.isfile(config):
         with open(config, 'r') as c:
@@ -51,7 +62,7 @@ def get_tools_classification(config):
     else:
         print('Error! No config file', config)
 
-def get_abundances(tool, report, config):
+"""def get_abundances(tool, report, config):
     predictions={}
     species = get_species(config)
     #total=0
@@ -70,22 +81,41 @@ def get_abundances(tool, report, config):
     os.system('rm helping.log')
     #print(total)
     print(predictions.values())
+    return predictions"""
+
+def get_abundances(areport, config):
+    predictions={}
+    species = get_species(config)
+    #total=0
+    for s in species:
+        os.system('grep -n "{spec}" {file} > helping.log'.format(spec=s, file=areport))
+        with open('helping.log', 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                line = line.split("\t")
+                if line[4][:-1] in species and line[2]=="S":
+                    predictions[s] = float(line[0].split(":")[1])
+    os.system('rm helping.log')
+    #print(total)
+    print(predictions.values())
     return predictions
 
-def get_ASP(tool, report, truth):
-    predi = get_abundances(tool, report, config).values()
+
+
+def get_ASP(areport, truth):
+    predi = get_abundances(areport, config).values()
     pred=list(predi)
     try:
         t = np.array(truth)
         p = np.array(pred)
+        print(p)
         l2 = np.sum(np.power((t-p),2))
-        print(l2)
+        print(l2, norm(t), norm(p))
         return l2
     except Exception as e:
         print("An error occured.", e)
 
-print("ASP")
-get_ASP("kraken2", "../stats/promethion365_default.kraken2.report", [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02])
+#print(get_ASP("../stats/gridion364_default.kaiju.areport", [0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12]))
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:

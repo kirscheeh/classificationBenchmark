@@ -17,16 +17,19 @@ else:
             if line.split("\t")[0] == "U":
                     unclassified +=1
     abundance_unclassified=unclassified/num_reads
-    new_file = open(sys.argv[3], "a")
+    new_file = open(sys.argv[3], "w")
     new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
     new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
 
     prefix = sys.argv[2].split("/")[-1]
+    
+    # since I only consider species level
+
     #path = sys.argv[2][:-len(prefix)]
-    print(prefix)#, path)
     #_, _, filenames = next(walk(path))
     #for filename in filenames:
         #if prefix in filename and filename.split(".")[-1]=="report":
+    
     with open(sys.argv[2], "r") as report:#str(path)+str(prefix)
         species = report.readlines()
 
