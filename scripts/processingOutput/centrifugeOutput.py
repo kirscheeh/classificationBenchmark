@@ -18,8 +18,8 @@ else:
 
     abundance_unclassified=unclassified/num_reads
 
-    new_file = open(sys.argv[3], "a")
-    new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName")
+    new_file = open(sys.argv[3], "w")
+    new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
     new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
 
     with open(sys.argv[2], "r") as report:

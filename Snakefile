@@ -2,17 +2,18 @@
 
 configfile: "config.yaml"
 
+########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'clark'#diamond centrifuge kraken2 kaiju clark'.split(" ")#list(config["classification"])
+SAMPLES = "gridion364"#list(config["samples"])
+TOOLS= 'clark'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
-      # expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+       #expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
+
 # creating the project structure
 rule create:
     shell:
@@ -20,18 +21,6 @@ rule create:
 
 def get_run(wildcards): #returns the current value of variable/wildcard run
     return wildcards.run
-
-#rule plot_readlength:
-#    input:
-#        fastq = "{PATH}/data/{sample}.fastq",
-#        script = "{PATH}/result/classificationBenchmark/scripts/plotReadlength.py"
-#    output:
- #       plot = "{PATH}/result/stats/{sample}_readlength.png"
- #   threads: 8
-#    conda:
- #       "envs/centrifuge.yaml"
- #   shell:
-#        "python {input.script} {input.fastq} {output.plot}""""
 
 rule centrifuge:
     input: 
@@ -41,7 +30,7 @@ rule centrifuge:
         report= "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.centrifuge.benchmark.txt"
-        # repeat() #repeat("benchmarks/{sample}.bwa.benchmark.txt", 3 für 3 runs
+        #repeat("benchmarks/{sample}.bwa.benchmark.txt", 3 für 3 runs
     threads: 8
     params:
         runid=get_run,
@@ -67,31 +56,16 @@ rule centrifuge:
         else:
             print("Centrifuge -- Nothing to be done here:", {params.runid})
 
-rule kreport:
-    input:
-        report="{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
-    output:
-        "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
-    conda:
-       "envs/centrifuge.yaml"
-    params:
-        db = DI["centrifuge"]+"/p_compressed"
-    log: 
-        "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport"
-    shell:
-        'centrifuge-kreport -x {params.db} {input.report} > {log}'
-
-
 rule kraken2:
     input:
         db = DI['kraken2'],
         files = "{PATH}/data/{sample}.fastq"
     output:
         files = "{PATH}/result/classification/kraken2/{run}/{sample}_{run}.kraken2.classification",
-        report= '{PATH}/result/classification/kraken2/{run}/{sample}_{run}.kraken2.report',
-        unclassified='{PATH}/result/classification/kraken2/{run}/{sample}_{run}.kraken2.unclassified'
+        report= "{PATH}/result/classification/kraken2/{run}/{sample}_{run}.kraken2.report",
+        unclassified="{PATH}/result/classification/kraken2/{run}/{sample}_{run}.kraken2.unclassified"
     benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kraken2.benchmark.txt'
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kraken2.benchmark.txt"
     threads: 8
     params:
         runid=get_run
@@ -147,6 +121,18 @@ rule kaiju:
         else:
             print("Kaiju -- Nothing to do here:", {params.runid})
 
+rule kaiju_summary:
+    input:
+        nodes = DI['kaiju']+"/nodes.dmp",
+        names= DI['kaiju']+"/names.dmp",
+        files = "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification" 
+    output:
+        "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.report"
+    conda:
+        'envs/main.yaml'
+    shell:
+        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {input.files} {output}"
+    
 
 rule taxmaps:
     input:
@@ -164,9 +150,9 @@ rule taxmaps:
         runid=get_run,
 	prefix = "{sample}_{run}.taxmaps.classification"
     log:
-        '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log'
+        "{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log"
     conda:
-        'envs/taxmaps.yaml' #{PATH}/result/classificationBenchmark/
+        'envs/taxmaps.yaml' 
     run:
         # -f        input fastq
         # -l        in preprocessing: minimum read length for mapping
@@ -214,14 +200,14 @@ rule kslam:
         db = DI['kslam'],
         files = "{PATH}/data/{sample}.fastq"
     output:
-        '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification' 
+        "{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification" 
     benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kslam.benchmark.txt'
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kslam.benchmark.txt"
     threads: 8
     params:
         runid=get_run
     log:
-        '{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.log'
+        "{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.log"
     conda:
         'envs/kslam.yaml'
     run:
@@ -242,14 +228,14 @@ rule clark:
         files = "{PATH}/data/{sample}.fastq",
 	targets = DI['clark']+"/targets.txt"
     output:
-        files = '{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification' 
+        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt'
-    threads: 16
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
+    threads: 8
     params:
 	    runid=get_run
     log:
-        '{PATH}/result/classification/kslam/{run}/{sample}_{run}.clark.log'
+        "{PATH}/result/classification/kslam/{run}/{sample}_{run}.clark.log"
     conda:
         'envs/main.yaml'
     run:
@@ -266,17 +252,18 @@ rule clark:
         else:
             print("CLARK -- Nothing to do here:", {params.runid})
 
+# preprocessing for ccmetagen
 rule kma:
     input:
         db = DI['ccmetagen'],
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
-        '{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate'
+        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate"
     benchmark:
-        '{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt'
+        "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8
     log:
-        '{PATH}/result/classification/ccmetagen/{sample}.kma.log'
+        "{PATH}/result/classification/ccmetagen/{sample}.kma.log"'
     conda:
         'envs/main.yaml'
     run:
@@ -285,17 +272,17 @@ rule kma:
 rule ccmetagen: 
     input:
         kma = DI['ccmetagen']+"/{sample}.kma.intermediate",
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
-        files = '{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification',
-        report= '{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report'
+        files = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification",
+        report= "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report"
     benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt'
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt"
     threads: 8
     params:
 	    runid=get_run
     log:
-        '{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log'
+        "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log"
     conda:
         'envs/main.yaml'
     run:
@@ -305,7 +292,7 @@ rule ccmetagen:
         # -ef   extended output file that includes percentage of classified reads
         # -c    minimum coverage
         if 'default' in {params.runid}:
-            shell('CCMetagen.py  -o {output.files} -i {input.kma} -ef {output.report}')
+            shell('CCMetagen.py -o {output.files} -i {input.kma} -ef {output.report}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -318,19 +305,19 @@ rule catbat: #???
     input:
         db = DI['catbat']+"/CAT_prepare_20200618",
         taxonomy = DI['catbat']+"/CAT_prepare_20200618/taxonomy",
-        files = "{PATH}/data/{sample}.fastq.gz"
+        files = "{PATH}/data/{sample}.fastq"
     output:
-        #contigs = '{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs',
-        bins = '{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.bins',
-        name = '{PATH}/result/classification/catbat/bins/renamedBins/{sample}_{run}.catbat.rbins',
-        report =  '{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.report'
+        #contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
+        bins = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.bins",
+        name = "{PATH}/result/classification/catbat/bins/renamedBins/{sample}_{run}.catbat.rbins",
+        report = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.report"
     benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.catbat.benchmark.txt'
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.catbat.benchmark.txt"
     threads: 8
     params:
 	    runid=get_run
     log:
-        '{PATH}/result/classification/catbat/{run}/{sample}_{run}.catbat.log'
+        "{PATH}/result/classification/catbat/{run}/{sample}_{run}.catbat.log"
     conda:
         'envs/catbat.yaml'
     run:
@@ -352,9 +339,9 @@ rule diamond:
         #db= DI['diamond']+"/nr",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        files='{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification'
+        files="{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification"
     benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt'
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt"
     threads: 8
     params:
         runid=get_run,
