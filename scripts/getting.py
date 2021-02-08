@@ -51,8 +51,6 @@ def get_number_species(areport):
                 number+=1
     return number
 
-print(get_number_species("../stats/gridion364_IgnoreQual.centrifuge.areport"))
-
 def get_tools_classification(config):
     if os.path.isfile(config):
         with open(config, 'r') as c:
@@ -97,10 +95,10 @@ def get_abundances(areport, config):
                     predictions[s] = float(line[0].split(":")[1])
     os.system('rm helping.log')
     #print(total)
-    print(predictions.values())
+    print(list(predictions.values()))
     return predictions
 
-
+get_abundances("../stats/gridion366_default.kraken2.areport", "../config.yaml")
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()
@@ -108,14 +106,13 @@ def get_ASP(areport, truth):
     try:
         t = np.array(truth)
         p = np.array(pred)
-        print(p)
+        print(max(p))
         l2 = np.sum(np.power((t-p),2))
-        print(l2, norm(t), norm(p))
         return l2
     except Exception as e:
         print("An error occured.", e)
 
-#print(get_ASP("../stats/gridion364_default.kaiju.areport", [0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12]))
+
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:

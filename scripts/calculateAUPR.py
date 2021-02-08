@@ -100,16 +100,17 @@ def calcAUPR(threshold, report):
 
         except Exception:
             tries+=1
-            if tries >= 100: # maximum value plus 100
+            if tries >= 50: # maximum value plus 100
                 return rec, prec, aupr_list, threshold
             #print("here No hits.")
         #print(result)
     return rec, prec, aupr_list, threshold
 
-def plotting(recall, precision, aupr, threshold):
+def plotting(recall, precision, aupr, threshold, areport, asp):
 
     #fig, (ax1, ax2) = plt.subplots(2)
     plt.plot(rec[1:], prec)
+    plt.title(str(areport)+"\nAUPRC:"+str(round(aupr, 5))+"\nASP:"+str(asp))
     plt.xlabel("recall")
     plt.ylabel("precision")
     plt.xticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
@@ -124,17 +125,11 @@ if not len(sys.argv) == 3:
 else:
     th = [i*0.001 for i in range(0, 100001)]
     rec, prec, aupr, th = calcAUPR(th, sys.argv[2])#sys.argv[1].split(" ")
-    plotting(rec, prec, aupr, th)
-    print(calcAUPR_really(prec, rec))
-
-#"0.01 0.011 0.012 0.013 0.014 0.015 0.016 0.017 0.018 0.019 0.02 0.021 0.022 0.023 0.024 0.025 0.026 0.027 0.028 0.029 0.03 0.031 0.032 0.033 0.034 0.035 0.036 0.037 0.038 0.039 0.04 0.041 0.042 0.043 0.044 0.045 0.046 0.047 0.048 0.049 0.05 0.051 0.052 0.053 0.054 0.055 0.056 0.057 0.058 0.059 0.06 0.061 0.062 0.063 0.064 0.065 0.066 0.067 0.068 0.069 0.07 0.071 0.072 0.073 0.074 0.075 0.076 0.077 0.078 0.079 0.08 0.081 0.082 0.083 0.084 0.085 0.086 0.087 0.088 0.089 0.09 0.091 0.092 0.093 0.094 0.095 0.096 0.097 0.098 0.099 0.1 0.11 0.12 0.13 0.14 0.15"
-"""import numpy as np
-from sklearn.metrics import average_precision_score
-
-h1, h2, h3, h4, p, d = calculate_precision_recall(sys.argv[1], sys.argv[2])
-data=np.array(d)
-pred=np.array(p)
-#fpr, tpr, thresholds = metrics.roc_curve(data, pred, pos_label=2)
-#metrics.auc(fpr, tpr)
-average_precision = average_precision_score(pred, data)
-print(average_precision)"""
+    aupr = calcAUPR_really(prec, rec)
+    if "kraken2" in sys.argv[2]:
+        truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
+    else:
+        truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12] #currently no fungi
+    asp = getting.get_ASP(sys.argv[2], truth)
+    plotting(rec, prec, aupr, th, sys.argv[2], asp)
+    
