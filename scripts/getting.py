@@ -87,22 +87,29 @@ def get_abundances(areport, config):
     #total=0
     for s in species:
         os.system('grep -n "{spec}" {file} > helping.log'.format(spec=s, file=areport))
+        os.system('grep -n "{spec}" {file}'.format(spec=s, file=areport))
         with open('helping.log', 'r') as f:
             lines = f.readlines()
             for line in lines:
                 line = line.split("\t")
-                if line[4][:-1] in species and line[2]=="S":
+                if line[4][:-1] == s and line[2]=="S":
                     predictions[s] = float(line[0].split(":")[1])
+                else:
+                    predictions[s] = 0
+            if (len(lines)) == 0:
+                predictions[s] = 0
+
     os.system('rm helping.log')
     #print(total)
     print(list(predictions.values()))
     return predictions
 
-get_abundances("../stats/gridion366_default.kraken2.areport", "../config.yaml")
+get_abundances("../stats/gridion364_default.clark.areport", "../config.yaml")
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()
     pred=list(predi)
+    print(pred)
     try:
         t = np.array(truth)
         p = np.array(pred)
@@ -111,7 +118,6 @@ def get_ASP(areport, truth):
         return l2
     except Exception as e:
         print("An error occured.", e)
-
 
 
 def get_numberReads(file, fastq=True):

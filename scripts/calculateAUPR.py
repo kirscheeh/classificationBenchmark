@@ -126,10 +126,11 @@ else:
     th = [i*0.001 for i in range(0, 100001)]
     rec, prec, aupr, th = calcAUPR(th, sys.argv[2])#sys.argv[1].split(" ")
     aupr = calcAUPR_really(prec, rec)
-    if "kraken2" in sys.argv[2]:
-        truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
-    else:
-        truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12] #currently no fungi
+    #if "kraken2" in sys.argv[2] or "clark" in sys.argv[2]:
+        
+    truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
+    #else:
+    #    truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12] #currently no fungi
     asp = getting.get_ASP(sys.argv[2], truth)
     plotting(rec, prec, aupr, th, sys.argv[2], asp)
     
