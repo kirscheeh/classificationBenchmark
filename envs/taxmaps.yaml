@@ -1,16 +1,16 @@
 name: taxmaps
 channels:
   - bioconda
+  - anaconda
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
   - blas=1.0=mkl
-  - bz2file=0.98=py27_1
   - bzip2=1.0.8=h7b6447c_0
   - ca-certificates=2020.10.14=0
-  - certifi=2020.6.20=pyhd3eb1b0_3
+  - certifi=2019.11.28=py27_0
   - curl=7.71.1=hbc83047_1
-  - cutadapt=1.18=py27h14c3975_1
+  - cython=0.29.14=py27he6710b0_0
   - gem3-mapper=3.6.1=h2f06484_8
   - intel-openmp=2020.2=254
   - krb5=1.18.2=h173b8e3_0
@@ -27,19 +27,18 @@ dependencies:
   - mkl_fft=1.0.15=py27ha843d7b_0
   - mkl_random=1.1.0=py27hd6b4f25_0
   - ncurses=6.2=he6710b0_1
+  - numpy-base=1.16.6=py27hde5b4d6_0
   - openssl=1.1.1h=h7b6447c_0
   - perl=5.26.2=h14c3975_0
-  - pigz=2.4=h84994c4_0
   - pip=19.3.1=py27_0
   - prinseq=0.20.4=4
   - python=2.7.18=h15b4118_1
-  - readline=8.0=h7b6447c_0
+  - readline=8.1=h27cfd23_0
   - setuptools=44.0.0=py27_0
-  - six=1.15.0=py_0
+  - six=1.15.0=pyhd3eb1b0_0
   - sqlite=3.33.0=h62c20be_0
   - tk=8.6.10=hbc83047_0
-  - wheel=0.35.1=pyhd3eb1b0_0
-  - xopen=0.7.3=py_0
+  - wheel=0.36.2=pyhd3eb1b0_0
   - zlib=1.2.11=h7b6447c_3
   - pip:
     - numpy==1.7.0

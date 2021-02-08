@@ -12,7 +12,8 @@ RUNS='default'# medium restrictive'.split()
 rule all:
     input:
        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       #expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
+       #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+	#expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
 
 # creating the project structure
 rule create:
@@ -222,17 +223,18 @@ rule kslam:
         else:
             print("KSLAM -- Nothing to do here:", {params.runid})
         
-rule clark:
+rule clark: #output is csv, watch out
     input:
-        db = DI['clark']+"/",
+        #db = DI['clark']+"/",
         files = "{PATH}/data/{sample}.fastq",
 	targets = DI['clark']+"/targets.txt"
     output:
-        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
+        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
     params:
+            db = "/mnt/fass1/kirsten/clark/",
 	    runid=get_run
     log:
         "{PATH}/result/classification/kslam/{run}/{sample}_{run}.clark.log"
@@ -244,7 +246,7 @@ rule clark:
         # -m        mode of execution
 
         if 'default' in {params.runid}:
-            shell('CLARK --long -O {input.files} -R {output} -D {input.db} -n {threads} -T {input.targets}')
+            shell('CLARK --long -O {input.files} -R {output} -D {params.db} -n {threads} -T {input.targets}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -252,10 +254,22 @@ rule clark:
         else:
             print("CLARK -- Nothing to do here:", {params.runid})
 
+rule clark_abundamced:
+    input:
+        res="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.csv"
+    output:
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
+    params:
+        db = DI['clark']+"/"
+    conda:
+        'envs/main.yaml'    
+    shell:
+        "{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input.res} -D {params.db} > {output}"
+        
 # preprocessing for ccmetagen
 rule kma:
     input:
-        db = DI['ccmetagen'],
+        #db = DI['ccmetagen']+"compress_ncbi_nt/ncbi_nt",
         files = "{PATH}/data/{sample}.fastq"
     output:
         "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate"
@@ -263,15 +277,17 @@ rule kma:
         "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8
     log:
-        "{PATH}/result/classification/ccmetagen/{sample}.kma.log"'
+        "{PATH}/result/classification/ccmetagen/{sample}.kma.log"
     conda:
         'envs/main.yaml'
-    run:
-        'kma -i {input.files} -t_db {input.db} -o {output} -t {threads} -1t1 -mem_mode -and -ef'
+    params:
+        db = DI['ccmetagen']+"/compress_ncbi_nt/ncbi_nt"
+    shell:
+        'kma -i {input.files} -t_db {params.db} -o {output} -t {threads} -1t1 -mem_mode -and -ef'
 
 rule ccmetagen: 
     input:
-        kma = DI['ccmetagen']+"/{sample}.kma.intermediate",
+        kma = "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate",
         files = "{PATH}/data/{sample}.fastq"
     output:
         files = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification",
@@ -280,7 +296,8 @@ rule ccmetagen:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt"
     threads: 8
     params:
-	    runid=get_run
+	    runid=get_run,
+           # kma=DI['ccmetagen']+"/{sample}.kma.intermediate"
     log:
         "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log"
     conda:
