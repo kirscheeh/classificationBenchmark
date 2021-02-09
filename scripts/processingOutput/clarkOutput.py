@@ -10,12 +10,10 @@ if not len(sys.argv) == 4:
     print("Usage: python centrifugeOutput.py PATH/TO/file.CLASSIFICATION PATH/TO/FILE.report PATH/TO/NEW_FILE.areport")
 else:
     unclassified=0
-    """with open (sys.argv[1], 'r') as classify:
+    with open (sys.argv[1], 'r') as classify:
         lines=classify.readlines()
         num_reads = len(lines)-1 #due to header
-        """
-    
-    num_reads=3491391
+        
     with open(sys.argv[2], "r") as report:
         species = report.readlines()
         unclassified=int(species[-1].split(",")[3])

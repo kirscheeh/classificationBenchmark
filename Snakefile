@@ -24,6 +24,9 @@ rule create:
 def get_run(wildcards): #returns the current value of variable/wildcard run
     return wildcards.run
 
+def get_tool(wildcards): #returns the current value of variable/wildcard run
+    return wildcards.tool
+
 rule centrifuge:
     input: 
         fastq = "{PATH}/data/{sample}.fastq"
@@ -255,17 +258,19 @@ rule clark: #output is csv, watch out
         else:
             print("CLARK -- Nothing to do here:", {params.runid})
 
-rule clark_abundamced:
+rule clark_abundance:
     input:
         res="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv"
     output:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report"
     params:
-        db = DI['clark']+"/"
+        db = DI['clark']+"/",
+        unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     conda:
         'envs/main.yaml'    
-    shell:
-        "{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input.res} -D {params.db} > {output}"
+    run:
+        shell("{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input.res} -D {params.db} > {output}"),
+        shell("mv {input.res} {params.unnamed}")
         
 # preprocessing for ccmetagen
 rule kma:
@@ -414,8 +419,22 @@ rule areport:
     output:
         areport="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport",
         #stats="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.stats"
-   params:
-        report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report"
-   run:
-        if {tool} in ['centrifuge', 'clark', 'kaiju']:
-            shell('python {tool}Output.py {input.classification} {params.report} {output.areport}')
+    params:
+        report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
+        tool=get_tool
+    run:
+        if {params.tool} in ['centrifuge', 'clark', 'kaiju']:
+            print({params.tool})
+            #shell('python {params.tool}Output.py {input.classification} {params.report} {output.areport}')
+
+rule stats:
+    input: 
+        areport = "{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport"
+    output:
+        stats="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.stats"
+    params:
+        tool=get_tool,
+        script="{PATH}/result/classificationBenchmark/scripts/calculateAUPR.py"
+    shell:
+        "python {params.script} {input.areport}"
+

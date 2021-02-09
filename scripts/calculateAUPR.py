@@ -119,9 +119,9 @@ def plotting(recall, precision, aupr, threshold, areport, asp):
     plt.show()
 
 
-if not len(sys.argv) == 3: 
+if not len(sys.argv) == 2: 
     print("Something went wrong.")
-    print("Usage: python calculateAUPR.python THRESHOLDs REPORT")
+    print("Usage: python calculateAUPR.python REPORT")
 else:
     th = [i*0.001 for i in range(0, 100001)]
     rec, prec, aupr, th = calcAUPR(th, sys.argv[2])#sys.argv[1].split(" ")
@@ -132,5 +132,5 @@ else:
     #else:
     #    truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12] #currently no fungi
     asp = getting.get_ASP(sys.argv[2], truth)
-    plotting(rec, prec, aupr, th, sys.argv[2], asp)
+    #plotting(rec, prec, aupr, th, sys.argv[2], asp)
     
