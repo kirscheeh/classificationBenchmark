@@ -136,7 +136,7 @@ rule kaiju_summary:
     conda:
         'envs/main.yaml'
     shell:
-        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {input.files} {output}"
+        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {output} {input.files}"
     
 
 rule taxmaps: # many folders, fix output
