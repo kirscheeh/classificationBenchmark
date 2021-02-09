@@ -3,3 +3,5 @@
 testingScripts/*
 scripts/__pycache__*
 scripts/plot*.py
+scripts/processingOutput/taxdump.tar.gz
+scripts/processingOutput/*.tab

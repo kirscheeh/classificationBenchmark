@@ -35,7 +35,7 @@ rule centrifuge:
     threads: 8
     params:
         runid=get_run,
-	db = DI["centrifuge"]+"/p_compressed"
+	db = DI["centrifuge"]
     log:
         "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log"
     conda:
@@ -135,7 +135,7 @@ rule kaiju_summary:
         "kaiju2table -t {input.nodes} -n {input.names} -r species -o {input.files} {output}"
     
 
-rule taxmaps:
+rule taxmaps: # many folders, fix output
     input:
         db = DI['taxmaps']+"/refseq_complete_bacarchvir.lcak300.gem",
         taxonomy = DI['taxmaps']+"/taxonomy.tbl.gz",
@@ -229,7 +229,7 @@ rule clark: #output is csv, watch out
         files = "{PATH}/data/{sample}.fastq",
 	targets = DI['clark']+"/targets.txt"
     output:
-        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark" 
+        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
@@ -256,9 +256,9 @@ rule clark: #output is csv, watch out
 
 rule clark_abundamced:
     input:
-        res="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.csv"
+        res="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv"
     output:
-        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report"
     params:
         db = DI['clark']+"/"
     conda:
