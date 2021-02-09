@@ -298,7 +298,6 @@ rule ccmetagen: #watch output
         mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
     output:
         files = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv",
-        #report= "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt"
     threads: 8
@@ -316,14 +315,25 @@ rule ccmetagen: #watch output
         # -ef   extended output file that includes percentage of classified reads
         # -c    minimum coverage
         if 'default' in {params.runid}:
-            shell('CCMetagen.py -o {params.output} -i {input.kma} -ef y --map {input.mapstat}')# {output.report}')
+            shell('CCMetagen.py -o {params.output} -i {input.kma} -ef y --map {input.mapstat}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
             pass
         else:
             print("CCMetagen -- Nothing to do here:", {params.runid})
-       
+
+rule rename_ccmetagen:
+    input:
+        report="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification_stats.csv",
+        classi="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv"
+    output:
+        report="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.report",
+        classi="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification"
+    run:
+        shell("mv {input.report} {output.report}"),
+        shell("mv {input.classi} {output.classi}")
+
 
 rule catbat: #???
     input:

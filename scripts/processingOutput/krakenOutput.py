@@ -23,7 +23,7 @@ if not len(sys.argv) == 3:
     print("Usage: python krakenOutput.py FILE.REPORT NEW_FILE.areport")
 else:
     new_file = open(sys.argv[2], "w")
-    new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName")
+    new_file.write("Abundance\tnumReads\ttaxRank\ttaxID\tName")
     with open(sys.argv[1], "r") as report:
         species = report.readlines()
         unclassified = species[0].split("\t")
