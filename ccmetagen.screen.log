@@ -1,0 +1,25 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	ccmetagen
+	1	kma
+	3[0m
+[32m[0m
+[32mrule kma:
+    input: /mnt/fass1/kirsten/data/gridion364.fastq
+    output: /mnt/fass1/kirsten/result/classification/ccmetagen/gridion364.kma.intermediate
+    log: /mnt/fass1/kirsten/result/classification/ccmetagen/gridion364.kma.log
+    jobid: 2
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/gridion364.kma.benchmark.txt
+    wildcards: PATH=/mnt/fass1/kirsten, sample=gridion364
+    threads: 8[0m
+[32m[0m
+# Reading inputfile: 	/mnt/fass1/kirsten/data/gridion364.fastq
+# Phred scale:	33
+# Collecting k-mer scores.
+#
+# Total time used for DB loading: 195.78 s.
+#
+# Finding k-mer ankers

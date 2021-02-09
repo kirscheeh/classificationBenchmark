@@ -43,3 +43,21 @@ Command 'taxMaps -f /mnt/fass1/kirsten/data/gridion364.fastq -c 8 -t /mnt/fass1/
     threads: 8[0m
 [32m[0m
 
+txM.gridion364_default.taxmaps.classification.sh: line 19: 20678 Done(1)                 cat txM.gridion364_default.taxmaps.classification.map/gridion364_default.taxmaps.classification.filtout.map txM.gridion364_default.taxmaps.classification.map/gridion364_default.taxmaps.classification.prinsout.map txM.gridion364_default.taxmaps.classification.map/gridion364_default.taxmaps.classification.refseq_complete_bacarchvir.lcak300.map txM.gridion364_default.taxmaps.classification.map/gridion364_default.taxmaps.classification.unmapped.map 2> /dev/null
+     20679                       | txM_lca -t txM.gridion364_default.taxmaps.classification.base/taxonomy.tbl.gz -m s 2> txM.gridion364_default.taxmaps.classification.map/gridion364_default.taxmaps.classification.merged.map.lca
+     20680 Bus error               | txM_summary -t txM.gridion364_default.taxmaps.classification.base/taxonomy.tbl.gz -e 0.2 2> /dev/null > txM.gridion364_default.taxmaps.classification.out/gridion364_default.taxmaps.classification.merged.map.lca.summary
+Traceback (most recent call last):
+  File "/home/re85gih/projectClassification/taxmaps/bin/txM_report", line 120, in <module>
+    la[2] = la[2].replace(':','-')
+IndexError: list index out of range
+[31mError in job taxmaps while creating output files /mnt/fass1/kirsten/result/classification/taxmaps/default/gridion364_default.taxmaps.classification, /mnt/fass1/kirsten/result/classification/taxmaps/default/gridion364.[0m
+[31mMissingOutputException in line 138 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Missing files after 5 seconds:
+/mnt/fass1/kirsten/result/classification/taxmaps/default/gridion364_default.taxmaps.classification
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+[33mRemoving output files of failed job taxmaps since they might be corrupted:
+/mnt/fass1/kirsten/result/classification/taxmaps/default/gridion364[0m
+[33mSkipped removing non-empty directory /mnt/fass1/kirsten/result/classification/taxmaps/default/gridion364[0m
+[33mJob failed, going on with independent jobs.[0m
+[31mExiting because a job execution failed. Look above for error message[0m

@@ -6,12 +6,13 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'clark'#list(config["classification"])
+TOOLS= 'kaiju'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 	#expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
 
@@ -406,3 +407,15 @@ rule metaothello:
             pass
         else:
             print("MetaOthello -- Nothing to do here:", {params.runid})
+
+rule areport:
+    input: 
+        classification = "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
+    output:
+        areport="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport",
+        #stats="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.stats"
+   params:
+        report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report"
+   run:
+        if {tool} in ['centrifuge', 'clark', 'kaiju']:
+            shell('python {tool}Output.py {input.classification} {params.report} {output.areport}')
