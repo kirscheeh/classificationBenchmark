@@ -6,13 +6,13 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'kaiju'#list(config["classification"])
+TOOLS= 'ccmetagen'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification.csv", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 	#expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
 
@@ -136,7 +136,7 @@ rule kaiju_summary:
     conda:
         'envs/main.yaml'
     shell:
-        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {input.files} {output}"
+        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {output} {input.files}"
     
 
 rule taxmaps: # many folders, fix output
@@ -278,7 +278,7 @@ rule kma:
         #db = DI['ccmetagen']+"compress_ncbi_nt/ncbi_nt",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate"
+        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res"
     benchmark:
         "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8
@@ -291,19 +291,20 @@ rule kma:
     shell:
         'kma -i {input.files} -t_db {params.db} -o {output} -t {threads} -1t1 -mem_mode -and -ef'
 
-rule ccmetagen: 
+rule ccmetagen: #watch output 
     input:
-        kma = "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate",
-        files = "{PATH}/data/{sample}.fastq"
+        kma = "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res",
+        files = "{PATH}/data/{sample}.fastq",
+        mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
     output:
-        files = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification",
-        report= "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report"
+        files = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv",
+        #report= "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt"
     threads: 8
     params:
 	    runid=get_run,
-           # kma=DI['ccmetagen']+"/{sample}.kma.intermediate"
+            output="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification"
     log:
         "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.log"
     conda:
@@ -315,7 +316,7 @@ rule ccmetagen:
         # -ef   extended output file that includes percentage of classified reads
         # -c    minimum coverage
         if 'default' in {params.runid}:
-            shell('CCMetagen.py -o {output.files} -i {input.kma} -ef {output.report}')
+            shell('CCMetagen.py -o {params.output} -i {input.kma} -ef y --map {input.mapstat}')# {output.report}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -417,21 +418,22 @@ rule areport:
     input: 
         classification = "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
     output:
-        areport="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport",
+        areport="{PATH}/result/{sample}_{run}.{tool}.areport",
         #stats="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.stats"
     params:
         report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
-        tool=get_tool
+        tool=get_tool,
+	script="{PATH}/result/classificationBenchmark/scripts/processingOutput/"
     run:
         if {params.tool} in ['centrifuge', 'clark', 'kaiju']:
-            print({params.tool})
-            #shell('python {params.tool}Output.py {input.classification} {params.report} {output.areport}')
+            #print({params.tool})
+            shell('python {params.script}{params.tool}Output.py {input.classification} {params.report} {output.areport}')
 
 rule stats:
     input: 
-        areport = "{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.areport"
+        areport = "{PATH}/result/{sample}_{run}.{tool}.areport"
     output:
-        stats="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.stats"
+        stats="{PATH}/result/{sample}_{run}.{tool}.stats"
     params:
         tool=get_tool,
         script="{PATH}/result/classificationBenchmark/scripts/calculateAUPR.py"
