@@ -19,7 +19,7 @@ def get_name(name_long):
                 name +=elem+" "
     return name
 
-if not len(sys.argv) == 3:
+if not len(sys.argv) == 4:
     print("An error occured.")
     print("Usage: python ccmetagenOutput.py FILE.CLASSIFICATION FILE.REPORT NEW_FILE.areport")
 else:
@@ -29,11 +29,21 @@ else:
         num_reads=0
         num_seq=len(lines)-1 # header
         for line in lines[1:]:
+            
             l = line.split(",")
-            num_reads+=l[1]
+            if '\"' in l[0]:
+                s=0
+                for i in range(len(l)):
+                    if "\"" in l[i]:
+                        s+=1
+                    if s==2:
+                        num_reads+=int(l[i+1])
+                        break
+            else:
+                num_reads+=int(l[1])
     print(num_reads)
 
-    with open(sys.argv[1], "r") as classi:
+    """with open(sys.argv[1], "r") as classi:
         species = classi.readlines()
         #unclassified=int(species[-1].split(",")[3])
         #abundance_unclassified=unclassified/num_reads
@@ -52,4 +62,4 @@ else:
                     break
             taxID = l[11] #lca_taxid
             species_name=l[19]
-            new_file.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(species_name))
+            new_file.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(species_name))"""
