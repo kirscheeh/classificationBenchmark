@@ -5,16 +5,16 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'catbat'#list(config["classification"])
+SAMPLES = "gridion364_100"#list(config["samples"])
+TOOLS= 'kslam'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
-       expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
+#       expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
 rule create:
@@ -219,7 +219,7 @@ rule kslam:
         # --db                      database file
         # --min-alignment-score     alignment score cutoff
         if 'default' in {params.runid}:
-            shell('SLAM --db {input.db} --output-file {output} {input.files}')
+            shell('SLAM --db={input.db} --output-file={output} {input.files}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:

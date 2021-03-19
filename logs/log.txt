@@ -1,10 +1,15 @@
 [t = 0.00s]	Performing metagenomic analysis
 [t = 0.00s]	Building taxonomy index
-[t = 3.80s]	Built a taxonomy tree with 2291909 nodes
-[t = 3.80s]	Building index from serial file	 /mnt/fass1/kirsten/kslam/database
-[t = 50.74s]	Getting reads from FASTQ file /mnt/fass1/kirsten/data/gridion364.fastq
-[t = 276.54s]	3491390 reads
-[t = 276.54s]	Aligning reads to database using k = 32
-[t = 276.54s]	Getting k-mers from reads
-[t = 293.35s]	Obtained 14274480418 k-mers from reads
-[t = 293.35s]	Getting k-mers from index
+[t = 4.94s]	Built a taxonomy tree with 2291909 nodes
+[t = 4.94s]	Building index from serial file	 /mnt/fass1/kirsten/databases/kslam/database
+[t = 67.15s]	Getting reads from FASTQ file /mnt/fass1/kirsten/data/gridion364_100.fastq
+[t = 67.16s]	100 reads
+[t = 67.16s]	Aligning reads to database using k = 32
+[t = 67.16s]	Getting k-mers from reads
+[t = 67.19s]	Obtained 502318 k-mers from reads
+[t = 67.19s]	Getting k-mers from index
+[t = 78.35s]	Obtained 602044231 k-mers from index
+[t = 78.35s]	Sorting k-mers
+[t = 97.89s]	Finding overlaps
+[t = 99.07s]	Found 32455 k-mer overlaps
+[t = 100.50s]	Performing pairwise Smith-Waterman
