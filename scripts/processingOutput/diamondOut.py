@@ -5,8 +5,11 @@ def taxId2Species(taxid):
     return NCBITaxa().get_taxid_translator([taxid])
 
 def get_rank(taxid):
-    rank_code = {'species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
-    return rank_code[NCBITaxa().get_rank([int(taxid)])[int(taxid)]]
+    rank_code = {'species group': 'sg','clade': 'clade','species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
+    try:
+        return rank_code[NCBITaxa().get_rank([int(taxid)])[int(taxid)]]
+    except KeyError:
+       return "-"
 
 if not len(sys.argv) == 3:
     print("An error occured.")

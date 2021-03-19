@@ -6,15 +6,15 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'ccmetagen'#list(config["classification"])
+TOOLS= 'catbat'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification.csv", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
-	#expand("{path}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.kreport", run=RUNS, sample=SAMPLES, path=PATH),
+       expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
 rule create:
@@ -338,13 +338,14 @@ rule rename_ccmetagen:
 rule catbat: #???
     input:
         db = DI['catbat']+"/CAT_prepare_20200618",
-        taxonomy = DI['catbat']+"/CAT_prepare_20200618/taxonomy",
+        taxonomy = DI['catbat']+"/CAT_prepare_20200618/2020-06-18_taxonomy",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        #contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
-        bins = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.bins",
-        name = "{PATH}/result/classification/catbat/bins/renamedBins/{sample}_{run}.catbat.rbins",
-        report = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.report"
+        contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
+        #bins = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.bins",
+        #name = "{PATH}/result/classification/catbat/bins/renamedBins/{sample}_{run}.catbat.rbins",
+        #report = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.report",
+	output="{PATH}/result/classification/catbat/default/{sample}_{run}.out.CAT.ORF2LCA.txt"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.catbat.benchmark.txt"
     threads: 8
@@ -357,9 +358,10 @@ rule catbat: #???
     run:
         #'CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}',
         if 'default' in {params.runid}:
-            shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -p {output.contigs} -n {threads}'),
-            shell('CAT add_names -i {output.bins} -o {output.names} -t {input.taxonomy} --only_official'),
-            shell('CAT summarise -i {output.names} -o {output.report}')
+            shell('CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}')
+            #shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -p {output.contigs} -n {threads}'),
+            #shell('CAT add_names -i {output.bins} -o {output.names} -t {input.taxonomy} --only_official'),
+            #shell('CAT summarise -i {output.names} -o {output.report}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:

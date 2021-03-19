@@ -1,4 +1,0 @@
-[Sun Jan 31 20:19:39 2021
-start to fix reads in phase1, turn: 1
-/bin/bash: line 1:  3694 Segmentation fault      /home/re85gih/projectClassification/metaOthello/classifier/classifier /mnt/fass1/kirsten/metaothello/bacterial_31mer_L12.index /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_default.metaothello.classification 31 8 FQ SE /mnt/fass1/kirsten/metaothello/bacterial_speciesId2taxoInfo.txt /mnt/fass1/kirsten/metaothello/names.dmp.scientific /mnt/fass1/kirsten/data/gridion364.fastq
-
