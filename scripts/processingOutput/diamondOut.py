@@ -5,10 +5,10 @@ def taxId2Species(taxid):
     return NCBITaxa().get_taxid_translator([taxid])
 
 def get_rank(taxid):
-    rank_code = {'species group': 'sg','clade': 'clade','species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
+    rank_code = {'species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
     try:
         return rank_code[NCBITaxa().get_rank([int(taxid)])[int(taxid)]]
-    except KeyError:
+    except KeyError: #species group, strain, clade
        return "-"
 
 if not len(sys.argv) == 3:
@@ -19,9 +19,9 @@ else:
     with open (sys.argv[1], 'r') as classify:
         lines=classify.readlines()
         num_reads = len(lines)
-        for line in lines[1:]:
-            if line.split("\t")[1] == "0":
-                    unclassified +=1 
+       # for line in lines[1:]:
+        #    if line.split("\t")[1] == "0":
+         #           unclassified +=1 
         
     abundance_unclassified=unclassified/num_reads
     new_file = open(sys.argv[2], "w")
@@ -32,20 +32,36 @@ else:
         species = report.readlines()
         matches={}
         hits=0
+        line_counter=0
+        counting=0
         for line in species:
             l = line.split("\t")
-            if not l[1] == "0":
+            if l[1] == "0":
+                unclassified+=1
+            else:
                 taxID = l[1]
                 try:
-                    print(line)
                     hits=matches[taxID][1]+1
                 except KeyError:
                     hits=1
-                print(taxID, hits, num_reads)
                 abundance = hits/num_reads
                 rank = get_rank(l[1])
                 species_name=list(taxId2Species(l[1]).values())[0]
                 matches[taxID]=(abundance, hits, rank, taxID, species_name)
+            line_counter+=1
+            if line_counter == 100000:
+                counting+=1
+                print(counting+"/"+round(num_reads/100000))
+                line_counter=0
     
     for elem in matches.values():
         new_file.write("\n"+str(elem[0])+"\t"+str(elem[1])+"\t"+str(elem[2])+"\t"+str(elem[3])+"\t"+str(elem[4]))
+
+    abundance_unclassified=unclassified/num_reads
+    with open(new_file, 'r') as file:
+        lines=file.readlines()
+        lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified"
+
+    with open(new_file, 'w') as file:
+        for line in lines:
+            file.write(line)
