@@ -16,20 +16,21 @@ if not len(sys.argv) == 3:
     print("Usage: python centrifugeOutput.py PATH/TO/file.CLASSIFICATION PATH/TO/NEW_FILE.areport")
 else:
     unclassified=0
-    with open (sys.argv[1], 'r') as classify:
-        lines=classify.readlines()
-        num_reads = len(lines)
+#    with open (sys.argv[1], 'r') as classify:
+ #       lines=classify.readlines()
+  #      num_reads = len(lines)
        # for line in lines[1:]:
         #    if line.split("\t")[1] == "0":
          #           unclassified +=1 
         
-    abundance_unclassified=unclassified/num_reads
+    abundance_unclassified=0#unclassified/num_reads
     new_file = open(sys.argv[2], "w")
     new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
     new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
     
     with open(sys.argv[1], "r") as report:
         species = report.readlines()
+        num_reads=len(species)   
         matches={}
         hits=0
         line_counter=0
@@ -51,7 +52,7 @@ else:
             line_counter+=1
             if line_counter == 100000:
                 counting+=1
-                print(counting+"/"+round(num_reads/100000))
+                print(str(counting)+"/"+str(round(num_reads/100000)))
                 line_counter=0
     
     for elem in matches.values():

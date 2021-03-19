@@ -75,4 +75,5 @@ Command 'CAT contigs -c /mnt/fass1/kirsten/data/gridion364.fastq -d /mnt/fass1/k
 [31mExiting because a job execution failed. Look above for error message[0m
 [33mJob failed, going on with independent jobs.[0m
 [31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:46:55 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m
+(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:46:55 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:46:55 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -k -j 8 --use-conda[11P-dryruncd result/classificationBenchmark/[8Ponda activate projectMAINd result/classificationBenchmark/[16Psnakemake --dryrunk -j 8 --use-conda[Kexit
+exit
