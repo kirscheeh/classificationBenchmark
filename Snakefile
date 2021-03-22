@@ -337,7 +337,7 @@ rule rename_ccmetagen:
 
 rule catbat: #???
     input:
-        db = DI['catbat']+"/CAT_prepare_20200618",
+        db = DI['catbat']+"/CAT_prepare_20200618/",
         taxonomy = DI['catbat']+"/CAT_prepare_20200618/2020-06-18_taxonomy",
         files = "{PATH}/data/{sample}.fastq"
     output:

@@ -13,7 +13,7 @@ def get_rank(taxid):
 
 if not len(sys.argv) == 3:
     print("An error occured.")
-    print("Usage: python centrifugeOutput.py PATH/TO/file.CLASSIFICATION PATH/TO/NEW_FILE.areport")
+    print("Usage: python diamondOutput.py PATH/TO/file.CLASSIFICATION PATH/TO/NEW_FILE.areport")
 else:
     unclassified=0
 #    with open (sys.argv[1], 'r') as classify:
@@ -59,10 +59,11 @@ else:
         new_file.write("\n"+str(elem[0])+"\t"+str(elem[1])+"\t"+str(elem[2])+"\t"+str(elem[3])+"\t"+str(elem[4]))
 
     abundance_unclassified=unclassified/num_reads
-    with open(new_file, 'r') as file:
-        lines=file.readlines()
-        lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified"
+    new_file.close()
+    with open(sys.argv[2], 'r') as f:
+        lines=f.readlines()
+        lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified\n"
 
-    with open(new_file, 'w') as file:
+    with open(sys.argv[2], 'w') as f:
         for line in lines:
-            file.write(line)
+            f.write(line)
