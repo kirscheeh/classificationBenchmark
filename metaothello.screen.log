@@ -1,0 +1,141 @@
+[33m
+Tip of the Day:	[0m[36mDer Klügere ist menschlich.
+
+[0m
+(base) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m13:41:02 [1;32m/mnt/fass1/kirsten[1;34m][0mproject[K[K[K[K[K[K[Kconda activate projet[KctMAIN
+(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m13:41:12 [1;32m/mnt/fass1/kirsten[1;34m][0mcd result/classificationBenchmark/
+(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m13:41:16 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake  -j 7[K8 -k --use-conda
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	metaothello
+	2[0m
+[32m[0m
+[32mrule metaothello:
+    input: /mnt/fass1/kirsten/databases/metaothello/names.dmp.scientific, /mnt/fass1/kirsten/databases/metaothello/bacterial_31mer_L12.index, /mnt/fass1/kirsten/data/gridion364_100.fastq, /mnt/fass1/kirsten/databases/metaothello/bacterial_speciesId2taxoInfo.txt
+    output: /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification
+    log: /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.log
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.metaothello.benchmark.txt
+    wildcards: sample=gridion364_100, PATH=/mnt/fass1/kirsten, run=default
+    threads: 8[0m
+[32m[0m
+Command_Line:
+#1 inputLothelloNodeIndex: /mnt/fass1/kirsten/databases/metaothello/bacterial_31mer_L12.index
+#2 outputFolder: /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification/
+#3 Kmer_length: 31
+#4 threads_num: 8
+#5 fa_or_fq: FQ
+#6 SE_or_PE: SE
+#7 inputSpeciesTaxoIdFile: /mnt/fass1/kirsten/databases/metaothello/bacterial_speciesId2taxoInfo.txt
+#8 NCBIfullTaxoId2NameFile: /mnt/fass1/kirsten/databases/metaothello/names.dmp.scientific
+#9 inputReadFile_1: /mnt/fass1/kirsten/data/gridion364_100.fastq
+
+[Mon Mar 22 13:41:46 2021
+start to load index
+Read from binary Othello file /mnt/fass1/kirsten/databases/metaothello/bacterial_31mer_L12.index
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+seeds74b0dc51 19495cff
+
+[Mon Mar 22 13:43:51 2021
+end of loading index
+start to initiate_bacterialTaxoFile_NCBIfullTaxoId2NameFile
+start to initiate NCBIfullTaxoId2Name
+start to do initiateNameVec_idVec_NCBIfullTaxoId2NameFile
+currentMaxId: 1897230
+interIdVec.size(): 1514166
+speciesIdVecSize: 1469
+
+[Mon Mar 22 13:43:56 2021
+end of initiating bacterialTaxoInfo
+
+[Mon Mar 22 13:43:56 2021
+start to do query
+
+[Mon Mar 22 13:43:56 2021
+start to read Fasta file, turn: 1
+
+[Mon Mar 22 13:43:56 2021
+finish reading Fasta/Fastq file, turn: 1
+
+[Mon Mar 22 13:43:56 2021
+start to fix reads in phase1, turn: 1
+/bin/bash: line 1: 50673 Segmentation fault      /home/re85gih/projectClassification/metaOthello/classifier/classifier /mnt/fass1/kirsten/databases/metaothello/bacterial_31mer_L12.index /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification 31 8 FQ SE /mnt/fass1/kirsten/databases/metaothello/bacterial_speciesId2taxoInfo.txt /mnt/fass1/kirsten/databases/metaothello/names.dmp.scientific /mnt/fass1/kirsten/data/gridion364_100.fastq
+[31mError in job metaothello while creating output file /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification.[0m
+[31mRuleException:
+CalledProcessError in line 421 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command '/home/re85gih/projectClassification/metaOthello/classifier/classifier /mnt/fass1/kirsten/databases/metaothello/bacterial_31mer_L12.index /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification 31 8 FQ SE /mnt/fass1/kirsten/databases/metaothello/bacterial_speciesId2taxoInfo.txt /mnt/fass1/kirsten/databases/metaothello/names.dmp.scientific /mnt/fass1/kirsten/data/gridion364_100.fastq' returned non-zero exit status 139
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 421, in __rule_metaothello
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+[33mRemoving output files of failed job metaothello since they might be corrupted:
+/mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification[0m
+[33mSkipped removing non-empty directory /mnt/fass1/kirsten/result/classification/metaothello/default/gridion364_100_default.metaothello.classification[0m
+[33mJob failed, going on with independent jobs.[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m13:43:58 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[H[2J(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m13:43:58 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mexit
+exit

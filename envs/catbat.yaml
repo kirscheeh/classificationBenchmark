@@ -1,23 +1,29 @@
 name: catbat
 channels:
   - bioconda
+  - conda-forge
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
-  - ca-certificates=2020.10.14=0
-  - cat=5.1.2=0
-  - certifi=2020.11.8=py39h06a4308_0
-  - diamond=0.9.14=h8b12597_3
+  - boost-cpp=1.70.0=h7b93d67_3
+  - bzip2=1.0.8=h516909a_3
+  - ca-certificates=2021.1.19=h06a4308_1
+  - cat=5.2.3=0
+  - certifi=2020.12.5=py39hf3d152e_1
+  - diamond=0.9.34=h56fc30b_0
+  - icu=67.1=he1b5a44_0
   - ld_impl_linux-64=2.33.1=h53a641e_7
   - libedit=3.1.20191231=h14c3975_1
   - libffi=3.3=he6710b0_2
   - libgcc-ng=9.1.0=hdf63c60_0
   - libstdcxx-ng=9.1.0=hdf63c60_0
+  - lz4-c=1.9.2=he1b5a44_3
   - ncurses=6.2=he6710b0_1
-  - openssl=1.1.1h=h7b6447c_0
+  - openssl=1.1.1j=h27cfd23_0
   - pip=20.3=py39h06a4308_0
   - prodigal=2.6.3=h516909a_2
   - python=3.9.0=hdb3f193_2
+  - python_abi=3.9=1_cp39
   - readline=8.0=h7b6447c_0
   - setuptools=50.3.2=py39h06a4308_2
   - sqlite=3.33.0=h62c20be_0
@@ -26,5 +32,6 @@ dependencies:
   - wheel=0.36.0=pyhd3eb1b0_0
   - xz=5.2.5=h7b6447c_0
   - zlib=1.2.11=h7b6447c_3
+  - zstd=1.4.5=h9ceee32_0
 prefix: /home/re85gih/miniconda3/envs/catbat
 
