@@ -20,10 +20,14 @@ else:
     new_file.write(str(0)+"\t"+str(0)+"\t"+"U\t0\tunclassified\n")
     classified={}
     total_num=0
+    unclassified=0
     with open(sys.argv[1], 'r') as report:
         lines=report.readlines()
         for line in lines[1:]:
-            taxid=int(line.split("|")[0].split("\"")[-1])
+            try:
+                taxid=int(line.split("|")[0].split("\"")[-1])
+            except ValueError:
+                pass#unclassified+=int(line.split(",")[1])
             species = taxId2Species(taxid)[taxid]
             rank = get_rank(taxid)
             try:
@@ -31,6 +35,8 @@ else:
             except Exception:
                 l = line.split(",")[1]
             numreads=int(l)
+            if not taxid:
+                unclassified+=l
             total_num+=numreads
             try:
                 current_numreads = classified[taxid][1]
@@ -38,7 +44,7 @@ else:
                 current_numreads=0
             classified[taxid]=(0, numreads+current_numreads, rank, taxid, species)
     
-    new_file.write(str(total_num)+"\n")
+    new_file.write(str(total_num)+"\t"+str(unclassified)+"\n")
     for key in classified.values():
         new_file.write(str(0)+"\t"+str(key[1])+"\t"+str(key[2])+"\t"+str(key[3])+"\t"+str(key[4])+"\n")
 
