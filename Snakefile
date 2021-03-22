@@ -5,16 +5,16 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364_100"#list(config["samples"])
-TOOLS= 'kslam'#list(config["classification"])
+SAMPLES = "gridion364"#list(config["samples"])
+TOOLS= 'catbat'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
-#       expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
+       expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
 rule create:
@@ -337,8 +337,13 @@ rule rename_ccmetagen:
 
 rule catbat: #???
     input:
+<<<<<<< HEAD
         db = DI['catbat']+"/CAT_prepare_20200618/",
         taxonomy = DI['catbat']+"/CAT_prepare_20200618/2020-06-18_taxonomy",
+=======
+        db = DI['catbat']+"/2020-06-18_CAT_database",
+        taxonomy = DI['catbat']+"/2020-06-18_taxonomy",
+>>>>>>> eacc47249a4eca6f78ab1dca5441c15c4169982d
         files = "{PATH}/data/{sample}.fastq"
     output:
         contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
