@@ -1,65 +1,51 @@
 import sys
+from ete3 import NCBITaxa
 
-def get_rank(rank):
-    rank_code = {'19': 'S', '18': 'G', '17': 'F', '16':'O', '15':'C', '14':'P', '13': 'K'}
+def taxId2Species(taxid):
+    return NCBITaxa().get_taxid_translator([taxid])
+
+def get_rank(taxid):
+    rank_code = {'species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
     try:
-        return rank_code[str(rank)]
-    except KeyError:
-        pass
+        return rank_code[NCBITaxa().get_rank([int(taxid)])[int(taxid)]]
+    except KeyError: #species group, strain, clade
+       return "-"
 
-def get_name(name_long):
-    name_list = name_long.split(" ")
-    name_list[-1]=name_list[-1].split("\t")[0]
-    name=""
-    for elem in name_list:
-        if not elem == "":
-            if elem == name_list[-1]:
-                name+=elem
-            else:
-                name +=elem+" "
-    return name
-
-if not len(sys.argv) == 4:
+if not len(sys.argv) == 3:
     print("An error occured.")
-    print("Usage: python ccmetagenOutput.py FILE.CLASSIFICATION FILE.REPORT NEW_FILE.areport")
+    print("Usage: python ccmetagenOutput.py FILE.REPORT NEW_FILE.areport")
 else:
+    new_file = open(sys.argv[2], "w")
+    new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
+    new_file.write(str(0)+"\t"+str(0)+"\t"+"U\t0\tunclassified\n")
+    classified={}
+    total_num=0
     unclassified=0
-    with open (sys.argv[2], 'r') as report:
+    with open(sys.argv[1], 'r') as report:
         lines=report.readlines()
-        num_reads=0
-        num_seq=len(lines)-1 # header
         for line in lines[1:]:
-            
-            l = line.split(",")
-            if '\"' in l[0]:
-                s=0
-                for i in range(len(l)):
-                    if "\"" in l[i]:
-                        s+=1
-                    if s==2:
-                        num_reads+=int(l[i+1])
-                        break
-            else:
-                num_reads+=int(l[1])
-    print(num_reads)
+            try:
+                taxid=int(line.split("|")[0].split("\"")[-1])
+            except ValueError:
+                pass#unclassified+=int(line.split(",")[1])
+            species = taxId2Species(taxid)[taxid]
+            rank = get_rank(taxid)
+            try:
+                l = line.split("\",")[1].split(",")[0]
+            except Exception:
+                l = line.split(",")[1]
+            numreads=int(l)
+            if not taxid:
+                unclassified+=l
+            total_num+=numreads
+            try:
+                current_numreads = classified[taxid][1]
+            except KeyError:
+                current_numreads=0
+            classified[taxid]=(0, numreads+current_numreads, rank, taxid, species)
+    
+    new_file.write(str(total_num)+"\t"+str(unclassified)+"\n")
+    for key in classified.values():
+        new_file.write(str(0)+"\t"+str(key[1])+"\t"+str(key[2])+"\t"+str(key[3])+"\t"+str(key[4])+"\n")
 
-    """with open(sys.argv[1], "r") as classi:
-        species = classi.readlines()
-        #unclassified=int(species[-1].split(",")[3])
-        #abundance_unclassified=unclassified/num_reads
 
-        new_file = open(sys.argv[3], "w")
-        new_file.write("Abundance\tnumReads\ttaxRank\ttaxID\tName\n")
-        new_file.write(str(0)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")#new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
-        hits=0
-        for line in species[1:]:
-            l = line.split(",")
-            #hits = int(l[1])
-            abundance = hits/num_reads
-            for i in range(19, 12, -1):
-                if not "unk" in l[i]:
-                    rank=get_rank(i)
-                    break
-            taxID = l[11] #lca_taxid
-            species_name=l[19]
-            new_file.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(species_name))"""
