@@ -6,15 +6,15 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'catbat'#list(config["classification"])
+TOOLS= 'catbat kslam'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
-       expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
+       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
 rule create:
@@ -136,8 +136,7 @@ rule kaiju_summary:
     conda:
         'envs/main.yaml'
     shell:
-        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {output} {input.files}"
-    
+        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {output} {input.files}"   
 
 rule taxmaps: # many folders, fix output
     input:
@@ -219,7 +218,7 @@ rule kslam:
         # --db                      database file
         # --min-alignment-score     alignment score cutoff
         if 'default' in {params.runid}:
-            shell('SLAM --db={input.db} --output-file={output} {input.files}')
+            shell('SLAM --db={input.db} --output-file={output} --num-reads-at-once 1000000 {input.files}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -334,20 +333,14 @@ rule rename_ccmetagen:
         shell("mv {input.report} {output.report}"),
         shell("mv {input.classi} {output.classi}")
 
-
 rule catbat: #???
     input:
-<<<<<<< HEAD
-        db = DI['catbat']+"/CAT_prepare_20200618/",
-        taxonomy = DI['catbat']+"/CAT_prepare_20200618/2020-06-18_taxonomy",
-=======
         db = DI['catbat']+"/2020-06-18_CAT_database",
         taxonomy = DI['catbat']+"/2020-06-18_taxonomy",
->>>>>>> eacc47249a4eca6f78ab1dca5441c15c4169982d
         files = "{PATH}/data/{sample}.fastq"
     output:
-        contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
-        #bins = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.bins",
+        #contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
+        bins = "{PATH}/result/classification/catbat/default/{sample}_{run}.catbat.bins",
         #name = "{PATH}/result/classification/catbat/bins/renamedBins/{sample}_{run}.catbat.rbins",
         #report = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.report",
 	output="{PATH}/result/classification/catbat/default/{sample}_{run}.out.CAT.ORF2LCA.txt"
@@ -363,8 +356,8 @@ rule catbat: #???
     run:
         #'CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}',
         if 'default' in {params.runid}:
-            shell('CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}')
-            #shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -p {output.contigs} -n {threads}'),
+            #shell('CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}')
+            shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -p {output.contigs} -n {threads}')
             #shell('CAT add_names -i {output.bins} -o {output.names} -t {input.taxonomy} --only_official'),
             #shell('CAT summarise -i {output.names} -o {output.report}')
         elif 'medium' in {params.runid}:
@@ -402,8 +395,6 @@ rule diamond:
         else:
             print("Diamond -- Nothing to do here:", {params.runid})
         
-
-
 rule metaothello:
     input:
         db = DI['metaothello']+"/bacterial_31mer_L12.index",
@@ -456,4 +447,3 @@ rule stats:
         script="{PATH}/result/classificationBenchmark/scripts/calculateAUPR.py"
     shell:
         "python {params.script} {input.areport}"
-
