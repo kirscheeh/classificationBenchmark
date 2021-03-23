@@ -27,6 +27,7 @@ else:
     new_file = open(sys.argv[2], "w")
     new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
     new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
+    print("Starting...")
     
     with open(sys.argv[1], "r") as report:
         species = report.readlines()
@@ -50,9 +51,9 @@ else:
                 species_name=list(taxId2Species(l[1]).values())[0]
                 matches[taxID]=(abundance, hits, rank, taxID, species_name)
             line_counter+=1
-            if line_counter == 100000:
+            if line_counter == 10000:
                 counting+=1
-                print(str(counting)+"/"+str(round(num_reads/100000)))
+                print(str(counting)+"/"+str(round(num_reads/10000)))
                 line_counter=0
     
     for elem in matches.values():

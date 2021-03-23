@@ -40,7 +40,6 @@ else:
     new_file.close()
     with open(sys.argv[2], 'r') as f:
         lines = f.readlines()
-        print(lines)
         lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified\n"
     with open(sys.argv[2], 'w') as f:
         for line in lines:
