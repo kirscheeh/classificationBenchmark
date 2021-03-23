@@ -176,28 +176,43 @@ rule taxmaps: # many folders, fix output
         else:
             print("TaxMaps -- Nothing to do here:", {params.runid}) 
 
-"""rule deepmicrobes: #this is goign to be fun...
+rule deepmicrobes: 
     input:
-        pass 
+        files = "{PATH}/data/{sample}.fastq",
+        kmers =DI["deepmicrobes"]+"/tokens_merged_12mers.txt",
+        weights=DI["deepmicrobes"]+"/weights_species",
+        name2label=DI["deepmicrobes"]+"/name2label_species.txt"
     output:
-        pass 
+        prediction="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.prediction.tfrec",
+        tfrec="{PATH}/result/classification/deepmicrobes/run}/{sample}_{run}.deepmicrobes.training.tfrec",
+        classification="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.classification",
+        report="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.report"
     conda:
         'envs/deepmicrobes.yaml'
-    shell:
+    benchmark:
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.deepmicrobes.benchmark.txt"
+    threads: 8
+    run:
         # --kmer        length of k-mers (default: 12) --> if i want to change that i might need to build my own index
         # --max_len     max length of sequences (default: 150)
         # --pred_out    path to prediction output
         # -dd           location of input data
         # -ebe          number of training epochs to run between evaluations
-        
+        # just for me now
+        export PATH=/home/re85gih/projectClassification/DeepMicrobes/pipelines:$PATH
+        export PATH=/home/re85gih/projectClassification/DeepMicrobes/scripts:$PATH
+        export PATH=/home/re85gih/projectClassification/DeepMicrobes:$PATH
         # transform training fastq to tfrec
-        'tfrec_train_kmer.sh -i train.fa -v /path/to/vocab/tokens_merged_12mers.txt -o train.tfrec -s 20480000 -k 12'
-        # transform predicion fastq to tfrec
-        'tfrec_predict_kmer.sh -f sample_R1.fastq -r sample_R2.fastq -t fastq -v /path/to/vocab/tokens_merged_12mers.txt -o sample_name -s 4000000 -k 12'
+        #shell('tfrec_train_kmer.sh -i {input.files} -v {input.kmers} -o {output.tfrec}'),
+        
+        # transform prediction fastq to tfrec
+        shell('tfrec_predict_kmer.sh -f {input.files} -t fastq -v {input.kmers} -o {output.prediction}')
+        
         # make prediction on metagenome datasaet
-        'predict_DeepMicrobes.sh -i sample.tfrec -b 8192 -l species -p 8 -m model_dir -o prefix' 
+        'predict_DeepMicrobes.sh -i {output.prediction} -l species -p 8 -m {input.weights} -o {output.classification}' 
+        
         # generate taxonomic profiles
-        'report_profile.sh -i predict.result.txt -o summarize.profile.txt -t 50 -l /path/to/DeepMicrobes/data/name2label.txt'"""
+        'report_profile.sh -i {output.classification} -o {output.report} -t 50 -l {input.name2label}'
 
 rule kslam:
     input:
