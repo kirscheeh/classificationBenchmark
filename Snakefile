@@ -6,7 +6,7 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'catbat kslam'.split(" ")#list(config["classification"])
+TOOLS= 'kslam'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
@@ -14,7 +14,7 @@ rule all:
        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
-       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
+#       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
 rule create:
@@ -207,7 +207,7 @@ rule kslam:
         "{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kslam.benchmark.txt"
-    threads: 8
+    threads: 16
     params:
         runid=get_run
     log:
@@ -357,7 +357,7 @@ rule catbat: #???
         #'CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}',
         if 'default' in {params.runid}:
             #shell('CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}')
-            shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -p {output.contigs} -n {threads}')
+            shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -n {threads}')
             #shell('CAT add_names -i {output.bins} -o {output.names} -t {input.taxonomy} --only_official'),
             #shell('CAT summarise -i {output.names} -o {output.report}')
         elif 'medium' in {params.runid}:
