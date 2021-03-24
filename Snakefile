@@ -184,7 +184,7 @@ rule deepmicrobes:
         name2label=DI["deepmicrobes"]+"/name2label_species.txt"
     output:
         prediction="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.prediction.tfrec",
-        tfrec="{PATH}/result/classification/deepmicrobes/run}/{sample}_{run}.deepmicrobes.training.tfrec",
+        tfrec="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.training.tfrec",
         classification="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.classification",
         report="{PATH}/result/classification/deepmicrobes/{run}/{sample}_{run}.deepmicrobes.report"
     conda:
@@ -199,9 +199,11 @@ rule deepmicrobes:
         # -dd           location of input data
         # -ebe          number of training epochs to run between evaluations
         # just for me now
-        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes/pipelines:$PATH')
-        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes/scripts:$PATH')
-        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes:$PATH')
+        
+        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes/pipelines:$PATH'),
+        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes/scripts:$PATH'),
+        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes:$PATH'),
+        
         # transform training fastq to tfrec
         #shell('tfrec_train_kmer.sh -i {input.files} -v {input.kmers} -o {output.tfrec}'),
         
