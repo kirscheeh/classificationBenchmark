@@ -5,8 +5,8 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'kslam'.split(" ")#list(config["classification"])
+SAMPLES = "gridion364_100"#list(config["samples"])
+TOOLS= 'deepmicrobes'#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
@@ -199,20 +199,20 @@ rule deepmicrobes:
         # -dd           location of input data
         # -ebe          number of training epochs to run between evaluations
         # just for me now
-        export PATH=/home/re85gih/projectClassification/DeepMicrobes/pipelines:$PATH
-        export PATH=/home/re85gih/projectClassification/DeepMicrobes/scripts:$PATH
-        export PATH=/home/re85gih/projectClassification/DeepMicrobes:$PATH
+        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes/pipelines:$PATH')
+        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes/scripts:$PATH')
+        shell('export PATH=/home/re85gih/projectClassification/DeepMicrobes:$PATH')
         # transform training fastq to tfrec
         #shell('tfrec_train_kmer.sh -i {input.files} -v {input.kmers} -o {output.tfrec}'),
         
         # transform prediction fastq to tfrec
-        shell('tfrec_predict_kmer.sh -f {input.files} -t fastq -v {input.kmers} -o {output.prediction}')
+        shell('tfrec_predict_kmer.sh -f {input.files} -t fastq -v {input.kmers} -o {output.prediction}'),
         
         # make prediction on metagenome datasaet
-        'predict_DeepMicrobes.sh -i {output.prediction} -l species -p 8 -m {input.weights} -o {output.classification}' 
+        shell('predict_DeepMicrobes.sh -i {output.prediction} -l species -p 8 -m {input.weights} -o {output.classification}'), 
         
         # generate taxonomic profiles
-        'report_profile.sh -i {output.classification} -o {output.report} -t 50 -l {input.name2label}'
+        shell('report_profile.sh -i {output.classification} -o {output.report} -t 50 -l {input.name2label}')
 
 rule kslam:
     input:
