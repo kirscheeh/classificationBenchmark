@@ -3,6 +3,7 @@ import getting
 import sklearn.metrics
 import math
 import warnings
+import matplotlib.pyplot as plt
 
 def getGroundTruth(report):
     # calculates the number of TP
@@ -116,6 +117,26 @@ def calcAUPRCurve(threshold, report, stats):
         except TypeError as e: 
             pass
     
+def plotting(stats="", precision=[], recall=[], auprs=[]):
+    if not precision or not recall or not auprs:
+        if not stats=="":
+            with open(stats, 'r') as file:
+                lines = file.readlines()
+                for line in lines[1:]:
+                    print(line)
+                    line=line.split("\t")
+                    precision.append(line[1])
+                    recall.append(line[2])
+                    auprs.append(line[3])
+        else:
+            print("No values, no file. That won't work.")
+    plt.plot(recall[1:], precision[1:])
+    #plt.title(str(areport)+"\nAUPRC:"+str(round(aupr, 5))+"\nASP:"+str(asp))
+    plt.xlabel("recall")
+    plt.ylabel("precision")
+    plt.xticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    plt.show()
+    
 
 if not len(sys.argv)==4:
     print("Wrong number of arguments!")
@@ -124,3 +145,5 @@ else:
     species = getting.get_species(sys.argv[2])
     groundTruth=getGroundTruth(sys.argv[1])
     calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[4])
+
+#plotting(stats="../stats/gridion364_default.kaiju.stats")
