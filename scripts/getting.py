@@ -87,7 +87,7 @@ def get_abundances(areport, config):
     #total=0
     for s in species:
         os.system('grep -n "{spec}" {file} > helping.log'.format(spec=s, file=areport))
-        os.system('grep -n "{spec}" {file}'.format(spec=s, file=areport))
+        #os.system('grep -n "{spec}" {file}'.format(spec=s, file=areport))
         with open('helping.log', 'r') as f:
             lines = f.readlines()
             for line in lines:
