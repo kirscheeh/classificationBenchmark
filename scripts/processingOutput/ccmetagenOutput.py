@@ -48,8 +48,10 @@ else:
     for key in classified.values():
         new_file.write(str(0)+"\t"+str(key[1])+"\t"+str(key[2])+"\t"+str(key[3])+"\t"+str(key[4])+"\n")
     abundance_unclassified=unclassified/total_num
+    new_file.close()
     with open(sys.argv[2], 'r') as f:
         lines=f.readlines()
+        print(lines[1])
         lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified\n"
 
     with open(sys.argv[2], 'w') as f:

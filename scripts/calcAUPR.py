@@ -60,7 +60,7 @@ def calcPrecision(tp, fp, tn, fn):
         return tp/(tp+fp)
     except ZeroDivisionError as e:
         #print("No precision possible:", e)
-        print(tp, fp)
+        #print(tp, fp)
         return 0
 
 def calcRecall(tp, fp, tn, fn):
@@ -68,7 +68,7 @@ def calcRecall(tp, fp, tn, fn):
     try:
         return tp/(tp+fn)
     except ZeroDivisionError as e:
-        print(tp, fn)
+        #print(tp, fn)
         #print("No recall possible.", e)
         return 0
 
@@ -78,7 +78,7 @@ def calcAccuracy(tp, fp, tn, fn):
         return (tp+tn)/(tp+tn+fp+fn)
     except ZeroDivisionError as e:
         #print("No accuracy possible.", e)
-        print(tp, fp, tn, fn)
+        #print(tp, fp, tn, fn)
         return 0
 
 def calcOneAUPR(prediction, groundTruth):
@@ -116,11 +116,11 @@ def calcAUPRCurve(threshold, report, stats):
         except TypeError as e: 
             pass
     
-
+print(sys.argv)
 if not len(sys.argv)==4:
     print("Wrong number of arguments!")
     print("python calcAUPR.py PATH/TO/AREPORT PATH/TO/CONFIG PATH/TO/NEW/STATS")
 else:
     species = getting.get_species(sys.argv[2])
     groundTruth=getGroundTruth(sys.argv[1])
-    calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[4])
+    calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[3])

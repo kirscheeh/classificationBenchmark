@@ -1,0 +1,151 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	6	areport
+	1	ccmetagen
+	1	centrifuge
+	1	clark
+	1	diamond
+	1	kma
+	1	rename_ccmetagen
+	6	stats
+	19[0m
+[32m[0m
+[32mrule kma:
+    input: /mnt/fass1/kirsten/data/gridion366.fastq
+    output: /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.res, /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.mapstat
+    log: /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.log
+    jobid: 39
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/gridion366.kma.benchmark.txt
+    wildcards: sample=gridion366, PATH=/mnt/fass1/kirsten
+    threads: 8[0m
+[32m[0m
+ Invalid option:	/mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.mapstat
+ Printing help message:
+# KMA-1.3.6 mapps raw reads to a template database.
+# Options are:		Desc:				Default:	Requirements:
+#
+#	-o		Output file			None		REQUIRED
+#	-t_db		Template DB			None		REQUIRED
+#	-i		Input file name(s)		STDIN
+#	-ipe		Input paired end file name(s)
+#	-int		Input interleaved file name(s)
+#	-k		Kmersize			DB defined
+#	-ml		Minimum alignment length	16
+#	-p		p-value				0.05
+#	-ConClave	ConClave version		1
+#	-mem_mode	Use kmers to choose best
+#			template, and save memory	False
+#	-proxi		Use proximity scoring under
+#			template mapping		False/1.0
+#	-ex_mode	Searh kmers exhaustively	False
+#	-ef		Print additional features	False
+#	-vcf		Make vcf file, 2 to apply FT	False/0
+#	-sam		Output sam to stdout, 4 to 
+#			only output mapped reads, 
+#			2096 for aligned		False/0
+#	-nc		No consensus file		False
+#	-na		No aln file		False
+#	-nf		No frag file			False
+#	-deCon		Remove contamination		False
+#	-dense		Do not allow insertions
+#			in assembly			False
+#	-sasm		Skip alignment and assembly	False
+#	-ref_fsa	Consensus sequnce will
+#			have "n" instead of gaps	False / 0
+#	-matrix		Print assembly matrix		False
+#	-a		Print all best mappings		False
+#	-mp		Minimum phred score		20
+#	-5p		Cut a constant number of
+#			nucleotides from the 5 prime.	0
+#	-3p		Cut a constant number of
+#			nucleotides from the 3 prime.	0
+#	-Sparse		Only count kmers		False
+#	-Mt1		Map only to "num" template.	0 / False
+#	-ID		Minimum ID			1.0%
+#	-ss		Sparse sorting (q,c,d)		q
+#	-pm		Pairing method (p,u,f)		u
+#	-fpm		Fine Pairing method (p,u,f)	u
+#	-apm		Sets both pm and fpm		u
+#	-shm		Use shared DB made by kma_shm	0 (lvl)
+#	-mmap		Memory map *.comp.by
+#	-tmp		Set directory for temporary files.
+#	-1t1		Force end to end mapping	False
+#	-hmm		Use a HMM to assign template(s)
+#			to query sequences		True
+#	-ck		Count kmers instead of
+#			pseudo alignment		False
+#	-ca		Make circular alignments	False
+#	-boot		Bootstrap sequence		False
+#	-bc		Base calls should be
+#			significantly overrepresented.	[True]
+#	-bc90		Base calls should be both
+#			significantly overrepresented,
+#			and have 90% agreement.		False
+#	-bcNano		Call bases at suspicious
+#			deletions, made for nanopore.	False
+#	-bcd		Minimum depth at base		1
+#	-bcg		Maintain insignificant gaps
+#	-and		Both mrs and p_value thresholds
+#			has to reached to in order to
+#			report a template hit.		or
+#	-mq		Minimum mapping quality		0
+#	-mrs		Minimum alignment score,
+#			normalized to alignment length	0.50
+#	-mct		Max overlap between templates	0.50
+#	-reward		Score for match			1
+#	-penalty	Penalty for mismatch		-2
+#	-gapopen	Penalty for gap opening		-3
+#	-gapextend	Penalty for gap extension	-1
+#	-per		Reward for pairing reads	7
+#	-localopen	Penalty for openning a local chain	-6
+#	-Npenalty	Penalty matching N		0
+#	-transition	Penalty for transition		-2
+#	-transversion	Penalty for transversion	-2
+#	-cge		Set CGE penalties and rewards	False
+#	-t		Number of threads		1
+#	-status		Extra status
+#	-verbose	Extra verbose
+#	-c		Citation
+#	-v		Version
+#	-h		Shows this help message
+#
+[31mError in job kma while creating output files /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.res, /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.mapstat.[0m
+[31mRuleException:
+CalledProcessError in line 309 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'kma -i /mnt/fass1/kirsten/data/gridion366.fastq -t_db /mnt/fass1/kirsten/databases/ccmetagen/compress_ncbi_nt/ncbi_nt -o /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.res /mnt/fass1/kirsten/result/classification/ccmetagen/gridion366.kma.intermediate.mapstat -t 8 -1t1 -mem_mode -and -ef' returned non-zero exit status 1
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 309, in __rule_kma
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[33mJob failed, going on with independent jobs.[0m
+[32m[0m
+[32mrule clark:
+    input: /mnt/fass1/database/clark_database/targets.txt, /mnt/fass1/kirsten/data/gridion366.fastq
+    output: /mnt/fass1/kirsten/result/classification/clark/default/gridion366_default.clark.classification
+    log: /mnt/fass1/kirsten/result/classification/kslam/default/gridion366_default.clark.log
+    jobid: 27
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion366_default.clark.benchmark.txt
+    wildcards: sample=gridion366, PATH=/mnt/fass1/kirsten, run=default
+    threads: 8[0m
+[32m[0m
+Failed to find/read the directory:  /mnt/fass1/kirsten/clark/
+[31mError in job clark while creating output file /mnt/fass1/kirsten/result/classification/clark/default/gridion366_default.clark.classification.[0m
+[31mRuleException:
+CalledProcessError in line 269 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'CLARK --long -O /mnt/fass1/kirsten/data/gridion366.fastq -R /mnt/fass1/kirsten/result/classification/clark/default/gridion366_default.clark.classification -D /mnt/fass1/kirsten/clark/ -n 8 -T /mnt/fass1/database/clark_database/targets.txt' returned non-zero exit status 1
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 269, in __rule_clark
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+[33mJob failed, going on with independent jobs.[0m
+[32m[0m
+[32mrule centrifuge:
+    input: /mnt/fass1/kirsten/data/gridion366.fastq
+    output: /mnt/fass1/kirsten/result/classification/centrifuge/default/gridion366_default.centrifuge.report, /mnt/fass1/kirsten/result/classification/centrifuge/default/gridion366_default.centrifuge.classification
+    log: /mnt/fass1/kirsten/result/classification/centrifuge/default/gridion366_default.centrifuge.log
+    jobid: 26
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion366_default.centrifuge.benchmark.txt
+    wildcards: sample=gridion366, PATH=/mnt/fass1/kirsten, run=default
+    threads: 8[0m
+[32m[0m
+^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B                                                                                                                                                                                                                                                                                                                                                                            
