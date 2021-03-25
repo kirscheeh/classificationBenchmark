@@ -21,6 +21,7 @@ def get_name(name_long):
 if not len(sys.argv) == 3:
     print("An error occured.")
     print("Usage: python krakenOutput.py FILE.REPORT NEW_FILE.areport")
+    print(sys.argv)
 else:
     new_file = open(sys.argv[2], "w")
     new_file.write("Abundance\tnumReads\ttaxRank\ttaxID\tName")
