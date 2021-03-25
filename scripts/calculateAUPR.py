@@ -31,6 +31,7 @@ def calculate_precision_recall(threshold, report, config_path):
                 number_species +=1
                 
                 if float(line[0])>=float(threshold):
+                    print(threshold, line)
         
                     positives.append(line)
                     pos +=1
@@ -38,6 +39,7 @@ def calculate_precision_recall(threshold, report, config_path):
                     prediction.append(1)                           
                 
                 else:
+                    print(threshold)
                     neg+=1
                     prediction.append(0)
                 
@@ -67,12 +69,15 @@ def calculate_precision_recall(threshold, report, config_path):
         return precision, recall, accuracy, threshold, aupr
     
     except ZeroDivisionError:
-        pass
+        #pass
+        print("What")
         return 0
+
 
 def calcAUPR_really(precision, recall):
     #print(len(precision), len(recall))
     return np.trapz(np.array(recall[1:]), x=np.array(precision))
+
 
 def calcAUPR(threshold, report, config_path):
     tries=0
@@ -82,28 +87,30 @@ def calcAUPR(threshold, report, config_path):
     result=[]
     aupr_list=[]
 
-    stats = open("stats/"+str(sample_name)+"stats", "w")
+    stats = open("../stats/"+str(sample_name)+"stats", "w")
     stats.write("Threshold\tPrecision\tRecall\n")
-    
     for t in threshold:
-        
         try:
-            
             precision, recall, accuracy, thresh, aupr = calculate_precision_recall(t, report, config_path)
+            print("yes")
             aupr_list.append(aupr)
+            print(aupr_list)
             #result.append(precision*abs(recall-rec[-1]))
             prec.append(precision)
             rec.append(recall)
 
-            stats.write(str(t)+"\t"+str(precision)+"\t"+str(recall)+"\n")
+      #  stats.write(str(t)+"\t"+str(precision)+"\t"+str(recall)+"\n")
 
-        except Exception:
+        except Exception as e: # ??? ah, wenn nix über Grenze kommt, dann hab ich ne Exception weil 0
+            print("here", e)
             tries+=1
             if tries >= 50: # maximum value plus 100
                 return rec, prec, aupr_list, threshold
             #print("here No hits.")
         #print(result)
     return rec, prec, aupr_list, threshold
+
+print(calcAUPR([0.6, 0.7, 0.8, 0.9, 1], sys.argv[1], sys.argv[2]))
 
 def plotting(recall, precision, aupr, threshold, areport, asp):
 
@@ -118,19 +125,19 @@ def plotting(recall, precision, aupr, threshold, areport, asp):
     plt.show()
 
 
-if not len(sys.argv) == 3: 
+"""if not len(sys.argv) == 3: 
     print("Something went wrong.")
     print("Usage: python calculateAUPR.python REPORT CONFIG.YAML")
 else:
     print(sys.argv)
     th = [i*0.001 for i in range(0, 100001)]
     rec, prec, aupr, th = calcAUPR(th, sys.argv[1], sys.argv[2])#sys.argv[1].split(" ")
-    aupr = calcAUPR_really(prec, rec)
+    #aupr = calcAUPR_really(prec, rec)
     #if "kraken2" in sys.argv[2] or "clark" in sys.argv[2]:
         
     truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
     #else:
     #    truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12] #currently no fungi
     asp = getting.get_ASP(sys.argv[2], truth)
-    #plotting(rec, prec, aupr, th, sys.argv[2], asp)
+    #plotting(rec, prec, aupr, th, sys.argv[2], asp)"""
     

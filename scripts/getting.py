@@ -85,20 +85,19 @@ def get_abundances(areport, config):
     predictions={}
     species = get_species(config)
     #total=0
-    #species=['Bacillus subtilis']
+    #species=['Bacillus subtilis', 'Cryptococcus neoformans']
     print(species)
     for s in species:
-        os.system('grep -n "{spec}" {file} > helping.log'.format(spec=s, file=areport))
+        os.system('grep -n "{spec}" {file} > testingScripts/helping{spec_name}.log'.format(spec_name=s.split(" ")[0], file=areport, spec=s))
         #os.system('grep -n "{spec}" {file}'.format(spec=s, file=areport))
         print("grep done", s)
-        with open('helping.log', 'r') as f:
+        with open('testingScripts/helping{spec}.log'.format(spec=s.split(" ")[0]), 'r') as f:
             lines = f.readlines()
             print(lines)
             for line in lines:
                 line = line.split("\t")
-                print(line[4][:-1], line[2])
                 if line[4][:-1] == s and line[2]=="S":
-                    print(line[0].split(":")[1])
+                    #print(line[0].split(":")[1])
                     predictions[s] = float(line[0].split(":")[1])
                     print(predictions)
                 #else:
@@ -106,12 +105,12 @@ def get_abundances(areport, config):
             if (len(lines)) == 0:
                 predictions[s] = 0
 
-        os.system('rm helping.log')
+        os.system('rm testingScripts/helping{spec}.log'.format(spec=s.split(" ")[0]))
     #print(total)
     print(list(predictions.values()))
-    return predictions
+    #return predictions
 
-#get_abundances("../stats/gridion364_default.clark.areport", "../config.yaml")
+#get_abundances("stats/gridion364_default.kraken2.areport", "config.yaml")
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()
