@@ -6,13 +6,12 @@ import numpy as np
 import sklearn.metrics
 
 
-def calculate_precision_recall(threshold, report):
-
+def calculate_precision_recall(threshold, report, config_path):
     data=[] # a bit redundant to calculate that again and again...
     prediction=[]
     
     # species in sample
-    species =getting.get_species("../config.yaml") #because run from main folder with snakefile
+    species =getting.get_species(config_path) #because run from main folder with snakefile
     
     with open(report, 'r') as report:
         lines = report.readlines()
@@ -75,7 +74,7 @@ def calcAUPR_really(precision, recall):
     #print(len(precision), len(recall))
     return np.trapz(np.array(recall[1:]), x=np.array(precision))
 
-def calcAUPR(threshold, report):
+def calcAUPR(threshold, report, config_path):
     tries=0
     sample_name=report.split("/")[-1][:-7]
     rec = [0]
@@ -83,14 +82,14 @@ def calcAUPR(threshold, report):
     result=[]
     aupr_list=[]
 
-    stats = open("../stats/"+str(sample_name)+"stats", "w")
+    stats = open("stats/"+str(sample_name)+"stats", "w")
     stats.write("Threshold\tPrecision\tRecall\n")
     
     for t in threshold:
         
         try:
             
-            precision, recall, accuracy, thresh, aupr = calculate_precision_recall(t, report)
+            precision, recall, accuracy, thresh, aupr = calculate_precision_recall(t, report, config_path)
             aupr_list.append(aupr)
             #result.append(precision*abs(recall-rec[-1]))
             prec.append(precision)
@@ -119,12 +118,13 @@ def plotting(recall, precision, aupr, threshold, areport, asp):
     plt.show()
 
 
-if not len(sys.argv) == 2: 
+if not len(sys.argv) == 3: 
     print("Something went wrong.")
-    print("Usage: python calculateAUPR.python REPORT")
+    print("Usage: python calculateAUPR.python REPORT CONFIG.YAML")
 else:
+    print(sys.argv)
     th = [i*0.001 for i in range(0, 100001)]
-    rec, prec, aupr, th = calcAUPR(th, sys.argv[2])#sys.argv[1].split(" ")
+    rec, prec, aupr, th = calcAUPR(th, sys.argv[1], sys.argv[2])#sys.argv[1].split(" ")
     aupr = calcAUPR_really(prec, rec)
     #if "kraken2" in sys.argv[2] or "clark" in sys.argv[2]:
         

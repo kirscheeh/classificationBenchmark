@@ -5,14 +5,14 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364_100"#list(config["samples"])
-TOOLS= 'deepmicrobes'#list(config["classification"])
+SAMPLES = "gridion364"#list(config["samples"])
+TOOLS= 'centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-#       expand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.stats", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
        #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
@@ -53,7 +53,7 @@ rule centrifuge:
         # --ignore-quals
         
         if 'default' in {params.runid}:
-            shell('centrifuge -q -x {params.db} {input.fastq} --report-file {output.report} -S {output.files}')
+            shell('centrifuge -q -x {params.db} {input.fastq} --report-file {output.report} -S {output.files} --ignore-quals')
         elif 'medium' in {params.runid}: 
             print("Sure")
         elif 'restrictive' in {params.runid}: 
@@ -443,24 +443,32 @@ rule areport:
     input: 
         classification = "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
     output:
-        areport="{PATH}/result/{sample}_{run}.{tool}.areport",
+        areport="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport",
         #stats="{PATH}/result/classificationBenchmark/stats/{sample}_{run}.{tool}.stats"
     params:
         report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
         tool=get_tool,
 	script="{PATH}/result/classificationBenchmark/scripts/processingOutput/"
     run:
-        if {params.tool} in ['centrifuge', 'clark', 'kaiju']:
-            #print({params.tool})
+        print({params.tool}, {params.report})
+        if 'centrifuge' in {params.tool} or 'kaiju' in {params.tool} or 'clark' in {params.tool}:
+            #print("{params.script}{params.tool}Output.py {input.classification} {params.report} {output.areport}")
             shell('python {params.script}{params.tool}Output.py {input.classification} {params.report} {output.areport}')
+        elif 'ccmetagen' in {params.tool} or 'kraken2' in {params.tool}:
+            #print({params.tool}, "{params.script}{params.tool}Output.py {params.report} {output.areport}")
+            shell('python {params.script}{params.tool}Output.py {params.report} {output.areport}')
+        elif 'diamond' in {params.tool} or 'kslam' in {params.tool}:
+            shell('python {params.script}{params.tool}Output.py {input.classification} {output.areport}')
 
 rule stats:
     input: 
         areport = "{PATH}/result/{sample}_{run}.{tool}.areport"
     output:
         stats="{PATH}/result/{sample}_{run}.{tool}.stats"
+    conda:
+        "envs/main.yaml"
     params:
         tool=get_tool,
         script="{PATH}/result/classificationBenchmark/scripts/calculateAUPR.py"
     shell:
-        "python {params.script} {input.areport}"
+        "python3.8 {params.script} {input.areport} config.yaml"

@@ -1,0 +1,17 @@
+[33mProvided cores: 16[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	kslam
+	2[0m
+[32m[0m
+[32mrule kslam:
+    input: /mnt/fass1/kirsten/databases/kslam, /mnt/fass1/kirsten/data/gridion364.fastq
+    output: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification
+    log: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.log
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_default.kslam.benchmark.txt
+    wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=gridion364
+    threads: 16[0m
+[32m[0m
