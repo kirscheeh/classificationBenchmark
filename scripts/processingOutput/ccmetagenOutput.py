@@ -44,8 +44,16 @@ else:
                 current_numreads=0
             classified[taxid]=(0, numreads+current_numreads, rank, taxid, species)
     
-    new_file.write(str(total_num)+"\t"+str(unclassified)+"\n")
+   # new_file.write(str(total_num)+"\t"+str(unclassified)+"\n")
     for key in classified.values():
         new_file.write(str(0)+"\t"+str(key[1])+"\t"+str(key[2])+"\t"+str(key[3])+"\t"+str(key[4])+"\n")
+    abundance_unclassified=unclassified/total_num
+    with open(sys.argv[2], 'r') as f:
+        lines=f.readlines()
+        lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified\n"
+
+    with open(sys.argv[2], 'w') as f:
+        for line in lines:
+            f.write(line)
 
 
