@@ -61,7 +61,7 @@ def calcPrecision(tp, fp, tn, fn):
         return tp/(tp+fp)
     except ZeroDivisionError as e:
         #print("No precision possible:", e)
-        print(tp, fp)
+        #print(tp, fp)
         return 0
 
 def calcRecall(tp, fp, tn, fn):
@@ -69,17 +69,23 @@ def calcRecall(tp, fp, tn, fn):
     try:
         return tp/(tp+fn)
     except ZeroDivisionError as e:
-        print(tp, fn)
+        #print(tp, fn)
         #print("No recall possible.", e)
         return 0
 
+def calcFPR(tp, fp, tn, fn):
+    # calculate false positive rate
+    try:
+        return fp/(tn+fp)
+    except ZeroDivisionError:
+        return 0
 def calcAccuracy(tp, fp, tn, fn):
     # for a given tp, fp, tn, fn, calculate accuracy
     try:
         return (tp+tn)/(tp+tn+fp+fn)
     except ZeroDivisionError as e:
         #print("No accuracy possible.", e)
-        print(tp, fp, tn, fn)
+        #print(tp, fp, tn, fn)
         return 0
 
 def calcOneAUPR(prediction, groundTruth):
@@ -123,27 +129,37 @@ def plotting(stats="", precision=[], recall=[], auprs=[]):
             with open(stats, 'r') as file:
                 lines = file.readlines()
                 for line in lines[1:]:
-                    print(line)
                     line=line.split("\t")
-                    precision.append(line[1])
-                    recall.append(line[2])
-                    auprs.append(line[3])
+                    if not math.isnan(float(line[3])):
+                    #print(line)
+                        precision.append(line[1])
+                        recall.append(line[2])
+                        auprs.append(line[3])
+                    else:
+                        break
         else:
             print("No values, no file. That won't work.")
-    plt.plot(recall[1:], precision[1:])
+   # print(precision[1:5])
+    #precision.reverse()
+    #print(precision[1:5])
+
+    #recall.reverse()
+    #auprs.reverse()
+    plt.plot(auprs)#recall[1:], precision[1:])
     #plt.title(str(areport)+"\nAUPRC:"+str(round(aupr, 5))+"\nASP:"+str(asp))
     plt.xlabel("recall")
     plt.ylabel("precision")
-    plt.xticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+   # plt.xticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    #plt.yticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
     plt.show()
     
 
-if not len(sys.argv)==4:
+"""if not len(sys.argv)==4:
     print("Wrong number of arguments!")
     print("python calcAUPR.py PATH/TO/AREPORT PATH/TO/CONFIG PATH/TO/NEW/STATS")
 else:
     species = getting.get_species(sys.argv[2])
     groundTruth=getGroundTruth(sys.argv[1])
-    calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[4])
+    calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[3])"""
 
-#plotting(stats="../stats/gridion364_default.kaiju.stats")
+plotting(stats="test.stats")

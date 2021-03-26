@@ -5,15 +5,15 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
+SAMPLES = "gridion364 gridion366".split(" ")#list(config["samples"])
+TOOLS= 'clark'# diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
 #       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.stats", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
-       #expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.stats", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#       expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 # creating the project structure
@@ -103,7 +103,7 @@ rule kaiju:
         files = '{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification'
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kaiju.benchmark.txt'
-    threads: 8
+    threads: 4
     params:
         runid=get_run
     log:
@@ -247,14 +247,14 @@ rule clark: #output is csv, watch out
     input:
         #db = DI['clark']+"/",
         files = "{PATH}/data/{sample}.fastq",
-	targets = DI['clark']+"/targets.txt"
+	targets = "/mnt/fass1/database/clark_database/targets.txt"
     output:
         files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
     params:
-            db = "/mnt/fass1/kirsten/clark/",
+            db = "/mnt/fass1/kirsten/database/clark/",
 	    runid=get_run
     log:
         "{PATH}/result/classification/kslam/{run}/{sample}_{run}.clark.log"
@@ -266,7 +266,7 @@ rule clark: #output is csv, watch out
         # -m        mode of execution
 
         if 'default' in {params.runid}:
-            shell('CLARK --long -O {input.files} -R {output} -D {params.db} -n {threads} -T {input.targets}')
+            shell('CLARK --long -O {input.files} -R {output} -D {input.db} -n {threads} -T {input.targets}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -294,7 +294,8 @@ rule kma:
         #db = DI['ccmetagen']+"compress_ncbi_nt/ncbi_nt",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res"
+        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res",
+        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
     benchmark:
         "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8
@@ -314,6 +315,7 @@ rule ccmetagen: #watch output
         mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
     output:
         files = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv",
+        test="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification_stats.csv"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt"
     threads: 8
@@ -344,7 +346,7 @@ rule rename_ccmetagen:
         report="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification_stats.csv",
         classi="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv"
     output:
-        report="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.report",
+        report="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.report",
         classi="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification"
     run:
         shell("mv {input.report} {output.report}"),
@@ -469,6 +471,6 @@ rule stats:
         "envs/main.yaml"
     params:
         tool=get_tool,
-        script="{PATH}/result/classificationBenchmark/scripts/calculateAUPR.py"
+        script="{PATH}/result/classificationBenchmark/scripts/calcAUPR.py"
     shell:
-        "python3.8 {params.script} {input.areport} config.yaml"
+        "python3.8 {params.script} {input.areport} config.yaml {output.stats}"

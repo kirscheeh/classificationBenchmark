@@ -1,7 +1,7 @@
 # path to folder where generated ourtputs should be saved, aka project folder
 path: [/mnt/fass1/kirsten]
 # path to the folders where the needed databases and/or indices are located
-dataIndex: {taxmaps: '/mnt/fass1/kirsten/databases/taxmaps', deepmicrobes: '/mnt/fass1/kirsten/databases/deepMicrobes', kaiju: '/mnt/fass1/kirsten/databases/kaiju', kslam: '/mnt/fass1/kirsten/databases/kslam', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed', clark: '/mnt/fass1/database/clark_database', metaothello: '/mnt/fass1/kirsten/databases/metaothello', diamond: '/mnt/fass1/kirsten/databases/diamond', ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen', catbat: '/mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618'}
+dataIndex: {taxmaps: '/mnt/fass1/kirsten/databases/taxmaps', deepmicrobes: '/mnt/fass1/kirsten/databases/deepMicrobes', kaiju: '/mnt/fass1/kirsten/databases/kaiju', kslam: '/mnt/fass1/kirsten/databases/kslam', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed', clark: '/mnt/fass1/kirsten/database/clark', metaothello: '/mnt/fass1/kirsten/databases/metaothello', diamond: '/mnt/fass1/kirsten/databases/diamond', ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen', catbat: '/mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618'}
 
 # incorporated tools
 
