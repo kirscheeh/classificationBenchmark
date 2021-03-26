@@ -38,11 +38,3 @@ def generate_folder(path, folders=[]):
 
 generate_folder(path)
 generate_folder(classification_path, classification_tools)
-
-
-
-
-
-
-
-
