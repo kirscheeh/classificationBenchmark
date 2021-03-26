@@ -1,7 +1,7 @@
 # Script with several useful functions  needed across the different scripts
 import os, yaml
 import numpy as np
-config='config.yaml'
+#config='config.yaml'
 from numpy import array
 from numpy.linalg import norm
 
@@ -110,7 +110,7 @@ def get_abundances(areport, config):
     print(list(predictions.values()))
     #return predictions
 
-#get_abundances("stats/gridion364_default.kraken2.areport", "config.yaml")
+get_abundances(sys.argv[1], sys.argv[2])
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()
