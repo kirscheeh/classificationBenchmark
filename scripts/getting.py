@@ -193,7 +193,8 @@ def get_sampleName(file):
     return file.split("_")[0]
 
 def get_numberReadsSample(sample):
-    size = {'gridion364': 3491390, 'gridion366':3667480, 'promethion365':0, 'promethion367':0}
+    size = {'gridion364': 3491390, 'gridion366':3667480, 'promethion365':35810963, 'promethion367':34573282}
+    return size[sample]
 
 
 

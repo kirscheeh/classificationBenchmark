@@ -41,6 +41,19 @@ def getPrediction(threshold, report):
                     prediction.append(0)
     return prediction
 
+def getAbundances(report):
+    abundances=[]
+    with open(report, 'r') as report:
+        lines=report.readlines()
+        counter=0
+        for line in lines[1:]:
+            line = line.split("\t")
+            if line[2]=="S":
+                abundances.append(float(line[0]))
+    print(len(abundances))
+    return abundances
+
+
 def calcFalsePositives(prediction, groundTruth):
     # calculates precision and recall and AUPR for a TH
     tp=0
@@ -88,21 +101,27 @@ def calcAccuracy(tp, fp, tn, fn):
         #print(tp, fp, tn, fn)
         return 0
 
-def calcOneAUPR(prediction, groundTruth):
+def calcOneAUPR_binary(prediction, groundTruth):
     # for a given th
     return sklearn.metrics.average_precision_score(prediction, groundTruth)
+
+def calcOneAUPR_abundance(prediction_abundance, groundTruth):
+    # for a given th
+    return sklearn.metrics.average_precision_score(groundTruth, prediction_abundance)
 
 def calcAUPRCurve(threshold, report, stats):
     groundTruth=getGroundTruth(report)
     precisions=[]
     recalls=[]
-    auprs=[]
+    auprs_bin=[]
+    auprs_pred=[]
     new_file = open(stats, 'w')
-    new_file.write("Threshold\tPrecision\tRecall\tAUPR\n")
+    new_file.write("Threshold\tPrecision\tRecall\tAUPR_bin\tAUPR_pred\n")
     tries=0 # at one point, nothing will be over the threshold anymore
     for th in threshold:
         prediction = getPrediction(th, report)
         tp, fp, tn, fn = calcFalsePositives(prediction, groundTruth)
+        abundances=getAbundances(report)
         try:
             prec=calcPrecision(tp, fp, tn, fn)
             precisions.append(prec)
@@ -110,16 +129,20 @@ def calcAUPRCurve(threshold, report, stats):
             rec=calcRecall(tp, fp, tn, fn)
             recalls.append(rec)
             
-            aupr=calcOneAUPR(prediction, groundTruth)
-            auprs.append(aupr)
+            aupr_bin=calcOneAUPR_binary(prediction, groundTruth)
+            auprs_bin.append(aupr_bin)
+            
+            aupr_pred=calcOneAUPR_abundance(abundances, groundTruth)
+            auprs_pred.append(aupr_pred)
+            
             warnings.filterwarnings('ignore')
             
-            if math.isnan(aupr):
+            if math.isnan(aupr_bin):
                 tries+=1
                 if tries>=100:
                     return 0
             
-            new_file.write(str(th)+"\t"+str(prec)+"\t"+str(rec)+"\t"+str(aupr)+"\n")
+            new_file.write(str(th)+"\t"+str(prec)+"\t"+str(rec)+"\t"+str(aupr_bin)+"\t"+str(aupr_pred)+"\n")
         except TypeError as e: 
             pass
     
@@ -130,11 +153,11 @@ def plotting(stats="", precision=[], recall=[], auprs=[]):
                 lines = file.readlines()
                 for line in lines[1:]:
                     line=line.split("\t")
-                    if not math.isnan(float(line[3])):
+                    if not math.isnan(float(line[3])):# and not line[2]=="0.0" and not line[1]=="0.0":
                     #print(line)
-                        precision.append(line[1])
-                        recall.append(line[2])
-                        auprs.append(line[3])
+                        precision.append(float(line[1]))
+                        recall.append(float(line[2]))
+                        auprs.append(float(line[3]))
                     else:
                         break
         else:
@@ -145,12 +168,15 @@ def plotting(stats="", precision=[], recall=[], auprs=[]):
 
     #recall.reverse()
     #auprs.reverse()
-    plt.plot(auprs)#recall[1:], precision[1:])
-    #plt.title(str(areport)+"\nAUPRC:"+str(round(aupr, 5))+"\nASP:"+str(asp))
+    #auprs_1=calcOneAUPR_abundance(groundTruth, precision)
+    print(auprs)
+   # plt.plot(recall, precision)#recall[1:], precision[1:])
+    plt.plot(recall, precision)
+    #plt.title(str(name)+"\nAUPRC:"+str(round(aupr, 5))+"\nASP:"+str(asp))
     plt.xlabel("recall")
-    plt.ylabel("precision")
-   # plt.xticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
-    #plt.yticks(ticks=[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+    plt.xlabel("precision")
+    plt.xticks([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
+    plt.yticks([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
     plt.show()
     
 
@@ -161,5 +187,7 @@ else:
     species = getting.get_species(sys.argv[2])
     groundTruth=getGroundTruth(sys.argv[1])
     calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[3])"""
-
-plotting(stats="test.stats")
+species = getting.get_species(sys.argv[2])
+groundTruth=getGroundTruth(sys.argv[1])
+calcAUPRCurve([i*0.001 for i in range(1, 100001)], sys.argv[1], sys.argv[3])
+#plotting(stats=sys.argv[3])
