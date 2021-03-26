@@ -257,7 +257,7 @@ rule clark: #output is csv, watch out
             db = "/mnt/fass1/kirsten/database/clark/",
 	    runid=get_run
     log:
-        "{PATH}/result/classification/kslam/{run}/{sample}_{run}.clark.log"
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.log"
     conda:
         'envs/main.yaml'
     run:

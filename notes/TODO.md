@@ -48,6 +48,15 @@ Install_Preprocessing_Tools.sh ging nicht (permission denied). Habs händisch ve
   - conda-forge/linux-64::bzip2==1.0.8=h7f98852_4 -> libgcc-ng[version='>=9.3.0'] -> _openmp_mutex[version='>=4.5'] -> openmp_impl==9999
   - conda-forge/linux-64::libgcc-ng==9.3.0=h5dbcf3e_17 -> _openmp_mutex[version='>=4.5'] -> openmp_impl==9999
   - metamaps -> boost-cpp[version='>=1.70.0,<1.70.1.0a0'] -> libboost[version='<0']
+  
+## kslam
+- appears to be able to deal with files up to 10.000.000 sequences, throws error (bad_alloc) for 2.4mil sequences nonetheless --> fixing with --num-reads-at-once
+
+## metaothello
+segmentation fraud
+
+## catbat
+- seems to need contigs, not just long metagenomic sequences
 
 
 

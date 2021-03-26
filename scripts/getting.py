@@ -1,7 +1,11 @@
 # Script with several useful functions  needed across the different scripts
-import os, yaml
+import os, yaml, sys
 import numpy as np
+<<<<<<< HEAD
 #config='config.yaml'
+=======
+config='../config.yaml'
+>>>>>>> b22c7376c79e965795df5c2449719eda0596ff01
 from numpy import array
 from numpy.linalg import norm
 
@@ -85,46 +89,49 @@ def get_abundances(areport, config):
     predictions={}
     species = get_species(config)
     #total=0
-    #species=['Bacillus subtilis', 'Cryptococcus neoformans']
-    print(species)
+    #species=['Salmonella enterica']#'Cryptococcus neoformans','Bacillus subtilis', 'Cryptococcus neoformans']
+    #print(species)
     for s in species:
         os.system('grep -n "{spec}" {file} > helping.log'.format(file=areport, spec=s))
         #os.system('grep -n "{spec}" {file}'.format(spec=s, file=areport))
-        print("grep done", s)
+        #print("grep done", s)
         with open('helping.log', 'r') as f:
             lines = f.readlines()
-            print(lines)
+
             for line in lines:
                 line = line.split("\t")
-                if line[4][:-1] == s and line[2]=="S":
-                    #print(line[0].split(":")[1])
-                    predictions[s] = float(line[0].split(":")[1])
-                    print(predictions)
-                #else:
-                   # predictions[s] = 0
-            if (len(lines)) == 0:
-                predictions[s] = 0
+                if line[4][:-1] == s:
+                    if line[2]=="S":
+                        print(line)
+                        predictions[s] = float(line[0].split(":")[1])
+            if not s in predictions: #if no fitting entry is found
+                predictions[s]=0
+                
 
         os.system('rm helping.log')
     #print(total)
-    print(list(predictions.values()))
-    #return predictions
+    #print(list(predictions.values()))
+    return predictions
 
+<<<<<<< HEAD
 get_abundances(sys.argv[1], sys.argv[2])
+=======
+#get_abundances(sys.argv[1], "../config.yaml")
+>>>>>>> b22c7376c79e965795df5c2449719eda0596ff01
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()
     pred=list(predi)
-    print(pred)
+
     try:
         t = np.array(truth)
         p = np.array(pred)
-        print(max(p))
         l2 = np.sum(np.power((t-p),2))
         return l2
     except Exception as e:
         print("An error occured.", e)
 
+print(get_ASP(sys.argv[1], [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]))
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:
