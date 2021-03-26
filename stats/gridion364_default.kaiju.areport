@@ -1,0 +1,5 @@
+Abundace	numReads	taxRank	taxID	Name
+0.0	0	U	0	unclassified
+0.0	0	S	10239	Viruses
+0.0	0	S	NA	cannot be assigned to a (non-viral) species
+1.0	1	S	NA	unclassified

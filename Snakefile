@@ -5,8 +5,8 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364 gridion366".split(" ")#list(config["samples"])
-TOOLS= 'clark'# diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
+SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
+TOOLS= 'ccmetagen'# diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
