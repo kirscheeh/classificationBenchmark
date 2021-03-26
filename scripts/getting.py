@@ -1,11 +1,7 @@
 # Script with several useful functions  needed across the different scripts
 import os, yaml, sys
 import numpy as np
-<<<<<<< HEAD
 #config='config.yaml'
-=======
-config='../config.yaml'
->>>>>>> b22c7376c79e965795df5c2449719eda0596ff01
 from numpy import array
 from numpy.linalg import norm
 
@@ -86,6 +82,7 @@ def get_tools_classification(config):
     return predictions"""
 
 def get_abundances(areport, config):
+    #for areport in areports:
     predictions={}
     species = get_species(config)
     #total=0
@@ -100,9 +97,10 @@ def get_abundances(areport, config):
 
             for line in lines:
                 line = line.split("\t")
+                print(line)
                 if line[4][:-1] == s:
                     if line[2]=="S":
-                        print(line)
+                        #print(line)
                         predictions[s] = float(line[0].split(":")[1])
             if not s in predictions: #if no fitting entry is found
                 predictions[s]=0
@@ -113,11 +111,7 @@ def get_abundances(areport, config):
     #print(list(predictions.values()))
     return predictions
 
-<<<<<<< HEAD
 get_abundances(sys.argv[1], sys.argv[2])
-=======
-#get_abundances(sys.argv[1], "../config.yaml")
->>>>>>> b22c7376c79e965795df5c2449719eda0596ff01
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()
@@ -131,7 +125,7 @@ def get_ASP(areport, truth):
     except Exception as e:
         print("An error occured.", e)
 
-print(get_ASP(sys.argv[1], [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]))
+#print(get_ASP(sys.argv[1], [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]))
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:
