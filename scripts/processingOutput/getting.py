@@ -111,7 +111,7 @@ def get_abundances(areport, config):
     #print(list(predictions.values()))
     return predictions
 
-get_abundances(sys.argv[1], sys.argv[2])
+#get_abundances(sys.argv[1], sys.argv[2])
 
 def get_ASP(areport, truth):
     predi = get_abundances(areport, config).values()

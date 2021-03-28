@@ -50,7 +50,7 @@ else:
             
             classifiedEntry[taxid]=(0, current_numReads+old_numReads, rank, taxid, species)
     
-    sampleSize = getting.get_numberReadsSample(sample)
+    sampleSize = 3441147#getting.get_numberReadsSample(sample)
     unclassified=sampleSize-classified
     
     for key in classifiedEntry.values():
