@@ -97,9 +97,10 @@ def get_abundances(areport, config):
 
             for line in lines:
                 line = line.split("\t")
-                print(line)
+               
                 if line[4][:-1] == s:
                     if line[2]=="S":
+                        print(line)
                         #print(line)
                         predictions[s] = float(line[0].split(":")[1])
             if not s in predictions: #if no fitting entry is found
@@ -114,18 +115,20 @@ def get_abundances(areport, config):
 #get_abundances(sys.argv[1], sys.argv[2])
 
 def get_ASP(areport, truth):
-    predi = get_abundances(areport, config).values()
+    #from scipy.spatial import distance
+    predi = get_abundances(areport, sys.argv[2]).values()
     pred=list(predi)
+    print(pred)
 
     try:
         t = np.array(truth)
         p = np.array(pred)
-        l2 = np.sum(np.power((t-p),2))
+        l2 = np.sum(np.power((t-p),2))#distance.euclidean(t, p)
         return l2
     except Exception as e:
         print("An error occured.", e)
 
-#print(get_ASP(sys.argv[1], [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]))
+#print("ASP:", get_ASP(sys.argv[1], [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]))
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:
@@ -155,7 +158,6 @@ def get_seqLength(file, fastq=True, median=True):
     if median:        
         return int(np.median(lengths))
     else:
-
         return int(round(np.sum(lengths)/len(lengths), 0))
 
 def get_quality(file, median): #phred64, might be really slow
