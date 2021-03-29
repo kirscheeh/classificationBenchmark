@@ -5,14 +5,14 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
+SAMPLES = "gridion366"# gridion366".split(" ")#list(config["samples"])
+TOOLS= 'kaiju'#diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
     input:
 #       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.stats", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
