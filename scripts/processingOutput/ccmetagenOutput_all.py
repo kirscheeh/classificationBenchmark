@@ -50,7 +50,7 @@ else:
             
             classifiedEntry[taxid]=(0, current_numReads+old_numReads, rank, taxid, species)
     
-    sampleSize = 3441147#getting.get_numberReadsSample(sample)
+    sampleSize = getting.get_numberReadsSample(sample)
     unclassified=sampleSize-classified
     
     for key in classifiedEntry.values():
@@ -58,7 +58,7 @@ else:
         new_file.write(str(abundance)+"\t"+str(key[1])+"\t"+str(key[2])+"\t"+str(key[3])+"\t"+str(key[4])+"\n")
     new_file.close()
     
-    abundance_unclassified=unclassified/classified
+    abundance_unclassified=unclassified/sampleSize
     with open(sys.argv[2], 'r') as f:
         lines=f.readlines()
         lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified\n"
@@ -66,5 +66,3 @@ else:
     with open(sys.argv[2], 'w') as f:
         for line in lines:
             f.write(line)
-
-
