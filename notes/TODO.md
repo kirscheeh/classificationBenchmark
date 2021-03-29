@@ -1,3 +1,5 @@
+### note ccmetagen 366: mapped:80.737475%
+
 # TODO LIST
 - install Jellyfish for MetaOthello
 

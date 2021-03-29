@@ -23,10 +23,8 @@ else:
         #    if line.split("\t")[1] == "0":
          #           unclassified +=1 
         
-    abundance_unclassified=0#unclassified/num_reads
-    new_file = open(sys.argv[2], "w")
-    new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
-    new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
+    #abundance_unclassified=0#unclassified/num_reads
+
     print("Starting...")
     
     with open(sys.argv[1], "r") as report:
@@ -56,15 +54,21 @@ else:
                 print(str(counting)+"/"+str(round(num_reads/10000)))
                 line_counter=0
     
+    abundance_unclassified=unclassified/num_reads
+    
+    new_file = open(sys.argv[2], "w")
+    new_file.write("Abundace\tnumReads\ttaxRank\ttaxID\tName\n")
+    new_file.write(str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified")
+    
     for elem in matches.values():
         new_file.write("\n"+str(elem[0])+"\t"+str(elem[1])+"\t"+str(elem[2])+"\t"+str(elem[3])+"\t"+str(elem[4]))
 
-    abundance_unclassified=unclassified/num_reads
-    new_file.close()
+    
+    """new_file.close()
     with open(sys.argv[2], 'r') as f:
         lines=f.readlines()
         lines[1]=str(abundance_unclassified)+"\t"+str(unclassified)+"\t"+"U\t0\tunclassified\n"
 
     with open(sys.argv[2], 'w') as f:
         for line in lines:
-            f.write(line)
+            f.write(line)"""
