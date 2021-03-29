@@ -6,7 +6,7 @@ configfile: "config.yaml"
 DI= dict(config["dataIndex"])
 PATH = config["path"]
 SAMPLES = "gridion366"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'kaiju'#diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
+TOOLS= 'ccmetagen'#diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
 RUNS='default'# medium restrictive'.split()
 
 rule all:
@@ -249,7 +249,7 @@ rule clark: #output is csv, watch out
         files = "{PATH}/data/{sample}.fastq",
 	targets = "/mnt/fass1/database/clark_database/targets.txt"
     output:
-        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
+        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
@@ -294,8 +294,8 @@ rule kma:
         #db = DI['ccmetagen']+"compress_ncbi_nt/ncbi_nt",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res",
-        "{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
+        resultat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res",
+        mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
     benchmark:
         "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8
@@ -306,7 +306,7 @@ rule kma:
     params:
         db = DI['ccmetagen']+"/compress_ncbi_nt/ncbi_nt"
     shell:
-        'kma -i {input.files} -t_db {params.db} -o {output} -t {threads} -1t1 -mem_mode -and -ef'
+        'kma -i {input.files} -t_db {params.db} -o {output.resultat}[:-4] -t {threads} -1t1 -mem_mode -and -ef'
 
 rule ccmetagen: #watch output 
     input:
