@@ -8,17 +8,30 @@ import matplotlib.pyplot as plt
 def getGroundTruth(report):
     # calculates the number of TP
     data=[]
+    i=0
     with open(report, 'r') as report:
         lines = report.readlines()
         for line in lines:
             line=line.split("\t")
 
             # is it an species entry and is the species in the sample?
-            if line[2] == "S":
-                if line[4].split("\n")[0] in species:  
-                    data.append(1)
+            if "S" in line[2]:
+                i+=1
+                #print(i)
+                if line[2]=="S":
+                    if line[4].split("\n")[0] in species:  
+                        data.append(1)
+                    else:
+                        data.append(0)
                 else:
-                    data.append(0)
+                    for s in species:
+                        if s in line[4].split("\n")[0]:
+                            print(line)
+                            data.append(1)
+                            break
+                    else:
+                        data.append(0)
+    print(i)
     return data
 
 def getPrediction(threshold, report):
@@ -31,14 +44,14 @@ def getPrediction(threshold, report):
         lines = report.readlines()
         for line in lines:
             line = line.split("\t")
-            if line[2]=="S":
+            if "S" in line[2]:
                 num_species+=1
-
                 if float(line[0]) >= float(threshold):
                     positive_spec.append(line)
                     prediction.append(1)
                 else:
                     prediction.append(0)
+    print(len(prediction))
     return prediction
 
 def getAbundances(report):
@@ -48,9 +61,9 @@ def getAbundances(report):
         counter=0
         for line in lines[1:]:
             line = line.split("\t")
-            if line[2]=="S":
+            if "S" in line[2]: #line[2]=="S"
                 abundances.append(float(line[0]))
-    print(len(abundances))
+    #print(len(abundances))
     return abundances
 
 
@@ -108,9 +121,13 @@ def calcOneAUPR_binary(prediction, groundTruth):
 def calcOneAUPR_abundance(prediction_abundance, groundTruth):
     # for a given th
     return sklearn.metrics.average_precision_score(groundTruth, prediction_abundance)
-
+def calcFPR(tp, fp, tn, fn):
+    try:
+        return fp/(fp+tn)
+    except Exception:
+        return 0
 def calcAUPRCurve(threshold, report, stats):
-    groundTruth=getGroundTruth(report)
+    #groundTruth=getGroundTruth(report)
     precisions=[]
     recalls=[]
     auprs_bin=[]
@@ -166,17 +183,21 @@ def plotting(stats="", precision=[], recall=[], auprs=[]):
     #precision.reverse()
     #print(precision[1:5])
 
-    #recall.reverse()
+    recall.reverse()
+    precision.reverse()
     #auprs.reverse()
     #auprs_1=calcOneAUPR_abundance(groundTruth, precision)
     print(auprs)
    # plt.plot(recall, precision)#recall[1:], precision[1:])
     plt.plot(recall, precision)
-    #plt.title(str(name)+"\nAUPRC:"+str(round(aupr, 5))+"\nASP:"+str(asp))
+    plt.title("gridion364_default.centrifuge.areport")
     plt.xlabel("recall")
-    plt.xlabel("precision")
-    plt.xticks([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
-    plt.yticks([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
+    plt.ylabel("precision")
+    plt.xticks([0, 0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
+    plt.yticks([0, 0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
+
+    from numpy import trapz
+    print(trapz(precision, dx=0.001))
     plt.show()
     
 
@@ -190,4 +211,5 @@ else:
 species = getting.get_species(sys.argv[2])
 groundTruth=getGroundTruth(sys.argv[1])
 calcAUPRCurve([i*0.001 for i in range(1, 100001)], sys.argv[1], sys.argv[3])
-#plotting(stats=sys.argv[3])
+plotting(stats=sys.argv[3])
+
