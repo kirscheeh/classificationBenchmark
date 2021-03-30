@@ -5,16 +5,60 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion366"# gridion366".split(" ")#list(config["samples"])
-TOOLS= 'ccmetagen'#diamond centrifuge kraken2 clark kaiju'.split(" ")#list(config["classification"])
-RUNS='default'# medium restrictive'.split()
+SAMPLES = "gridion366" #list(config["samples"])
+TOOLS= 'clark'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+RUNS='default'#'medianHitLength'#'quals'# 'default medium restrictive'.split()
+
+import scripts.getting
+
 
 rule all:
     input:
-#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-#       expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+# CLASSIFICATION 
+#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+# GENERATING (comparable) REPORTS
+#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#       expand("{path}/result/classification/ccmetagen/{sample}.{tool}.intermediate.res", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
+
+rule diamond_db:
+    input: 
+        faa="/mnt/fass1/kirsten/databases/diamond_all/faa/full_proteome_bacteria_scerevisiae_cneoformans.faa",
+        map="/mnt/fass1/genomes/new_bacteria/bacteria_blast_db/prot_accession2taxid.txt",
+        nodes="/mnt/fass1/kirsten/databases/diamond/nodes.dmp",
+        names="/mnt/fass1/kirsten/databases/diamond/names.dmp"
+    output:
+        "/mnt/fass1/kirsten/databases/diamond_all/nr.dmnd"
+    benchmark:
+        "/mnt/fass1/kirsten/result/classification/benchmarks/diamond.db.benchmark.txt"
+    conda:
+        "envs/diamond.yaml"
+    params:
+        "/mnt/fass1/kirsten/databases/diamond_all/nr"
+    threads: 8
+    shell:
+        "diamond makedb --in {input.faa} -d {params} --taxonmap {input.map} --taxonnodes {input.nodes} --taxonnames {input.names}"
+
+rule centrifuge_db:
+    input:
+        map = "/mnt/fass1/kirsten/databases/centrifuge_all/seqid2taxid.map",
+        nodes = "/mnt/fass1/kirsten/databases/centrifuge_all/taxonomy/nodes.dmp",
+        names ="/mnt/fass1/kirsten/databases/centrifuge_all/taxonomy/names.dmp",
+        faa="/mnt/fass1/kirsten/databases/centrifuge_all/fna/full_bacteria_scerevisiae_cneoformans.fna"
+    output:
+       file1= "/mnt/fass1/kirsten/databases/centrifuge_all/bac_cer_neo.1.cf",
+       file2= "/mnt/fass1/kirsten/databases/centrifuge_all/bac_cer_neo.2.cf",
+       file3= "/mnt/fass1/kirsten/databases/centrifuge_all/bac_cer_neo.3.cf"
+    threads: 8
+    benchmark:
+        "/mnt/fass1/kirsten/result/classification/benchmarks/centrifuge.db.benchmark.txt"
+    params:
+        "/mnt/fass1/kirsten/databases/centrifuge_all/bar_cer_neo"
+    conda:
+        "envs/centrifuge.yaml"
+    shell:
+        "centrifuge-build -p {threads} --conversion-table {input.map} --taxonomy-tree {input.nodes} --name-table {input.names} {input.faa} {params}"
 
 # creating the project structure
 rule create:
@@ -27,6 +71,13 @@ def get_run(wildcards): #returns the current value of variable/wildcard run
 def get_tool(wildcards): #returns the current value of variable/wildcard run
     return wildcards.tool
 
+def get_medianHitLength(wildcards):
+    return scripts.getting.get_seqLength(str(PATH[0])+"/data/"+str(wildcards.sample)+".fastq")#/2
+ #   elif str(wildcards.tool) == "kaiju":
+  #      lengths_default = {'gridion364':201, 'gridion366':194}
+   #     return lengths_default[str(wildcards.sample)]/2
+    # return wildcards.sample # scripts.getting.get_seqLength({PATH}+str(wildcards.sample)+".fastq")/2
+
 rule centrifuge:
     input: 
         fastq = "{PATH}/data/{sample}.fastq"
@@ -35,13 +86,11 @@ rule centrifuge:
         report= "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.report"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.centrifuge.benchmark.txt"
-        #repeat("benchmarks/{sample}.bwa.benchmark.txt", 3 für 3 runs
     threads: 8
     params:
         runid=get_run,
-	db = DI["centrifuge"]
-    log:
-        "{PATH}/result/classification/centrifuge/{run}/{sample}_{run}.centrifuge.log"
+	db = DI["centrifuge"],
+#        medianlength=get_medianHitLength
     conda:
        "envs/centrifuge.yaml"
     run:
@@ -54,10 +103,10 @@ rule centrifuge:
         
         if 'default' in {params.runid}:
             shell('centrifuge -q -x {params.db} {input.fastq} --report-file {output.report} -S {output.files} --ignore-quals')
-        elif 'medium' in {params.runid}: 
-            print("Sure")
-        elif 'restrictive' in {params.runid}: 
-            print("Sure")
+        elif 'quals' in {params.runid}: 
+            shell('centrifuge -q -x {params.db} {input.fastq} --report-file {output.report} -S {output.files}')
+        elif 'medianHitLength' in {params.runid}: 
+             shell('centrifuge -q -x {params.db} {input.fastq} --report-file {output.report} -S {output.files} --ignore-quals --min-hit-length {params.medianlength}')
         else:
             print("Centrifuge -- Nothing to be done here:", {params.runid})
 
@@ -87,8 +136,8 @@ rule kraken2:
         
         if 'default' in {params.runid}:
             shell('kraken2 --db {input.db} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
-        elif 'medium' in {params.runid}: 
-            print("Indeed")
+        elif 'medium' in {params.runid}:#confidence set 
+            shell('kraken2 --db {input.db} --report {output.report} --confidence 0.05 --threads {threads} --output {output.files} {input.files}')
         elif 'restrictive' in {params.runid}: 
             print("Sure") 
         else:
@@ -105,7 +154,8 @@ rule kaiju:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kaiju.benchmark.txt'
     threads: 4
     params:
-        runid=get_run
+        runid=get_run,
+        medianHitLength=get_medianHitLength
     log:
         '{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.log'
     conda:
@@ -114,13 +164,13 @@ rule kaiju:
         # -t    name of nodes.dmp file
         # -f    name of database (.fmi) file
         # -i    input file containing fasta/fastq
-        # -o    name of output filetax  
+        # -o    name of output file  
         # -m    minimum match length (default: 11)
         # -E    minimum e-value in Greedy mode (which is default)
         if 'default' in {params.runid}:
             shell('kaiju -t {input.nodes} -f {input.db} -i {input.files} -o {output.files} -z {threads} -v')
-        elif 'medium' in {params.runid}:
-            pass
+        elif 'medianHitLength' in {params.runid}:
+            shell('kaiju -t {input.nodes} -f {input.db} -i {input.files} -o {output.files} -z {threads} -v -m {params.medianHitLength}')
         elif 'restrictive' in {params.runid}:
             pass
         else:
@@ -249,7 +299,8 @@ rule clark: #output is csv, watch out
         files = "{PATH}/data/{sample}.fastq",
 	targets = "/mnt/fass1/database/clark_database/targets.txt"
     output:
-        files = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" 
+        helper = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv",
+        files= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
@@ -266,7 +317,7 @@ rule clark: #output is csv, watch out
         # -m        mode of execution
 
         if 'default' in {params.runid}:
-            shell('CLARK --long -O {input.files} -R {output} -D {input.db} -n {threads} -T {input.targets}')
+            shell('CLARK --long -O {input.files} -R {output.files} -D {input.db} -n {threads} -T {input.targets}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -294,8 +345,8 @@ rule kma:
         #db = DI['ccmetagen']+"compress_ncbi_nt/ncbi_nt",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        resultat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res",
-        mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
+        resultat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.fortime.res",
+        mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.fortime.mapstat"
     benchmark:
         "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8

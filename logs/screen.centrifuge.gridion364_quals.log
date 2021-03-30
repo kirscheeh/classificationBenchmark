@@ -1,0 +1,29 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	centrifuge
+	2[0m
+[32m[0m
+[32mrule centrifuge:
+    input: /mnt/fass1/kirsten/data/gridion364.fastq
+    output: /mnt/fass1/kirsten/result/classification/centrifuge/quals/gridion364_quals.centrifuge.classification, /mnt/fass1/kirsten/result/classification/centrifuge/quals/gridion364_quals.centrifuge.report
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/quals/gridion364_quals.centrifuge.benchmark.txt
+    wildcards: sample=gridion364, PATH=/mnt/fass1/kirsten, run=quals
+    threads: 8[0m
+[32m[0m
+report file /mnt/fass1/kirsten/result/classification/centrifuge/quals/gridion364_quals.centrifuge.report
+Number of iterations in EM algorithm: 0
+Probability diff. (P - P_prev) in the last iteration: 0
+Calculating abundance: 00:00:00
+[32mFinished job 1.[0m
+[32m1 of 2 steps (50%) done[0m
+[32m[0m
+[32mlocalrule all:
+    input: /mnt/fass1/kirsten/result/classification/centrifuge/quals/gridion364_quals.centrifuge.classification
+    jobid: 0[0m
+[32m[0m
+[32mFinished job 0.[0m
+[32m2 of 2 steps (100%) done[0m
