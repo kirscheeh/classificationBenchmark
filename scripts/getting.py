@@ -109,7 +109,7 @@ def get_abundances(areport, config):
 
         os.system('rm helping.log')
     #print(total)
-    print(list(predictions.values()))
+    #print(list(predictions.values()))
     return predictions
 
 #get_abundances(sys.argv[1], sys.argv[2])
@@ -130,7 +130,7 @@ def get_ASP(areport, truth_report):
     except Exception as e:
         print("An error occured.", e)
 
-print("ASP:", get_ASP(sys.argv[1], sys.argv[2])) 
+#print("ASP:", get_ASP(sys.argv[1], sys.argv[2])) 
 # measured [0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
 # expected [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
 

@@ -8,6 +8,10 @@
   - existing benchmarking datasets
   - --> they did three things: clade exclusion, high-complexity fold standard CAMI assembly and recently publisehd sequences
 
+
+- centrifuge
+  - no difference if w/ or w/o -ignore-quals 
+
 # Table AUPR, ASP
 | sample     	| tool       	| AUPR   	| baseline 	| ASP     	|
 |------------	|------------	|--------	|----------	|---------	|

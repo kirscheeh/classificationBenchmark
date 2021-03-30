@@ -190,7 +190,7 @@ def plotting(stats="", precision=[], recall=[], auprs=[]):
     print(auprs)
    # plt.plot(recall, precision)#recall[1:], precision[1:])
     plt.plot(recall, precision)
-    plt.title("promethion367_default.kraken2.areport")
+    plt.title("gridion364_quals.centrifuge.areport")
     plt.xlabel("recall")
     plt.ylabel("precision")
     plt.xticks([0, 0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
