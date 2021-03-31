@@ -9,3 +9,4 @@ scripts/processingOutput/__pycache__/*
 taxdump.tar.gz
 testsnakemake/*
 stats/*.files
+unwichtigerTest
