@@ -29,7 +29,6 @@
 # Abundances Species, gridion366
 |            	| B. subtilis 	| L. monocytogenes 	| E. faecalis 	| S. aureus 	| S. enterica 	| E. coli 	| P. aeruginosa 	| L. fermentum 	| S. cerevisiae 	| C. neoformans 	| total   	|   AUPR	|   Abundance Similarity Profile	|   	|
 |------------	|-------------	|------------------	|-------------	|-----------	|-------------	|---------	|---------------	|--------------	|---------------	|---------------	|---------	|---	|---	|---	|
-|truth|0.12|0.12|0.12|0.12|0.12|0.12|0.12|0.12|0.02|0.02|1.0|1.0|0.0|
 | ccmetagen  	|   0.00024   	|      0.76197       	|    0   	|  0   	| 0           	|    8.718e-07	|   0.03007      	|        0    	|       0.002  	|    0 	|   0.7943	|   0.79333	|  	|   	|
 | clark      	|       	|           	|     	|     	|       	|  	|         	|            	|              	|              	|   	|   	|   	|   	|
 | centrifuge 	| 0.0107        	| 0.836           	| 0.0003      	| 1.922e-05   	| 0.00054      	| 0.000604  	| 0.04599       	| 5.174e-05       	| -             	| -             	| 0.89429 	|   0.61937	|   	|   	|
@@ -37,9 +36,8 @@
 | kaiju      	| 0.0005     	| 0.579            	| 0.0001      	| 4.008e-05     	| 0.000155      	| 0.00018  	| 0.00971       	| 4.308e-05        	| -             	| -             	| 0.58978 	|   0.41206	|   	|   	|
 | kraken2    	| 0.01027       	| 0.8129           	| 0.0016      	| 3.79e-05     	| 0.00048      	| 0.00048  	| 0.0398       	| 5.15e-05     | 0.0069        	| 2.699e-05          	| 0.87261 	|   0.26045	|   	|   	|
 |kslam|läuft|noch|||||||||||||
-
+- hier keine Verteilung bekannt wie bei 364 --> Species sind log-verteilt, L. monocytogenes mitknapp 89% am meisten, S. cerevisiae mit unter 0.0009% am wenigsten
 ![](pics/gridion366.barplot.png)
-# line at most abundance of species, which is l. monocitogenes
 # Precision Recall Curves + Pie Charts, gridion366
 | PR Curve <br> (eigenes Skript) | PR curve <br> (sklearn)| Pie Chart Species-Lvl <br> (Abundance>=1%) |
 |:---:|:---:|:---:|
