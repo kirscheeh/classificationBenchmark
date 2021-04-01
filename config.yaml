@@ -1,21 +1,7 @@
 # path to folder where generated ourtputs should be saved, aka project folder
 path: [/mnt/fass1/kirsten]
 # path to the folders where the needed databases and/or indices are located
-dataIndex: {
-  taxmaps: '/mnt/fass1/kirsten/databases/taxmaps', 
-  deepmicrobes: '/mnt/fass1/kirsten/databases/deepMicrobes', 
-  kaiju: '/mnt/fass1/kirsten/databases/kaiju', 
-  kaiju_all: '/mnt/fass1/kirsten/databases/kaiju_all',
-  kslam: '/mnt/fass1/kirsten/databases/kslam', 
-  kraken2: '/mnt/fass1/database/kraken2-database', 
-  centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed', 
-  centrifuge_all: '/mnt/fass1/kirsten/databases/centrifuge_all/bar_cer_neo',
-  clark: '/mnt/fass1/kirsten/database/clark', 
-  metaothello: '/mnt/fass1/kirsten/databases/metaothello', 
-  diamond: '/mnt/fass1/kirsten/databases/diamond',
-  diamond_all: '/mnt/fass1/kirsten/databases/diamond_all', 
-  ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen', 
-  catbat: '/mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618'}
+dataIndex: {taxmaps: '/mnt/fass1/kirsten/databases/taxmaps', deepmicrobes: '/mnt/fass1/kirsten/databases/deepMicrobes', kaiju: '/mnt/fass1/kirsten/databases/kaiju', kaiju_all: '/mnt/fass1/kirsten/databases/kaiju_all',kslam: '/mnt/fass1/kirsten/databases/kslam', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed', centrifuge_all: '/mnt/fass1/kirsten/databases/centrifuge_all/bar_cer_neo',clark: '/mnt/fass1/kirsten/database/clark', metaothello: '/mnt/fass1/kirsten/databases/metaothello', diamond: '/mnt/fass1/kirsten/databases/diamond',diamond_all: '/mnt/fass1/kirsten/databases/diamond_all', ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen', catbat: '/mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618'}
 
 # incorporated tools
 
@@ -23,10 +9,6 @@ dataIndex: {
 
 classification: {kaiju, diamond, taxmaps, deepmicrobes, kslam, kraken2, centrifuge, clark, metaothello, benchmarks, catbat}
 
-samples: 
-{gridion364: '/mnt/fass1/kirsten/data/gridion364.fastq.gz', 
-gridion366: '/mnt/fass1/kirsten/data/gridion366.fastq.gz', 
-promethion365: '/mnt/fass1/kirsten/data/promethion365.fastq.gz', 
-promethion367: '/mnt/fass1/kirsten/data/promethion367.fastq.gz'}
+samples: {gridion364: '/mnt/fass1/kirsten/data/gridion364.fastq.gz', gridion366: '/mnt/fass1/kirsten/data/gridion366.fastq.gz', promethion365: '/mnt/fass1/kirsten/data/promethion365.fastq.gz', promethion367: '/mnt/fass1/kirsten/data/promethion367.fastq.gz'}
 
 species: ['Bacillus subtilis', 'Listeria monocytogenes', 'Enterococcus faecalis', 'Staphylococcus aureus', 'Salmonella enterica', 'Escherichia coli', 'Pseudomonas aeruginosa', 'Lactobacillus fermentum', 'Saccharomyces cerevisiae', 'Cryptococcus neoformans']

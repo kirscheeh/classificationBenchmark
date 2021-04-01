@@ -1,0 +1,24 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	2	kma
+	3[0m
+[32m[0m
+[32mrule kma:
+    input: /mnt/fass1/kirsten/data/promethion367.fastq
+    output: /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.res
+    log: /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.log
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/promethion367.kma.benchmark.txt
+    wildcards: sample=promethion367, PATH=/mnt/fass1/kirsten
+    threads: 8[0m
+[32m[0m
+# Collecting k-mer scores.
+# Reading inputfile: 	/mnt/fass1/kirsten/data/promethion367.fastq
+# Phred scale:	33
+#
+# Total time used for DB loading: 192.27 s.
+#
+# Finding k-mer ankers

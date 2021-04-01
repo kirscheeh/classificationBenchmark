@@ -5,8 +5,8 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364" #list(config["samples"])
-TOOLS= 'catbat'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion364"#list(config["samples"])
+TOOLS= 'clark'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'#'medianHitLength'#'quals'# 'default medium restrictive'.split()
 
 import scripts.getting
@@ -15,11 +15,11 @@ import scripts.getting
 rule all:
     input:
 # CLASSIFICATION 
-       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
 #       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-#       expand("{path}/result/classification/ccmetagen/{sample}.{tool}.intermediate.res", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/ccmetagen/{sample}.{tool}.intermediate.res", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
 rule diamond_db:
@@ -300,13 +300,14 @@ rule clark: #output is csv, watch out
 	targets = "/mnt/fass1/database/clark_database/targets.txt"
     output:
         helper = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv",
-        files= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
+        #files= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
     params:
-            db = "/mnt/fass1/kirsten/database/clark/",
-	    runid=get_run
+            db = "/mnt/fass1/kirsten/databases/clark/",
+	    runid=get_run,
+            files= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     log:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.log"
     conda:
@@ -317,7 +318,7 @@ rule clark: #output is csv, watch out
         # -m        mode of execution
 
         if 'default' in {params.runid}:
-            shell('CLARK --long -O {input.files} -R {output.files} -D {input.db} -n {threads} -T {input.targets}')
+            shell('CLARK --long -O {input.files} -R {params.files} -D {params.db} -n {threads} -T {input.targets}')
         elif 'medium' in {params.runid}:
             pass
         elif 'restrictive' in {params.runid}:
@@ -331,7 +332,7 @@ rule clark_abundance:
     output:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report"
     params:
-        db = DI['clark']+"/",
+        db = "/mnt/fass1/database/clark_database",
         unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     conda:
         'envs/main.yaml'    
@@ -345,8 +346,8 @@ rule kma:
         #db = DI['ccmetagen']+"compress_ncbi_nt/ncbi_nt",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        resultat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.fortime.res",
-        mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.fortime.mapstat"
+        resultat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.res",
+        mapstat="{PATH}/result/classification/ccmetagen/{sample}.kma.intermediate.mapstat"
     benchmark:
         "{PATH}/result/classification/benchmarks/{sample}.kma.benchmark.txt"
     threads: 8

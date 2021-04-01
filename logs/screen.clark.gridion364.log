@@ -1,0 +1,46 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	clark
+	1	clark_abundance
+	3[0m
+[32m[0m
+[32mrule clark:
+    input: /mnt/fass1/kirsten/data/gridion364.fastq, /mnt/fass1/database/clark_database/targets.txt
+    output: /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.classification.csv
+    log: /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.log
+    jobid: 2
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_default.clark.benchmark.txt
+    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364
+    threads: 8[0m
+[32m[0m
+CLARK version 1.2.5 (UCR CS&E. Copyright 2013-2018 Rachid Ounit, rouni001@cs.ucr.edu) 
+Loading database [/mnt/fass1/kirsten/databases/clark/db_central_k31_t15625_s1610612741_m0.tsk.*] ...
+Loading done (database size: 131353 MB read, with sampling factor 2)
+Mode: Default,	Processing file: /mnt/fass1/kirsten/data/gridion364.fastq,	 using 8 CPU.
+ - Assignment time: 2051.83 s. Speed: 102096 objects/min. (3491390 objects).
+ - Results stored in /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.classification.csv
+[32mFinished job 2.[0m
+[32m1 of 3 steps (33%) done[0m
+[32m[0m
+[32mrule clark_abundance:
+    input: /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.classification.csv
+    output: /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.report
+    jobid: 1
+    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364[0m
+[32m[0m
+File: /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.classification.csv    
+Loading nodes of taxonomy tree... done
+Start retrieving lineage for each target identified (3280)... done.
+Retrieving scientific names from taxonomy tree... done.
+[32mFinished job 1.[0m
+[32m2 of 3 steps (67%) done[0m
+[32m[0m
+[32mlocalrule all:
+    input: /mnt/fass1/kirsten/result/classification/clark/default/gridion364_default.clark.report
+    jobid: 0[0m
+[32m[0m
+[32mFinished job 0.[0m
+[32m3 of 3 steps (100%) done[0m
