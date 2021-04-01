@@ -5,8 +5,8 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion366" #list(config["samples"])
-TOOLS= 'clark'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion364" #list(config["samples"])
+TOOLS= 'catbat'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'#'medianHitLength'#'quals'# 'default medium restrictive'.split()
 
 import scripts.getting
@@ -15,10 +15,10 @@ import scripts.getting
 rule all:
     input:
 # CLASSIFICATION 
-#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
 #       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #       expand("{path}/result/classification/ccmetagen/{sample}.{tool}.intermediate.res", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
@@ -409,8 +409,8 @@ rule catbat: #???
         taxonomy = DI['catbat']+"/2020-06-18_taxonomy",
         files = "{PATH}/data/{sample}.fastq"
     output:
-        #contigs = "{PATH}/result/classification/catbat/contigs/{sample}_{run}.catbat.contigs",
-        bins = "{PATH}/result/classification/catbat/default/{sample}_{run}.catbat.bins",
+        contigs = "{PATH}/result/classification/catbat/default/{sample}_{run}.catbat.classification",
+        #bins = "{PATH}/result/classification/catbat/default/{sample}_{run}.catbat.bins",
         #name = "{PATH}/result/classification/catbat/bins/renamedBins/{sample}_{run}.catbat.rbins",
         #report = "{PATH}/result/classification/catbat/bins/{sample}_{run}.catbat.report",
 	output="{PATH}/result/classification/catbat/default/{sample}_{run}.out.CAT.ORF2LCA.txt"
@@ -426,8 +426,8 @@ rule catbat: #???
     run:
         #'CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}',
         if 'default' in {params.runid}:
-            #shell('CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}')
-            shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -n {threads}')
+            shell('CAT contigs -c {input.files} -d {input.db} -t {input.taxonomy} -o {output.contigs}')
+            #shell('CAT bins -b {input.files} -d {input.db} -t {input.taxonomy} -o {output.bins} -n {threads}')
             #shell('CAT add_names -i {output.bins} -o {output.names} -t {input.taxonomy} --only_official'),
             #shell('CAT summarise -i {output.names} -o {output.report}')
         elif 'medium' in {params.runid}:

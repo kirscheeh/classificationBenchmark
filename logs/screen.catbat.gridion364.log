@@ -1,0 +1,2882 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	catbat
+	2[0m
+[32m[0m
+[32mrule catbat:
+    input: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_CAT_database, /mnt/fass1/kirsten/data/gridion364.fastq, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy
+    output: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.out.CAT.ORF2LCA.txt
+    log: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.log
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_default.catbat.benchmark.txt
+    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364
+    threads: 8[0m
+[32m[0m
+# CAT v5.2.3.
+
+CAT is running. Protein prediction, alignment, and contig classification are carried out.
+Rarw!
+
+Supplied command: /data/fass1/kirsten/result/classificationBenchmark/.snakemake/conda/949d0def/bin/CAT contigs -c /mnt/fass1/kirsten/data/gridion364.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_CAT_database -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification
+
+Contigs fasta: /mnt/fass1/kirsten/data/gridion364.fastq
+Taxonomy folder: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy/
+Database folder: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_CAT_database/
+Parameter r: 10
+Parameter f: 0.5
+Log file: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification.log
+
+-----------------
+
+Doing some pre-flight checks first.
+[2021-03-31 15:55:52] Prodigal found: Prodigal V2.6.3: February, 2016.
+[2021-03-31 15:55:52] DIAMOND found: diamond version 0.9.34.
+Ready to fly!
+
+-----------------
+
+[2021-03-31 15:55:52] Importing contig names from /mnt/fass1/kirsten/data/gridion364.fastq.
+[2021-03-31 15:57:18] Running Prodigal for ORF prediction. Files /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification.predicted_proteins.faa and /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification.predicted_proteins.gff will be generated. Do not forget to cite Prodigal when using CAT or BAT in your publication.
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+
+
+Warning: saw non-sequence line longer than 10000 chars, sequence might not be read correctly.
+
+[2021-03-31 21:03:41] ORF prediction done!
+[2021-03-31 21:03:41] Parsing ORF file /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification.predicted_proteins.faa
+[2021-03-31 21:04:19] ERROR: found a protein in the predicted proteins fasta file that can not be traced back to one of the contigs in the contigs fasta file: ?>?E@988>77(-&'999>9@;?A=;:<>)363.+,7<:'+/96:976%%%:<?=@?DBLFA6666&'/8@A?:<6(:9B26:=C4<;442-01686<3>98@?BA25@ABF@>+10&&$&%%&1?-5978.@4;A===29:)1A<A=87<50<3:<;>>:>CCE@@778:BD;?>@>@>0324:<;89:??6>?C9&&(&24.&;-951/+.&#$)0307.1+2462345887<:I@?;GGED:&(+==:@968/=D>B<DDD?:79=:CC:=???;9::557:<;:<D7:5:97459;?945(8><:@>BB@@91*"&55><7=?GEGAAFD4:11:',3745$)01<19<??8?@A@3$$%%&&&(218718@@B;?A9;38>@=<>874::8>?@><1%)*'())(&+'*,/25===??430+&%.4:8/8:989:;8-,(4287631643%',''24:ABA7AF?=9333-3335>A>?G?A3A:3/#,7+++,++221=>A44327796=9:?:&==@;<>7%&&.:CD@:1;>9:<@BB6$'173/+**(-::9=33::8:?7021>>D@IA99,')*+$%'(5<AD=>@<-3.7-77,))&6;=878('(4668303+&&&.31<954,2123044=9IA;311636:NBH6085;/9;6:7D>865;'',5218C5=A?><4$+/&&'(&$*97=1><1./0%<93>14666'((56:4C>+,'&&$$2=@B);74;A;=3=AA<A87*0$&'$$1<ACGFA7*+.*'-++%&2:>?=;;46$$$$$6>=<?=<52--0?43<2===1*+78'$165<5CB=<;<=<BA-:A<?@=/+.:>A4*88>;5556&'*8./7<>??=++,.<*,-<21535;:@<@@0?>8@BFA:A@B>=?:3,&5-325057?9<*((;=?A6422#%&#%(%+(4@:;8;?839.?;A56137;<7'%'334;765(?CA?<:;2,0>@4/;9A;<9;879=64322:@=AA::;:3$8.)(+.1(;63@@1.0466953>.+4745>.==:=<:;9>:;=2-((CCAID@AE?B=9*)*7&>.,+-06/6?C@>8<A5''''5+'>=500'6>>DB/45739;A?FAE0;:KF:;=2BD:676%$,++,/;<1..:795$())+))()+<<58618=A>;:;A@GCCA531+)3./59:9..,&**954))/1>?F??=90.'11,%(:@?;<?A<7A>B=?<:?>A-..1.668:.)/39:;55,**%%%$/(&',//45;612*<<=;;A@6??'429?=7:@/GF88<>=;:(*12?<4.8AHD>A:A=8)%%=?B@3)/272/$*-;-<<:;87-))*+78:B=817;6;;21$$(@@<:79:<<@@@C?@9?$8-/=:5++')9462D454.,-*C:;=<531:9@>8;;B>5.9A@AA:0+:::70%':;;B221-=??22=>BD=;346>=9<,&$<=''65&,,90CB?A:3211/.>;FEA@97-9?BDA>@<:;34@BHADA:;?=(4,,1<@=-(&&2@@>68**>895:0.-,%)5557<037<:;,80**/@77=A<;:3;C;24++=?<1/%%&*,28<@DEE<:==AABD847</45001%'&',&-0+&6G@1;9:330,,,$*&''1333%1-+&&+3.))()*0@::;6D@>9@<>:931-)+43116@B3/0,4=;CCBC7C:=;;?@<A>=<80/::;==CCBFC:@?;69<G>78</447<9=@CDB@C;7++.3,669?D45(;9<;><878:D669+%%%&+,,+28>232413A5BA80.--))6;59??::45%$%$$$%0>A@B:513>;<=>=<AA9581?65563<9*'.*()$,13+&%*)&0506>?0'#-33-2<@*'8;??D8<''%*9><',38B=<68<;B<::6:$7:8BA75@=A8&.6((()(&%'(1.782:5B>@::3<?>C?@6:4-/++,2=/9915/)(54;;5431+''%%*0/94CA>A?;0))+*-$'$334>44=66:87:44/*.9<:EA6HC>3677==:770.%%%&+):)22FBF>119;?CA=?;?=<;A@A=CB;34-.%%3$FFFEC61-%%$#)()27..+62.,$-,*:52:8?1=BCHOKD?FEDG<=@A>=<99=@<<478?))):93544,*320)'*&$).+26A?@9:=?>----;62441$+$#&+<8';::<:=944:966574561((*)+,22624<-'(-<7:=72F9=P?8755:F@C@.>;D=:<2>AEILI;<9=48:<?AHGHA7/11376%&$%%798=A:ED>76:=<:;=79/38@CD::5;=9649=5>:?5:<<?3-3&86<=?;=@:@=O@A:9=?IA6?:9:>B?>B@=9)%#%+1%:1:=2/8E;64487<8;<H2HED9=>FJD68:?>=E;973=78204));<536&%%,)-$::E4?@=I>=FAFBMAF@E:7=OJ?N@7MHLCFCE&:K>?KB@ED?8-+'/2:42453:<564A>;EA2<59+)+.#)/27959:<>?GG?9:=;F?<;7,.#%&#%(59:;;9><>?9/+2))+12:;=8.)5'#*?>@B><7>8<;74767?<?>=73&21.4#,A@?05($%(&&4<7:@3<B@;8,-)<<=G<;B@8;.($$&.169>='8?:..01,,53-'1,/2..)/2/8;949=5.39384:@?;:;%$+0)67@:<GB<<<4A>>@99C@>;811042?<BBLD:?8($3)=85216;8;6>;>>=7A:>2((%11?>>=;B>--.;:68822015<??4+BE@;90%-#&'%%$%$&.44<435:5)(7+/.(+%#$333-41**26787>?9'&'%.398294AI;:400')'&%+@@>>CDQEA?<>5(%%,5651489$95754*815;)%/7433023934<<>>=:??B1-?:0)78F@879C?A=>;8>6-%%.*5107;7'%$$145797:D99;.0+5407:;364;>@H<=A:353528:=A<3676::%%),/00<B5<<664310041+55689;DA@>>=:**,./$+/13;3$:;=8555&(.0>=5774,,954'$'&%.(()(,/>B?<;7??@;=;7HHK@@.5828>6$;?>563<<:;A;9489;7<9799<:EKG??=@>;':8/://3/8:/.153587:*A>;@;;;095.,+,5@@=CAB@A7;68244A8<11++$1;<<9()(7@>DCI?9=CA$$$(=>;==6654<<E97/7-%0/1--/9/).036$6$37.46@;<=+$,=<=<87+8:898>=/---%..7<ABGHG606<<76<=@<C=6;7720)'@7710,23,*2.33=A>498?>9@DDE15#/,02.11,6%3)))+14;54=&(:;832,))$$#%%-,12))+<??.:5;91(&%''-5%+'8:<A>8/$%%6/.897>+3EC@..0.'&543=@?BCB>>7B9+8:C=>>?66;00E1.9;6=96$$()::8<CBAAAD@?=::8446;<==>=14?BB:$-.-.0456;=?=?04>?F@7*(0/4>DA=BAC?87BEECBCH@4;==88<:67556877/79,7%>:;.873&:<<?6;8@778<@:<7:8./65,=25''--,,$-''+,.98%&&&0210(''(37;4&,<?BFD9:81-7666><;0(2-/.57952**5;;467;<%*%3-649<:B1>76D56CDC86689;-;9444698-4202++1:5+++2:'()0478A@;<,-,><5D>;'-().:8?@41067?IHB3565BBA419180:?<@;$%9)):I?<7>9:D@C:67,0/<8887*&$$+38CC=0>9:6433868:1=80+.111/017EC?>:66<<HF642;:8?<996>B<?>>4237;::7@827,$$$%$%'2/6856779:C1,66432:51/.--.8876'/*#93=0+6485554/$11?8+-,,.%5:><=@-*'#(-3-0/1>9:?AC;<<::CD,2<>?::@:56,2346:72097.::9@EF<::41,526D?>CB7==4%-26:7??..0/1/46<A@=;;734426?JG>?=//6676632-.07<6(.(.2,-5*..,&&&&%*?>:135,48,A;BAC/%%%%-6/9:.3:3-*-)/53.-0$&%#$%%'--++#)035=:7C:@?576?=/'6//1&),;.;4009*(*+,))&2322;@:4?740.(5)$$&&'%&&&$'26/+3/&&'&&7<3=AE3//4'.()7*(,=;=7.75>B7;::<:''+)%';>@876>?>=;=9>;<0,,&<<;&---49305;>?>??>4<=@>?1?>=6/7763((('6470/65,*.*'$&&%&$%$&&'+//6+*/*$$$)4%$--'-,..@;401%89::+6:<B?.=<@;<<9;58:53,ED=>;(88;,-,*4AA8/::5E>>>EA>888?B<9<787/'.3<<%1+6;A;2/012<AA?AB9D98%8=></&%#&((,8983.1:B@;<?<<@5:B%%---(0&*&-:76??703<23/@>?=8&'')166%,+6@C>?77=A;=6;32=>?0/.,0;2)+:CAA;;78;:2243553?><,/2B=4?@74<.8:BD?6/0*,&$$%'))&$138=8CEIB3$2-**4141--+3,%'47<?75-*)4-02344=3/75560%#%&(+)*&),./''((8888<?:68,/),:;@>?:6*/12<)'&ADH>733&#$#&+84@9?6<8=8DB>20/.+,199??>@:=80//64'<>AC=:=<6:576882-)((,232<<:5%01007<*,1:5;>@DB@<?><4&*&&&4.,);;27:;;:(%$(&%'/..+,+)&)(%))4FEEA5&>AB;C8:5A?;>7<<:;F4=@?/.10654-<=>>524:?<@B?CC67767:B<923.016:65,(&%%%3,+&%$%5<:@C<B?7;)))9;8-0-1/189)67EBC;3%8:9;618>789:10.1/'<;<=:9:2*--:8?7749:?:''(101:9::878B4445C@>:75+00'+/+%&$(//06**%%%699=91155;A--$$$%79*,-,-##$$&0./.000144)5=>D3,,-%568<??4+,,09),;8&'*--5=<?4.)>><(B;:9?7*75:AEIEHB8,87896/+2;56;;9&&5AAE?7?:1244GF55:<>><.-.)15A?9?3>)1835-0''30-/,#*/9=9AC:;/874+//48=8%$$%;94@2>?98H=6+/<:;9/3/''(29/895295734=9$)+<?661-/)'$'%2/:88==446DC?A?=?BCEE429?@=/(+-*18;5;<:G?78:>;;3//4<<@A@2.-0;<=>C;5*+2$)+8334%*111792524>695:<;0&))$'$$2-($-+)'677326;;=9-979;>@H?8678))=@94==GEGAC@DB/8..4--)'&&$%'))*-%$#%%%$$$'''/(:):''(-.)&()'%$&%(%$*'=;1>G?15=8<<>&+$$24=7&./08+.+'01?=C>=<G=:??/7/=@5>>5680*1<9+"&%$+/1@?=?><;D>2>:63<3'%&(%--,06$$'%7289>;:9==C<:>FF0571021=;<-98==:$$-6563-,)(61=>;4176;23@D=@5235525975-:BB=<6@<;08;<?A==78-,-->9=A8/28?9EGDEABCJG?2.,$%%%4/.$'+,+-88+16-94))><=678/:<:://*58A454((').0==79>6**)(0687$=>@8>D61>B@<>0''54;985.)*.3-(&68;:+///7;6+/0-,%%$''%(7.18>C7&%''9/:<5<031.156;&&&%2$$%(+92;;9634(@?A?:1:*24;+$%'3//'%)'618>9%+563)'&'))343'%0%*??78*,$%&'(($&+5&).+&'0/-5%(%&().%',,556'*%*+*6..&'#$'$%&''#$'(3)''(+,>:<:13)..8<=<-%$'($###'#%-.*+962428<'.;,($228=<42:;&5.$0%#$$#'1/$235BC@>/6>>988.,---.>98*7<77=5476/0%'*(('%$$*,82...51-6*;..#&($)62<>5=?D?:.((3*-)&%%%$12415%<@A6;6'./8777$#&%)0+))'#48@:<<1A?D<))*+$+3'29:1DIL:1@AB98.$%*/.>C<7*4$50440,=?<>HC38>DD@CD@6?B>B79,.44623'&98>=/8-'/1-53$$,,%4<;463$1$>;ED>&$031:3<0.,,08:/0,'3##$4;EICA@;4122(4450%'100/79;=6*-1645.('565354.85<,.354;;:<7232*(74<+092-0::589<:42+-=?67;;A45:<A>A,+6<FAD937<;8<56)*43<@4>;*(**&(%,'%&',7;:=<9=@:979<3522353-$%69;@5=<<:3472*5/2-(38132/*5&(%*(-/&++*5+,+''>?.+'*,374=?<<@A-1=BC03536733,*/$($"%&,1,028969@D<<1(453/)#%-5(<60/110682259268//04)$$&)-,'2&',(+0'&.6:??<<43('.&'-)'%$.5,%+212<>%1@A3+?:>AB/B@=>=36'$$%')&)*,-.8<>>AB?FE=2@9<?=@<66B<==A8*%$&&&'%%*$*'*5>9?16++<?>27;;5+'))*?A?*5*$)+*,76)?@=9>1/&&&$(AE;KGE31/./5=91&()56>C;<=;;9<=A?=08:%1>IB<8-+,**''+*)*)*($*+2;:;:'*4;8=>FED98==D;<?>AA?D?>5ADAAA?2&'$&**3''/2:9A<>?7?A@;4@?8))%''(;+,-.;AC8.<8<>?;9?C?C<55(((($&,558<<DB;CC<;FB8;1%-8=4-:?>;;7/(+()%%::/<I?<;8=?=>8095;841&&+9;/C?89=)5>;<=<@AC:1<>?69@@9/$$58*8;D@>>>>*$$;'*7-$;30+2113<;A@>?7,3.1/1087=9,%%*00A@?@>@B@;534/'+%(4.+*11009<:.56:9,%$#''%+(*+05555:==;>@CD>9.0:9;.5>=:<;=;738@EE?5/99'/27:9B@E>;<GB?6@;<959549:;:1?<%$*1-**+.:;>6--7;3<A>;;<=99AA>D:<9''))6@C;9;=>)))'04+/?A42-*(1&(41;0@DEE8564&3)./5/.>:6@CB,/<=5:;926/0,)(%'%(2-+$67>@77=099,1./.+*(%1&'',3C<;7<<;22.&%)23>?:072()585@;:'+(%4342412))5<C>%-0:8>6<?;&+/8>4:/)+*0.-4>766?DB=AB924>>9=CAD19::2/==65**)+=+,56990,.*+,,$(%)++06'('78<:@C?3;=0/.),/6--;<:;:97=96):(*/=CFDA7-(>=;6+/-:93,'',2+33@A==7+342233;/=>4'-**)*46<7:67%%5262%&+11:+'$$'&%&%..%%&,,5-*6)(&*))13<8965::90/13.5764%+&:;=<77<5A@:)97/,+9-$%44C<:7-459;?C??:?D@?HFA54)%'00.//2$%&(<>@?>:%,C?.4:A@?>?A9;$1269:8695))09;BD9<7%71201#$$9<=?*-:++/H:8<:;:;998:A==(274-%$)9%%2;)/$1,57:?01C><>?6&*.:=3:9?6**3.69=:$363&'&+57678=@GA>1..23B56=>116,1&9<=8%/+*/817<=E<:03((***&&),,)$$/58><G>425>@A545:9./.166?444-('&.,-.$'$$%&#+77:92649198%(-,,5CEC?:4-36))*?9?=;9=826;;?=C>AB:99B;<:1101&47>9@=)8<>=:@=+6;@67*''/>;:$&%+7894CAB=?=0-.-,$-%600812>@265(*(-+*0592-%&/<CB;<4.168B<?C=384'&*.)(&)9%%,;?;;;7693..-/37;569-8:6?D>12)+-.68@34;EEB?3(16>:)%.156?<;<@;EB6*%%,1545411/2591..@C3..JF8A>98:C>8%(*13,,+-5:A2/*;4///3%%,0,++*8::?31;>B9'%&$%;;<+)))%48><CA<</54?F2>=<IH=999<-2,868;960/<883),4=887558=>1/=A9/45**:;@B=@D@?,4/,++''5)&&,...9731338>=IF:;>><9876?>:<9%436&&))%''+---5;;:7:4%:7;33331*02)+&),**41,*%*5=A=;:429==7-:2??<)%',C>B>@B@@=2067359*1<?C=87:5;9244C95999:8:5<?@?>5;<;9/.;ACB6;,0645=?@?;8%%)-(&'&53=9442@:G:D;%*))////-;$689FE<<21.($'334CBFAB==>=0+.:11@AA??7$$*4::;;7/15-39141&%%-<=84<>?3);467+-77=@@A@?-/**'67$%$%%$$&22:0272-0./10=A;-',008977G4)&26=>400/9;6;=:8:62:0579A:;CA:?<98.,120?><<&662.10*+#%#/9;=ABB:<034:;??<A;:06299:BC?(3221'+0<>=66624?>AF@==*-(&@=EFAB<<=>A%$$(33@A?7>://275><B9118;<9:8)<983%$+33%$&'.,&&%%'$++4997:;87267;6A:;01%'')0+68<:)$/05568/'&($#'&&*-:9(=;444668:6:8)008>5262.+-/>;9*+69<955JDEB105<:&6255:=87%%'+/-*-%.'-20>COI54117<??$'87??H??>:A:62229<>>?@A?%8&2E?<AE<=0CCBGF4*6*00&$$(3,./<?<3<<<B?=9597*'*+,1?449@<<?00,-.01;665--+8498?AF5$/(''/)95=;''$&%$(%&1.4(((073520/2*%$''--9<A9++2''((/.304776)('-%&'(4(%/77=43-+(-',-%%$%%%$$$-+,,&27351.163CB2)'(;<7@::;76605827D?C816&6.539</-32.0:99-30.2.01,>+:;::=,,+@:4+**<:CB@<?D?C??53575*4/*%'+-*4621,,+('&'**.--777:22+985.07:<8>:>301+,5<:-1().3418=B)23298==>;:%00123920?>961%''53'%4+9CC@:;8;???74,9<8B:H=8F>998'))<???>5>5DA=@A>08A/**9@B;7(6-%&+-**((&()2('$$$#$&%-+))4556A<,):$%'&$+8..****)#*(&')&(*)$((.19.14.8=<=779;:55<=7/445935;60+5&$%),/55>6/979:<4:2),)+)$%+*12//;,87+?;80/04535B:;@B@>658<855?50033<838>4&&&'.%%+037821/0&)$%%&)12-9;<:648/-0:2*#&)*$%&,-0?825-.29&(*039:=,2(/156@=<2++(('-&&69;-72*03=8?:@A0+(%0-/,12))*<8:979>97$$(())(&-/:98+,:.-*-)+73;;69=>=;>@A>$%%(:9-6D>C=:.%&$&//34/36;:7442:>:7;9-%(*42.52$--0'&-':9<CA964557;61$)4:423//88;/-*:96BD>8A@=0435'('$(.5-'(*0::D>78..%$#%%'%$&*-((#)/$)%&)&&(%%##%#%#).%&+03.,,6&#$&%.221237:9<?9:;35,<<>C@B/-,>:;'$$-8GC:1689885:65%*30/B>19>DFA/,$"$-3241-,19*2211<<.((-4461:5*).3=6%2%-&#''<@:265_1. Proteins should be named contig_name_#.
+[31mError in job catbat while creating output files /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.out.CAT.ORF2LCA.txt.[0m
+[31mRuleException:
+CalledProcessError in line 429 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'CAT contigs -c /mnt/fass1/kirsten/data/gridion364.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_CAT_database -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_default.catbat.classification' returned non-zero exit status 1
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 429, in __rule_catbat
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+[33mWill exit after finishing currently running jobs.[0m
+[31mExiting because a job execution failed. Look above for error message[0m

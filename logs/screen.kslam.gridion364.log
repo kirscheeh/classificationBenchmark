@@ -15,3 +15,10 @@
     wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=gridion364
     threads: 16[0m
 [32m[0m
+^C[33mTerminating processes on user request.[0m
+[31mError in job kslam while creating output file /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification.[0m
+[31mRuleException:
+CalledProcessError in line 238 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'SLAM --db=/mnt/fass1/kirsten/databases/kslam --output-file=/mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification --num-reads-at-once 1000000 /mnt/fass1/kirsten/data/gridion364.fastq' returned non-zero exit status -2
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 238, in __rule_kslam
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m

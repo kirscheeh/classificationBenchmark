@@ -1,0 +1,18 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	taxmaps
+	2[0m
+[32m[0m
+[32mrule taxmaps:
+    input: /mnt/fass1/kirsten/databases/kaiju/nodes.dmp, /mnt/fass1/kirsten/data/gridion366.fastq, /mnt/fass1/kirsten/databases/taxmaps/taxonomy.tbl.gz, /mnt/fass1/kirsten/databases/taxmaps/refseq_complete_bacarchvir.lcak300.gem
+    output: /mnt/fass1/kirsten/result/classification/taxmaps/default/gridion366, /mnt/fass1/kirsten/result/classification/taxmaps/default/gridion366_default.taxmaps.classification
+    log: /mnt/fass1/kirsten/result/classification/taxmaps/default/gridion366_default.taxmaps.log
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion366_default.taxmaps.benchmark.txt
+    wildcards: run=default, sample=gridion366, PATH=/mnt/fass1/kirsten
+    threads: 8[0m
+[32m[0m
+^C[33mTerminating processes on user request.[0m
