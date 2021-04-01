@@ -7,6 +7,14 @@
   - leave one taxa out approach aka clade exclusion
   - existing benchmarking datasets
   - --> they did three things: clade exclusion, high-complexity fold standard CAMI assembly and recently publisehd sequences
+- https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard
+
+- centrifuge
+  - no difference if w/ or w/o -ignore-quals 
+
+- kslam
+  - without parameter for num_reads_at_once: bad alloc
+  - parameter set as 1000000: runtime over 7days
 
 # Table AUPR, ASP
 | sample     	| tool       	| AUPR   	| baseline 	| ASP     	|

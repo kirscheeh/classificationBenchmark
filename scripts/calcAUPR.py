@@ -190,7 +190,7 @@ def plotting(stats="", precision=[], recall=[], auprs=[]):
     print(auprs)
    # plt.plot(recall, precision)#recall[1:], precision[1:])
     plt.plot(recall, precision)
-    plt.title("gridion366_default.ccmetagen.areport")
+    plt.title("gridion364_quals.centrifuge.areport")
     plt.xlabel("recall")
     plt.ylabel("precision")
     plt.xticks([0, 0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8, 0.9, 1])
@@ -208,7 +208,7 @@ else:
     species = getting.get_species(sys.argv[2])
     groundTruth=getGroundTruth(sys.argv[1])
     calcAUPRCurve([i*0.001 for i in range(0, 100001)], sys.argv[1], sys.argv[3])"""
-species = getting.get_species(sys.argv[2])
+species =getting.get_species(sys.argv[2])
 groundTruth=getGroundTruth(sys.argv[1])
 calcAUPRCurve([i*0.001 for i in range(1, 100001)], sys.argv[1], sys.argv[3])
 plotting(stats=sys.argv[3])

@@ -8,3 +8,4 @@ scripts/processingOutput/*.tab
 scripts/processingOutput/__pycache__/*
 taxdump.tar.gz
 testsnakemake/*
+stats/*.files

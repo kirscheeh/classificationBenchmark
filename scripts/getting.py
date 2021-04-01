@@ -114,21 +114,25 @@ def get_abundances(areport, config):
 
 #get_abundances(sys.argv[1], sys.argv[2])
 
-def get_ASP(areport, truth):
+def get_ASP(areport, truth_report):
     #from scipy.spatial import distance
-    predi = get_abundances(areport, sys.argv[2]).values()
+    predi = get_abundances(areport, sys.argv[3]).values()
     pred=list(predi)
-    print(pred)
+    t = get_abundances(truth_report, sys.argv[3]).values()
+    truth=list(t)
+    #print(pred)
 
     try:
         t = np.array(truth)
         p = np.array(pred)
-        l2 = np.sum(np.power((t-p),2))#distance.euclidean(t, p)
+        l2 = np.sum(np.power((t-p),2)) #distance.euclidean(t, p)
         return l2
     except Exception as e:
         print("An error occured.", e)
 
-#print("ASP:", get_ASP(sys.argv[1], [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]))
+#print("ASP:", get_ASP(sys.argv[1], sys.argv[2])) 
+# measured [0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
+# expected [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
 
 def get_numberReads(file, fastq=True):
     with open(file, "r") as f:
@@ -199,8 +203,15 @@ def get_numberReadsSample(sample):
     size = {'gridion364': 3491390, 'gridion366':3667480, 'promethion365':35810963, 'promethion367':34573282}
     return size[sample]
 
-
-
+def get_MedianLengthOfBestMatch(classification):
+    with open(classification, 'r') as f:
+        lines = f.readlines()
+        matchLengths=[]
+        for line in lines:
+            line = line.split("\t")
+            if line[0]=="C":
+                matchLengths.append(int(line[3]))
+    return int(np.median(matchLengths))
 
 
 
