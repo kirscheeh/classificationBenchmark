@@ -1,0 +1,683 @@
+# refSequence,readCount,fragmentCount,mapScoreSum,refCoveredPositions,refConsensusSum,bpTotal,depthVariance,nucHighDepthVariance,depthMax,snpSum,insertSum,deletionSum,readCountAln,fragmentCountAln,perc_map
+4932|X55936.1 Yeast PRP2 gene (RNA2 gene) for pre-mRNA splicing factor,2,2,3545,3278,3020,5098,0.175465,0,2,153,152,194,2,2,5.8120155866634004e-05
+83333|X15025.1 Escherichia coli fucose operon,1,1,6250,8181,7748,8181,0.074347,0,1,257,176,229,1,1,2.9060077933317002e-05
+33965|X62617.1 L.mesenteroides IS1165 DNA sequence,33,33,12719,1545,1514,19699,27.234640000000002,0,21,932,670,848,25,25,0.0009589825717994611
+1280|X16471.1 Staphylococcus aureus transposon Tn4002 blaZ gene for beta-lactamase,1,1,645,804,773,804,0.235854,0,1,19,12,38,1,1,2.9060077933317002e-05
+"562|M89479.1 Escherichia coli uhpABCT operon encoding hexosephosphate utilization protein (uhpA) gene, complete cds, and hexosephosphate transport protein (uhpB, uhpC, uhpT) genes, complete cds",3,3,6285,4373,4054,8482,0.883282,0,3,226,216,229,3,3,8.718023379995101e-05
+"4932|M27082.1 S.cerevisiae GCN2 gene (which couples GCN4 expression to amino acid availability), complete cds",6,6,8306,4064,3926,10848,1.8786080000000003,0,4,286,222,306,5,5,0.00017436046759990203
+"4932|L01414.1 Saccharomyces cerevisiae DNA helicase (RAD25) gene, complete cds",4,4,5096,2898,2721,6585,1.551732,0,4,155,155,157,4,4,0.00011624031173326801
+"9515|M19458.1 C.apella satellite DNA, clone pCP4",1,1,33,33,33,33,0.24202800000000002,0,1,0,0,0,1,1,2.9060077933317002e-05
+5207|L14068.1 Cryptococcus neoformans 5.8S and 25S ribosomal RNA sequences,2,2,3883,3311,2996,5879,0.49762799999999996,0,2,213,179,215,2,2,5.8120155866634004e-05
+"4932|M27229.1 Saccharomyces cerevisiae nuclear-encoded mitochondrial heat shock protein (Ssc1) gene, complete cds",1,1,1395,1739,1657,1739,0.234409,0,1,39,43,38,1,1,2.9060077933317002e-05
+"4932|Z24732.1 S.cerevisiae PRP8 gene, complete CDS",9,9,20445,7318,7049,26740,3.68609,0,6,649,621,774,8,8,0.000261540701399853
+"4932|Z27116.1 S.cerevisiae HBS1, MRP-L20 and PRP-16 genes",10,10,17211,9995,9584,22136,2.5375330000000003,0,5,494,535,666,7,7,0.00029060077933317
+4932|X75816.1 S. cerevisiae PCM1/AGM1 gene,1,1,1627,1910,1852,1910,0.247294,0,1,33,25,38,1,1,2.9060077933317002e-05
+"4932|D10224.1 Saccharomyces cerevisiae gene for Gcr3, complete cds",3,3,6475,3708,3534,7752,0.779529,0,3,114,130,137,3,3,8.718023379995101e-05
+4932|Z28155.1 S.cerevisiae chromosome XI reading frame ORF YKL155c,4,4,4929,2329,2184,7029,1.6961490000000001,0,4,218,242,215,4,4,0.00011624031173326801
+4932|Z28177.1 S.cerevisiae chromosome XI reading frame ORF YKL178c,1,1,1143,1383,1320,1383,0.248527,0,1,28,35,22,1,1,2.9060077933317002e-05
+4932|Z28243.1 S.cerevisiae chromosome XI reading frame ORF YKR018c,2,2,1680,2130,2023,2130,0.190856,0,1,43,64,43,1,1,5.8120155866634004e-05
+4932|Z28252.1 S.cerevisiae chromosome XI reading frame ORF YKR027w,4,4,6557,4145,3876,8648,1.149162,0,3,233,181,269,3,3,0.00011624031173326801
+4932|U10397.1 Saccharomyces cerevisiae chromosome VIII cosmid 9666,33,33,64506,30669,29103,88423,3.406712,0,7,2434,2289,3688,30,30,0.0009589825717994611
+4932|U10400.1 Saccharomyces cerevisiae chromosome VIII cosmid L2825,8,8,17610,8040,7588,24545,2.9239580000000003,0,5,707,590,940,8,8,0.00023248062346653602
+4932|X80835.1 S.cerevisiae chromosome XIII cosmid 9514,23,23,45240,13901,13512,60829,4.223336,0,9,1834,1655,1760,19,19,0.0006683817924662911
+511145|U18997.1 Escherichia coli K-12 chromosomal region from 67.4 to 76.0 minutes,49,49,302556,107854,103020,408647,6.716297999999999,14550,16,12794,9882,13183,42,42,0.0014239438187325332
+"1280|D17366.1 Staphylococcus aureus atl gene for autolysin, complete cds and other ORFs",2,2,5047,3579,3391,6273,0.8553940000000001,0,2,116,139,116,2,2,5.8120155866634004e-05
+"4932|U23472.1 Saccharomyces cerevisiae chromosome XV right telomere enolase related (ERR1) and RNA helicase like genes, complete cds, X element, Y' element",4,4,11925,7223,6552,18574,1.802028,0,3,756,594,911,3,3,0.00011624031173326801
+511145|U28377.1 Escherichia coli K-12 genome; approximately 65 to 68 minutes,58,58,221453,67415,64176,306876,12.630678999999999,6110,18,10331,8140,10196,55,55,0.001685484520132386
+"4932|U32274.1 Saccharomyces cerevisiae chromosome IV cosmids 9481, 9509, 9926, 9461, and lambda 3641",20,20,42359,26268,24879,54212,1.4686540000000001,704,5,1199,1146,1305,16,16,0.00058120155866634
+"4932|D63817.1 Saccharomyces cerevisiae genes for Pho86, NCA3, complete and partial cds",3,3,4817,2509,2397,5979,1.2215559999999999,0,3,105,121,140,3,3,8.718023379995101e-05
+"83333|D64044.1 Escherichia coli K-12 genes for MCLA protein, L-aspartate oxidase, uracil DNA glycosylase, putative ATP dependent RNA helicase, GTP binding protein, recO protein, YFHB-ECOLI protein, YFHC-ECOLI protein, ribonuclease III, RNA polymerase sigma E, hypothetical 67KD protein, signal peptidase I, lepA protein and hypothetical proteins, complete and partial cds",4,4,19112,20310,18738,27514,0.548455,0,2,945,884,874,3,3,0.00011624031173326801
+4932|Z49380.1 S.cerevisiae chromosome X reading frame ORF YJL105w,1,1,1941,2173,2118,2173,0.24811799999999998,0,1,29,26,23,1,1,2.9060077933317002e-05
+4932|Z49389.1 S.cerevisiae chromosome X reading frame ORF YJL114w,6,6,2910,2425,2174,4396,0.7307239999999999,0,2,172,156,129,2,2,0.00017436046759990203
+4932|Z49638.1 S.cerevisiae chromosome X reading frame ORF YJR138w,7,7,12428,5065,4872,16429,3.7471989999999997,0,6,357,614,413,6,6,0.00020342054553321902
+"4932|U39204.1 Saccharomyces cerevisiae poly(A)-binding protein dependent poly(A)-ribonuclease subunit (PAN2) gene, complete cds",7,7,9668,6433,5994,12850,0.880439,0,4,318,355,298,6,6,0.00020342054553321902
+"4932|L36344.1 Saccharomyces cerevisiae tRNA-Met, tRNA-Ser, tRNA-Gly genes and 24 ORFs",10,10,26068,15355,14601,33872,1.723163,1973,5,806,766,945,9,9,0.00029060077933317
+1639|X92951.1 L.monocytogenes 23S rRNA gene,3,3,3800,2293,2119,5475,1.287958,0,3,181,138,200,3,3,8.718023379995101e-05
+4932|Z71296.1 S.cerevisiae chromosome XIV reading frame ORF YNL020c,2,2,3218,2624,2450,4238,0.506763,0,2,101,105,122,2,2,5.8120155866634004e-05
+4932|Z71301.1 S.cerevisiae chromosome XIV reading frame ORF YNL025c,1,1,2515,3197,3032,3197,0.122804,0,1,83,82,65,1,1,2.9060077933317002e-05
+4932|Z71302.1 S.cerevisiae chromosome XIV reading frame ORF YNL026w,1,1,1950,2324,2245,2324,0.120554,0,1,36,43,47,1,1,2.9060077933317002e-05
+4932|Z71444.1 S.cerevisiae chromosome XIV reading frame ORF YNL168c,1,1,1248,1504,1445,1504,0.22329000000000002,0,1,21,38,39,1,1,2.9060077933317002e-05
+4932|Z72655.1 S.cerevisiae chromosome VII reading frame ORF YGL133w,4,4,5403,3196,3053,7132,1.871341,0,4,174,156,236,4,4,0.00011624031173326801
+4932|Z72729.1 S.cerevisiae chromosome VII reading frame ORF YGL207w,3,3,3834,3043,2881,4794,0.628748,0,2,90,102,99,2,2,8.718023379995101e-05
+4932|Z72747.1 S.cerevisiae chromosome VII reading frame ORF YGL225w,2,2,2771,2992,2833,3547,0.402783,0,2,104,81,79,2,2,5.8120155866634004e-05
+4932|Z72758.1 S.cerevisiae chromosome VII reading frame ORF YGL236c,2,2,1494,1790,1722,1790,0.238686,0,1,41,27,29,1,1,5.8120155866634004e-05
+4932|Z72817.1 S.cerevisiae chromosome VII reading frame ORF YGR032w,13,13,17349,5204,5114,23280,7.0114410000000005,0,8,660,647,732,10,10,0.00037778101313312105
+4932|Z73063.1 S.cerevisiae chromosome VII reading frame ORF YGR278w,1,1,1261,1555,1505,1555,0.211804,0,1,28,22,54,1,1,2.9060077933317002e-05
+4932|U51031.1 Saccharomyces cerevisiae chromosome IV cosmid 9819,22,22,31198,15932,15235,42328,3.25495,0,7,1082,1171,1516,18,18,0.000639321714532974
+"4932|U50561.1 Saccharomyces cerevisiae Sap190p (SAP190) gene, complete cds",4,4,5857,2900,2753,8080,2.869166,0,4,239,207,313,4,4,0.00011624031173326801
+4932|Z74793.1 S.cerevisiae chromosome XV reading frame ORF YOL051w,3,3,5493,3940,3577,8086,1.14855,0,3,247,274,295,3,3,8.718023379995101e-05
+4932|Z75253.1 S.cerevisiae chromosome XV reading frame ORF YOR345c,7,7,11127,5141,4914,15300,3.4519330000000004,0,5,460,391,561,7,7,0.00020342054553321902
+4932|Z75285.1 S.cerevisiae chromosome XV reading frame ORF YOR377w,6,6,8340,4744,4507,11432,1.8015259999999997,0,4,334,258,409,5,5,0.00017436046759990203
+4932|Z74188.1 S.cerevisiae chromosome IV reading frame ORF YDL140c,13,13,27283,5703,5621,35556,8.332301,0,9,880,936,1053,12,12,0.00037778101313312105
+"316407|D86239.1 Escherichia coli genes for MhpR, MhpA, MhpB, MhpC, MhpD, MhpE and MhpF, complete sequence of the mhp operon",2,2,6869,6413,5971,9318,0.442057,0,2,292,217,280,2,2,5.8120155866634004e-05
+"83333|U49400.1 Escherichia coli porin (ompG) gene, complete cds",1,1,1204,1556,1462,1556,0.24053000000000002,0,1,40,54,29,1,1,2.9060077933317002e-05
+"4932|U40390.1 Saccharomyces cerevisiae D-arabinono-1,4-lactone oxidase gene, complete cds",3,3,3099,2387,2242,4197,1.0453540000000001,0,3,137,116,101,3,3,8.718023379995101e-05
+4932|Y14279.1 Saccharomyces cerevisiae scc2 gene,3,3,7232,6714,5981,11313,0.77579,0,2,453,439,413,2,2,8.718023379995101e-05
+"1081927|AF116557.1 Pseudomonas aeruginosa PchG (pchG) gene, complete cds",1,1,526,696,651,696,0.223478,0,1,24,21,14,1,1,2.9060077933317002e-05
+"1613|AF090993.1 Lactobacillus fermentum D-2-hydroxyacid dehydrogenase (hda) gene, partial cds",11,11,3694,777,764,5286,5.8949370000000005,0,11,179,191,204,11,11,0.000319660857266487
+"1086030|AF141323.1 Shigella flexneri SHI-2 pathogenicity island, complete sequence",18,18,17693,6432,6159,25342,3.753362,50,7,980,787,837,14,14,0.000523081402799706
+"703612|AF184956.1 Bacillus subtilis mycosubtilin operon, complete sequence",10,10,27666,9352,8983,37323,3.741742,1660,9,1182,986,1071,10,10,0.00029060077933317
+1639|AJ012339.1 Listeria monocytogenes NotI restriction site number three and flanking sequences,5,5,1903,1032,929,2914,0.126905,0,3,164,71,92,3,3,0.000145300389666585
+"119912|AB040415.1 Salmonella enterica serovar Choleraesuis 50k virulence plasmid DNA, complete sequence",85,85,208913,33196,31415,297661,154.66567,3763,63,10771,9260,10515,76,76,0.002470106624331945
+"5207|AB040655.1 Cryptococcus neoformans mitochondrial cytb gene for cytochrome b, partial cds, strain: IFM 48637",2,2,564,420,383,764,0.128584,0,2,26,25,11,2,2,5.8120155866634004e-05
+"1351|AB059405.1 Enterococcus faecalis gyrB and gyrA genes for DNA gyrase B subunit, DNA gyrase A subunit, complete cds",47,47,85993,6009,5925,114941,197.329922,0,43,3502,3304,3342,46,46,0.001365823662865899
+"226185|AE016830.1 Enterococcus faecalis V583, complete genome",4290,4290,9588563,661611,624020,13570577,595.957945,123290,383,539704,376898,475905,3435,3435,0.12466773433392993
+"40410|AY421725.1 Cryptococcus neoformans var. neoformans Cas33p (CAS33) gene, complete cds",3,3,5756,3468,3219,7739,0.40249,0,3,202,209,188,3,3,8.718023379995101e-05
+"40410|AF542530.2 Cryptococcus neoformans var. neoformans strain JEC20 mating type a locus, complete sequence",249,249,455987,139233,133885,650200,6.301821,457,13,21921,21596,23610,178,178,0.007235959405395933
+"212404|AY934733.1 Uncultured saccharomycete isolate G03_Platte42_020 18S ribosomal RNA gene, partial sequence",1,1,373,425,414,425,0.1275,0,1,6,5,6,1,1,2.9060077933317002e-05
+"321314|AE017220.1 Salmonella enterica subsp. enterica serovar Choleraesuis str. SC-B67, complete genome",9312,9312,40227610,3967518,3818378,55945124,483.897015,306913,209,1915337,1593762,2004011,7933,7933,0.2706074457150479
+"40410|DQ007943.1 Cryptococcus neoformans var. neoformans isolate CBS6885 intergenic spacer 1 and 5S ribosomal RNA gene, complete sequence; and intergenic spacer 2, partial sequence",30,30,27936,1964,1963,39506,22.563132999999997,0,25,1225,1229,1659,28,28,0.0008718023379995101
+"4932|DQ116821.1 Saccharomyces cerevisiae strain YJM1129 TAO3p gene, complete cds",4,4,9651,5344,5077,11758,1.229945,0,3,173,235,216,4,4,0.00011624031173326801
+"1280|DQ157969.1 Staphylococcus aureus strain D410 putative C-N hydrolase gene, partial cds; Hld (hld) gene, complete cds; accessory gene regulator gene locus, complete sequence; and putative fructokinase gene, partial cds",2,2,3714,4459,4141,5140,0.296237,0,2,179,159,156,2,2,5.8120155866634004e-05
+"32630|DQ331544.1 Synthetic construct Saccharomyces cerevisiae clone FLH203028.01X RPO41 gene, complete sequence",3,3,5811,3904,3629,8221,0.805737,0,3,224,223,290,3,3,8.718023379995101e-05
+"32630|DQ331575.1 Synthetic construct Saccharomyces cerevisiae clone FLH202729.01X APE2 gene, complete sequence",4,4,6344,2584,2493,8026,2.257917,0,4,159,192,211,4,4,0.00011624031173326801
+"559292|NM_001183761.3 Saccharomyces cerevisiae S288c DNA-directed RNA polymerase I core subunit RPA190 (RPA190), partial mRNADQ331603.1 Synthetic construct Saccharomyces cerevisiae clone FLH203019.01X RPA190 gene, complete sequence",6,6,12453,4591,4464,15602,2.308065,0,5,325,319,387,5,5,0.00017436046759990203
+"559292|NM_001183940.1 Saccharomyces cerevisiae S288c Nan1p (NAN1), partial mRNADQ332693.1 Synthetic construct Saccharomyces cerevisiae clone FLH147295.01X NAN1 gene, complete sequence",1,1,1354,1557,1521,1557,0.243823,0,1,19,17,36,1,1,2.9060077933317002e-05
+4932|X56909.1 S.cerevisiae 8.2 kb segment left of MAT,8,8,13883,5006,4863,18898,4.641042,0,6,568,572,570,8,8,0.00023248062346653602
+4932|X15428.1 Yeast STE6 gene for multidrug-resistance P-glycoprotein,12,12,16767,4849,4731,22162,5.51063,0,8,605,639,602,10,10,0.00034872093519980405
+4932|V00696.1 Yeast (S. cerevisiae) mitochondrial gene for cytochrome B extending from map position 71.3 to 80.2. (Strain D273-10B.),2,2,5182,3784,3525,6501,0.8282299999999999,0,2,99,190,195,2,2,5.8120155866634004e-05
+90371|X56727.1 S. typhimurium plasmid pSDL2 vsdA-F genes for virulence proteins,5,5,11467,5824,5500,15303,3.132837,0,5,406,378,518,5,5,0.000145300389666585
+4932|X75561.1 S.cerevisiae MBR1 gene for MBR1,1,1,2101,2599,2491,2599,0.187247,0,1,52,56,70,1,1,2.9060077933317002e-05
+"83333|X77091.1 E.coli fms, fmt, fmu, fmv, smf, smg and trkA genes",2,2,4760,4913,4640,6188,0.378301,0,2,170,136,166,2,2,5.8120155866634004e-05
+4932|Z28192.1 S.cerevisiae chromosome XI reading frame ORF YKL192c,1,1,661,765,738,765,0.223083,0,1,14,13,10,1,1,2.9060077933317002e-05
+"4932|X77395.1 S.cerevisiae N2019, N2021, N2023, N2025, N2027, N2031, N2048 and N2050 genes",14,14,21655,17832,16493,31979,1.069487,0,3,1134,893,1279,12,12,0.00040684109106643804
+4932|X76245.1 S.cerevisiae NOP77 gene for essential nucleolar protein,1,1,1448,1768,1694,1768,0.244096,0,1,42,32,37,1,1,2.9060077933317002e-05
+4932|Z35953.1 S.cerevisiae chromosome II reading frame ORF YBR084w,1,1,2803,3434,3299,3434,0.230077,0,1,54,81,82,1,1,2.9060077933317002e-05
+4932|X79811.1 S.cerevisiae ACT3 gene,3,3,6741,3813,3550,9036,1.050158,0,3,237,203,263,3,3,8.718023379995101e-05
+4932|Z46659.1 S.cerevisiae chromosome XIII cosmid 8337,16,16,31058,18123,17005,40944,1.6929470000000002,0,5,983,1043,1040,14,14,0.00046496124693307204
+4932|Z46881.1 S.cerevisiae chromosome IX cosmid 3299,25,25,41526,18910,17994,57873,5.394691000000001,431,10,1782,1730,2209,22,22,0.000726501948332925
+"4932|X77291.1 S.cerevisiae YBL0421, YBL0438, YBL0418, YBL0422, YBL0423, YBL0426, YBL0425, YBL0424, and YBL0437 genes",7,7,17849,10423,9924,23731,2.209678,0,5,557,575,856,7,7,0.00020342054553321902
+4932|Z49210.1 S.cerevisiae chromosome XIII cosmid 8339,11,11,21468,12502,11786,29012,2.125999,0,5,838,727,888,9,9,0.000319660857266487
+4932|Z49219.1 S.cerevisiae chromosome XVI cosmid 9499,48,48,81811,32566,31089,109801,7.841214999999999,230,11,3060,2959,3355,42,42,0.0013948837407992162
+4932|Z49704.1 S.cerevisiae chromosome XIII cosmid 8021,10,10,22461,9944,9481,29891,3.102747,232,7,783,757,924,9,9,0.00029060077933317
+4932|Z49919.1 S.cerevisiae chromosome XVI cosmid 9531,17,17,29605,21763,20214,41007,0.991793,0,4,1168,1173,1253,15,15,0.0004940213248663891
+4932|Z49331.1 S.cerevisiae chromosome X reading frame ORF YJL056c,2,2,3375,2625,2460,4280,0.595807,0,2,97,103,70,2,2,5.8120155866634004e-05
+4932|Z49637.1 S.cerevisiae chromosome X reading frame ORF YJR137c,9,9,15542,5184,4968,21229,7.284434,0,8,637,642,648,9,9,0.000261540701399853
+4932|X92441.1 S.cerevisiae 33kb fragment from the right arm of chromosome XV,31,31,55107,20737,19922,75812,5.940459,0,8,2248,2100,2657,25,25,0.000900862415932827
+1280|X76490.1 S.aureus (bb270) glnA and glnR genes,1,1,1328,1721,1619,1721,0.237452,0,1,49,53,32,1,1,2.9060077933317002e-05
+4932|X94547.1 S.cerevisiae 12.8 kb DNA from left arm of chromosome XIV,2,2,7976,8898,8447,10719,0.421908,0,2,253,245,625,2,2,5.8120155866634004e-05
+"4932|Z69382.1 S.cerevisiae 37,800 bp segment of chromosome XIV",26,26,40964,20412,19245,54279,3.9089139999999998,368,8,1424,1358,1660,20,20,0.0007555620262662421
+"4932|M94164.1 S.cerevisciae TY4 retrotransposon endogenous protease, integrase, reverse transcriptase protein (TY4B) gene, complete cds and gag protein (TY4A) pseudogene",3,3,4380,3005,2824,6192,1.471154,0,3,188,153,259,3,3,8.718023379995101e-05
+"4932|X89633.1 S.cerevisiae DNA for VPH1, MOD5, CAP20, ORF1 and SNF2 genes",13,13,21676,15199,14397,29126,1.281464,33,5,747,717,974,11,11,0.00037778101313312105
+4932|Z72652.1 S.cerevisiae chromosome VII reading frame ORF YGL130w,13,13,20629,5037,4927,28519,9.723695,0,10,890,864,954,11,11,0.00037778101313312105
+4932|Z72728.1 S.cerevisiae chromosome VII reading frame ORF YGL206c,4,4,6909,6059,5637,9831,0.37452199999999997,0,3,312,285,326,4,4,0.00011624031173326801
+4932|Z73587.1 S.cerevisiae chromosome XVI reading frame ORF YPL231w,15,15,23728,6236,6098,31572,9.781,0,9,925,931,891,11,11,0.00043590116899975504
+"4932|X96876.1 S.cerevisiae DNA of cosmid from chromosome IV, strain FY 1679",9,9,15537,13074,12122,22174,0.906388,0,3,650,601,871,8,8,0.000261540701399853
+4932|Z74897.1 S.cerevisiae chromosome XV reading frame ORF YOL155c,2,2,4833,6995,6496,6995,0.081335,0,1,248,251,338,2,2,5.8120155866634004e-05
+4932|Z75021.1 S.cerevisiae chromosome XV reading frame ORF YOR113w,3,3,4226,3382,3143,5640,0.895616,0,3,134,192,148,3,3,8.718023379995101e-05
+"287|AF241171.1 Pseudomonas aeruginosa pathogenicity island PAGI-1 gene, complete sequence",8,8,22510,13669,12857,30512,1.320667,0,4,975,775,850,6,6,0.00023248062346653602
+"1201292|AJ312276.1 Enterococcus faecalis arginine deiminase operon (arcABCRD), arginine repressors (argR1/argR2), and pI and h1 genes, strain ATCC 29212",546,546,1160815,8221,8198,1545976,8147.641001999999,0,319,43883,39656,50137,498,498,0.015866802551591085
+"1613|AJ418938.2 Lactobacillus fermentum partial mRNA for putative elongation factor Tu (tuf gene), strain ATCC 14931",1,1,309,441,406,441,0.24368,0,1,19,16,14,1,1,2.9060077933317002e-05
+"287|AF540990.1 Pseudomonas aeruginosa isolate 1-60 O-antigen biosynthetic locus, partial sequence",37,37,92519,14527,14171,128727,55.268627,0,23,3922,3430,5195,32,32,0.001075222883532729
+"1296|AJ579365.1 Staphylococcus sciuri pSCFS1 plasmid, complete sequence",74,74,64387,3096,3018,94135,222.901736,1745,63,2432,2761,7976,65,65,0.002150445767065458
+"4932|AJ586505.1 Saccharomyces cerevisiae Tandem I locus, strain CLIB382",10,10,15454,7289,6826,23269,5.016893,0,8,1000,819,890,8,8,0.00029060077933317
+"282459|BX571857.1 Staphylococcus aureus strain MSSA476, complete genome",888,888,1806349,645358,601373,2490763,14.919235999999998,69083,59,79503,72182,82130,710,710,0.0258053492047855
+"4932|S53418.1 MYO2 homolog...ribosomal protein L10 homolog [Saccharomyces cerevisiae=yeast, Genomic, 5 genes, 9350 nt]",9,9,22287,9169,8756,31729,2.5013259999999997,0,6,1080,952,1119,7,7,0.000261540701399853
+"4932|AF458976.1 Saccharomyces cerevisiae strain SK1, partial genome",49,49,104828,16074,15748,139356,32.447646,0,17,3707,3649,4615,44,44,0.0014239438187325332
+"287|AF498400.1 Pseudomonas aeruginosa serotype 01 putative O-antigen biosynthesis gene cluster, partial sequence",115,115,323930,17092,16966,441765,247.236256,0,52,13294,12022,15495,97,97,0.0033419089623314556
+"192011|AF518460.1 Cryptococcus neoformans A/D strain MMRL774 mitochondrial ATP8-NAD2 intergenic region, partial sequence",3,3,879,490,464,1072,0.574763,0,3,19,22,16,3,3,8.718023379995101e-05
+"40410|AF532780.1 Cryptococcus neoformans var. neoformans NADH dehydrogenase subunit 5 (nad5) gene, partial cds; mitochondrial gene for mitochondrial product",26,26,17131,1134,1133,22640,17.644257999999997,0,25,704,507,664,25,25,0.0007555620262662421
+"40410|AF534567.1 Cryptococcus neoformans var. neoformans NADH dehydrogenase subunit 2 (nad2) gene, partial cds; and NADH dehydrogenase subunit 3 (nad3) gene, complete cds; mitochondrial genes for mitochondrial products",4,4,2008,828,811,2513,1.421382,0,4,73,44,55,4,4,0.00011624031173326801
+"40410|AF534132.1 Filobasidiella neoformans serotype D NADH dehydrogenase subunit 6 (nad6) gene, complete cds; mitochondrial gene for mitochondrial product",4,4,1354,624,587,1940,0.9622870000000001,0,4,74,63,58,4,4,0.00011624031173326801
+"1351|AY251020.1 Enterococcus faecalis dihydroorotate dehydrogenase (dhoD1a) gene, complete cds",6,6,5319,1827,1760,6771,2.252564,0,5,136,166,184,5,5,0.00017436046759990203
+"1201292|AY916083.1 Enterococcus faecalis ATCC 29212 cit gene cluster, complete sequence",28,28,50194,5903,5815,68748,46.052505,0,19,2238,1818,2297,23,23,0.0008136821821328761
+"10090|AK150119.1 Mus musculus bone marrow macrophage cDNA, RIKEN full-length enriched library, clone:G530133B12 product:Hydrogenase-2 large chain precursor (EC 1.12.99.6) (NiFe hydrogenase) (Membrane-bound hydrogenase 2 large subunit) (HYD2) homolog [Escherichia coli], full insert sequenceAK150137.1 Mus musculus bone marrow macrophage cDNA, RIKEN full-length enriched library, clone:G530135N21 product:Hydrogenase-2 large chain precursor (EC 1.12.99.6) (NiFe hydrogenase) (Membrane-bound hydrogenase 2 large subunit) (HYD2) homolog [Escherichia coli], full insert sequence",3,3,5094,3249,2976,7336,1.3979629999999998,0,3,279,182,254,3,3,8.718023379995101e-05
+"321314|AY509003.1 Salmonella enterica subsp. enterica serovar Choleraesuis str. SC-B67 plasmid pSCV50, complete sequence",2289,2289,6075469,49545,49428,8478841,1224.065544,0,228,290792,239766,304297,1992,1992,0.06651851838936261
+214684|AE017342.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 2 sequence,3109,3109,7358385,1565133,1513009,10332554,338.980778,33831,408,347069,303156,376880,2532,2532,0.09034778229468256
+"40410|AY560607.1 Cryptococcus neoformans var. neoformans strain IFM 5844 NADH dehydrogenase subunit 1 (nad1) gene, partial cds; and apocytochrome b (cob) gene, complete cds; mitochondrial",399,399,243984,4167,3880,361228,3634.6627299999996,0,154,14540,17266,11255,172,172,0.011594971095393484
+"40410|AY560609.1 Cryptococcus neoformans var. neoformans strain IFM 5844 small subunit ribosomal RNA gene, complete sequence; and ATP synthase subunit 6 (atp6), ATP synthase subunit 9 (atp9), and cytochrome oxidase subunit 1 (cox1) genes, complete cds; mitochondrial",1354,1354,2817664,9369,9295,3893801,6789.821262,0,500,137622,110536,143072,1231,1231,0.03934734552171122
+"149539|D14490.1 Salmonella enterica subsp. enterica serovar Enteritidis plasmid pNL2001 genes for SpvA, SpvB and SpvC, complete cds",21,21,31677,3939,3884,42834,32.105242,0,19,1388,1151,1300,19,19,0.0006102616365996571
+"40410|AY138989.1 Filobasidiella neoformans cytochrome c oxidase subunit 2 (cox2) gene, complete cds; mitochondrial gene for mitochondrial product",13,13,682,369,335,983,1.9534919999999998,0,3,37,25,37,3,3,0.00037778101313312105
+"178876|AY101381.1 Cryptococcus neoformans var. grubii strain H99 mitochondrion, complete genome",2225,2225,1522904,24249,22682,2450652,4460.453717,0,235,118015,149721,109434,889,889,0.06465867340163033
+"4932|U33050.4 Saccharomyces cerevisiae chromosome IV cosmids 9410, 8035, 8166, and 9787",72,72,131149,50087,48059,177653,6.771592,0,10,5314,4936,5487,63,63,0.002092325611198824
+4932|U28373.1 Saccharomyces cerevisiae chromosome IV cosmid 9481,26,26,50911,30214,28359,69128,1.56018,0,4,1773,1642,2237,22,22,0.0007555620262662421
+"40410|AF538354.1 Cryptococcus neoformans var. neoformans NADH dehydrogenase subunit 4 (nad4) gene, partial cds; mitochondrial gene for mitochondrial product",3,3,1120,714,649,1575,0.182641,0,3,58,51,39,3,3,8.718023379995101e-05
+"4932|DQ010172.1 Saccharomyces cerevisiae strain OG maltotriose transporter gene, complete cds",5,5,5785,2331,2255,8263,2.559034,0,5,292,222,320,5,5,0.000145300389666585
+"4932|DQ010173.1 Saccharomyces cerevisiae strain WS maltotriose transporter gene, complete cds",1,1,1161,1465,1401,1465,0.24831999999999999,0,1,35,29,50,1,1,2.9060077933317002e-05
+"1280|AY259130.1 Staphylococcus aureus ATPase copper transport and putative copper oxidase genes, complete cds",1,1,1932,2269,2196,2269,0.242071,0,1,25,48,39,1,1,2.9060077933317002e-05
+"189668|DQ169247.1 Uncultured Staphylococcus sp. clone MT01A_B04 16S ribosomal RNA gene, partial sequence",3,3,650,734,663,1044,0.48964300000000005,0,2,58,30,41,2,2,8.718023379995101e-05
+"152508|DQ171532.1 Uncultured low G+C Gram-positive bacterium clone WS07B2_H09 16S ribosomal RNA gene, partial sequence",2,2,938,851,767,1412,0.09324600000000001,0,2,41,59,49,2,2,5.8120155866634004e-05
+"40410|AY421721.1 Cryptococcus neoformans var. neoformans putative O-acetyl-coA transporter (CAS8) gene, complete cds",1,1,1328,1768,1672,1768,0.20217100000000002,0,1,36,60,55,1,1,2.9060077933317002e-05
+"40410|AY426188.1 Cryptococcus neoformans var. neoformans Ynd1p (YND1) gene, complete cds",5,5,8215,5411,4935,11937,0.06876,0,3,393,337,400,5,5,0.000145300389666585
+"178876|AF356652.1 Filobasidiella neoformans var. neoformans 5S ribosomal RNA, 17S ribosomal RNA genes, internal transcribed spacer 1, 5.8S ribosomal RNA gene, internal transcribed spacer 2, and 25S ribosomal RNA gene, complete sequence",19,19,8931,4394,3989,13903,4.568251,0,7,635,498,628,7,7,0.0005521414807330231
+"214684|AE017341.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 1, complete sequence",6827,6827,15751003,2246613,2216325,22110431,14.640765,4714,26,763162,663315,803046,5675,5675,0.19839315205075514
+214684|AE017344.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 4 sequence,2379,2379,5473957,1499744,1452207,7748187,8.752252,9926,17,270118,232247,281092,1949,1949,0.06913392540336115
+214684|AE017345.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 5 sequence,2156,2156,4819002,1398548,1352670,6832307,6.12115,6500,14,236412,209262,248310,1757,1757,0.06265352802423146
+214684|AE017346.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 6 sequence,2952,2952,6569472,1399669,1355074,9250740,15.461785,1328,20,316809,291668,332482,2343,2343,0.08578535005915179
+214684|AE017347.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 7 sequence,2067,2067,4954587,1273411,1234954,6932896,9.815241,15936,19,229048,202415,248594,1743,1743,0.060067181088166235
+214684|AE017348.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 8 sequence,3555,3555,8169215,1146202,1127594,11498954,20.382917000000003,3481,28,397110,354369,421941,2957,2957,0.10330857705294194
+214684|AE017350.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 10 sequence,3055,3055,6606101,1043440,1024784,9342010,16.001935999999997,803,22,323019,290615,351598,2433,2433,0.08877853808628344
+214684|AE017351.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 11 sequence,1382,1382,3127564,879823,852064,4414269,7.219138,1314,13,150982,135284,161738,1109,1109,0.040161027703844096
+214684|AE017352.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 12 sequence,2475,2475,5683479,865261,849600,8011975,18.129279999999998,2296,24,278814,241962,301209,2035,2035,0.07192369288495958
+214684|AE017353.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 13 sequence,554,554,944248,227851,218185,1367054,10.720479,13269,24,50268,44942,52875,369,369,0.016099283175057617
+214684|AE017356.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 14 sequence,2244,2244,4515003,703815,691708,6389348,18.668754,4551,34,222512,197649,240734,1670,1670,0.06521081488236335
+214684|AE017343.1 Cryptococcus neoformans var. neoformans JEC21 chromosome 3 sequence,3284,3284,7232739,2020416,1954362,10231599,6.470649,7096,15,350941,304619,383128,2568,2568,0.09543329593301303
+"5476|AY441787.1 Candida albicans subtype e 25S ribosomal RNA gene, partial sequence",1,1,230,302,279,302,0.22505100000000003,0,1,6,17,2,1,1,2.9060077933317002e-05
+"178876|AF542528.2 Cryptococcus neoformans var. grubii strain 125.91 mating type a locus, complete sequence",67,67,93928,16026,15443,130744,9.541248,8095,19,4032,3887,4884,39,39,0.001947025221532239
+"527799|AY616586.1 Escherichia coli strain LW1655F+ mraY, ftsW, murG, ftsQ, ftsA and ftsZ-like genes, complete sequence",2,2,6548,12369,10888,12369,0.21945900000000002,0,1,764,717,713,1,1,5.8120155866634004e-05
+"192011|DQ479323.1 Cryptococcus neoformans A/D strain WM628 large subunit ribosomal RNA gene, partial sequence; mitochondrial",349,349,494717,2464,2461,644313,1145.208549,0,306,17416,16537,17762,339,339,0.010141967198727633
+"192011|DQ479317.1 Cryptococcus neoformans A/D strain WM628 apocytochrome b (cob) gene, partial cds; mitochondrial",9,9,6258,1285,1273,8269,2.287234,0,9,271,239,190,9,9,0.000261540701399853
+"32630|DQ888227.1 Synthetic construct clone pNOY373 35S ribosomal RNA, 18S ribosomal RNA, 5.8S ribosomal RNA, 25S ribosomal RNA, and 5S ribosomal RNA, complete sequence",555,555,628578,9146,9120,909715,1099.141684,0,162,32808,28678,36851,452,452,0.016128343252990937
+"32630|EF058441.1 Synthetic construct Saccharomyces cerevisiae clone FLH147435.01X SOG2, complete sequence",2,2,2139,2315,2134,3126,0.267364,0,2,94,110,174,2,2,5.8120155866634004e-05
+"32630|EF058894.1 Synthetic construct Saccharomyces cerevisiae clone FLH202825.01X ARG81, complete sequence",1,1,1785,2087,2022,2087,0.166113,0,1,27,38,38,1,1,2.9060077933317002e-05
+"32630|EF059074.1 Synthetic construct Saccharomyces cerevisiae clone FLH238336.01X HST1, complete sequence",1,1,1233,1489,1429,1489,0.014980000000000002,0,1,23,37,30,1,1,2.9060077933317002e-05
+"32630|EF059084.1 Synthetic construct Saccharomyces cerevisiae clone FLH147814.01X BUD2, complete sequence",8,8,10094,3312,3200,12786,2.216056,0,6,312,258,333,7,7,0.00023248062346653602
+"32630|EF059110.1 Synthetic construct Saccharomyces cerevisiae clone FLH201119.01X LEU4, complete sequence",1,1,1336,1612,1546,1612,0.11555599999999999,0,1,31,35,27,1,1,2.9060077933317002e-05
+"32630|EF038824.1 Synthetic construct Bacillus anthracis clone FLH245611.01L BA0642 gene, complete sequence",1,1,397,503,479,503,0.17168699999999998,0,1,17,7,13,1,1,2.9060077933317002e-05
+9913|DQ887321.1 Bos taurus pop-variant DC70 microsatellite BMS2270-98 sequence,1,1,38,41,40,41,0.242628,0,1,1,0,0,1,1,2.9060077933317002e-05
+"283643|BR000310.1 TPA_inf: Cryptococcus neoformans var. neoformans B-3501A genes for 25S rRNA, 5S rRNA, 18S rRNA, 5.8S rRNA, complete sequence",1038,1038,2012235,8081,8069,2847691,11561.293262000001,0,482,97609,82640,109559,914,914,0.030164360894783047
+"40410|AB204725.1 Filobasidiella neoformans CnHHK3 mRNA, complete cds",3,3,4927,4859,4179,7876,0.5220199999999999,0,2,244,527,239,2,2,8.718023379995101e-05
+283643|XM_773202.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBA2950) partial mRNA,1,1,1530,2196,1963,2196,0.24980300000000003,0,1,52,181,27,1,1,2.9060077933317002e-05
+283643|XM_771292.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBC6010) partial mRNA,2,2,4229,3322,3068,6016,0.715499,0,2,218,119,220,2,2,5.8120155866634004e-05
+283643|XM_770317.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBE1260) partial mRNA,1,1,688,999,927,999,0.005935,0,1,41,31,36,1,1,2.9060077933317002e-05
+283643|XM_770169.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBE3230) partial mRNA,2,2,2556,3221,2758,4452,0.074371,0,2,122,405,138,2,2,5.8120155866634004e-05
+283643|XM_769369.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBG1080) partial mRNA,6,6,8334,6876,6166,12390,1.012699,0,4,296,829,365,4,4,0.00017436046759990203
+283643|XM_767824.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBK2880) partial mRNA,6,6,12211,4528,4301,17698,3.3809519999999997,0,6,561,801,626,6,6,0.00017436046759990203
+283643|XM_767360.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBL0680) partial mRNA,7,7,14773,4835,4584,19751,3.6631949999999995,0,7,509,688,546,7,7,0.00020342054553321902
+283643|XM_767224.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBL1850) partial mRNA,4,4,4319,3325,3063,6113,0.758671,0,3,191,174,182,3,3,0.00011624031173326801
+283643|XM_766735.1 Cryptococcus neoformans var. neoformans B-3501A hypothetical protein (CNBN0100) partial mRNA,2,2,2918,2908,2588,4233,0.596735,0,2,79,265,108,2,2,5.8120155866634004e-05
+"77133|EF604277.1 Uncultured bacterium clone 16saw14g01.p1k 16S ribosomal RNA gene, partial sequence",1,1,785,1057,990,1057,0.20535,0,1,36,31,27,1,1,2.9060077933317002e-05
+"1640|EF690666.1 Listeria seeligeri strain ATCC 35967 23S ribosomal RNA gene, partial sequence",4,4,4249,2737,2526,6470,0.256011,0,3,249,155,280,4,4,0.00011624031173326801
+"4932|EF670006.1 Saccharomyces cerevisiae strain Sigma1278b flocculin (FLO11) gene, complete cds",6,6,12900,5261,4986,19820,5.536154,0,6,679,609,1470,6,6,0.00017436046759990203
+"1402|EF644414.1 Bacillus licheniformis strain RT8 16S ribosomal RNA gene, partial sequence",3,3,1729,1445,1264,2986,0.6950109999999999,0,3,167,125,94,3,3,8.718023379995101e-05
+"119912|EU219534.1 Salmonella enterica subsp. enterica serovar Choleraesuis strain OU7519 plasmid pOU7519, complete sequence",69,69,190165,35612,34118,277596,40.632025,6719,40,8858,7407,16482,51,51,0.002005145377398873
+"4932|EF125223.1 Saccharomyces cerevisiae clone YJM326 NAF1 (YNL124W), NMA111 (YNL123W), YNL122C (YNL122C), TOM70 (YNL121C), NCS2 (YNL119W), DCP2 (YNL118C), MLS1 (YNL117W), DMA2 (YNL116W), and YNL115C (YNL115C) genes, complete cds",7,7,15482,11456,10608,21573,1.065183,0,3,595,612,672,6,6,0.00020342054553321902
+"27292|EU414029.1 Saccharomyces carlsbergensis strain 34/70 foam promoting protein (CFG1) gene, complete cds",3,3,4038,3038,2640,6967,1.213706,0,3,305,326,369,3,3,8.718023379995101e-05
+"481805|CP000946.1 Escherichia coli ATCC 8739, complete genome",982,982,4600078,621632,587077,6330844,67.289125,141668,134,218773,170181,212516,848,848,0.0285369965305173
+"1613|EU559592.1 Lactobacillus fermentum strain ZDY2a 16S ribosomal RNA gene, partial sequence",3,3,1577,1123,1025,2345,1.359514,0,3,92,65,94,3,3,8.718023379995101e-05
+"334390|AP008937.1 Lactobacillus fermentum IFO 3956 DNA, complete genome",23002,23002,35535610,1613639,1561101,50917991,1822.946868,136708,441,1887054,1533771,2003086,18377,18377,0.6684399126221576
+"287|EU595743.1 Pseudomonas aeruginosa strain PACS458 clone fa1376, complete sequence",128,128,427108,24637,21670,672267,505.48053200000004,1930,85,32961,22230,31856,101,101,0.0037196899754645763
+"508882|EU362154.1 Bacillus sp. B8 16S ribosomal RNA gene, partial sequence",1,1,1016,1432,1333,1432,0.051227999999999996,0,1,55,44,38,1,1,2.9060077933317002e-05
+"508905|EU362169.1 Bacillus sp. B23(2008) 16S ribosomal RNA gene, partial sequence",1,1,1065,1445,1354,1445,0.042924000000000004,0,1,45,46,40,1,1,2.9060077933317002e-05
+"1613|FM209280.1 Lactobacillus fermentum ADI operon (arcB, arcC, arcA and arcD genes) strain IMDO 130101",15,15,3868,2028,1871,6065,3.3937660000000003,11,7,278,239,248,9,9,0.00043590116899975504
+"585035|CU928161.2 Escherichia coli S88 chromosome, complete genome",1868,1868,8318120,197928,186508,11636367,263.05793900000003,228247,197,408082,335453,420049,1317,1317,0.05428422557943616
+"1613|EU547303.1 Lactobacillus fermentum strain BCS80 16S ribosomal RNA gene, partial sequence",4,4,2336,1435,1337,3449,1.022311,0,4,132,88,135,4,4,0.00011624031173326801
+"287|EU348660.1 Pseudomonas aeruginosa strain W15Dec6 ferripyoverdine receptor (fpvB) gene, partial cds",1,1,1333,1604,1541,1604,0.21592600000000003,0,1,34,29,31,1,1,2.9060077933317002e-05
+"591946|CU638872.1 Escherichia coli LF82 plasmid, complete sequence",1059,1059,2854406,75030,72125,4191985,3268.3499239999996,0,210,185028,165778,138018,821,821,0.030774622531382703
+"476213|CP000857.1 Salmonella enterica subsp. enterica serovar Paratyphi C strain RKS4594, complete genome",2183,2183,6380893,2810716,2632115,9232467,12.903485,150453,39,343237,279875,352276,1819,1819,0.06343815012843101
+"476213|CP000858.1 Salmonella enterica subsp. enterica serovar Paratyphi C strain RKS4594 plasmid pSPCV, complete sequence",226,226,416183,43220,42218,589776,112.529775,0,42,21185,16833,22586,169,169,0.006567577612929643
+"1613|FJ749411.1 Lactobacillus fermentum strain IMAU50008 16S ribosomal RNA gene, partial sequence",1,1,850,1136,1074,1136,0.184298,0,1,32,30,38,1,1,2.9060077933317002e-05
+"1613|FJ844973.1 Lactobacillus fermentum strain IMAU20055 16S ribosomal RNA gene, partial sequence",2,2,742,992,928,992,0.22481500000000001,0,1,34,30,20,1,1,5.8120155866634004e-05
+"175245|FJ778477.1 Uncultured fungus clone Singleton_(159-1089_1025) 18S ribosomal RNA gene, partial sequence; internal transcribed spacer 1, complete sequence; and 5.8S ribosomal RNA gene, partial sequence",1,1,194,277,260,277,0.036736000000000005,0,1,15,2,12,1,1,2.9060077933317002e-05
+"562|EU897580.1 Escherichia coli strain 493/89 hydrogenase 4 membrane subunit (ECs3348) gene, complete cdsEU897581.1 Escherichia coli strain 86-24 hydrogenase 4 membrane subunit (ECs3348) gene, complete cdsEU897582.1 Escherichia coli strain 87-14 hydrogenase 4 membrane subunit (ECs3348) gene, complete cdsEU897583.1 Escherichia coli strain TB182A hydrogenase 4 membrane subunit (ECs3348) gene, complete cds",2,2,1321,1162,1080,1753,0.627001,0,2,50,44,49,2,2,5.8120155866634004e-05
+"562|EU901390.1 Escherichia coli strain 493/89 hypothetical protein (ECs2009) gene, complete cds",1,1,1816,2308,2185,2308,0.002157,0,1,82,41,39,1,1,2.9060077933317002e-05
+9796|FJ915129.1 Equus caballus microsatellite VHL20 allele 23.1 sequence,1,1,29,56,49,56,0.206377,0,1,5,2,2,1,1,2.9060077933317002e-05
+"1423|GQ120620.1 Bacillus subtilis strain JMC02 16S ribosomal RNA gene, partial sequence",1,1,626,839,799,839,0.23108299999999998,0,1,23,17,39,1,1,2.9060077933317002e-05
+"1613|EU825658.1 Lactobacillus fermentum strain 1 16S ribosomal RNA gene, partial sequence",3,3,1058,748,679,1584,1.435921,0,3,56,55,49,3,3,8.718023379995101e-05
+"643680|FN393073.1 Saccharomyces cerevisiae EC1118 chromosome VIII, EC1118_1H23 genomic scaffold, whole genome shotgun sequence",9,9,16762,12100,11466,21728,0.8360110000000001,0,3,540,460,575,7,7,0.000261540701399853
+"643680|FN393084.1 Saccharomyces cerevisiae EC1118 chromosome XIV, EC1118_1N26 genomic scaffold, whole genome shotgun sequence",70,70,122120,12696,12582,161347,66.538175,0,26,4142,4334,5172,60,60,0.0020342054553321902
+"1280|GQ915272.1 Staphylococcus aureus plasmid pSK53, partial sequence",12,12,20114,7050,6799,26191,4.888241000000001,1245,8,561,656,827,11,11,0.00034872093519980405
+"1280|GQ900472.1 Staphylococcus aureus plasmid pWBG756, partial sequence",198,198,410538,7619,7229,559148,2030.0622280000002,1730,166,17541,15486,18639,179,179,0.0057538954307967665
+"40410|AB505024.1 Filobasidiella neoformans CnLIG4 gene for DNA ligase IV, complete cds, strain: B4500",6,6,16882,7135,6903,22396,2.964716,0,5,629,537,650,6,6,0.00017436046759990203
+"673833|GQ478082.1 Enterococcus phage phiFL1B, complete genome",153,153,87229,4198,3651,134714,147.69009,3204,64,5845,6089,5301,66,66,0.0044461919237975015
+"77133|GQ491293.1 Uncultured bacterium clone PM9t2_a04b03 16S ribosomal RNA gene, partial sequence",1,1,899,1335,1235,1335,0.035443,0,1,54,46,49,1,1,2.9060077933317002e-05
+657310|FP929058.1 Enterococcus sp. 7L76 draft genome,2026,2026,3365546,557727,526726,4678771,49.320893,92674,117,158862,131761,184568,1302,1302,0.05887571789290025
+"523796|FN377602.2 Staphylococcus aureus subsp. aureus ST398 multiresistance plasmid pKKS825, complete sequence, strain ST398",5864,5864,4096293,8267,7667,5872732,602153.990779,0,2631,177857,182406,370724,3476,3476,0.1704082970009709
+"559292|NM_001178724.1 Saccharomyces cerevisiae S288c putative ATP-dependent permease ADP1 (ADP1), partial mRNA",3,3,5178,3050,2858,6851,0.567181,0,3,165,169,174,3,3,8.718023379995101e-05
+"559292|NM_001178799.1 Saccharomyces cerevisiae S288c CCR4-NOT core subunit CDC39 (CDC39), partial mRNA",3,3,6142,4368,4158,8000,1.18992,0,3,205,169,193,3,3,8.718023379995101e-05
+"559292|NM_001181691.3 Saccharomyces cerevisiae S288c Rav1p (RAV1), partial mRNA",3,3,5876,3868,3605,8202,0.76762,0,3,240,211,260,3,3,8.718023379995101e-05
+"559292|NM_001182682.1 Saccharomyces cerevisiae S288c Ecm5p (ECM5), partial mRNA",2,2,3149,2240,2115,4093,0.907501,0,2,82,75,167,2,2,5.8120155866634004e-05
+"559292|NM_001184139.1 Saccharomyces cerevisiae S288c Puf2p (PUF2), partial mRNA",6,6,6266,2851,2705,8432,1.559605,0,4,239,204,252,5,5,0.00017436046759990203
+"77133|HM250374.1 Uncultured bacterium clone ncd157b08c1 16S ribosomal RNA gene, partial sequence",1,1,796,1012,967,1012,0.19354200000000002,0,1,26,19,32,1,1,2.9060077933317002e-05
+"712938|CP002033.1 Lactobacillus fermentum CECT 5716, complete genome",41335,41335,66373540,1678042,1625721,94734211,5431.809008,193008,1020,3462720,2818986,3720301,32764,32764,1.2011983213736583
+10090|FR668217.1 Mus musculus mature microRNA mmu-mir-466i-5p,4,4,80,20,20,80,0.0,0,4,0,0,0,4,4,0.00011624031173326801
+"316401|FN649414.1 Escherichia coli ETEC H10407, complete genomeCP007594.1 Escherichia coli strain SEC470, complete genome",970,970,4169253,1648713,1552158,5848217,12.854239999999999,118391,53,200925,162031,212480,801,801,0.028188275595317492
+287|HQ326205.1 Pseudomonas aeruginosa strain SMC4489 CRISPR repeat sequence,5,5,1487,1562,1392,2482,0.750514,0,2,141,75,107,3,3,0.000145300389666585
+"77133|JF124979.1 Uncultured bacterium clone ncd1447c08c1 16S ribosomal RNA gene, partial sequence",3,3,1887,1395,1315,2569,0.07775399999999999,0,2,60,46,111,2,2,8.718023379995101e-05
+"77133|JF194894.1 Uncultured bacterium clone ncd2256h09c2 16S ribosomal RNA gene, partial sequence",2,2,887,974,904,1308,0.5302399999999999,0,2,54,37,44,2,2,5.8120155866634004e-05
+"1639|HQ703571.1 Listeria monocytogenes strain F2379 listeriolysin O gene, complete cds",1,1,864,1100,1049,1100,0.213204,0,1,32,19,33,1,1,2.9060077933317002e-05
+"936153|CP002491.1 Enterococcus faecalis 62, complete genome",37396,37396,84058969,1921140,1867158,114848847,6127.561861,340555,514,3559331,3214452,4009222,32182,32182,1.0867306743943226
+"474186|CP002621.1 Enterococcus faecalis OG1RF, complete genome",14898,14898,39359990,1178243,1135850,53746706,3153.4715739999997,270971,451,1699624,1449433,1956132,12892,12892,0.4329370410505567
+"559292|NM_001178218.2 Saccharomyces cerevisiae S288c serine/threonine protein kinase CDC15 (CDC15), partial mRNAXM_015476505.1 PREDICTED: Marmota marmota marmota cell division control protein 15 (LOC107134396), mRNA",2,2,2589,2466,2271,3810,0.5248649999999999,0,2,133,121,124,2,2,5.8120155866634004e-05
+"559292|NM_001178328.2 Saccharomyces cerevisiae S288c DNA-binding protein kinase TEL1 (TEL1), partial mRNA",9,9,14011,7582,7147,19458,1.8865290000000001,0,5,583,592,578,8,8,0.000261540701399853
+"559292|NM_001178393.2 Saccharomyces cerevisiae S288c protein phosphatase regulator GIP1 (GIP1), partial mRNA",1,1,1208,1490,1430,1490,0.173801,0,1,26,34,36,1,1,2.9060077933317002e-05
+"696406|CP002729.1 Escherichia coli UMNK88, complete genome",1385,1385,4797983,1141254,1071710,6780559,48.773505,131059,112,251526,192525,242223,1100,1100,0.04024820793764405
+"27292|FR820659.1 Saccharomyces pastorianus suc4 gene for invertase, strain NBRC 2003",2,2,1973,1639,1555,2494,0.287082,0,2,43,48,81,2,2,5.8120155866634004e-05
+"4931|FN677930.2 Saccharomyces bayanus genomic DNA sequence containing multiple Saccharomyces cerevisiae transferred regions, type strain CBS 380T",88,88,178255,23719,23051,245017,81.746282,0,32,8057,6691,8281,77,77,0.002557286858131896
+"287|JN000304.1 Pseudomonas aeruginosa strain T-1 16S ribosomal RNA gene, partial sequence",1,1,1093,1388,1317,1388,0.08707000000000001,0,1,34,37,30,1,1,2.9060077933317002e-05
+"4932|HQ615872.1 Saccharomyces cerevisiae strain 59A COS4 pseudogene, partial sequence; hypothetical protein (59A_0056g), hypothetical protein (59A_0012g), hypothetical protein (59A_0023g), and hypothetical protein (59A_0034g) genes, complete cds; and 59A_0045g pseudogene, partial sequence",3,3,12274,6594,6232,16239,1.536924,0,3,372,382,461,3,3,8.718023379995101e-05
+"930407|AB602252.1 Escherichia coli O157:H39 DNA, O-antigen biosynthesis gene cluster, strain: PV57",83,83,261845,16283,14842,409804,221.625128,5007,60,22726,11790,21574,64,64,0.002411986468465311
+"941193|CP002496.1 Pseudomonas aeruginosa M18, complete genome",3859,3859,15104218,3327166,3159316,21436102,64.128304,253849,105,791779,628260,770678,3205,3205,0.11214284074467032
+"287|HM560971.1 Pseudomonas aeruginosa plasmid pUM505, complete sequence",239,239,643620,22689,21935,911827,504.06812599999995,14916,103,35773,26138,31868,198,198,0.006945358626062764
+"155900|HQ747563.1 Uncultured organism clone ELU0023-T100-S-NIPCRAMgANb_000345 small subunit ribosomal RNA gene, partial sequence",1,1,1113,1453,1386,1453,0.015340000000000001,0,1,34,33,56,1,1,2.9060077933317002e-05
+"155900|HQ802252.1 Uncultured organism clone ELU0150-T457-S-NIPCRAMgANa_000466 small subunit ribosomal RNA gene, partial sequence",1,1,954,1240,1171,1240,0.13814,0,1,40,29,28,1,1,2.9060077933317002e-05
+"155900|HQ761247.1 Uncultured organism clone ELU0047-T268-S-NIPCRAMgANa_000429 small subunit ribosomal RNA gene, partial sequence",2,2,1508,1325,1186,2354,0.449855,0,2,104,66,93,2,2,5.8120155866634004e-05
+"77133|JQ319905.1 Uncultured bacterium clone A42 16S ribosomal RNA gene, partial sequence",1,1,450,605,567,605,0.222344,0,1,18,20,17,1,1,2.9060077933317002e-05
+"1423|JQ361069.1 Bacillus subtilis strain CYBS-20 16S ribosomal RNA gene, partial sequence",2,2,1523,1492,1321,2494,0.22571300000000002,0,2,120,100,87,2,2,5.8120155866634004e-05
+"4932|JQ277730.1 Saccharomyces cerevisiae strain YJM789 35S ribosomal RNA gene, external transcribed spacer 2, and 26S ribosomal RNA gene, complete sequence; Tar1p (TAR1) gene, complete cds; internal transcribed spacer 2 and 5.8S ribosomal RNA gene, complete sequence; Ylr154w-ep (YLR154W-E) gene, complete cds; internal transcribed spacer 1, complete sequence; Ylr154w-fp (YLR154W-F) gene, complete cds; and 18S ribosomal RNA gene, external transcribed spacer 1, and 5S ribosomal RNA gene, complete sequence",28,28,23694,4911,4815,35162,15.736041,0,11,1267,1488,1394,18,18,0.0008136821821328761
+"1280|JQ066314.1 Staphylococcus aureus strain JP1 RsbU (rsbU), RsbV (rsbV), RsbW (rsbW), and SigB (sigB) genes, complete cds",4,4,8244,2941,2879,10772,1.6472639999999998,0,4,281,319,260,4,4,0.00011624031173326801
+"178876|JQ277267.1 Cryptococcus neoformans var. grubii transposon Cnirt6 hypothetical protein and transposase domain-containing protein genes, complete cds",63,63,117461,7658,7596,165258,54.984188,0,32,5276,4653,6704,51,51,0.001830784909798971
+"178876|JQ277268.1 Cryptococcus neoformans var. grubii retrotransposon Tcn12 gag-pol polyprotein gene, complete cds",10,10,18890,5436,5215,27965,2.505814,0,8,1063,701,1425,9,9,0.00029060077933317
+"910348|CP002291.1 Escherichia coli P12b, complete genome",2331,2331,11503654,2086618,1993033,16043713,68.88461600000001,197514,128,547748,471222,592898,1751,1751,0.06773904166256194
+"562|JX050263.1 Escherichia coli strain 049766 secreted autotransporter toxin (Sat) gene, complete cds",31,31,43955,3891,3880,59108,32.598841,0,24,1782,1548,2002,28,28,0.000900862415932827
+"4932|NG_042623.1 Saccharomyces cerevisiae NRRL Y-12632 28S rRNA, partial sequence; from TYPE materialJQ689017.1 Saccharomyces cerevisiae strain NRRL Y-12632 26S ribosomal RNA gene, partial sequence",7,7,7978,3271,3132,11244,2.175995,0,6,389,308,387,6,6,0.00020342054553321902
+"1093787|CP003149.1 Pseudomonas aeruginosa DK2, complete genome",1566,1566,7403694,1997990,1883530,10508907,51.000562,172717,162,384862,330015,371229,1331,1331,0.04550808204357443
+"1639|JN235998.1 Listeria monocytogenes strain J3976 type I RM system HsdR gene, partial cds; Mrr, DNA/RNA helicase, hypothetical protein, lipoprotein, and McrB genes, complete cds; and threonine aldolase gene, partial cds",618,618,1251102,9261,9248,1677215,5347.383954,0,280,45828,43325,57744,556,556,0.017959128162789904
+"1613|JQ973612.1 Lactobacillus fermentum strain 40Mosuero 16S ribosomal RNA gene, partial sequence",1,1,1049,1415,1342,1415,0.051775999999999996,0,1,44,29,58,1,1,2.9060077933317002e-05
+"40410|GU903010.2 Cryptococcus neoformans var. neoformans Tao3 (TAO3) gene, complete cds",4,4,11041,6356,5965,14803,1.463128,0,4,417,325,399,4,4,0.00011624031173326801
+"77133|JX252595.1 Uncultured bacterium clone SK038.2.C.003 16S ribosomal RNA gene, partial sequence",2,2,494,515,443,799,0.7139850000000001,0,2,22,58,20,2,2,5.8120155866634004e-05
+"1206105|CP003726.1 Enterococcus faecalis D32, complete genome",146061,146061,344670508,2326757,2281596,466958831,31209.905271,0,581,13890361,12748325,16131184,126426,126426,4.244544043018215
+"175245|JX174763.1 Uncultured fungus isolate FICUS 035 internal transcribed spacer 1, partial sequence; 5.8S ribosomal RNA gene and internal transcribed spacer 2, complete sequence; and 28S ribosomal RNA gene, partial sequence",2,2,1675,1494,1355,2443,0.310837,0,2,72,88,93,2,2,5.8120155866634004e-05
+"175245|JX174765.1 Uncultured fungus isolate FICUS 037 internal transcribed spacer 1, partial sequence; 5.8S ribosomal RNA gene and internal transcribed spacer 2, complete sequence; and 28S ribosomal RNA gene, partial sequence",2,2,1205,1237,1143,1655,0.378902,0,2,45,55,47,2,2,5.8120155866634004e-05
+"559292|NM_001178488.3 Saccharomyces cerevisiae S288c GTPase-activating protein IRA1 (IRA1), partial mRNA",7,7,11603,6457,6024,17723,3.692624,0,6,708,537,772,6,6,0.00020342054553321902
+863767|FR720325.1 Listeria monocytogenes serotype 7 str. SLCC2482 complete genome,1031,1031,2064794,925711,869183,2890236,9.703515,59181,60,92908,84811,102813,863,863,0.029960940349249832
+"235443|CP003824.1 Cryptococcus neoformans var. grubii H99 chromosome 5, complete sequence",2938,2938,6845338,1786686,1741397,9539988,7.207438000000001,10807,17,301610,280411,344345,2472,2472,0.08537850896808535
+"235443|CP003830.1 Cryptococcus neoformans var. grubii H99 chromosome 11, complete sequence",2346,2346,5257225,1527484,1482574,7318339,5.46125,8406,15,230665,213677,260886,1902,1902,0.06817494283156168
+"235443|CP003832.1 Cryptococcus neoformans var. grubii H99 chromosome 13, complete sequence",580,580,1157268,180600,178036,1654714,18.094988,13480,19,57391,54416,64375,415,415,0.01685484520132386
+"1230340|HF558398.1 Listeria monocytogenes serotype 4b str. LL195, complete genomeCP007492.1 Listeria monocytogenes strain NE dc2014, complete genome",2028,2028,7526577,585142,561142,9891173,301.286544,126128,318,256608,242831,313654,1872,1872,0.05893383804876688
+"1613|JX845643.1 Lactobacillus fermentum strain UFLA CH85 16S ribosomal RNA gene, partial sequence",3,3,1549,1235,1145,2234,0.7430640000000001,0,3,78,53,85,3,3,8.718023379995101e-05
+"1261557|HF558530.1 Enterococcus faecalis str. Symbioflor 1, complete genome",36686,36686,93112591,1203486,1161524,126308201,12341.093071,517319,529,3771081,3409719,4497734,31841,31841,1.0660980190616676
+"77133|JX396145.1 Uncultured bacterium clone NYS001956 16S ribosomal RNA gene, partial sequence",1,1,374,572,529,572,0.19055,0,1,28,15,34,1,1,2.9060077933317002e-05
+"1643|NR_076237.1 Listeria welshimeri strain SLCC5334 23S ribosomal RNA gene, complete sequence",3,3,3029,1995,1849,4631,1.568062,0,3,190,102,214,3,3,8.718023379995101e-05
+"77133|KC523898.1 Uncultured bacterium clone H137 16S ribosomal RNA gene, partial sequence",1,1,449,582,551,582,0.16228399999999998,0,1,16,15,16,1,1,2.9060077933317002e-05
+"77133|KC524268.1 Uncultured bacterium clone ZHB91 16S ribosomal RNA gene, partial sequence",2,2,566,612,560,790,0.399778,0,2,41,23,13,2,2,5.8120155866634004e-05
+"77133|JX925210.1 Uncultured bacterium clone G7DUZBG01A73R6 16S ribosomal RNA gene, partial sequence",1,1,340,461,441,461,0.026674,0,1,9,11,24,1,1,2.9060077933317002e-05
+"1280|KC561137.1 Staphylococcus aureus strain 1 plasmid pSA8589, complete sequence",712,712,909759,4204,4049,1255978,36624.266211,0,489,36355,39314,47023,637,637,0.020690775488521704
+"767453|CP005958.1 Lactobacillus fermentum F-6, complete genome",18836,18836,26487048,1598531,1530131,38090192,1578.451217,134965,540,1436545,1143005,1499480,13701,13701,0.547375627951959
+"1280|AB705453.1 Staphylococcus aureus DNA, staphylococcal cassette chromosomes, strain: JCSC6690",152,152,414093,25473,23933,563877,692.234705,2830,110,17231,16752,18637,138,138,0.004417131845864185
+"77133|KC563261.1 Uncultured bacterium clone S9S_27 16S ribosomal RNA gene, partial sequence",1,1,390,541,497,541,0.127994,0,1,16,28,9,1,1,2.9060077933317002e-05
+"77133|KC565040.1 Uncultured bacterium clone S4I_04 16S ribosomal RNA gene, partial sequence",3,3,730,633,559,1261,0.733978,0,3,58,54,48,3,3,8.718023379995101e-05
+"523796|HF583291.1 Staphylococcus aureus subsp. aureus ST398 plasmid pUR1902, isolate C1902, partial sequence",18,18,13542,2593,2302,21149,11.388029,1218,15,818,780,1003,15,15,0.000523081402799706
+"1613|KF149167.1 Lactobacillus fermentum strain IMAU32493 16S ribosomal RNA gene, partial sequence",1,1,883,1116,1067,1116,0.15578699999999998,0,1,28,21,34,1,1,2.9060077933317002e-05
+"1351|KF303418.1 Enterococcus faecalis strain UepopsBZ18.506 16S ribosomal RNA gene, partial sequence",1,1,421,531,510,531,0.175512,0,1,10,11,21,1,1,2.9060077933317002e-05
+"1193576|CP003979.1 Staphylococcus aureus subsp. aureus CN1, complete genome",814,814,1577968,580312,543117,2163773,12.269889,56597,72,68114,62897,71280,661,661,0.02365490343772004
+1352355|CP006728.1 Pseudomonas aeruginosa c7447m genome,1430,1430,7144220,2331588,2195262,10110455,20.075177,175140,77,369458,289019,362747,1251,1251,0.041555911444643316
+"1385755|CP006698.1 Synthetic Escherichia coli C321.deltaA, complete sequence",692,692,3142234,1468988,1382071,4378957,8.303149000000001,108455,41,145995,126051,153349,575,575,0.020109573929855365
+"4932|KF626448.1 Saccharomyces cerevisiae strain CICC32919 glutamine-fructose-6-phosphate transaminase (GFA1) gene, complete cds",2,2,2301,2123,1993,2908,0.256298,0,2,64,76,55,2,2,5.8120155866634004e-05
+"1408272|CP006937.1 Pseudomonas aeruginosa LES431, complete genome",2823,2823,12192928,2998710,2829088,17392562,56.27256800000001,258599,127,655299,508654,628237,2423,2423,0.0820366000057539
+"1427342|CP006931.1 Pseudomonas aeruginosa SCV20265, complete genome",3106,3106,12909159,3241816,3070298,18420367,40.829817999999996,256427,72,685314,534694,704434,2543,2543,0.09026060206088261
+1393540|KC246910.1 Uncultured bacterium Contig230 genomic sequence,1,1,963,1228,1167,1228,0.23911500000000002,0,1,35,26,32,1,1,2.9060077933317002e-05
+1393560|KC246923.1 Uncultured bacterium Contig365 genomic sequence,7,7,15050,5585,5352,22298,4.896008999999999,0,6,852,831,811,7,7,0.00020342054553321902
+1393593|KC246947.1 Uncultured bacterium Contig593 genomic sequence,1,1,2139,2859,2696,2859,0.201133,0,1,90,73,88,1,1,2.9060077933317002e-05
+1393487|KC247070.1 Uncultured bacterium Contig1670 genomic sequence,2,2,4073,2925,2737,5406,0.667404,0,2,150,113,153,2,2,5.8120155866634004e-05
+"175245|KF800338.1 Uncultured fungus clone CMH247 18S ribosomal RNA gene, partial sequence; internal transcribed spacer 1, 5.8S ribosomal RNA gene, and internal transcribed spacer 2, complete sequence; and 28S ribosomal RNA gene, partial sequence",2,2,1025,869,796,1508,0.6043930000000001,0,2,55,47,49,2,2,5.8120155866634004e-05
+"1448140|CP007147.1 Pseudomonas aeruginosa YL84, complete genome",2173,2173,9670050,2722110,2570066,13702994,33.470977000000005,201991,100,507757,398600,480915,1786,1786,0.06314754934909785
+"1613|KF030759.1 Lactobacillus fermentum strain M10-4 16S ribosomal RNA gene, partial sequence",1,1,682,882,834,882,0.244977,0,1,36,12,21,1,1,2.9060077933317002e-05
+"1613|KF030762.1 Lactobacillus fermentum strain M10-7 16S ribosomal RNA gene, partial sequence",4,4,1473,1141,1035,2150,1.178855,0,3,98,58,69,3,3,0.00011624031173326801
+"1613|KF030773.1 Lactobacillus fermentum strain E10-15 16S ribosomal RNA gene, partial sequence",1,1,806,1069,995,1069,0.212652,0,1,27,47,20,1,1,2.9060077933317002e-05
+"1287066|CP004081.1 Enterococcus faecalis DENG1, complete genome",24070,24070,59604549,1352925,1303237,81222900,5526.679267,401851,458,2549231,2222413,2787240,20805,20805,0.6994760758549402
+"1457188|CP007210.1 Listeria monocytogenes WSLC1042, complete genome",2708,2708,8674977,625868,606448,11649681,247.718702,161885,225,330559,304279,395699,2448,2448,0.07869469104342244
+"562|CP007391.1 Escherichia coli strain ST540, complete genome",1011,1011,3334878,800512,752436,4778786,23.712046,141585,77,183025,154725,168701,825,825,0.02937973879058349
+"1280|CP007454.1 Staphylococcus aureus strain 502A, complete genome",397,397,1415656,218297,206924,1852806,29.493995,51318,122,50496,47172,53356,334,334,0.011536850939526848
+"77133|KF335479.1 Uncultured bacterium clone G250WV301BD8PK 16S ribosomal RNA gene, partial sequenceKF336189.1 Uncultured bacterium clone G250WV301BC6Y3 16S ribosomal RNA gene, partial sequence",1,1,289,421,391,421,0.097851,0,1,22,8,20,1,1,2.9060077933317002e-05
+"77133|KF337025.1 Uncultured bacterium clone G250WV301BMUET 16S ribosomal RNA gene, partial sequenceKF338416.1 Uncultured bacterium clone G250WV301BAWRY 16S ribosomal RNA gene, partial sequence",1,1,297,397,372,397,0.13485999999999998,0,1,9,16,11,1,1,2.9060077933317002e-05
+"77133|KF337875.1 Uncultured bacterium clone G250WV301BBR21 16S ribosomal RNA gene, partial sequenceKF338042.1 Uncultured bacterium clone G250WV301AWOXG 16S ribosomal RNA gene, partial sequence",1,1,244,381,348,381,0.156672,0,1,15,18,16,1,1,2.9060077933317002e-05
+"77133|KF339563.1 Uncultured bacterium clone G250WV301BWEJ9 16S ribosomal RNA gene, partial sequence",1,1,286,369,347,369,0.125959,0,1,6,16,7,1,1,2.9060077933317002e-05
+"77133|KF341662.1 Uncultured bacterium clone G7DUZBG01AUKFF 16S ribosomal RNA gene, partial sequence",1,1,277,382,359,382,0.117319,0,1,14,9,17,1,1,2.9060077933317002e-05
+"77133|KF343478.1 Uncultured bacterium clone G7DUZBG01AS37H 16S ribosomal RNA gene, partial sequence",1,1,239,321,302,321,0.21859499999999998,0,1,14,5,10,1,1,2.9060077933317002e-05
+"77133|KF343631.1 Uncultured bacterium clone G7DUZBG01BFK2F 16S ribosomal RNA gene, partial sequence",2,2,429,445,407,680,0.23494600000000002,0,2,27,22,36,2,2,5.8120155866634004e-05
+"77133|KF343670.1 Uncultured bacterium clone G7DUZBG01ABCKB 16S ribosomal RNA gene, partial sequence",1,1,242,340,313,340,0.19126300000000002,0,1,15,12,5,1,1,2.9060077933317002e-05
+"1408253|HG530657.1 Escherichia coli H89 plasmid pECOH89, complete sequence",129,129,206319,30681,29152,293839,66.126374,7160,51,11826,8222,10168,86,86,0.0037487500533978932
+"1613|JN188383.1 Lactobacillus fermentum strain HM2 16S ribosomal RNA gene, partial sequence",5,5,1890,1146,1020,2979,1.523331,0,3,122,93,111,3,3,0.000145300389666585
+"1483718|KJ175072.1 Lactobacillus sp. VK 16S ribosomal RNA gene, partial sequence",3,3,725,610,556,1056,0.820839,0,2,27,36,33,2,2,8.718023379995101e-05
+1457392|CP007224.1 Pseudomonas aeruginosa PA96 genome,3352,3352,14267443,3056037,2891688,20100667,77.34329699999999,222295,133,730578,577267,703676,2855,2855,0.09740938123247858
+"1458852|KJ094022.1 Listeria phage LP-030-3, complete genome",37,37,66902,12518,11583,98887,27.576675,2282,21,4421,3118,3512,29,29,0.001075222883532729
+"unk_taxid|1VW7_A Chain A, S. Cerevisiae 80s Ribosome Bound With Taura Syndrome Virus (tsv) Ires, 5 Degree Rotation (class Ii). This Entry Contains The Large Subunit Ribosomal Rna.1VWS_A Chain A, S. Cerevisiae 80s Ribosome Bound With Taura Syndrome Virus (tsv) Ires, 2 Degree Rotation (class I). This Entry Contains The Large Subunit Ribosomal Rna.",14,14,17453,3317,3237,24942,16.47922,0,13,905,659,976,13,13,0.00040684109106643804
+1147787|CP008749.1 Pseudomonas aeruginosa PAO1H2O genome,2383,2383,10233111,1878659,1769059,14673680,98.23444,250213,127,599397,423856,515884,2055,2055,0.06925016571509442
+"227866|KJ709345.1 Bacillus tequilensis strain HTTA-X0822 16S ribosomal RNA gene, partial sequence",2,2,1447,1410,1257,2305,0.23529299999999997,0,2,100,82,95,2,2,5.8120155866634004e-05
+"447265|KF810102.1 Uncultured yeast isolate ZB05224109 clone S-97 26S ribosomal RNA gene, partial sequence",1,1,355,475,451,475,0.175821,0,1,12,12,20,1,1,2.9060077933317002e-05
+"119912|CP007639.1 Salmonella enterica subsp. enterica serovar Choleraesuis strain C500, complete genome",174384,174384,708663143,4750685,4739912,980687503,948.0962509999999,0,284,33397852,27428085,34131776,152007,152007,5.067612630323552
+"1201292|CP008816.1 Enterococcus faecalis ATCC 29212, complete genome",21109,21109,56186123,1083714,1039603,76436696,7190.723495,374583,553,2327364,2106279,2662365,18180,18180,0.6134291850943886
+"562|LM997358.1 Escherichia coli genome assembly FHI98, scaffold scaffold-21_contig-10.0_1_176740_[organism:Escherichia",438,438,1830518,49798,48010,2504739,1586.0121490000001,19919,198,86066,66083,82287,371,371,0.012728314134792846
+"562|LM997361.1 Escherichia coli genome assembly FHI98, scaffold scaffold-24_contig-6.0_1_313393_[organism:Escherichia",1721,1721,6233014,86947,83251,8736453,4229.186065999999,29210,272,330638,246096,296788,1322,1322,0.05001239412323857
+"562|LM995501.1 Escherichia coli genome assembly FHI102, scaffold scaffold-20_contig-10.0_1_140000_[organism:Escherichia",774,774,1927701,68675,67190,2732152,771.044921,0,97,93400,80086,129156,650,650,0.022492500320387358
+"562|LM995507.1 Escherichia coli genome assembly FHI102, scaffold scaffold-25_contig-4.0_1_387344_[organism:Escherichia",456,456,1247045,40655,39345,1695504,325.306405,29472,113,52549,46894,56164,393,393,0.013251395537592551
+"562|LM995585.1 Escherichia coli genome assembly FHI15, scaffold scaffold-23_contig-18.0_1_43770_[organism:Escherichia",13,13,35488,13614,13113,48151,5.875908,1925,11,1610,1248,1531,12,12,0.00037778101313312105
+"562|LM995747.1 Escherichia coli genome assembly FHI24, scaffold scaffold-31_contig-9.1_5892_261967_[organism:Escherichia",87,87,328464,24557,23665,435166,62.696493000000004,13665,62,12872,10997,13002,81,81,0.002528226780198579
+"562|LM995846.1 Escherichia coli genome assembly FHI29, scaffold scaffold-8_contig-13.0_1_55108_[organism:Escherichia",970,970,2847576,54383,54158,3909899,890.8643,0,121,129596,105289,135056,868,868,0.028188275595317492
+"562|LM995851.1 Escherichia coli genome assembly FHI29, scaffold scaffold-12_contig-9.0_1_125821_[organism:Escherichia",82,82,558146,87293,83668,769158,73.846672,577,32,25040,20875,29304,75,75,0.0023829263905319944
+"562|LM995854.1 Escherichia coli genome assembly FHI29, scaffold scaffold-14_contig-8.0_1_130059_[organism:Escherichia",26,26,209424,70996,68605,280922,9.863187,0,11,8543,6773,9181,26,26,0.0007555620262662421
+"562|LM995856.1 Escherichia coli genome assembly FHI29, scaffold scaffold-16_contig-6.0_1_214224_[organism:Escherichia",18,18,105486,45308,43796,143771,2.173205,2612,7,4689,3633,4476,13,13,0.000523081402799706
+"562|LM995857.1 Escherichia coli genome assembly FHI29, scaffold scaffold-17_contig-5.0_1_300906_[organism:Escherichia",345,345,1387071,167362,159010,1880394,167.315778,21038,68,58407,49938,61493,310,310,0.010025726886994366
+"562|LM995858.1 Escherichia coli genome assembly FHI29, scaffold scaffold-18_contig-4.0_1_342480_[organism:Escherichia",296,296,1442763,161363,154868,1989978,211.21120299999998,18576,109,65164,52748,81510,242,242,0.008601783068261832
+"562|LM995859.1 Escherichia coli genome assembly FHI29, scaffold scaffold-19_contig-3.0_1_383503_[organism:Escherichia",929,929,2486597,194874,186281,3462850,419.934417,26979,114,118931,100658,124925,720,720,0.026996812400051494
+"562|LM995861.1 Escherichia coli genome assembly FHI29, scaffold scaffold-20_contig-2.1_279513_398668_[organism:Escherichia",26,26,191896,42795,41445,255774,16.317792999999998,3384,19,7802,6086,7789,23,23,0.0007555620262662421
+"562|LM995864.1 Escherichia coli genome assembly FHI29, scaffold scaffold-21_contig-1.2_262562_484434_[organism:Escherichia",72,72,380525,111536,106309,509505,16.735309,10111,22,15059,12515,16242,67,67,0.002092325611198824
+"562|LM995865.1 Escherichia coli genome assembly FHI29, scaffold scaffold-22_contig-0.0_1_876679_[organism:Escherichia",88,88,527949,224990,213043,738281,9.268179,30077,30,22593,37402,26038,71,71,0.002557286858131896
+"562|LM995867.1 Escherichia coli genome assembly FHI29, scaffold scaffold-22_contig-0.2_960187_1697133_[organism:Escherichia",78,78,385750,213363,199773,538643,3.00045,24088,17,18402,14419,18445,67,67,0.002266686078798726
+"562|LM995868.1 Escherichia coli genome assembly FHI29, scaffold scaffold-22_contig-0.3_1697975_2180732_[organism:Escherichia",326,326,1669054,306992,293031,2255461,58.991727000000004,21244,49,71116,59641,71697,290,290,0.009473585406261344
+"562|LM995888.1 Escherichia coli genome assembly FHI30, scaffold scaffold-18_contig-9.0_1_190880_[organism:Escherichia",109,109,864639,92449,88707,1150506,214.284141,16458,70,34783,28419,35195,108,108,0.003167548494731553
+"562|LM995889.1 Escherichia coli genome assembly FHI30, scaffold scaffold-19_contig-8.0_1_222942_[organism:Escherichia",415,415,2216082,191541,185574,3005916,420.6107,11335,97,93821,78452,110597,371,371,0.012059932342326557
+"562|LM995891.1 Escherichia coli genome assembly FHI30, scaffold scaffold-21_contig-6.0_1_322842_[organism:Escherichia",125,125,500713,200188,188293,690290,8.044848,8656,14,22158,18215,25740,102,102,0.003632509741664625
+"562|LM995896.1 Escherichia coli genome assembly FHI30, scaffold scaffold-23_contig-4.2_25457_476256_[organism:Escherichia",252,252,1403129,232115,221069,1921675,101.704526,28567,67,62667,55250,62856,219,219,0.007323139639195884
+"562|LM995900.1 Escherichia coli genome assembly FHI30, scaffold scaffold-25_contig-2.1_344555_537567_[organism:Escherichia",14,14,105408,51588,48749,147102,2.6505389999999998,9002,8,5058,3980,4725,13,13,0.00040684109106643804
+"562|LM995901.1 Escherichia coli genome assembly FHI30, scaffold scaffold-26_contig-1.0_1_716136_[organism:Escherichia",148,148,893958,176991,168616,1206697,29.253376,35915,47,37609,31455,39055,140,140,0.004300891534130916
+"562|LM995905.1 Escherichia coli genome assembly FHI30, scaffold scaffold-27_contig-0.0_1_1238179_[organism:Escherichia",405,405,2049690,590911,560226,2817229,36.622434000000005,43497,62,92857,75148,95412,370,370,0.011769331562993385
+"562|LM996158.1 Escherichia coli genome assembly FHI40, scaffold scaffold-13_contig-21.2_7571_42939_[organism:Escherichia",267,267,678736,22307,21263,980722,1682.840026,0,132,36881,46522,33800,175,175,0.007759040808195639
+"562|LM996182.1 Escherichia coli genome assembly FHI40, scaffold scaffold-13_contig-21.26_676228_697707_[organism:Escherichia",14,14,14334,3586,3245,21938,6.469192,1180,9,1190,747,683,9,9,0.00040684109106643804
+"562|LM996262.1 Escherichia coli genome assembly FHI40, scaffold scaffold-26_contig-56.17_574222_603014_[organism:Escherichia",11,11,17616,9021,8447,24687,2.468741,1046,8,866,670,938,9,9,0.000319660857266487
+"562|LM996349.1 Escherichia coli genome assembly FHI6, scaffold scaffold-20_contig-12.0_1_143710_[organism:Escherichia",187,187,543675,27451,26513,748586,271.524267,11969,89,24425,20204,26578,168,168,0.005434234573530279
+"562|LM996403.1 Escherichia coli genome assembly FHI66, scaffold scaffold-27_contig-5.0_1_352649_[organism:Escherichia",148,148,244406,17701,16533,361907,26.439073999999998,17987,37,13654,10494,24297,77,77,0.004300891534130916
+"562|LM996650.1 Escherichia coli genome assembly FHI75, scaffold scaffold-24_contig-2.3_399532_490342_[organism:Escherichia",19,19,43468,11572,10851,64936,4.429247,4929,9,2987,2018,2404,13,13,0.0005521414807330231
+"562|LM997280.1 Escherichia coli genome assembly FHI99, scaffold scaffold-32_contig-0.0_1_275481_[organism:Escherichia",49,49,175913,101524,95289,236319,2.3988400000000003,9460,8,6699,5982,7655,32,32,0.0014239438187325332
+"562|LM996899.1 Escherichia coli genome assembly FHI83, scaffold scaffold-13_contig-14.0_1_95268_[organism:Escherichia",22,22,55087,10604,10142,75949,10.191558,4379,18,2636,1873,2709,20,20,0.000639321714532974
+"562|LM997127.1 Escherichia coli genome assembly FHI70, scaffold scaffold-31_contig-9.0_1_261799_[organism:Escherichia",139,139,439281,28197,27064,603726,128.092023,16676,86,20770,16467,20036,126,126,0.0040393508327310635
+"562|LM997250.1 Escherichia coli genome assembly FHI99, scaffold scaffold-11_contig-21.0_1_36450_[organism:Escherichia",7,7,56566,20730,20211,73284,5.036981,0,6,1979,1530,2091,7,7,0.00020342054553321902
+"562|LM997252.1 Escherichia coli genome assembly FHI99, scaffold scaffold-13_contig-19.0_1_58672_[organism:Escherichia",15,15,48911,23371,21026,75596,5.029593,1472,10,3357,2656,3118,14,14,0.00043590116899975504
+"562|LM997261.1 Escherichia coli genome assembly FHI99, scaffold scaffold-20_contig-12.0_1_139909_[organism:Escherichia",16,16,97095,50292,48170,129126,2.849423,3403,8,3585,3031,4762,15,15,0.00046496124693307204
+"562|LM997264.1 Escherichia coli genome assembly FHI99, scaffold scaffold-22_contig-10.0_1_191562_[organism:Escherichia",35,35,196060,87302,82371,261582,5.089131,5887,13,7801,6403,7325,32,32,0.0010171027276660951
+"562|LM997266.1 Escherichia coli genome assembly FHI99, scaffold scaffold-24_contig-8.0_1_266005_[organism:Escherichia",31,31,142505,67296,63170,199992,4.067626000000001,8712,16,6952,5266,6828,28,28,0.000900862415932827
+"562|LM997267.1 Escherichia coli genome assembly FHI99, scaffold scaffold-25_contig-7.0_1_270917_[organism:Escherichia",38,38,200649,112138,105618,273661,3.8388739999999997,10817,13,8512,7002,9563,33,33,0.0011042829614660462
+"562|LM997277.1 Escherichia coli genome assembly FHI99, scaffold scaffold-30_contig-2.2_11181_538695_[organism:Escherichia",233,233,1339912,287180,274233,1811272,51.281511,17729,59,57789,46353,57946,204,204,0.006770998158462861
+"1280|KJ866414.1 Staphylococcus aureus strain 1128105 plasmid p1128105, partial sequence",175,175,175116,4225,4110,244480,1362.213102,0,100,7520,7944,9006,158,158,0.005085513638330475
+"1613|KM207830.1 Lactobacillus fermentum strain FT41 16S ribosomal RNA gene, partial sequence",2,2,1401,1229,1132,2094,0.546375,0,2,61,56,121,2,2,5.8120155866634004e-05
+"1291742|AP014681.1 Lactobacillus hokkaidonensis plasmid pLOOC260-1 DNA, complete genome",71,71,28542,5020,4706,41313,5.385599,3663,20,1610,1590,1321,25,25,0.002063265533265507
+"227866|KM374724.1 Bacillus tequilensis strain 3S2 16S ribosomal RNA gene, partial sequence",2,2,595,806,764,806,0.23240300000000003,0,1,20,22,38,1,1,5.8120155866634004e-05
+"511145|CP009685.1 Escherichia coli str. K-12 substr. MG1655, complete genome",68227,68227,215414637,3986168,3938894,297130110,2410.112537,0,210,10048174,8366462,10297367,58429,58429,1.982681937156419
+"562|AB811611.1 Escherichia coli DNA, O-antigen biosynthetic locus, strain: E40",545,545,2157373,16305,16279,2877510,1514.436791,0,222,81480,73165,95266,488,488,0.015837742473657768
+4932|CP009944.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 1 sequence,158,158,284509,133421,126055,391260,5.750255,3851,15,11744,10904,13127,125,125,0.004591492313464086
+4932|CP009945.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 4 sequence,1525,1525,2609402,1015317,961884,3624875,10.889312,39243,30,111629,109233,130355,1235,1235,0.044316618848308426
+4932|CP009946.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 15 sequence,1192,1192,2226267,810893,774331,3071306,9.549783999999999,18687,22,92407,87538,107635,1004,1004,0.03463961289651386
+4932|CP009947.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 3 sequence,98,98,268244,95220,90824,362683,7.059467999999999,12443,13,9962,9889,12790,90,90,0.0028478876374650663
+4932|CP009948.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 7 sequence,438,438,1045978,558365,528271,1429858,3.7254120000000004,20960,15,41214,40021,47814,383,383,0.012728314134792846
+4932|CP009949.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 8 sequence,158,158,320130,246864,230531,444416,1.384167,10165,6,13288,13159,15165,130,130,0.004591492313464086
+4932|CP009950.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 12 sequence,1147,1147,2750009,651875,619748,3764167,134.422456,23968,158,105656,115032,139578,965,965,0.0333319093895146
+4932|CP009951.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 6 sequence,65,65,149343,118913,111366,206976,1.209363,1478,6,5908,5950,7356,59,59,0.001888905065665605
+4932|CP009952.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 5 sequence,795,795,1476312,488935,468581,2036918,9.152485,1241,14,62077,58114,71895,677,677,0.023102761956987013
+4932|CP009953.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 13 sequence,449,449,1159000,503498,477752,1578883,6.22077,23042,15,44858,43920,53993,399,399,0.013047974992059334
+4932|CP009954.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 10 sequence,825,825,1566710,529069,504026,2152946,12.58253,18898,21,65367,61593,73155,700,700,0.023974564294986525
+4932|CP009955.1 Saccharomyces cerevisiae strain NCIM3107 sequence,3431,3431,6637286,78683,77737,9052687,6606.755902,0,324,235955,334682,407336,3123,3123,0.09970512738921064
+4932|CP009956.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 11 sequence,1089,1089,2091105,542810,523183,2851495,18.346698999999997,7081,21,83950,81163,98118,931,931,0.03164642486938221
+4932|CP009957.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 16 sequence,816,816,1595970,564040,536888,2176825,10.948372,22195,21,63210,61823,73475,691,691,0.023713023593586673
+4932|CP009958.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 9 sequence,376,376,784660,283375,269883,1086910,10.208956,9854,17,32373,30921,40945,332,332,0.010926589302927192
+4932|CP009959.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 14 sequence,346,346,904711,470217,445057,1238458,4.544363,17540,12,35511,34886,42942,302,302,0.010054786964927682
+4932|CP009960.1 Saccharomyces cerevisiae strain NCIM3107 chromosome 2 sequence,652,652,1748690,534106,512184,2365914,14.541167999999999,19192,21,66269,66115,79692,569,569,0.018947170812522687
+"562|CP010371.1 Escherichia coli strain 6409, complete genome",3947,3947,18539045,3399548,3274656,25634366,68.15065,165791,94,859900,709093,890731,3288,3288,0.1147001276028022
+"96241|CP010434.1 Bacillus subtilis subsp. spizizenii strain NRS 231, complete genome",569412,569412,1345504080,4027555,4025877,1839802216,3436.346504,0,619,56348963,50435225,64660645,499397,499397,16.5471570961659
+"287|CP007399.1 Pseudomonas aeruginosa strain F22031, complete genome",2525,2525,10930759,2676303,2530308,15492047,50.531911,251013,104,568212,446425,563060,2160,2160,0.07337669678162542
+"1591072|KP399677.1 Listeria phage vB_LmoS_188, complete genome",26,26,13086,2639,2341,19527,5.231224,1742,14,840,631,746,14,14,0.0007555620262662421
+"1591073|KP399678.1 Listeria phage vB_LmoS_293, complete genome",87,87,44880,4904,4311,71183,28.495704999999997,2150,26,4110,2449,2447,29,29,0.002528226780198579
+"1343064|CP010526.1 Staphylococcus aureus subsp. aureus ST772-MRSA-V strain DAR4145, complete genome",1085,1085,2453137,566163,531175,3357732,87.140987,41930,211,101578,108977,122073,886,886,0.031530184557648944
+"745156|CP009166.1 Escherichia coli 1303, complete genome",3145,3145,14496557,2513983,2399442,19909182,198.215914,172124,207,667133,539293,660230,2603,2603,0.09139394510028197
+"1613|KM982785.1 Lactobacillus fermentum strain 4a mucus binding protein (mbp) gene, partial cds",4,4,1055,804,729,1734,0.325155,0,3,61,59,117,4,4,0.00011624031173326801
+"83428|KM819172.1 Uncultured Bacillus sp. clone 98 16S ribosomal RNA gene, partial sequence",4,4,1201,938,853,1888,1.353733,0,3,82,62,74,3,3,0.00011624031173326801
+559292|NM_001181546.3 Saccharomyces cerevisiae S288c gag-pol fusion protein partial mRNA,12,12,14129,4290,4192,18919,5.062391000000001,0,8,552,543,542,12,12,0.00034872093519980405
+1294380|CP004493.1 Saccharomyces cerevisiae YJM1478 chromosome I genomic sequence,110,110,195244,118199,110329,276668,2.475573,0,6,8695,8756,9372,93,93,0.00319660857266487
+1294345|CP006287.1 Saccharomyces cerevisiae YJM1307 chromosome III,131,131,280097,127856,120660,389149,5.387504,10460,15,12191,11425,13256,114,114,0.0038068702092645275
+1294309|CP006337.1 Saccharomyces cerevisiae YJM271 chromosome III sequence,62,62,151388,85780,80942,206188,1.915816,12005,7,5829,5418,7278,56,56,0.001801724831865654
+1294380|CP005179.1 Saccharomyces cerevisiae YJM1478 chromosome X sequence,170,170,390317,243772,230942,525386,2.144079,20500,12,14549,13573,17220,158,158,0.00494021324866389
+1294304|CP005292.1 Saccharomyces cerevisiae YJM193 chromosome XI sequence,188,188,402576,211648,200685,554896,3.098739,18482,13,16819,15929,19053,171,171,0.005463294651463596
+1294345|CP005440.1 Saccharomyces cerevisiae YJM1307 chromosome XIII sequence,475,475,962431,449157,425833,1319871,4.8941349999999995,21121,14,37595,38376,46815,412,412,0.013803537018325577
+"1294307|CP006478.1 Saccharomyces cerevisiae YJM248 mitochondrion, complete genome",62,62,108083,13843,12639,143224,43.494473,4852,39,3809,4175,4459,45,45,0.001801724831865654
+"1294357|CP006534.1 Saccharomyces cerevisiae YJM1385 mitochondrion, complete genome",277,277,577048,39927,37177,795812,478.403992,10226,104,20780,22955,45849,245,245,0.008049641587528808
+"1294360|CP006537.1 Saccharomyces cerevisiae YJM1388 mitochondrion, complete genome",186,186,512890,55770,53070,700007,336.663518,7629,89,18316,28754,24676,179,179,0.005405174495596962
+"1294361|CP006538.1 Saccharomyces cerevisiae YJM1389 mitochondrion, complete genome",96,96,165206,57296,53293,243406,25.376427,3151,31,6994,8010,16112,69,69,0.0027897674815984324
+"1294384|CP006561.1 Saccharomyces cerevisiae YJM1549 mitochondrion, complete genome",1048,1048,2161505,70406,68463,2917431,1189.198618,0,131,78102,93971,112245,963,963,0.03045496167411622
+1294345|CP006391.1 Saccharomyces cerevisiae YJM1307 chromosome XII sequence,793,793,1739043,363222,348027,2346946,62.24553,24865,222,65712,64806,80315,619,619,0.023044641801120383
+1294345|CP005144.1 Saccharomyces cerevisiae YJM1307 chromosome X sequence,474,474,931272,412135,391482,1262335,6.476953,13554,22,35564,33748,42474,408,408,0.01377447694039226
+"1423|CP011051.1 Bacillus subtilis strain T30, complete genome",12476,12476,36909905,1943550,1884876,50127506,1153.304845,242798,484,1497207,1335391,1735477,10913,10913,0.3625535322960629
+"287|LN831024.1 Pseudomonas aeruginosa genome assembly NCTC10332, chromosome : 1",2330,2330,10198456,2728914,2581889,14474583,48.042842,184451,111,541844,428113,513901,1910,1910,0.06770998158462861
+"1294307|CP004505.1 Saccharomyces cerevisiae YJM248 plasmid 2 micron, complete sequence",10,10,20469,5949,5409,28629,6.067259,0,8,924,874,943,8,8,0.00029060077933317
+"1293430|CP004531.1 Saccharomyces cerevisiae YJM1129 plasmid 2 micron, complete sequenceCP004545.1 Saccharomyces cerevisiae YJM1336 plasmid 2 micron, complete sequenceCP004566.1 Saccharomyces cerevisiae YJM1574 plasmid 2 micron, complete sequence",34,34,31904,6337,6057,44563,15.001335000000001,0,12,1419,1349,1602,23,23,0.0009880426497327782
+"1294341|CP004539.1 Saccharomyces cerevisiae YJM1250 plasmid 2 micron, complete sequence",2,2,2512,3847,3574,3847,0.23776,0,1,138,135,272,1,1,5.8120155866634004e-05
+"1294370|CP004558.1 Saccharomyces cerevisiae YJM1433 plasmid 2 micron, complete sequence",5,5,3575,4427,4102,5222,0.3963,0,2,178,169,264,3,3,0.000145300389666585
+"1294380|CP004562.1 Saccharomyces cerevisiae YJM1478 plasmid 2 micron, complete sequence",227,227,213876,6216,6175,304333,212.715726,0,72,9224,9085,17288,145,145,0.006596637690862959
+"941323|CP011134.1 Escherichia coli VR50, complete genome",3035,3035,16180486,3075953,2960156,22233757,55.101994999999995,187419,82,727495,602006,779526,2505,2505,0.08819733652761709
+"1613|KP224710.1 Lactobacillus fermentum strain IMAU10716 chaperone protein dnaK (dnaK) gene, partial cds",1,1,311,413,394,413,0.162525,0,1,9,10,19,1,1,2.9060077933317002e-05
+"5421|LN483265.1 Xanthophyllomyces dendrorhous genome assembly Xden1, scaffold Scaffold_180",66,66,49368,2592,2512,73823,199.80541000000002,0,44,1946,1905,6805,50,50,0.0019179651435989222
+"1280|CP011528.1 Staphylococcus aureus strain RKI4, complete genome",36589,36589,109107515,2595454,2558941,144514261,4522.234702000001,169753,413,4091371,3923856,4543579,32965,32965,1.0632791915021358
+"4932|KR260477.1 Saccharomyces cerevisiae isolate NCYC3585 mitochondrion, complete genome",92,92,122034,18879,17481,175867,29.001076,4953,26,4780,9446,7550,69,69,0.0026735271698651642
+559292|NR_132207.1 Saccharomyces cerevisiae S288c 35S pre-ribosomal RNA miscRNANR_132216.1 Saccharomyces cerevisiae S288c 35S pre-ribosomal RNA miscRNA,25,25,24429,5723,5497,35828,21.417481,0,14,1299,1181,1441,19,19,0.000726501948332925
+"1613|KR079401.1 Lactobacillus fermentum strain IMAU70069 UDP-N-acetylmuramoylalanyl-D-glutamate--2,6-diaminopimelate ligase (murE) gene, partial cdsKR079404.1 Lactobacillus fermentum strain IMAU70077 UDP-N-acetylmuramoylalanyl-D-glutamate--2,6-diaminopimelate ligase (murE) gene, partial cds",1,1,303,355,345,355,0.138889,0,1,7,3,7,1,1,2.9060077933317002e-05
+4932|CP011810.1 Saccharomyces cerevisiae strain NCIM3186 chromosome I sequence,42,42,102925,63690,60235,138699,1.747702,7493,9,4035,3610,4214,36,36,0.0012205232731993141
+4932|CP011811.1 Saccharomyces cerevisiae strain NCIM3186 chromosome II sequence,1903,1903,3991447,674069,655036,5383941,40.851841,3388,28,154836,148466,179850,1634,1634,0.05530132830710226
+4932|CP011812.1 Saccharomyces cerevisiae strain NCIM3186 chromosome III sequence,285,285,512289,178550,170682,701147,10.801413,6117,15,20963,20733,23732,225,225,0.008282122210995346
+4932|CP011813.1 Saccharomyces cerevisiae strain NCIM3186 chromosome IV sequence,539,539,1230084,705523,664552,1688610,2.961243,31193,13,50104,46564,57925,465,465,0.015663382006057866
+4932|CP011814.1 Saccharomyces cerevisiae strain NCIM3186 chromosome V sequence,308,308,787286,376620,355101,1083693,5.402779,19082,14,31981,30221,38468,274,274,0.008950504003461635
+4932|CP011816.1 Saccharomyces cerevisiae strain NCIM3186 chromosome VII sequence,1269,1269,2538181,813491,776814,3458498,13.894418,32182,23,101787,94266,116628,1092,1092,0.036877238897379275
+4932|CP011817.1 Saccharomyces cerevisiae strain NCIM3186 chromosome VIII sequence,340,340,619436,319472,301843,850515,4.0887970000000005,11094,12,25707,23810,28041,283,283,0.00988042649732778
+4932|CP011818.1 Saccharomyces cerevisiae strain NCIM3186 chromosome IX sequence,140,140,365140,203141,191588,509341,3.38171,15637,12,15353,14606,18940,120,120,0.0040684109106643804
+4932|CP011819.1 Saccharomyces cerevisiae strain NCIM3186 chromosome X sequence,336,336,819390,381929,362143,1124092,4.974945,19534,13,33617,30067,41068,286,286,0.009764186185594513
+4932|CP011820.1 Saccharomyces cerevisiae strain NCIM3186 chromosome XI sequence,388,388,980307,414742,393349,1336805,7.350575999999999,13168,21,38955,36057,45611,341,341,0.011275310238126996
+4932|CP011821.1 Saccharomyces cerevisiae strain NCIM3186 chromosome XII sequence,2710,2710,5423784,814926,789901,7373592,161.384634,19640,219,215669,213046,258507,2299,2299,0.07875281119928908
+4932|CP011822.1 Saccharomyces cerevisiae strain NCIM3186 chromosome XIII sequence,1424,1424,2843297,712530,685982,3866692,20.8466,13473,24,112811,109590,131027,1231,1231,0.04138155097704341
+4932|CP011823.1 Saccharomyces cerevisiae strain NCIM3186 chromosome XIV sequence,960,960,1771625,563711,539739,2436346,12.981514,15862,23,75288,69552,83278,812,812,0.027897674815984323
+4932|CP011824.1 Saccharomyces cerevisiae strain NCIM3186 chromosome XV sequence,492,492,1169979,618694,583274,1607316,3.91629,20345,16,48096,45140,53441,428,428,0.014297558343191966
+4932|CP011825.1 Saccharomyces cerevisiae strain NCIM3186 chromosome XVI sequence,324,324,763082,380650,358783,1049955,4.0427029999999995,25369,16,31722,28902,35039,284,284,0.009415465250394708
+"1381124|CP011536.1 Lactobacillus fermentum 3872, complete genome",49064,49064,73504663,1668208,1609934,105204562,6712.034323000001,233171,879,3878882,3199278,4159456,37513,37513,1.4258036637202653
+"562|CP011495.1 Escherichia coli strain NCM3722, complete genome",1343,1343,6721106,1465332,1377331,9361796,80.137608,157042,173,309752,312137,331635,1103,1103,0.03902768466444473
+"4932|KP712783.1 Saccharomyces cerevisiae isolate UWOPS87-787.3 mitochondrion, complete genome",48,48,75272,7433,6959,110665,36.956252,3797,43,4179,3720,4687,45,45,0.0013948837407992162
+"4932|KP712800.1 Saccharomyces cerevisiae isolate Y12 mitochondrion, complete genome",344,344,728994,67863,64315,1006284,373.826112,6885,99,28844,35067,42992,292,292,0.009996666809061049
+"1639|CP012021.1 Listeria monocytogenes strain CFSAN023463, complete genome",1686,1686,3982064,1056112,991121,5445340,110.447767,59743,189,161552,147578,189780,1480,1480,0.04899529139557247
+"287|CP012066.1 Pseudomonas aeruginosa strain F9676, complete genome",2899,2899,13132234,2926510,2775193,18565974,61.160628,241373,88,677183,530602,684157,2482,2482,0.08424516592868599
+"77133|KP971023.1 Uncultured bacterium clone I73_A01 16S ribosomal RNA gene, partial sequence",1,1,535,675,641,675,0.16239,0,1,13,21,17,1,1,2.9060077933317002e-05
+"77133|KP971202.1 Uncultured bacterium clone I141_G10 16S ribosomal RNA gene, partial sequence",1,1,356,439,420,439,0.203279,0,1,9,10,13,1,1,2.9060077933317002e-05
+"77133|KP971206.1 Uncultured bacterium clone I141_C06 16S ribosomal RNA gene, partial sequence",2,2,524,487,423,789,0.7466619999999999,0,2,26,44,15,2,2,5.8120155866634004e-05
+"77133|KP971273.1 Uncultured bacterium clone I142_F03 16S ribosomal RNA gene, partial sequence",1,1,492,682,642,682,0.12499,0,1,22,18,32,1,1,2.9060077933317002e-05
+"147453|KP745597.1 Staphylococcus saprophyticus subsp. bovis strain 43Ls.8 16S ribosomal RNA gene, partial sequence",1,1,419,544,515,544,0.24005900000000002,0,1,16,13,17,1,1,2.9060077933317002e-05
+"287|AP014839.2 Pseudomonas aeruginosa DNA, complete genome, strain: 8380",4959,4959,18548108,3515637,3335881,26347722,109.078464,246202,145,974142,778588,977224,4087,4087,0.144108926471319
+"930781|CP006047.2 Listeria monocytogenes J1816, complete genome",4461,4461,10200106,1515040,1438551,13897726,316.07542,116840,354,414733,372506,479491,3915,3915,0.12963700766052713
+"287|CP012679.1 Pseudomonas aeruginosa strain PA1RG, complete genome",1720,1720,8065839,2038244,1921935,11454606,49.433966999999996,184720,119,425994,333613,411674,1485,1485,0.04998333404530524
+"1280|KT261214.1 Staphylococcus aureus strain RCB1002 16S ribosomal RNA gene, partial sequence",1,1,704,900,854,900,0.229983,0,1,20,26,21,1,1,2.9060077933317002e-05
+"1280|AP014942.1 Staphylococcus aureus DNA, complete genome, strain: FDA209P",1380,1380,2764871,834010,782078,3788088,25.951197,86065,86,119370,106159,125135,1123,1123,0.04010290754797746
+"1201112|LN907785.1 Saccharomyces cerevisiae N85 chromosome II, complete genome",225,225,375937,234414,219920,527509,1.896643,25987,10,16715,15957,18093,170,170,0.006538517534996326
+"1201112|LN907788.1 Saccharomyces cerevisiae N85 chromosome V, complete genome",210,210,311107,211777,196332,442432,2.353466,16283,12,15109,14108,14675,125,125,0.00610261636599657
+"1201112|LN907794.1 Saccharomyces cerevisiae N85 chromosome XI, complete genome",180,180,380988,234012,220009,527505,2.194259,13190,12,15478,15705,17939,146,146,0.005230814027997061
+"1201112|LN907796.1 Saccharomyces cerevisiae N85 chromosome XIII, complete genome",267,267,591323,330251,310364,811218,3.546734,25490,15,23637,22341,27233,236,236,0.007759040808195639
+"1201112|LN907797.1 Saccharomyces cerevisiae N85 chromosome XIV, complete genome",160,160,390261,269019,253033,535858,1.586219,19325,8,15586,16025,17928,141,141,0.00464961246933072
+"1201112|LN907798.1 Saccharomyces cerevisiae N85 chromosome XV, complete genome",310,310,641481,453382,426382,879985,1.6391360000000001,35763,13,25480,24024,30246,272,272,0.00900862415932827
+"287|CP013245.1 Pseudomonas aeruginosa strain VA-134, complete genome",1984,1984,9139182,2326845,2196993,12968739,58.314949,172401,125,477557,376420,470253,1695,1695,0.05765519461970093
+"1639|CP013285.1 Listeria monocytogenes strain WSLC 1018, complete genome",16542,16542,49739768,2018246,1941957,66239392,3031.704753,351872,461,1822637,1779441,2147137,14957,14957,0.4807118091729299
+"882095|CP013288.1 Listeria monocytogenes ATCC 19117 strain WSLC 1033, complete genome",6016,6016,15904009,1524256,1434056,21581980,1769.155368,159107,554,641536,581090,743851,5048,5048,0.17482542884683508
+"562|CP013253.1 Escherichia coli strain CQSW20, complete genome",1139,1139,5616646,1483771,1405164,7737370,25.676635,170685,56,254722,211219,266930,1012,1012,0.033099428766048065
+"1280|CP013618.1 Staphylococcus aureus strain RIVM1295 plasmid pRIVM1295-2, complete sequence",24,24,17153,1770,1726,24449,73.602236,0,24,878,646,946,24,24,0.0006974418703996081
+"1280|CP013624.1 Staphylococcus aureus strain RIVM1076 plasmid pRIVM1076, complete sequence",521,521,468209,2215,2214,634186,2925.382736,0,354,18642,17045,21812,476,476,0.015140300603258156
+"1280|CP013625.1 Staphylococcus aureus strain RIVM4294 plasmid pRIVM4294, complete sequence",53,53,48003,2123,2101,66565,399.841815,0,52,1954,2162,2487,52,52,0.001540184130465801
+"1280|CP013626.1 Staphylococcus aureus strain RIVM4296 plasmid pRIVM4296, complete sequence",752,752,871689,2992,2990,1183917,5371.04518,0,496,33170,31597,42762,715,715,0.021853178605854385
+"1280|CP013628.1 Staphylococcus aureus strain RIVM4293 plasmid pRIVM4293, complete sequence",2379,2379,2925154,5832,5650,4087093,413739.00808,0,1646,139691,128472,141526,2116,2116,0.06913392540336115
+"1639|LC104824.1 Listeria monocytogenes genes for ribosomal protein L30, ribosomal protein S5, ribosomal protein L18, ribosomal protein L6, ribosomal protein S8, ribosomal protein S14, ribosomal protein L5, ribosomal protein L24, ribosomal protein L14, ribosomal protein S17, ribosomal protein L15, ribosomal protein L16, ribosomal protein S3, ribosomal protein L22, ribosomal protein S19, ribosomal protein L2, ribosomal protein L23, ribosomal protein L4, ribosomal protein L3, ribosomal protein S10, ribosomal protein L29, complete cds, strain: JCM 2873",215,215,585145,9300,9255,777442,3444.1305810000003,0,201,21679,20223,24638,201,201,0.006247916755663155
+"287|CP013696.1 Pseudomonas aeruginosa strain 12-4-4(59), complete genome",3120,3120,13002238,2974881,2820048,18461389,59.66915699999999,233867,119,681180,534768,666566,2628,2628,0.09066744315194905
+"287|CP012901.1 Pseudomonas aeruginosa strain N15-01092, complete sequence",1968,1968,8486252,2413249,2275329,12093490,28.481675,210175,90,449233,356717,450347,1644,1644,0.057190233372767865
+"287|CP008857.1 Pseudomonas aeruginosa strain F30658, complete genome",976,976,3683601,1742071,1629941,5360548,5.631183,194175,44,211997,164484,199541,649,649,0.02836263606291739
+"287|CP008861.1 Pseudomonas aeruginosa strain H47921, complete genome",1684,1684,7116001,2115369,1991064,10130080,21.664348,183085,72,374014,293639,370566,1382,1382,0.048937171239705826
+"287|CP008867.1 Pseudomonas aeruginosa strain T52373, complete genome",2622,2622,11685495,2990826,2829500,16545748,42.629562,239815,71,607066,483344,584240,2256,2256,0.07619552434115717
+"287|CP008868.1 Pseudomonas aeruginosa strain T63266, complete genome",4950,4950,19064734,3467919,3293867,27008556,114.74833600000001,276490,121,990682,782466,973079,4220,4220,0.14384738576991915
+"287|CP013989.1 Pseudomonas aeruginosa strain USDA-ARS-USMARC-41639, complete genome",4470,4470,17470334,3408808,3223188,24778356,103.489807,304436,126,913434,720921,899263,3797,3797,0.129898548361927
+"1411700|CP013993.1 Pseudomonas aeruginosa DHS01, complete genome",1889,1889,7091733,2415662,2269471,10185626,20.536248,187564,70,398211,302865,359990,1440,1440,0.05489448721603581
+"511145|CP014225.1 Escherichia coli str. K-12 substr. MG1655, complete genome",567,567,2949671,467869,446498,4049511,33.286761,105600,111,133024,108525,143768,508,508,0.01647706418819074
+"83333|CP014270.1 Escherichia coli K-12 strain DHB4, complete genome",444,444,2706138,559531,533745,3698847,18.007379999999998,108145,89,118042,97525,127846,397,397,0.01290267460239275
+77133|KU607577.1 Uncultured bacterium clone 2-B7_CZ_Contig_1 genomic sequence,2,2,1492,1690,1545,2312,0.473364,0,2,82,90,107,2,2,5.8120155866634004e-05
+"1613|KU710518.1 Lactobacillus fermentum strain ASW4 16S ribosomal RNA gene, partial sequence",3,3,816,815,750,1169,0.6405430000000001,0,2,45,39,29,2,2,8.718023379995101e-05
+"562|LC056430.1 Escherichia coli plasmid pV234-a DNA, contig: V234-a_scaffold_1, strain: V234",90,90,165540,32023,29527,242109,37.673321,7983,29,10354,7665,9396,68,68,0.0026154070139985303
+"562|LC056457.1 Escherichia coli plasmid pV263-c DNA, contig: V263-c_scaffold_7, strain: V263",18,18,10262,4101,3673,15775,4.441345,0,5,702,675,511,6,6,0.000523081402799706
+"562|LC056525.1 Escherichia coli plasmid pV275-b DNA, contig: V275-b_scaffold_2, strain: V275",26,26,49254,12185,11240,71076,20.908529,1745,17,3004,2110,2475,21,21,0.0007555620262662421
+"562|LC056526.1 Escherichia coli plasmid pV275-b DNA, contig: V275-b_scaffold_3, strain: V275",19,19,32798,6179,5784,51230,21.189334,28,17,2898,1813,1710,17,17,0.0005521414807330231
+"562|LC056527.1 Escherichia coli plasmid pV275-b DNA, contig: V275-b_scaffold_5, strain: V275",9,9,11648,3194,3102,16122,7.806503999999999,0,7,619,350,545,7,7,0.000261540701399853
+77133|KU543820.1 Uncultured bacterium clone TE_060301_060302_Contig_15 genomic sequence,8,8,7046,1936,1835,9997,9.64405,0,8,319,320,374,8,8,0.00023248062346653602
+"562|KP792123.1 Escherichia coli strain MG1655 YFP plasmid ESBL242, complete sequence",504,504,1638296,73056,69621,2415759,1383.803253,9397,172,110880,80167,86447,432,432,0.014646279278391768
+"4932|KU705821.1 Saccharomyces cerevisiae strain CBS 6412-13A UBR2p gene, complete cds",7,7,11393,5737,5396,16502,3.520178,0,7,568,526,645,7,7,0.00020342054553321902
+"287|CP014948.1 Pseudomonas aeruginosa strain N17-1, complete genome",2519,2519,11770237,2871951,2719253,16649706,43.756562,219355,75,608922,474808,599588,2166,2166,0.07320233631402552
+"1441627|CP011061.1 Escherichia coli str. Sanji, complete genome",620,620,2633471,1825626,1706854,3705914,2.1415189999999997,92719,18,126633,102568,132681,487,487,0.01801724831865654
+"1280|CP012979.1 Staphylococcus aureus strain ST20130940, complete genome",1130,1130,2484538,673106,633512,3386210,24.652075,80891,74,102099,92417,125597,951,951,0.03283788806464821
+"1280|CP012974.1 Staphylococcus aureus strain ST20130943, complete genome",710,710,1390422,556330,521161,1922139,8.791253,50615,55,61957,56223,64433,580,580,0.02063265533265507
+1294329|CP004920.2 Saccharomyces cerevisiae YJM987 chromosome VI sequence,53,53,120106,72853,68431,166712,3.141424,6623,14,5106,4757,5890,49,49,0.001540184130465801
+1294377|CP004970.2 Saccharomyces cerevisiae YJM1460 chromosome VI sequence,209,209,404721,159263,151126,553028,7.941955999999999,3751,13,16116,15375,18551,187,187,0.006073556288063253
+1294387|CP004980.2 Saccharomyces cerevisiae YJM1592 chromosome VI sequence,78,78,183159,123873,116827,246786,1.659576,5519,6,6527,6123,8325,71,71,0.002266686078798726
+1294309|CP005120.2 Saccharomyces cerevisiae YJM271 chromosome X sequence,219,219,522674,262088,247022,713921,3.871487,28268,13,20627,19830,23863,198,198,0.006364157067396423
+1294309|CP005200.2 Saccharomyces cerevisiae YJM271 chromosome VII sequence,266,266,630378,356147,337356,851396,2.9615299999999998,35806,16,23467,22617,28337,236,236,0.007729980730262322
+1294380|CP006110.2 Saccharomyces cerevisiae YJM1478 chromosome VIII sequence,251,251,505697,270499,255369,689957,3.409672,15347,10,19663,19648,22531,221,221,0.007294079561262567
+1294304|CP006120.2 Saccharomyces cerevisiae YJM193 chromosome VIII sequence,175,175,425121,188532,179071,572298,5.663434,19095,16,16102,15051,18449,155,155,0.005085513638330475
+1294345|CP005031.2 Saccharomyces cerevisiae YJM1307 chromosome IX sequence,622,622,1285551,271276,262499,1735304,27.092971999999996,2973,23,48849,47558,58848,528,528,0.018075368474523176
+1294377|CP005371.2 Saccharomyces cerevisiae YJM1460 chromosome XI sequence,118,118,293092,202188,190519,388551,1.419801,16587,9,9874,10147,12578,110,110,0.003429089196131406
+1294380|CP005671.2 Saccharomyces cerevisiae YJM1478 chromosome XV sequence,390,390,897255,396896,378237,1214902,4.549197,35749,13,34123,32780,41225,345,345,0.011333430393993631
+"1294364|CP006541.2 Saccharomyces cerevisiae YJM1401 mitochondrion, complete genome",132,132,265189,56075,51992,379598,73.405158,6122,44,10335,15382,21795,113,113,0.0038359302871978445
+1294345|CP005242.2 Saccharomyces cerevisiae YJM1307 chromosome VII genomic sequence,476,476,1032473,537552,508241,1416569,4.230999,22659,21,41078,39109,48506,423,423,0.013832597096258894
+1294345|CP005542.2 Saccharomyces cerevisiae YJM1307 chromosome XIV sequence,317,317,696319,296141,281361,938322,5.820178,28477,15,26589,25533,29670,279,279,0.00921204470486149
+1294380|CP006202.2 Saccharomyces cerevisiae YJM1478 chromosome XVI sequence,277,277,639449,383954,362323,866838,2.417752,21689,12,23615,23434,27858,248,248,0.008049641587528808
+1294380|CP006322.2 Saccharomyces cerevisiae YJM1478 chromosome III sequence,93,93,218688,117134,110913,302005,2.7212650000000003,9973,10,8841,8624,10575,85,85,0.002702587247798481
+"1294345|CP006522.2 Saccharomyces cerevisiae YJM1307 mitochondrion, complete genome",356,356,913425,50004,48548,1199516,994.243059,7918,146,30670,34320,40909,342,342,0.010345387744260852
+1294380|CP004583.2 Saccharomyces cerevisiae YJM1478 chromosome II genomic sequence,305,305,740771,242778,231447,1012270,9.881958000000001,24803,28,30123,29138,35049,273,273,0.008863323769661686
+1294380|CP004743.2 Saccharomyces cerevisiae YJM1478 chromosome IV sequence,419,419,959974,552717,521187,1317677,2.82305,57379,14,38135,36174,45169,382,382,0.012176172654059823
+1294345|CP004803.2 Saccharomyces cerevisiae YJM1307 chromosome V sequence,397,397,917198,343617,326181,1251451,10.294151,17431,21,36305,35052,42902,362,362,0.011536850939526848
+1294360|CP004953.2 Saccharomyces cerevisiae YJM1388 chromosome VI sequence,60,60,159442,95718,90229,214412,2.320347,9527,10,5750,5574,7164,52,52,0.0017436046759990202
+1294380|CP004973.2 Saccharomyces cerevisiae YJM1478 chromosome VI sequence,100,100,214035,94228,89712,293185,4.539852,9712,10,8607,8399,9982,88,88,0.0029060077933317
+1294304|CP005393.2 Saccharomyces cerevisiae YJM193 chromosome XIII sequence,302,302,608551,311415,293884,835648,3.8845169999999998,28097,19,24912,23672,27943,255,255,0.008776143535861735
+1294307|CP004414.2 Saccharomyces cerevisiae YJM248 chromosome I genomic sequence,50,50,111989,71167,66708,152049,2.535403,8425,9,4463,4161,4985,46,46,0.00145300389666585
+"1613|LC094438.1 Lactobacillus fermentum gene for 16S ribosomal RNA, partial sequence, strain: B36",1,1,830,1111,1046,1111,0.20013399999999998,0,1,42,23,45,1,1,2.9060077933317002e-05
+1294380|CP005374.2 Saccharomyces cerevisiae YJM1478 chromosome XI sequence,415,415,765483,345051,326403,1059318,8.826384,15793,28,32446,30304,37376,341,341,0.012059932342326557
+1294309|CP005594.2 Saccharomyces cerevisiae YJM271 chromosome XV sequence,266,266,622237,328054,310800,848449,2.874381,42530,12,24142,22887,28914,235,235,0.007729980730262322
+1294384|CP006114.2 Saccharomyces cerevisiae YJM1549 chromosome VIII sequence,231,231,582089,337107,318190,787623,2.566725,29566,11,22477,20994,24793,212,212,0.006712878002596227
+1294304|CP004755.2 Saccharomyces cerevisiae YJM193 chromosome V sequence,131,131,289556,179415,168827,397861,2.184123,16848,10,11506,10967,13882,118,118,0.0038068702092645275
+"287|CP016214.1 Pseudomonas aeruginosa strain PA121617, complete genome",1544,1544,7528694,2297485,2164477,10649500,26.229157,202327,82,387369,300920,384078,1312,1312,0.04486876032904145
+1294361|CP005355.2 Saccharomyces cerevisiae YJM1389 chromosome XI sequence,319,319,656482,349451,329584,896133,3.6322989999999997,10793,13,25346,24733,29894,286,286,0.009270164860728123
+1294380|CP005475.2 Saccharomyces cerevisiae YJM1478 chromosome XIII sequence,207,207,499970,288644,271946,685153,2.311489,23228,13,19488,18438,23721,188,188,0.00601543613219662
+1294313|CP006225.2 Saccharomyces cerevisiae YJM470 chromosome XVI sequence,254,254,604413,318485,300312,812921,3.4830980000000005,31575,14,22591,22418,25589,220,220,0.007381259795062519
+"562|LT601384.1 Escherichia coli isolate NCTC86EC genome assembly, chromosome: I",3696,3696,15292751,3027926,2893558,21187523,61.98425,207392,110,714576,593639,738342,2708,2708,0.10740604804153964
+1294309|CP004666.2 Saccharomyces cerevisiae YJM271 chromosome IV sequence,618,618,1340944,674835,638654,1818220,3.9504900000000003,36037,14,50988,49318,59100,550,550,0.017959128162789904
+1294380|CP005066.2 Saccharomyces cerevisiae YJM1478 chromosome IX sequence,135,135,310806,129361,123823,413114,4.365749,11399,14,10828,10754,12982,120,120,0.003923110520997796
+1294345|CP005636.2 Saccharomyces cerevisiae YJM1307 chromosome XV sequence,710,710,1546168,616611,585803,2112512,8.11032,26221,18,62040,58091,71532,621,621,0.02063265533265507
+1294316|CP006136.2 Saccharomyces cerevisiae YJM555 chromosome VIII sequence,87,87,238819,147521,139278,319439,2.8232150000000003,11794,17,8597,8416,10455,75,75,0.002528226780198579
+1294384|CP006326.2 Saccharomyces cerevisiae YJM1549 chromosome III sequence,113,113,244530,129466,122334,338452,3.564856,10717,13,9580,9841,12764,97,97,0.0032837888064648213
+"1351|AP017623.1 Enterococcus faecalis DNA, complete genome, strain: W11",2730,2730,5500285,617980,585072,7611036,258.207905,69572,363,256660,218287,269382,2301,2301,0.07933401275795542
+"1351|KX752885.1 Enterococcus faecalis strain SNNU0264 16S ribosomal RNA gene, partial sequence",1,1,684,1152,1030,1152,0.166767,0,1,58,64,49,1,1,2.9060077933317002e-05
+"46170|CP016858.1 Staphylococcus aureus subsp. aureus strain 1971.CO1, complete genome",1302,1302,2335728,494665,469255,3192268,26.249796000000003,67797,100,101132,92591,102046,1138,1138,0.03783622146917874
+"46170|CP016855.1 Staphylococcus aureus subsp. aureus strain 5118.N, complete genome",1192,1192,2181602,489945,460293,2988785,32.738751,70367,96,94313,86853,96645,1027,1027,0.03463961289651386
+"1280|FN806789.3 Staphylococcus aureus plasmid pAFS11 apramycin resistance gene region, isolated from cattle suffering from mastitis, isolate Rd 11",61,61,133314,7537,7496,176771,97.448358,3125,49,4737,4688,5559,54,54,0.0017726647539323369
+"287|CP017149.1 Pseudomonas aeruginosa strain ATCC 15692, complete genome",2688,2688,12062481,2843800,2694472,17114500,53.917165000000004,231165,140,632925,506967,608603,2328,2328,0.0781134894847561
+1294384|CP004497.2 Saccharomyces cerevisiae YJM1549 chromosome I genomic sequence,77,77,154070,88246,83087,221061,3.2189509999999997,2531,9,7602,6985,8348,63,63,0.002237626000865409
+"562|CP016404.1 Escherichia coli strain 210221272, complete genome",1584,1584,7757124,2184484,2069358,10808659,32.011472,135229,78,369138,308621,384450,1241,1241,0.04603116344637413
+"1613|CP017151.1 Lactobacillus fermentum strain NCC2970, complete genome",13159,13159,18226425,1475670,1406427,26488803,1183.190847,131994,448,1043860,830808,1072324,9567,9567,0.3824015655245184
+"562|CP013190.1 Escherichia coli strain FORC_031, complete genome",807,807,2367296,1276089,1198114,3362572,3.7195440000000004,111092,35,119123,98654,122903,551,551,0.02345148289218682
+"287|CP017353.1 Pseudomonas aeruginosa strain FA-HZ1, complete genome",1183,1183,4479488,1691732,1584524,6398218,16.08278,157994,67,239283,189186,235262,796,796,0.03437807219511401
+"287|CP015003.1 Pseudomonas aeruginosa strain PA11803, complete genome",1520,1520,5778213,2143219,2005777,8405944,14.360481,184063,62,328249,251263,327972,1158,1158,0.04417131845864184
+"1613|KT800398.1 Lactobacillus fermentum strain CSL31 16S ribosomal RNA gene, partial sequence",9,9,4559,1388,1316,6746,7.30059,0,9,268,262,223,9,9,0.000261540701399853
+1613|CP017712.1 Lactobacillus fermentum strain 47-7 genome,9356,9356,15884001,1229474,1173467,22626566,1289.3099439999999,70701,715,831404,660938,859561,7532,7532,0.2718860891441139
+1294380|CP005277.2 Saccharomyces cerevisiae YJM1478 chromosome VII sequence,603,603,1192733,581344,550652,1636694,4.704712000000001,20263,15,48126,45559,55093,530,530,0.017523226993790154
+"562|CP013483.1 Escherichia coli strain Y5, complete genome",2553,2553,10932459,2862273,2707338,15336470,69.111595,146433,110,526404,446155,569440,1951,1951,0.0741903789637583
+"1351|CP018004.1 Enterococcus faecalis strain L9, complete genome",2218,2218,4262153,505343,477284,5994378,147.90228100000002,75980,254,213382,175366,212804,1854,1854,0.06445525285609711
+"287|CP013113.1 Pseudomonas aeruginosa strain PAER4_119, complete genome",2782,2782,11644914,2940587,2780253,16545540,54.61976899999999,208672,147,610165,483648,597377,2337,2337,0.0808451368104879
+1294380|CP005577.2 Saccharomyces cerevisiae YJM1478 chromosome XIV sequence,160,160,389695,246538,232617,526955,1.7727279999999999,22816,9,14702,14644,16061,147,147,0.00464961246933072
+1294345|CP006167.2 Saccharomyces cerevisiae YJM1307 chromosome XVI sequence,558,558,1189886,519906,493803,1630398,5.618962000000001,20821,12,47770,45533,55054,489,489,0.016215523486790888
+1294309|CP006217.2 Saccharomyces cerevisiae YJM271 chromosome XVI sequence,413,413,879482,435025,412572,1197818,3.823275,15919,12,33867,32380,40379,365,365,0.012001812186459921
+"1351|CP018102.1 Enterococcus faecalis strain L12, complete genome",9521,9521,24202597,862635,828797,33107824,1908.2051649999999,219471,463,1076039,923789,1126753,8320,8320,0.27668100200311113
+"562|CP013185.1 Escherichia coli strain FORC_029, complete genome",850,850,2711564,126334,119125,3885373,61.821723999999996,101286,167,130375,109994,228986,562,562,0.02470106624331945
+"90371|CP017618.1 Salmonella enterica subsp. enterica serovar Typhimurium strain 22495 plasmid unnamed1, complete sequence",50,50,124313,27293,26257,180419,19.754693,5114,25,7032,5483,6714,46,46,0.00145300389666585
+"562|CP017847.1 Escherichia coli strain FMU073332 plasmid pEcoFMU073332c, complete sequence",624,624,1484288,67476,63993,2123071,895.3316890000001,4431,120,84106,79831,72550,492,492,0.01813348863038981
+"1352|CP018072.1 Enterococcus faecium strain VRE001 plasmid unnamed2, complete sequence",86,86,64638,4232,4065,91983,66.710289,2990,64,3071,2918,3548,74,74,0.002499166702265262
+"287|CP013477.1 Pseudomonas aeruginosa strain SCVFeb, complete genome",3011,3011,12907657,2596520,2459691,18310705,96.047106,239205,133,671201,530415,699628,2574,2574,0.0874998946572175
+"562|CP010129.1 Escherichia coli strain C9, complete genome",797,797,3308864,1552986,1452965,4660734,8.244173,85270,49,159967,131858,172639,642,642,0.02316088211285365
+"562|CP010144.1 Escherichia coli strain D4 plasmid A, complete genome",277,277,573380,43238,40912,841229,264.707175,7013,87,36059,30273,28380,220,220,0.008049641587528808
+"562|CP010152.1 Escherichia coli strain D9, complete genome",1576,1576,8306258,2666667,2523372,11511290,40.06065,86331,119,387476,314727,392041,1345,1345,0.045798682822907597
+"562|CP010160.1 Escherichia coli strain H1, complete genome",1595,1595,7104564,1226193,1158859,9854324,116.81021799999999,148758,194,342292,271579,344365,1321,1321,0.04635082430364062
+"562|CP010171.1 Escherichia coli strain H7, complete genome",924,924,4751923,1862775,1759002,6648788,8.307601,140204,28,225537,183144,245905,760,760,0.02685151201038491
+"562|CP010231.1 Escherichia coli strain S30, complete genome",609,609,2860673,1054305,992358,3997548,16.071659,74232,106,139806,111591,137560,520,520,0.017697587461390055
+"562|CP010237.1 Escherichia coli strain S43, complete genome",1451,1451,6395521,1071729,1007073,8845007,111.997248,131047,187,300327,243883,300178,1214,1214,0.04216617308124297
+1294345|CP004708.2 Saccharomyces cerevisiae YJM1307 chromosome IV sequence,1062,1062,2288555,947276,903701,3125355,6.469191,29004,16,90910,86707,104841,954,954,0.030861802765182654
+1294313|CP004768.2 Saccharomyces cerevisiae YJM470 chromosome V sequence,134,134,315217,180480,170580,431966,2.278346,14852,10,11969,12267,15004,115,115,0.003894050443064478
+1294380|CP004838.2 Saccharomyces cerevisiae YJM1478 chromosome V sequence,273,273,609883,265425,251739,825731,5.616436,15832,14,23233,22259,27684,243,243,0.007933401275795542
+1294345|CP004938.2 Saccharomyces cerevisiae YJM1307 chromosome VI sequence,99,99,216039,123202,116021,295992,2.517626,4964,7,8401,8208,9843,89,89,0.0028769477153983833
+"1280|KY086724.1 Staphylococcus aureus strain S8-P RpoB (rpoB) gene, partial cds",1,1,1930,2638,2469,2638,0.191106,0,1,84,85,83,1,1,2.9060077933317002e-05
+"1613|KX388385.1 Lactobacillus fermentum strain GCUF-BNB-3 16S ribosomal RNA gene, partial sequence",2,2,1310,1164,1056,1868,0.6443810000000001,0,2,69,62,47,2,2,5.8120155866634004e-05
+"562|CP018801.1 Escherichia coli strain tolC-, complete genome",468,468,2259557,1480680,1376687,3194294,3.6724040000000002,90354,40,109779,92514,119317,363,363,0.013600116472792356
+1351|CP015998.1 Enterococcus faecalis strain AMB05 genome,15997,15997,38878662,1207104,1155140,53138342,4568.788092,322405,446,1597831,1556309,2009752,13435,13435,0.46487406669927206
+"562|CP017631.1 Escherichia coli SLK172, complete genome",888,888,2349934,884440,827570,3321808,12.833749000000001,76018,85,120850,96881,117065,569,569,0.0258053492047855
+"1613|CP019030.1 Lactobacillus fermentum strain SNUV175, complete genome",14897,14897,21887410,1488660,1420064,31524424,1353.603202,141701,515,1187117,943831,1265476,10677,10677,0.43290798097262334
+"562|CP019213.1 Escherichia coli strain WCHEC1613, complete genome",1083,1083,4333629,1747277,1644763,6086622,14.597420999999999,104041,77,211150,169328,216767,919,919,0.03147206440178231
+1294387|CP006209.2 Saccharomyces cerevisiae YJM1592 chromosome XVI sequence,183,183,468660,330714,311235,631600,1.4767549999999998,16557,9,16992,16626,20328,169,169,0.0053179942617970115
+"287|LT673656.1 Pseudomonas aeruginosa isolate PcyII-10 genome assembly, chromosome: PcyII-10",3878,3878,16114738,3370126,3191931,22884975,103.185713,240651,159,847482,671504,834463,3325,3325,0.11269498222540332
+"1613|AP017973.1 Lactobacillus fermentum DNA, complete genome, strain: MTCC 25067",4756,4756,3349621,771777,714809,4941511,142.767299,52343,228,201667,163357,188110,2894,2894,0.13820973065085568
+"1280|CP019563.1 Staphylococcus aureus strain SR434, complete genome",742,742,1762436,461668,429035,2395681,40.579468,47501,142,71666,82565,75868,606,606,0.021562577826521215
+"1351|CP019512.1 Enterococcus faecalis strain CLB21560, complete genome",6617,6617,14492451,820306,783485,20155850,733.482896,163800,468,687139,578967,771820,5358,5358,0.1922905356847586
+"1639|CP019616.1 Listeria monocytogenes strain 10-092876-1063 LM3, complete genome",4750,4750,10505084,1521046,1431613,14582763,712.663831,111854,380,478680,412492,516840,4060,4060,0.13803537018325576
+"1639|CP019619.1 Listeria monocytogenes strain 10-092876-1155 LM6, complete genome",2146,2146,5052637,164074,153768,6855904,889.7064960000001,59337,505,211612,189142,230487,1704,1704,0.06236292724489829
+"562|CP019778.1 Escherichia coli strain NCTC86, complete genome",530,530,2718961,1469741,1378833,3838363,4.417044000000001,91905,34,127902,108564,168813,419,419,0.01540184130465801
+"562|CP019903.1 Escherichia coli strain MDR_56, complete genome",416,416,2317986,73053,71353,3181814,63.163363000000004,77895,174,105901,90203,107960,335,335,0.012088992420259874
+"562|CP018962.1 Escherichia coli strain Ecol_422, complete genome",1762,1762,7608454,2275667,2151460,10658216,26.654001,161715,84,364941,300672,398482,1435,1435,0.051203857318504555
+"562|CP019005.1 Escherichia coli strain Ecol_AZ155, complete genome",1508,1508,6290525,1635730,1529727,8999752,125.871481,101055,208,327458,276955,344543,1126,1126,0.04382259752344204
+"562|CP019013.1 Escherichia coli strain Ecol_AZ162 plasmid pECAZ162_2, complete sequence",38,38,19380,17976,16319,29346,0.448787,2460,3,1282,882,1257,14,14,0.0011042829614660462
+1639|KY094152.1 Listeria monocytogenes clone LM3 genomic sequence,6707,6707,15087958,36631,36527,20260956,48943.311682,0,834,560774,544952,688058,6052,6052,0.19490594269875713
+"1639|CP020022.1 Listeria monocytogenes strain LI0521, complete genome",1312,1312,2496727,346050,322977,3505179,310.718912,31302,468,119108,121785,118420,986,986,0.03812682224851191
+"1590|CP019723.1 Lactobacillus plantarum strain CLP0611 plasmid pUnnamed, complete sequence",811,811,490188,6441,5795,721891,3202.221595,5514,222,26113,24308,41015,408,408,0.023567723203920088
+"1639|CP015593.1 Listeria monocytogenes strain ICDC-LM188, complete genome",2072,2072,4955757,1028058,961716,6867451,379.14035,53659,451,222063,190041,242266,1786,1786,0.06021248147783283
+"4932|CP020182.1 Saccharomyces cerevisiae strain SK1 chromosome IX, complete sequence",132,132,319721,94417,90761,436743,6.704057000000001,19911,17,12823,11682,15414,119,119,0.0038359302871978445
+"4932|CP020194.1 Saccharomyces cerevisiae strain Y12 chromosome IV, complete sequence",474,474,1017235,576686,545239,1392442,2.929035,35464,13,40456,38355,48770,410,410,0.01377447694039226
+"4932|CP020197.1 Saccharomyces cerevisiae strain Y12 chromosome VII, complete sequence",296,296,614223,396148,373722,841754,1.9516330000000002,43791,9,24287,23882,29013,248,248,0.008601783068261832
+"4932|CP020198.1 Saccharomyces cerevisiae strain Y12 chromosome VIII, complete sequence",236,236,430705,262516,246519,602197,2.8605419999999997,12698,11,18816,17155,23521,189,189,0.006858178392262812
+"4932|CP020199.1 Saccharomyces cerevisiae strain Y12 chromosome IX, complete sequence",106,106,225845,135780,127439,310927,2.173317,7573,11,9153,9385,10217,85,85,0.003080368260931602
+"4932|CP020200.1 Saccharomyces cerevisiae strain Y12 chromosome X, complete sequence",237,237,521044,309069,291683,713472,2.646734,31820,9,21058,19241,23609,205,205,0.00688723847019613
+"4932|CP020204.1 Saccharomyces cerevisiae strain Y12 chromosome XIV, complete sequence",281,281,605682,371852,349517,831132,2.7063770000000003,28778,11,24232,23421,27304,252,252,0.008165881899262078
+"562|CP020118.1 Escherichia coli strain AR_0104 plasmid unitig_6, complete sequence",2065,2065,4395168,95978,91611,6424457,3407.424051,0,203,247800,279447,276094,1392,1392,0.06000906093229961
+1613|CP020353.1 Lactobacillus fermentum strain VRI-003 genome,1732,1732,3084049,98621,96005,4364286,389.656831,62295,640,153628,123653,182568,1324,1324,0.050332054980505046
+"562|CP016182.2 Escherichia coli strain EC590, complete genome",1397,1397,6831989,1972762,1859937,9488568,30.442545000000003,193551,71,317079,258755,358244,1168,1168,0.04059692887284385
+"287|CP014866.1 Pseudomonas aeruginosa strain PA_154197, complete genome",2093,2093,8773933,1503050,1417832,12384386,107.225761,179957,163,448994,364632,440315,1800,1800,0.06082274311443248
+"1280|CP019945.1 Staphylococcus aureus strain BA01611, complete genome",278254,278254,666395278,2739367,2718096,889040929,16232.430889,0,525,26167086,24667835,27662527,243438,243438,8.08608292525719
+"562|AP017612.1 Escherichia coli plasmid pMRY16-002_2 DNA, complete genome, strain: 20Ec-P-124",163,163,449670,16281,15282,639902,436.815738,10434,120,25958,18419,22326,150,150,0.004736792703130672
+"287|CP008856.2 Pseudomonas aeruginosa strain F23197, complete genome",1785,1785,7865009,2192362,2061766,11103612,29.627977,221105,80,404569,319060,395185,1521,1521,0.05187223911097085
+"287|CP008859.2 Pseudomonas aeruginosa strain H5708, complete genome",5438,5438,19534274,3534728,3352301,27844593,149.509906,248855,180,1041610,812549,1019923,4364,4364,0.15802870380137787
+"287|CP008864.2 Pseudomonas aeruginosa strain W60856, complete genome",9716,9716,31282644,4103342,3899812,44412221,339.675377,448734,158,1625842,1364717,1605329,7855,7855,0.282347717200108
+"287|CP008869.2 Pseudomonas aeruginosa strain W16407, complete genome",2236,2236,10067538,2747641,2591991,14327562,55.452893,133229,138,531257,424403,527594,1895,1895,0.06497833425889682
+"287|CP008871.2 Pseudomonas aeruginosa strain W45909, complete genome",13796,13796,39378479,4617619,4398130,55923124,426.46873099999993,518730,163,2061176,1669942,2026852,11217,11217,0.4009128351680414
+"287|CP008872.2 Pseudomonas aeruginosa strain X78812, complete genome",1868,1868,8641796,2441769,2310178,12242902,22.873692000000002,236830,51,449089,353125,437950,1611,1611,0.05428422557943616
+"1009714|CP020659.1 Pseudomonas aeruginosa PAK chromosome, complete genome",1282,1282,5883572,1638627,1540651,8273488,24.311514000000003,189488,68,296186,237761,290905,1105,1105,0.037255019910512395
+"287|CP008858.2 Pseudomonas aeruginosa strain F63912, complete genome",3050,3050,12080494,3120058,2944291,17240549,43.421303,246191,92,641601,502662,640674,2453,2453,0.08863323769661685
+"287|CP020704.1 Pseudomonas aeruginosa strain PASGNDM699, complete genome",2353,2353,6415106,822856,766114,9293924,101.320861,165301,167,364527,320205,341509,1613,1613,0.0683783633770949
+"1639|CP020774.1 Listeria monocytogenes strain H34, complete genome",1385,1385,2917681,834131,782600,4071347,43.907267,78786,142,129974,120839,145912,1188,1188,0.04024820793764405
+"562|LT838196.1 Escherichia coli isolate WI1 isolate genome assembly, chromosome: WI1",1806,1806,7894163,2139141,2017847,11090127,142.31614199999999,89349,229,376814,314671,422964,1440,1440,0.05248250074757051
+"562|CP020835.1 Escherichia coli strain CFSAN051542, complete genome",739,739,3388309,1080643,1020784,4735739,14.351109,104917,60,163110,130573,166584,615,615,0.021475397592721265
+"562|CP013952.1 Escherichia coli strain HST04, complete genome",392,392,2286801,908524,854294,3131489,12.51019,96844,62,101998,82389,105798,351,351,0.011391550549860265
+287|CP015647.1 Pseudomonas aeruginosa strain M8A1 genome,1543,1543,6919219,2224683,2099973,9822962,23.492714000000003,149651,96,360308,279168,364440,1339,1339,0.04483970025110814
+287|CP015648.1 Pseudomonas aeruginosa strain M8A4 genome,7407,7407,27629406,3652975,3456989,39050285,381.33094900000003,441052,172,1413001,1141088,1416521,6288,6288,0.21524799725207902
+287|CP015649.1 Pseudomonas aeruginosa strain M28A1 genome,2337,2337,9295589,2237845,2113427,13271641,75.031428,171178,171,510695,392671,492234,1732,1732,0.06791340213016184
+287|CP015650.1 Pseudomonas aeruginosa strain Pb18 genome,1182,1182,5623218,1793961,1687367,7898326,22.684352,166516,91,282637,222659,280547,1007,1007,0.034349012117180694
+"1613|CP021104.1 Lactobacillus fermentum strain FTDC 8312, complete genome",165382,165382,178417593,1926931,1880525,256687925,24390.929899000002,70651,2298,9659676,7815547,10092191,124186,124186,4.806013808767832
+562|CP017980.1 Escherichia coli strain CH611_eco genome,1236,1236,5360582,2036894,1918536,7533292,14.059878,112913,68,257679,214598,268061,1006,1006,0.03591825632557981
+"1580|CP015339.1 Lactobacillus brevis strain 100D8 plasmid unnamed1, complete sequence",560,560,126834,3047,2697,188735,349.917379,3942,114,8432,7315,6288,182,182,0.016273643642657522
+1351|CP021161.1 Enterococcus faecalis strain DD14 genome,9719,9719,20622406,875956,830934,28654082,1948.221191,194663,461,1030895,802447,962780,7796,7796,0.2824348974339079
+"1613|MF139037.1 Lactobacillus fermentum strain SC_1 16S ribosomal RNA gene, partial sequence",2,2,1002,814,753,1414,0.849952,0,2,52,28,49,2,2,5.8120155866634004e-05
+"1351|CP015883.1 Enterococcus faecalis strain sorialis, complete genome",4595,4595,11276480,623376,594108,15726746,742.1144370000001,121164,466,560160,434934,562945,3990,3990,0.13353105810359162
+"1613|CP021790.1 Lactobacillus fermentum strain LAC FRN-92, complete genome",62026,62026,79929043,1749292,1694666,114741754,7117.441114,222158,535,4303652,3538673,4420807,46480,46480,1.8024803938919203
+"910265|LT883143.1 Pseudomonas aeruginosa C-NN2 isolate early isolate NN2 (clone C) genome assembly, chromosome: I",2032,2032,8816983,2598650,2447235,12591445,38.090553,170057,138,469419,375551,456370,1697,1697,0.05905007836050015
+"1613|KY595738.1 Lactobacillus fermentum strain NCC729 putative GTFB gene, complete cds",903,903,1322494,4838,4838,1743226,9416.071362,0,469,51789,46150,49039,836,836,0.026241250373785253
+"1280|CP017090.1 Staphylococcus aureus strain ISU935, complete genome",1575,1575,3121404,728899,681896,4307312,52.345712,76118,173,139907,128771,141535,1239,1239,0.04576962274497428
+"287|CP021999.1 Pseudomonas aeruginosa strain Pa84, complete genome",1620,1620,7021505,2345233,2204015,10073176,15.958817000000002,224987,50,383269,295731,371776,1340,1340,0.04707732625197354
+"287|CP022001.1 Pseudomonas aeruginosa strain Pa1207, complete genome",1597,1597,6358121,2352371,2198082,9050431,17.595625,197707,68,331678,262094,328210,1208,1208,0.04640894445950725
+"1351|CP022059.1 Enterococcus faecalis strain FDAARGOS_338, complete genome",8265,8265,20407489,1021118,976234,28209188,1318.2810880000002,198037,412,966811,791380,993813,6660,6660,0.24018154411886503
+"1038927|CP022086.1 Escherichia coli O104:H4 strain FDAARGOS_348, complete genome",1781,1781,5355103,286937,270576,7526983,103.334974,188539,135,264618,220733,304852,1126,1126,0.051755998799237576
+"1196174|CP008821.1 Listeria monocytogenes serotype 4b str. 02-6679, complete genome",1596,1596,3381486,1274980,1194149,4758686,52.022261,39014,199,158087,136338,171863,1350,1350,0.046379884381573935
+"1196171|CP007459.1 Listeria monocytogenes serotype 4b str. 02-1103, complete genome",1707,1707,4223584,1085222,1018421,5904693,346.758786,42314,435,212592,166017,195165,1461,1461,0.04960555303217212
+"1196160|CP007526.1 Listeria monocytogenes serotype 4b str. 81-0592, complete genome",2325,2325,5038726,781044,734542,6915807,494.659796,51928,519,218061,193458,237404,1812,1812,0.06756468119496203
+"562|CP022167.1 Escherichia coli strain M160133 plasmid pM160133_p3, complete sequence",323,323,434246,32180,30153,657668,332.83428,8901,110,26735,38753,35155,150,150,0.009386405172461391
+"287|CP017293.1 Pseudomonas aeruginosa strain PA83, complete genome",2415,2415,11189311,2387657,2251347,15886622,74.996787,210980,129,586090,457634,579201,2056,2056,0.07018008820896056
+"1613|MF429400.1 Lactobacillus fermentum strain CAU5998 16S ribosomal RNA gene, partial sequence",3,3,2111,1320,1224,2910,0.969483,0,3,83,73,92,3,3,8.718023379995101e-05
+"178876|CP022322.1 Cryptococcus neoformans var. grubii chromosome 2, complete sequence",2447,2447,5670453,1591988,1549138,7910518,6.060491000000001,10051,18,251616,227450,286276,2024,2024,0.0711100107028267
+"178876|CP022323.1 Cryptococcus neoformans var. grubii chromosome 3, complete sequence",3294,3294,7775006,1498686,1472018,10817868,14.374514000000001,5543,23,345654,316714,393292,2761,2761,0.09572389671234621
+"178876|CP022326.1 Cryptococcus neoformans var. grubii chromosome 6, complete sequence",2155,2155,5173896,1413247,1375740,7200420,6.043211,7749,15,224740,211057,258708,1843,1843,0.06262446794629814
+"178876|CP022327.1 Cryptococcus neoformans var. grubii chromosome 7, complete sequence",1259,1259,2969086,832527,810331,4118892,9.149137,3253,15,129845,120031,145698,1054,1054,0.036586638118046105
+"178876|CP022328.1 Cryptococcus neoformans var. grubii chromosome 8, complete sequence",1976,1976,4713142,1333917,1295215,6543172,5.832693,7129,16,206114,193638,229068,1655,1655,0.0574227139962344
+"178876|CP022329.1 Cryptococcus neoformans var. grubii chromosome 9, complete sequence",3379,3379,7925553,1141328,1132496,10925154,17.096802,9310,50,345106,312299,386651,2815,2815,0.09819400333667815
+"178876|CP022332.1 Cryptococcus neoformans var. grubii chromosome 12, complete sequence",2382,2382,5614371,752773,748000,7796029,20.153651999999997,12380,42,245119,228190,289617,1997,1997,0.0692211056371611
+"178876|CP022335.1 Cryptococcus neoformans var. grubii strain KN99 mitochondrion, complete genome",89,89,25423,4090,3525,40738,20.143623,1805,18,2005,2052,1741,18,18,0.002586346936065213
+"562|LT906474.1 Escherichia coli strain NCTC122 genome assembly, chromosome: 1",1697,1697,8837404,2070813,1981167,12102750,53.917947,102446,145,393529,320022,422669,1425,1425,0.04931495225283895
+1351|CP022712.1 Enterococcus faecalis strain KB1 genome,5170,5170,11219497,767661,726817,15554435,633.3245919999999,126521,416,528222,440411,546760,3960,3960,0.1502406029152489
+"1613|CP016803.1 Lactobacillus fermentum strain SK152, complete genome",26306,26306,37661364,1573817,1518668,54216306,2178.602944,170324,511,2038363,1628246,2185963,19757,19757,0.7644544101138371
+562|CP017061.1 Escherichia coli strain NIVEDI C53 chromosome,1189,1189,4355456,1535696,1428794,6152496,41.115783,90902,133,215155,172961,230763,919,919,0.03455243266271392
+"562|CP023371.1 Escherichia coli strain 1283 chromosome, complete genome",420,420,2235277,1369489,1285031,3132751,3.158452,93872,32,103807,84704,129738,318,318,0.01220523273199314
+"1613|MF951094.1 Lactobacillus fermentum strain MH2 16S ribosomal RNA gene, partial sequence",4,4,1248,669,631,1741,2.552823,0,4,58,56,52,4,4,0.00011624031173326801
+"1409|MG016458.1 Bacillus sp. strain STA1_6 16S ribosomal RNA gene, partial sequence",2,2,1311,1291,1204,1927,0.41426,0,2,61,47,90,2,2,5.8120155866634004e-05
+"2048777|CP024239.1 Escherichia coli O15:H11 strain 90-9272 chromosome, complete genome",1581,1581,6135544,1958649,1852770,8577709,18.018949,164349,61,293605,236737,307506,1353,1353,0.04594398321257418
+"562|CP024256.1 Escherichia coli strain ATCC 43886 chromosome, complete genome",1010,1010,3316278,1501228,1410663,4670103,6.858464,143619,33,161441,133577,170745,761,761,0.02935067871265017
+1446701|CP024264.1 Escherichia coli O169:H41 strain F6326-C1 plasmid unnamed1,57,57,67838,15627,14060,105295,20.279442,4489,24,5276,3937,3697,33,33,0.001656424442199069
+"153152|LC317967.1 Uncultured Lactobacillus sp. gene for 16S ribosomal RNA, partial sequence, clone: D10",3,3,1078,1092,993,1808,1.025577,0,3,92,48,101,3,3,8.718023379995101e-05
+562|CP024661.1 Escherichia coli strain 90-9269 chromosome,1754,1754,7288915,1455280,1375622,10138776,129.812302,125686,224,347273,284115,361161,1433,1433,0.050971376695038026
+"562|CP024830.1 Escherichia coli strain CREC-532 chromosome, complete genome",600,600,2518133,1406385,1313838,3553098,5.338875,113638,41,122105,101992,143467,452,452,0.0174360467599902
+"562|CP024855.1 Escherichia coli strain AR_0011, complete genome",421,421,2444991,1535614,1443418,3387494,2.583609,95955,23,110227,90637,119556,347,347,0.012234292809926457
+"1639|CP023321.1 Listeria monocytogenes strain CIIMS L2 chromosome, complete genome",361444,361444,897267366,2928054,2921401,1207993563,10362.577648999999,0,572,34848581,32373568,40799265,320473,320473,10.50359080852983
+"562|LT883142.1 Escherichia coli isolate 6666666.257727.embl genome assembly, chromosome: IV",662,662,1994858,721827,677413,2853655,9.089497,96062,57,100577,81147,153684,486,486,0.019237771591855853
+"562|CP025048.1 Escherichia coli strain SC516 chromosome, complete genome",692,692,2719736,1258709,1178158,3830428,7.307836999999999,100185,57,132251,106475,138800,548,548,0.020109573929855365
+"287|CP025053.1 Pseudomonas aeruginosa strain PB354 chromosome, complete genome",2750,2750,12122064,2587989,2450975,17129829,65.29179,225593,103,628441,492700,609859,2306,2306,0.07991521431662175
+"565651|CP022488.1 Enterococcus faecalis ARO1/DG chromosome, complete genome",2978,2978,6513880,606750,577506,9015944,245.24807599999997,115882,325,310426,248923,311020,2542,2542,0.08654091208541803
+"1978467|CP025229.1 Pseudomonas sp. AK6U chromosome, complete genome",1124,1124,3861526,1801684,1675987,5653177,9.459753,122220,58,226324,173708,212229,844,844,0.03266352759704831
+"77133|MF554642.1 uncultured bacterium clone AA-105 plasmid pTIC, complete sequence",448,448,1192881,72242,68512,1730759,672.9479269999999,7764,117,69170,71066,57606,372,372,0.013018914914126017
+"287|LT969520.1 Pseudomonas aeruginosa isolate RW109 genome assembly, chromosome: Main_chromosome",1781,1781,6781796,2149496,2014481,9738557,22.861873000000003,203490,64,372082,291408,355948,1336,1336,0.051755998799237576
+"77133|LC353237.1 Uncultured bacterium 161AA01001 gene for 16S rRNA, partial sequence",1,1,343,467,442,467,0.128136,0,1,14,11,21,1,1,2.9060077933317002e-05
+"1613|MG722749.1 Lactobacillus fermentum strain ABC 4 16S ribosomal RNA gene, partial sequence",6,6,670,754,691,953,0.50038,0,2,36,35,18,2,2,0.00017436046759990203
+"1280|CP020713.1 Staphylococcus aureus strain K17 chromosome, complete genome",17720,17720,58637217,2548633,2503191,77195962,1632.031183,170900,364,2137281,2073980,2365730,15730,15730,0.5149445809783773
+"1280|CP020714.1 Staphylococcus aureus strain K18 chromosome, complete genome",1115,1115,3782822,680472,652183,5035473,45.84178,93490,101,141510,139777,166243,904,904,0.03240198689564846
+"562|CP024131.1 Escherichia coli strain 14EC007 chromosome, complete genome",548,548,2316213,679063,636760,3211763,30.675345,64593,159,111021,91889,111416,443,443,0.015924922707457715
+"562|CP024127.1 Escherichia coli strain 14EC001 chromosome, complete genome",1244,1244,4752041,875121,823587,6665085,72.031835,122473,175,234826,187204,263576,945,945,0.03615073694904635
+1613|CP025592.1 Lactobacillus fermentum strain LfQi6 chromosome,20228,20228,34230475,1405434,1354257,48772151,5229.361406,108374,1786,1781859,1408121,1916356,16798,16798,0.5878272564351363
+"562|CP025747.1 Escherichia coli strain ML35 chromosome, complete genome",19004,19004,87903388,3681855,3605975,121050579,1079.2591710000002,272243,225,4031026,3390355,4326990,16096,16096,0.5522577210447563
+"4932|CP022972.1 Saccharomyces cerevisiae strain CEN.PK113-7D chromosome VII, complete sequence",246,246,440307,202223,190186,629277,4.019801999999999,33602,21,22667,21880,22298,186,186,0.007148779171595983
+"4932|CP022973.1 Saccharomyces cerevisiae strain CEN.PK113-7D chromosome VIII, complete sequence",385,385,466838,287973,267798,674859,3.055213,13118,13,21533,22969,27467,267,267,0.011188130004327045
+"4932|CP022975.1 Saccharomyces cerevisiae strain CEN.PK113-7D chromosome X, complete sequence",358,358,544424,232635,218140,787633,16.503047,19361,58,27398,24920,35186,243,243,0.010403507900127488
+"4932|CP022977.1 Saccharomyces cerevisiae strain CEN.PK113-7D chromosome XII, complete sequence",2452,2452,5315054,268066,254839,7431902,1190.962643,91558,364,235188,239132,282278,2137,2137,0.07125531109249329
