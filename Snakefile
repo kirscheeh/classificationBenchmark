@@ -5,8 +5,8 @@ configfile: "config.yaml"
 ########## VARIABLE DEFINITION
 DI= dict(config["dataIndex"])
 PATH = config["path"]
-SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= 'clark'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+SAMPLES = list(config["samples"])
+TOOLS= 'diamond centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'#'medianHitLength'#'quals'# 'default medium restrictive'.split()
 
 import scripts.getting
@@ -15,10 +15,10 @@ import scripts.getting
 rule all:
     input:
 # CLASSIFICATION 
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
 #       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 #        expand("{path}/result/classification/ccmetagen/{sample}.{tool}.intermediate.res", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 #       expand("{path}/result/classification/{tool}/default/{sample}_{run}.catbat.bins",tool=TOOLS, run=RUNS, sample=SAMPLES, path=PATH)
 
@@ -152,10 +152,10 @@ rule kaiju:
         files = '{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification'
     benchmark:
         '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kaiju.benchmark.txt'
-    threads: 4
+    threads: 8
     params:
         runid=get_run,
-        medianHitLength=get_medianHitLength
+#        medianHitLength=get_medianHitLength
     log:
         '{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.log'
     conda:
@@ -274,7 +274,7 @@ rule kslam:
         "{PATH}/result/classification/kslam/{run}/{sample}_{run}.kslam.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.kslam.benchmark.txt"
-    threads: 16
+    threads: 8
     params:
         runid=get_run
     log:
@@ -300,7 +300,7 @@ rule clark: #output is csv, watch out
 	targets = "/mnt/fass1/database/clark_database/targets.txt"
     output:
         helper = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv",
-        #files= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
+        files= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
