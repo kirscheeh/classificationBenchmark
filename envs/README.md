@@ -6,3 +6,4 @@ DeepMicrobes deepmicrobes.yaml
 kslam kslam.yaml
 catbat catbat.yaml
 diamond diamond.yaml
+metamaps metamaps.yaml
