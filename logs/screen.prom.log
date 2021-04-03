@@ -1,0 +1,39 @@
+[33mProvided cores: 16[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	2	centrifuge
+	2	clark
+	2	diamond
+	2	kaiju
+	9[0m
+[32m[0m
+[32mrule kaiju:
+    input: /mnt/fass1/kirsten/data/promethion365.fastq, /mnt/fass1/kirsten/databases/kaiju/kaiju_db_refseq.fmi, /mnt/fass1/kirsten/databases/kaiju/nodes.dmp
+    output: /mnt/fass1/kirsten/result/classification/kaiju/default/promethion365_default.kaiju.classification
+    log: /mnt/fass1/kirsten/result/classification/kaiju/default/promethion365_default.kaiju.log
+    jobid: 17
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/promethion365_default.kaiju.benchmark.txt
+    wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=promethion365
+    threads: 8[0m
+[32m[0m
+[32mrule kaiju:
+    input: /mnt/fass1/kirsten/data/promethion367.fastq, /mnt/fass1/kirsten/databases/kaiju/kaiju_db_refseq.fmi, /mnt/fass1/kirsten/databases/kaiju/nodes.dmp
+    output: /mnt/fass1/kirsten/result/classification/kaiju/default/promethion367_default.kaiju.classification
+    log: /mnt/fass1/kirsten/result/classification/kaiju/default/promethion367_default.kaiju.log
+    jobid: 14
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/promethion367_default.kaiju.benchmark.txt
+    wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=promethion367
+    threads: 8[0m
+[32m[0m
+17:48:17 Reading database
+17:48:17 Reading database
+ Reading taxonomic tree from file /mnt/fass1/kirsten/databases/kaiju/nodes.dmp
+ Reading taxonomic tree from file /mnt/fass1/kirsten/databases/kaiju/nodes.dmp
+ Reading index from file /mnt/fass1/kirsten/databases/kaiju/kaiju_db_refseq.fmi
+ Reading index from file /mnt/fass1/kirsten/databases/kaiju/kaiju_db_refseq.fmi
+Output file: /mnt/fass1/kirsten/result/classification/kaiju/default/promethion367_default.kaiju.classification
+17:49:17 Start classification using 8 threads.
+Output file: /mnt/fass1/kirsten/result/classification/kaiju/default/promethion365_default.kaiju.classification
+17:49:17 Start classification using 8 threads.
