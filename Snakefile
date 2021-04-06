@@ -1,16 +1,17 @@
 # Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
 import scripts.getting as getting
+
 configfile: "config.yaml"
 
 ########## VARIABLE DEFINITION ##########
-DB_default[= dict(config["DB_default"])
-DB_custom= dict(config["DB_custom"])
+DB_default= dict(config["dataIndex"])#dict(config["DB_default"])
+DB_custom= dict(config["dataIndex"])#dict(config["DB_custom"])
 
 PATH = config["path"]
 
 SAMPLES = "gridion364" # list(config["samples"])
 TOOLS= 'diamond ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
-RUNS='default custom customHit'.split(" ")
+RUNS='default'# custom customHit'.split(" ")
 
 rule all:
     input:
@@ -19,13 +20,13 @@ rule all:
 # REPORT
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-#       expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 # PIECHARTS
-#       expand("{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+       expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 # PRECISION RECALL CURVE
-#       expand("{path}/result/classification/stats/{tool}/{sample}_{run}.{tool}.prc.png",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+#       expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 # ABUNANCE PROFILE SIMILARITY
-#       expand("{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH))
+#       expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH))
 
 # creating the project structure
 rule create:
@@ -126,7 +127,7 @@ rule kaiju:
         medianHitLength=get_medianHitLength,
         dbDefault = DB_default['kaiju']+"/kaiju_db_refseq.fmi",
         dbCustom = DB_custom['kaiju']+"/refseqBacFung.kaiju.fmi",
-        nodes = DB_default[['kaiju']+"/nodes.dmp",
+        nodes = DB_default['kaiju']+"/nodes.dmp",
     run:
         # -t    name of nodes.dmp file
         # -f    name of database (.fmi) file
@@ -144,8 +145,8 @@ rule kaiju:
 
 rule kaiju_summary:
     input:
-        nodes = DB_default[['kaiju']+"/nodes.dmp",
-        names= DB_default[['kaiju']+"/names.dmp",
+        nodes = DB_default['kaiju']+"/nodes.dmp",
+        names= DB_default['kaiju']+"/names.dmp",
         files = "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification" 
     output:
         "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.report"
@@ -158,7 +159,7 @@ rule kaiju_summary:
 rule clark:
     input:
         fastq = "{PATH}/data/{sample}.fastq",
-	    targets = DB_default["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
+	    #targets = DB_default["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
     output:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
     benchmark:
@@ -218,7 +219,7 @@ rule kma:
     threads: 8
     params:
         dbDefault = DB_default["ccmetagen"], #+"/compress_ncbi_nt/ncbi_nt",
-        dbCustom = DB_custom["ccmeetagen"],
+        dbCustom = DB_custom["ccmetagen"],
     shell:
         'kma -i {input} -t_db {params.db} -o {output.result}[:-4] -t {threads} -1t1 -mem_mode -and -ef'
 
@@ -235,7 +236,7 @@ rule ccmetagen:
     conda:
         "envs/main.yaml"
     params:
-	    runID=get_run,
+        runID=get_run,
         result="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification"
     run:
         # -i    path to kma result
@@ -289,13 +290,13 @@ rule diamond:
 
 rule areport:
     input: 
-        report = "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report"
+        classification = "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
     output:
-        areport="{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.areport"
+        areport="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     conda:
         "envs/main.yaml"
     params:
-        classification="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification",
+        report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
         tool=get_tool,
 	    script="{PATH}/result/classificationBenchmark/scripts/"
     run:
@@ -307,9 +308,9 @@ rule areport:
         
 rule piechart:
     input:
-        "{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.areport"
+        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        "{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.piechart.png"
+        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png"
     conda:
         "envs/main.yaml"
     params:
@@ -319,9 +320,9 @@ rule piechart:
 
 rule prc: #recision recall curve
     input:
-        "{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.areport"
+        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        "{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.prc.png"
+        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png"
     conda:
         "envs/main.yaml"
     params:
@@ -331,21 +332,21 @@ rule prc: #recision recall curve
 
 rule aps: # abundance profile similarity
     input:
-        "{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.areport"
+        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        truthEven="{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.truthEven.aps",
-        estimate="{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.estimate.aps",
-        truthLog ="{PATH}/result/classification/stats/{tool}/{sample}_{run}.{tool}.truthLog.aps"
+        truthEven="{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps",
+        estimate="{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.estimate.aps",
+        truthLog ="{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthLog.aps"
     conda:
         "envs/main.yaml"
     params:
         script="{PATH}/result/classificationBenchmark/scripts/abundanceProfile.sh",
-        truthEven= [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02],
-        estimate = [0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178],
-        truthLog= [0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
+        truthEven= "[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]",
+        estimate = "[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]",
+        truthLog= "[0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]"
     run:
         if getting.get_sampleName({input}) in ['gridion364', 'promethion365']:
-            shell(./{params.script} {input} {params.truthEven} {output.truthEven})
-            shell(./{params.script} {input} {params.estimate} {output.estimate})
+            shell("./{params.script} {input} {params.truthEven} {output.truthEven}"),
+            shell("./{params.script} {input} {params.estimate} {output.estimate}")
         else:
-            shell(./{params.script} {input} {params.truthLog} {output.truthLog})
+            shell("./{params.script} {input} {params.truthLog} {output.truthLog}")
