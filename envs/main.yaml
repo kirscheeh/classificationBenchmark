@@ -1,7 +1,7 @@
 name: projectMAIN
 channels:
-  - bioconda
   - anaconda
+  - bioconda
   - conda-forge
   - bioconda/label/cf201901
   - defaults
@@ -13,8 +13,8 @@ dependencies:
   - boost-cpp=1.69.0=h11c811c_1000
   - brotlipy=0.7.0=py38h27cfd23_1003
   - bzip2=1.0.8=h7b6447c_0
-  - ca-certificates=2020.10.14=0
-  - certifi=2020.6.20=py38_0
+  - ca-certificates=2021.1.19=h06a4308_1
+  - certifi=2020.12.5=py38h06a4308_0
   - cffi=1.14.4=py38h261ae71_0
   - chardet=3.0.4=py38h06a4308_1003
   - clark=1.2.5.1=h6bb024c_0
@@ -53,6 +53,7 @@ dependencies:
   - lz4-c=1.9.2=heb0550a_3
   - matplotlib=3.3.3=py38h578d9bd_0
   - matplotlib-base=3.3.3=py38h5c7f4ab_0
+  - megan=6.12.3=0
   - mkl=2020.2=256
   - mkl-service=2.3.0=py38he904b0f_0
   - mkl_fft=1.2.0=py38h23d657b_0
@@ -61,7 +62,8 @@ dependencies:
   - numpy=1.19.2=py38h54aff64_0
   - numpy-base=1.19.2=py38hfa32c7d_0
   - olefile=0.46=pyh9f0ad1d_1
-  - openssl=1.1.1j=h27cfd23_0
+  - openjdk=8.0.152=h7b6447c_3
+  - openssl=1.1.1k=h27cfd23_0
   - pandas=1.1.3=py38he6710b0_0
   - pcre=8.44=he1b5a44_0
   - perl=5.26.2=h14c3975_0

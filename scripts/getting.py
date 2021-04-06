@@ -15,7 +15,8 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-config='../config.yaml'
+print(os.getcwd())
+config='config.yaml'
 species = get_species(config)
 
 def get_path(config): #get path to working directory
