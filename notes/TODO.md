@@ -11,27 +11,18 @@
 
 - centrifuge
   - no difference if w/ or w/o -ignore-quals 
+for seq2taxid.map
+wget https://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
+gunzip nucl_gb.accession2taxid.gz
+cut -d $'\t' -f 2,3 nucl_gb.accession2taxid > seqid2taxid.map
 
 - kslam
   - without parameter for num_reads_at_once: bad alloc
   - parameter set as 1000000: runtime over 7days
 
-# Table AUPR, ASP
-| sample     	| tool       	| AUPR   	| baseline 	| ASP     	|
-|------------	|------------	|--------	|----------	|---------	|
-| gridion364 	| centrifuge 	| 0.7981 	| 0.0036   	| 0.01679 	|
-| gridion364 	| kraken2    	| 0.9979 	| 0.00256  	| 0.01794 	|
-| gridion364 	| kaiju      	| 0.4728 	| 0.00247  	| 0.05179 	|
-
-# Table Abundancies
-| sample, tool | Bacillus subtilis | Listeria monocytogenes | Enterococcus faecalis | Staphylococcus aureus | Salmonella enterica | Escherichia coli | Pseudomonas aeruginosa | Lactobacillus fermentum | Saccharomyces cerevisiae | Cryptococcus neoformans |
-|------------|------------|------------|------------|------------|------------|------------|------------|------------|------------|---|
-|truth|0.12|0.12|0.12|0.12|0.12|0.12|0.12|0.12|0.02|0.02|
-| gridion364, kraken2 | 0.17514371067110807| 0.128698598552439| 0.11110932894921507| 0.11066767104219237| 0.05685214198356529| 0.05254612059953199| 0.04480679614709328| 0.14142218428763328| 0.021756091413448513| 0.020032995454532434|
-|gridion364, kaiju|0.008112241829185511| 0.09322046520153864| 0.10269090534142562| 0.04151326549024887| 0.017789189978776362| 0.02124483371952145| 0.011038583486806114| 0.1250292863300863|
-|gridion364, centrifuge| 0.18033222980001143| 0.13268354876744617| 0.10978380289037058| 0.11039120082853578| 0.05890522708106204| 0.05824580663430398| 0.05114965525948968| 0.14248487058908882|
-|gridion366, kraken2|0.010274629991165596| 0.8129274051937571| 0.0016234580693009913| 3.790068384831001e-05| 0.00048289288557810814| 0.0004796208840948008| 0.03980280737727268| 5.1534023362090594e-05| 0.006906649797681241| 2.699401223728555e-05|
-
+- clark
+  - 364 took so much time because of db built 
+  - 1 day, 7:02:37.059451
 
 # Tools that did not work
 ## Lime
@@ -61,6 +52,9 @@ Install_Preprocessing_Tools.sh ging nicht (permission denied). Habs händisch ve
   
 ## kslam
 - appears to be able to deal with files up to 10.000.000 sequences, throws error (bad_alloc) for 2.4mil sequences nonetheless --> fixing with --num-reads-at-once
+100 time: 
+s	h:m:s
+2365.960589170456	0:39:25.960589
 
 ## metaothello
 segmentation fraud
@@ -68,5 +62,55 @@ segmentation fraud
 ## catbat
 - seems to need contigs, not just long metagenomic sequences
 
+# ccmetagen abundance
+(KMA default depth, which is the number of nucleotides overlapping each template, divided by the lengh of the template)
+
+# build commands for bac_fung.dmd
+rule diamond_db:
+    input: 
+        faa="/mnt/fass1/kirsten/databases/diamond_all/faa/full_proteome_bacteria_scerevisiae_cneoformans.faa",
+        map="/mnt/fass1/genomes/new_bacteria/bacteria_blast_db/prot_accession2taxid.txt",
+        nodes="/mnt/fass1/kirsten/databases/diamond/nodes.dmp",
+        names="/mnt/fass1/kirsten/databases/diamond/names.dmp"
+    output:
+        "/mnt/fass1/kirsten/databases/diamond_all/nr.dmnd"
+    benchmark:
+        "/mnt/fass1/kirsten/result/classification/benchmarks/diamond.db.benchmark.txt"
+    conda:
+        "envs/diamond.yaml"
+    params:
+        "/mnt/fass1/kirsten/databases/diamond_all/nr"
+    threads: 8
+    shell:
+        "diamond makedb --in {input.faa} -d {params} --taxonmap {input.map} --taxonnodes {input.nodes} --taxonnames {input.names}"
+
+time:
+s	h:m:s
+1929.9900908470154	0:32:09.990091
+
+
+rule centrifuge_db:
+    input:
+        map = "/mnt/fass1/kirsten/databases/centrifuge_all/seqid2taxid.map",
+        nodes = "/mnt/fass1/kirsten/databases/centrifuge_all/taxonomy/nodes.dmp",
+        names ="/mnt/fass1/kirsten/databases/centrifuge_all/taxonomy/names.dmp",
+        faa="/mnt/fass1/kirsten/databases/centrifuge_all/fna/full_bacteria_scerevisiae_cneoformans.fna"
+    output:
+       file1= "/mnt/fass1/kirsten/databases/centrifuge_all/bac_cer_neo.1.cf",
+       file2= "/mnt/fass1/kirsten/databases/centrifuge_all/bac_cer_neo.2.cf",
+       file3= "/mnt/fass1/kirsten/databases/centrifuge_all/bac_cer_neo.3.cf"
+    threads: 8
+    benchmark:
+        "/mnt/fass1/kirsten/result/classification/benchmarks/centrifuge.db.benchmark.txt"
+    params:
+        "/mnt/fass1/kirsten/databases/centrifuge_all/bar_cer_neo"
+    conda:
+        "envs/centrifuge.yaml"
+    shell:
+        "centrifuge-build -p {threads} --conversion-table {input.map} --taxonomy-tree {input.nodes} --name-table {input.names} {input.faa} {params}"
+
+time: 
+s	h:m:s
+97908.76425027847	1 day, 3:11:48.764250
 
 

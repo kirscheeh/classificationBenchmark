@@ -163,3 +163,14 @@ _Preparation_
     
 <!-- grep version 2020-06-18.CAT_prepare.fresh.log-->
 
+## MetaMaps
+_Installation_
+    conda create -n metamaps -c conda-forge autoconf boost zlib icu==64.2
+    conda activate metamaps
+    git clone https://github.com/DiltheyLab/MetaMaps
+    cd MetaMaps
+    ./bootstrap.sh
+    ./configure --with-boost=$CONDA_PREFIX --prefix=$CONDA_PREFIX
+    export CXXFLAGS=-Wl,-rpath,$CONDA_PREFIX/lib
+    make metamaps
+

@@ -109,10 +109,10 @@ def get_abundances(areport, config):
 
         os.system('rm helping.log')
     #print(total)
-    #print(list(predictions.values()))
+    print(list(predictions.values()))
     return predictions
 
-#get_abundances(sys.argv[1], sys.argv[2])
+get_abundances(sys.argv[1], sys.argv[2])
 
 def get_ASP(areport, truth_report):
     #from scipy.spatial import distance
