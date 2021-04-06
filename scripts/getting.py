@@ -1,20 +1,24 @@
-# Script with several useful functions  needed across the different scripts
+#!/usr/bin/env python
+# Script with several useful functions needed across the different scripts
 import os, yaml, sys
 import numpy as np
-#config='config.yaml'
 from numpy import array
 from numpy.linalg import norm
+# from scipy.spatial import distance
 
-def get_species(config):
+def get_species(config): # expected species in sample
     if os.path.isfile(config):
         with open(config, 'r') as c:
-            parsed_yaml = yaml.load(c)
+            parsed_yaml = yaml.load(c) 
             species = parsed_yaml['species']
         return species
     else:
         print('Error! No config file', config)
 
-def get_path(config):
+config='../config.yaml'
+species = get_species(config)
+
+def get_path(config): #get path to working directory
     if os.path.isfile(config):
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
@@ -23,7 +27,7 @@ def get_path(config):
     else:
         print('Error! No config file', config)
 
-def get_dataIndices(config):
+def get_dataIndices(config): # return path to database
     if os.path.isfile(config):
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
@@ -32,7 +36,7 @@ def get_dataIndices(config):
     else:
         print('Error! No config file', config)
 
-def get_samples(config):
+def get_samples(config): # returns list of samples
     if os.path.isfile(config):
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
@@ -41,7 +45,7 @@ def get_samples(config):
     else:
         print('Error! No config file', config)
 
-def get_number_species(areport):
+def get_numberSpecies(areport): # returns classified taxa on species level
     number=0
     with open(areport, "r") as report:
         lines = report.readlines()
@@ -51,7 +55,7 @@ def get_number_species(areport):
                 number+=1
     return number
 
-def get_tools_classification(config):
+def get_toolsClassification(config): # returns classification tools
     if os.path.isfile(config):
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
@@ -60,81 +64,62 @@ def get_tools_classification(config):
     else:
         print('Error! No config file', config)
 
-"""def get_abundances(tool, report, config):
-    predictions={}
+def get_abundanceSampleSpecies(areport, config): #returns abundance of expected species
     species = get_species(config)
-    #total=0
-    for s in species:
-        os.system('grep -n "{spec}" {file} > helping.log'.format(spec=s, file=report))
-        with open('helping.log', 'r') as f:
-            line = f.readline()
-            if tool in ['kraken2', 'centrifuge']:
-                if not '\tS\t' in line and not '\tU\t' in line:
-                        test=f.readline()
-                        perc = float(test.split("\t")[0].split(": ")[1])
-                else:
-                        perc = float(line.split("\t")[0].split(": ")[1])
-                #total+=perc/100
-                predictions[s] = perc/100
-    os.system('rm helping.log')
-    #print(total)
-    print(predictions.values())
-    return predictions"""
+    predictions={s:0 for s in species}
 
-def get_abundances(areport, config):
-    #for areport in areports:
-    predictions={}
-    species = get_species(config)
-    #total=0
-    #species=['Salmonella enterica']#'Cryptococcus neoformans','Bacillus subtilis', 'Cryptococcus neoformans']
-    #print(species)
     for s in species:
+        # grepping entries that include species name
         os.system('grep -n "{spec}" {file} > helping.log'.format(file=areport, spec=s))
-        #os.system('grep -n "{spec}" {file}'.format(spec=s, file=areport))
-        #print("grep done", s)
         with open('helping.log', 'r') as f:
             lines = f.readlines()
 
             for line in lines:
                 line = line.split("\t")
-               
-                if line[4][:-1] == s:
-                    if line[2]=="S":
-                        print(line)
-                        #print(line)
-                        predictions[s] = float(line[0].split(":")[1])
-            if not s in predictions: #if no fitting entry is found
+                if line[4][:-1] == s and line[2]=="S": # species level
+                    predictions[s] = float(line[0].split(":")[1])
+
+            
+            if not s in predictions: # if no fitting entry is found, filling with 0
                 predictions[s]=0
                 
-
         os.system('rm helping.log')
-    #print(total)
-    print(list(predictions.values()))
+    
+    #print(list(predictions.values()))
     return predictions
 
-get_abundances(sys.argv[1], sys.argv[2])
-
-def get_ASP(areport, truth_report):
-    #from scipy.spatial import distance
-    predi = get_abundances(areport, sys.argv[3]).values()
+def get_APS(areport, truth, config=config, tool=False, printing=False): #caclulates abundance profile similarities, either between truth and tool output or between tools
+    
+    predi = get_abundanceSampleSpecies(areport, config).values()
     pred=list(predi)
-    t = get_abundances(truth_report, sys.argv[3]).values()
-    truth=list(t)
-    #print(pred)
+
+    if tool:
+        try:
+            t = get_abundanceSampleSpecies(truth, config).values()
+            truth=list(t)
+        except:
+            pass
+            return 0
 
     try:
         t = np.array(truth)
         p = np.array(pred)
-        l2 = np.sum(np.power((t-p),2)) #distance.euclidean(t, p)
+        l2 = np.sum(np.power((t-p),2))
+        # l2 = distance.euclidean(t, p)
+
+        if printing:
+            print(areport.split("/")[-1], l2)
         return l2
     except Exception as e:
         print("An error occured.", e)
 
-#print("ASP:", get_ASP(sys.argv[1], sys.argv[2])) 
+# CS even:
 # measured [0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
 # expected [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
+# CS log:
+# expected: [0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
 
-def get_numberReads(file, fastq=True):
+def get_numberReads(file, fastq=True): # returns number of reads in sample
     with open(file, "r") as f:
         lines = f.read().split("\n")
         if fastq:
@@ -142,7 +127,11 @@ def get_numberReads(file, fastq=True):
         else:
             return len(lines)/2
 
-def get_sequences(file, fastq=True): #fastq is boolean
+def get_numberReadsSample(sample): # predefined values to save time
+    size = {'gridion364': 3491390, 'gridion366':3667480, 'promethion365':35810963, 'promethion367':34573282}
+    return size[sample]
+
+def get_sequences(file, fastq=True): #returns read sequences of samples
     with open(file, "r") as f:
         fast = f.read().split("\n")
         if fastq:
@@ -151,12 +140,7 @@ def get_sequences(file, fastq=True): #fastq is boolean
             seq =fast[1:len(fast):2]
     return seq
 
-def get_qualityStrings(file):
-    with open(file, "r") as f:
-        fast = f.read().split("\n")
-    return fast[3:len(fast):4]
-
-def get_seqLength(file, fastq=True, median=True): 
+def get_averageSeqLength(file, fastq=True, median=True): #returns either median or arith. mean seq length
     seq = get_sequences(file, fastq)
     lengths = [len(x) for x in seq]
     if median:        
@@ -164,46 +148,11 @@ def get_seqLength(file, fastq=True, median=True):
     else:
         return int(round(np.sum(lengths)/len(lengths), 0))
 
-def get_quality(file, median): #phred64, might be really slow
-    qualSeq = get_qualityStrings(file)
-    qual = []
-    asciiValues = {chr(i):i-64 for i in range(64, 106)}#{chr(i):i-33 for i in range(33, 76)} # ascii mapped to Q-value
-    for seq in qualSeq:
-        current=0
-        for c in seq:
-            current+=asciiValues[c]
-        qual.append(current)
-    if median:
-        return np.median(qual)
-    else:
-        return int(round(np.sum(qual)/len(qual), 0))
-
-def get_qualityFast(file, ignoreSeq, ignoreChar, median): #ignoreX is int, gives number of characters and sequences that should be ignored to fasten up the process
-    qualSeq = get_qualityStrings(file)
-    asciiValues = {chr(i):i-64 for i in range(64, 106)}
-    qual=[]
-    for i in range(0, len(qualSeq), ignoreSeq):
-        current=0
-        for j in range(0, len(qualSeq[i]), ignoreChar):
-            try:
-                current+=asciiValues[qualSeq[i][j]]
-            except IndexError:
-                pass
-        qual.append(current)
-    if median:
-        return np.median(qual)
-    else:
-        return round(qual/len(qual), 0)
-
-def get_sampleName(file):
+def get_sampleName(file): #return name of sample
     file = file.split("/")[-1]
     return file.split("_")[0]
 
-def get_numberReadsSample(sample):
-    size = {'gridion364': 3491390, 'gridion366':3667480, 'promethion365':35810963, 'promethion367':34573282}
-    return size[sample]
-
-def get_MedianLengthOfBestMatch(classification):
+def get_MedianLengthOfBestMatch(classification): # for kaiju, returns median match length
     with open(classification, 'r') as f:
         lines = f.readlines()
         matchLengths=[]
@@ -213,6 +162,70 @@ def get_MedianLengthOfBestMatch(classification):
                 matchLengths.append(int(line[3]))
     return int(np.median(matchLengths))
 
+def get_groundTruth(report): # ground truth vector based on species level for all species
+    data=[]
+
+    with open(report, 'r') as report:
+        lines = report.readlines()
+        for line in lines:
+            line=line.split("\t")
+
+            if line[2]=="S":
+                if line[4].split("\n")[0] in species:  
+                    data.append(1)
+                else:
+                    data.append(0)
+    return data
+
+def get_abundances(report): #returns abundances for classifis species
+    prediction=[]
+    
+    with open(report, 'r') as report:
+        lines = report.readlines()
+        for line in lines:
+            line = line.split("\t")
+            if "S" == line[2]:
+                prediction.append(float(line[0]))
+    return prediction
+
+def calc_matrixOfConfusion(prediction, groundTruth):
+    # calculates TP, FP, TN and FN for a given prediction, i.e. threshold 
+    tp=0
+    tn=0
+    for i in range(len(prediction)):
+        if prediction[i]==groundTruth[i]:
+            if groundTruth[i] == 1:
+                tp+=1
+            else:
+                tn+=1
+    fp =sum(prediction)-tp
+    fn = len(prediction)-sum(prediction)-tn
+    return tp, fp, tn, fn
+
+def calc_precision(tp, fp, tn, fn):
+    try:
+        return tp/(tp+fp)
+    except ZeroDivisionError as e:
+        return 0
+
+def calc_recall(tp, fp, tn, fn):
+    try:
+        return tp/(tp+fn)
+    except ZeroDivisionError as e:
+        return 0
+
+def calc_fpr(tp, fp, tn, fn): # not used
+    # calculate false positive rate
+    try:
+        return fp/(tn+fp)
+    except ZeroDivisionError:
+        return 0
+
+def calc_accuracy(tp, fp, tn, fn):
+    try:
+        return (tp+tn)/(tp+tn+fp+fn)
+    except ZeroDivisionError as e:
+        return 0
 
 
 
