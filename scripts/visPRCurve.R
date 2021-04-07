@@ -20,6 +20,7 @@ sample.data <- read.csv(args[1], sep="\t")
 sample.name.splitted <- strsplit(args[3], "/")
 sample.name.vector <- sample.name.splitted[[1]]
 sample.name <- sample.name.vector[length(sample.name.vector)]
+print(sample.name)
 
 groundTruth <- sample.data[,1]
 abundances <- sample.data[,2]

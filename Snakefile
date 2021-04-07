@@ -26,7 +26,7 @@ rule all:
 # PRECISION RECALL CURVE
         expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 
 # creating the project structure
 rule create:
