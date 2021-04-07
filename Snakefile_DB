@@ -1,9 +1,9 @@
 rule centrifuge_db:
     input:
         map = "/mnt/fass1/kirsten/databases/custom/centrifuge/seqid2taxid.map",
-        nodes = "/mnt/fass1/kirsten/databases/centrifuge/taxonomy/nodes.dmp",
-        names ="/mnt/fass1/kirsten/databases/centrifuge/taxonomy/names.dmp",
-        faa=""
+        nodes = "/mnt/fass1/kirsten/databases/custom/nodes.dmp",
+        names ="/mnt/fass1/kirsten/databases/custom/names.dmp",
+        fna="/mnt/fass1/kirsten/databses/refseq_bac_fungi/refseq_bac_fungi.fna"
     output:
        "/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.1.cf"
     threads: 8
@@ -14,15 +14,15 @@ rule centrifuge_db:
     conda:
         "envs/centrifuge.yaml"
     shell:
-        "centrifuge-build -p {threads} --conversion-table {input.map} --taxonomy-tree {input.nodes} --name-table {input.names} {input.faa} {params}"
+        "centrifuge-build -p {threads} --conversion-table {input.map} --taxonomy-tree {input.nodes} --name-table {input.names} {input.fna} {params}"
 
 
 rule diamond_db:
     input: 
-        faa="",
+        #faa="",
         map="/mnt/fass1/genomes/new_bacteria/bacteria_blast_db/prot_accession2taxid.txt",
-        nodes="/mnt/fass1/kirsten/databases/diamond/nodes.dmp",
-        names="/mnt/fass1/kirsten/databases/diamond/names.dmp"
+        nodes="/mnt/fass1/kirsten/databases/custom/nodes.dmp",
+        names="/mnt/fass1/kirsten/databases/custom/names.dmp"
     output:
         "/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd"
     benchmark:
@@ -38,7 +38,7 @@ rule diamond_db:
 
 rule kaiju_db:
     input:
-        fna=""
+        fna="/mnt/fass1/kirsten/databases/refseq_bac_fungi/refseq_bac_fungi.fna"
     output:
         fmi="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju.fmi"
     benchmark:
@@ -55,8 +55,8 @@ rule kaiju_db:
 
 rule kraken2_db:
     input:
-        fungi="",
-        bacteria="",
+        fungi="/mnt/fass1/kirsten/databases/refseq_bac_fungi/fungi.fna",
+        bacteria="/mnt/fass1/kirsten/databases/refseq/bacteria.fna",
     output:
         "/mnt/fass1/kirsten/databases/custom/kraken2"
     benchmark:
@@ -72,13 +72,13 @@ rule kraken2_db:
         shell('kraken2-build --clean')
 
 
-rule clark_db:
-    pass
+#rule clark_db:
+#    pass
 
 
 rule metamaps_db:
     input:
-        refseq ="/mnt/fass1/kirsten/databases/refseq_bac_fungi"
+        refseq ="/mnt/fass1/kirsten/databases/refseq_bac_fungi/"
     output:
         taxonomy = "/mnt/fass1/kirsten/databases/custom/metamaps/taxonomy",
         uniqueID = "/mnt/fass1/kirsten/databases/custom/metamaps/taxonomy_uniqueID"
@@ -91,6 +91,6 @@ rule metamaps_db:
         shell('perl annotateRefSeqSequencesWithUniqueTaxonIDs.pl --refSeqDirectory {input.refseq} --taxonomyInDirectory {output.taxonomy} --taxonomyOutDirectory {output.uniqueID}'),
         shell('perl buildDB.pl --DB {output.db} --taxonomy {output.uniqueID}')
 
-rule ccmetagen_db:
-    pass
+#rule ccmetagen_db:
+#    pass
     # use kraken? um kma index zu builden?

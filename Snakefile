@@ -4,8 +4,8 @@ import scripts.getting as getting
 configfile: "config.yaml"
 
 ########## VARIABLE DEFINITION ##########
-DB_default= dict(config["dataIndex"])#dict(config["DB_default"])
-DB_custom= dict(config["dataIndex"])#dict(config["DB_custom"])
+DB_default=dict(config["DB_default"])
+DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
