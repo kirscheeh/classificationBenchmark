@@ -15,12 +15,12 @@ else:
     sample = getting.get_sampleName(sys.argv[1])
     numReads= getting.get_numberReadsSample(sample)
     
-    with open(sys.argv[2], "r") as report:
+    with open(sys.argv[1], "r") as report:
         lines = report.readlines()
         numReadsUnclassified=int(lines[-1].split(",")[3])
         abundanceUnclassified=numReadsUnclassified/numReads
 
-        areport = open(sys.argv[3], "w")
+        areport = open(sys.argv[2], "w")
         areport.write("Abundance\tnumReads\ttaxRank\ttaxID\tName\n")
         areport.write(str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified")
 

@@ -2,12 +2,14 @@
 # this script visualizes the precision recall curve and return the area under the curve
 
 #check if required packages is installes
-list.packages <- c("PRROC")
-packages.new <- list.packages[!(list.packages %in% installed.packages()[,"Package"])]
-if (length(packages.new)>0) { 
-    install.packages(packages.new)
-}
-
+#list.packages <- c("PRROC")
+#print(list.packages)
+#packages.new <- list.packages[!(list.packages %in% installed.packages()[,"Package"])]
+#print(packages.new)
+#if (length(packages.new)>0) { 
+#    install.packages("PRROC", lib="/home/re85gih/miniconda3/envs/projectMAIN/lib/R/library")
+#}
+setwd("/mnt/fass1/kirsten/result/classificationBenchmark/scripts")
 require(PRROC)
 
 # extract data sheet

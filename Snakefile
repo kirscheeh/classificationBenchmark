@@ -9,8 +9,8 @@ DB_custom= dict(config["dataIndex"])#dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "gridion364" # list(config["samples"])
-TOOLS= 'diamond ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion364 gridion366".split(" ") # list(config["samples"])
+TOOLS= 'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'# custom customHit'.split(" ")
 
 rule all:
@@ -20,18 +20,18 @@ rule all:
 # REPORT
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
-       expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
-#       expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
-#       expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH))
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 
 # creating the project structure
 rule create:
     shell:
-        'python structure.py'
+        'python setup.py'
 
 def get_run(wildcards): #returns the current value of variable/wildcard run
     return wildcards.run
@@ -324,29 +324,29 @@ rule prc: #recision recall curve
     output:
         "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png"
     conda:
-        "envs/main.yaml"
+        "envs/renv.yaml"
     params:
         "{PATH}/result/classificationBenchmark/scripts/PRCurve.sh"
     shell:
-        '.{params} {input} {output}'
+        '{params} {input} {output}'
 
 rule aps: # abundance profile similarity
     input:
         "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        truthEven="{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps",
-        estimate="{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.estimate.aps",
-        truthLog ="{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthLog.aps"
+        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps"
+       # estimate="{PATH}/result/classification/stats/{run}/{sample}_{run}.estimate.aps",
+       # truthLog ="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthLog.aps"
     conda:
         "envs/main.yaml"
     params:
         script="{PATH}/result/classificationBenchmark/scripts/abundanceProfile.sh",
-        truthEven= "[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]",
-        estimate = "[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]",
-        truthLog= "[0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]"
+        truthEven="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthEven.aps",
+        estimate = "{PATH}/result/classification/stats/{run}/{sample}_{run}.estimate.aps",
+        truthLog="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthLog.aps"
     run:
-        if getting.get_sampleName({input}) in ['gridion364', 'promethion365']:
-            shell("./{params.script} {input} {params.truthEven} {output.truthEven}"),
-            shell("./{params.script} {input} {params.estimate} {output.estimate}")
+        if getting.get_sampleName(str({input})) in ['gridion364', 'promethion365']:
+            shell("{params.script} {input} [0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.02,0.02] {params.truthEven}"),
+            shell("{params.script} {input} [0.1932,0.1456,0.1224,0.1128,0.0999,0.0993,0.097,0.0928,0.0192,0.0178] {params.estimate}")
         else:
-            shell("./{params.script} {input} {params.truthLog} {output.truthLog}")
+            shell("{params.script} {input} [0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089] {params.truthLog}")
