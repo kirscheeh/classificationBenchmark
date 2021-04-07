@@ -20,11 +20,11 @@ rule all:
 # REPORT
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 
@@ -322,7 +322,7 @@ rule prc: #recision recall curve
     input:
         "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.png"
+        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg"
     conda:
         "envs/renv.yaml"
     params:
