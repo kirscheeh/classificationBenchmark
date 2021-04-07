@@ -29,7 +29,7 @@ fg <- abundances[groundTruth == 1]
 bg <- abundances[groundTruth == 0]
 
 # for saving as png
-jpeg(filename=args[2], width=850, height=632)
+png(filename=args[2], width=850, height=632)
 
 pr <- pr.curve(scores.class0 = fg, scores.class1 = bg, curve = T)
 plot(pr, main=sample.name, col="black", panel.first= grid(), cex.main = 2);

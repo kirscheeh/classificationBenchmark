@@ -10,7 +10,7 @@ DB_custom= dict(config["dataIndex"])#dict(config["DB_custom"])
 PATH = config["path"]
 
 SAMPLES = "gridion364 gridion366".split(" ") # list(config["samples"])
-TOOLS= 'centrifuge'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+TOOLS= 'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'# custom customHit'.split(" ")
 
 rule all:
