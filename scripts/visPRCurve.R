@@ -32,7 +32,7 @@ bg <- abundances[groundTruth == 0]
 jpeg(filename=args[2], width=850, height=632)
 
 pr <- pr.curve(scores.class0 = fg, scores.class1 = bg, curve = T)
-plot(pr, main=sample.name, col="black", panel.first= grid(), cex.main = 1.5, family="A");
+plot(pr, main=sample.name, col="black", panel.first= grid(), cex.main = 2);
 #print(pr)
 
 baseline <- sum(groundTruth)/length(groundTruth)

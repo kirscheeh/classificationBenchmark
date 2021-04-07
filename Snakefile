@@ -22,7 +22,7 @@ rule all:
 # GENERATING (comparable) REPORTS
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
-#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.jpeg", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
         expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
@@ -310,7 +310,7 @@ rule piechart:
     input:
         "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png"
+        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.jpeg"
     conda:
         "envs/main.yaml"
     params:
