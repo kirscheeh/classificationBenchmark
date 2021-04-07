@@ -1,0 +1,8 @@
+['356:0.07331721749790199', '255979', 'S', '1423', 'Bacillus subtilis\n']
+['1590:0.13241545630823254', '462314', 'S', '1639', 'Listeria monocytogenes\n']
+['1031:0.11445298290938566', '399600', 'S', '1351', 'Enterococcus faecalis\n']
+['2826:0.11208258029037145', '391324', 'S', '1280', 'Staphylococcus aureus\n']
+['2653:0.05648781717310298', '197221', 'S', '28901', 'Salmonella enterica\n']
+['1067:0.04960860860574155', '173203', 'S', '562', 'Escherichia coli\n']
+['2331:0.04561564305333979', '159262', 'S', '287', 'Pseudomonas aeruginosa\n']
+['2627:8.019728532189185e-06', '28', 'S', '12450', 'Saccharomyces cerevisiae killer virus M1\n']

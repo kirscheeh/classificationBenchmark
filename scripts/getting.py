@@ -67,7 +67,7 @@ def get_toolsClassification(config): # returns classification tools
 
 def get_abundanceSampleSpecies(areport, config): #returns abundance of expected species
     species = get_species(config)
-    predictions={s:0 for s in species}
+    #predictions={sp:0 for (sp, 0) in species}
 
     for s in species:
         # grepping entries that include species name
@@ -101,6 +101,12 @@ def get_APS(areport, truth, config=config, tool=False, printing=False): #caclula
         except:
             pass
             return 0
+    sampleName = get_sampleName(areport)
+    if sampleName in ['gridion364', 'promethion365']:
+        truth=[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
+        get_APS(areport, truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02], printing=True)
+    else:
+        truth=[0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
 
     try:
         t = np.array(truth)
