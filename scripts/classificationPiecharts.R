@@ -32,7 +32,7 @@ species.percent <- round(species.slices/sum(species.slices)*100, 3)
 labels <- paste(labels, species.percent) # add percentages to labels
 labels <- paste(labels,"%",sep="") # add % to labels
 
-jpeg(filename=args[2], width=850, height=632)
+png(filename=args[2], width=850, height=632)
 
 pie(species.slices,labels,main=sample.name, cex=1)
 

@@ -26,16 +26,18 @@ else:
     areport = open(sys.argv[3], "w")
     areport.write("Abundance\tnumReads\ttaxRank\ttaxID\tName\n")
     areport.write(str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified")
-
+    unclassified_test=0
     with open(sys.argv[2], "r") as report:
         lines = report.readlines()
 
         for line in lines[1:]:
             l = line.split("\t")
             hits = int(l[4])
+            unclassified_test+=hits
             abundance = hits/numReadsTotal
             rank = get_rank(l[2])
             taxID = l[1]
             speciesName=l[0]
             areport.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(speciesName))
     
+    print(unclassified_test)

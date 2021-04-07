@@ -10,7 +10,7 @@ DB_custom= dict(config["dataIndex"])#dict(config["DB_custom"])
 PATH = config["path"]
 
 SAMPLES = "gridion364 gridion366".split(" ") # list(config["samples"])
-TOOLS= 'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+TOOLS= 'centrifuge'#ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'# custom customHit'.split(" ")
 
 rule all:
@@ -20,9 +20,9 @@ rule all:
 # REPORT
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.jpeg", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
         expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
@@ -303,6 +303,8 @@ rule areport:
         print({params.tool}, {params.report})
         if 'diamond' in {params.tool}:
             shell('python {params.script}{params.tool}Output.py {input.classification} {output.areport}')
+        elif 'centrifuge' in {params.tool}:
+            shell('python {params.script}{params.tool}Output.py {input.classification} {params.report} {output.areport}')
         else: 
             shell('python {params.script}{params.tool}Output.py {params.report} {output.areport}')
         
@@ -310,7 +312,7 @@ rule piechart:
     input:
         "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.jpeg"
+        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png"
     conda:
         "envs/main.yaml"
     params:
