@@ -1,8 +1,10 @@
 # path to folder where generated ourtputs should be saved, aka project folder
-path: [/mnt/fass1/kirsten]
+path: /mnt/fass1/kirsten
+
 # path to the folders where the needed databases and/or indices are located
 DB_default: {kaiju: '/mnt/fass1/kirsten/databases/kaiju', kaiju_all: '/mnt/fass1/kirsten/databases/kaiju_all', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed',clark: '/mnt/fass1/kirsten/database/clark', diamond: '/mnt/fass1/kirsten/databases/diamond/nr.dmnd', ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen'}
 
+# database build on refseq of fungi and bacteria
 DB_custom: {kaiju: '/mnt/fass1/kirsten/databases/custom/kaiju', kraken2: '/mnt/fass1/kirsten/databases/custom/kraken2', centrifuge: '/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.centrifuge',clark: '/mnt/fass1/kirsten/database/clark', diamond: '/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd',  ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen'}
 # incorporated tools
 
@@ -10,6 +12,6 @@ DB_custom: {kaiju: '/mnt/fass1/kirsten/databases/custom/kaiju', kraken2: '/mnt/f
 
 classification: {kaiju, diamond, kslam, kraken2, centrifuge, clark, metamaps, ccmetagen}
 
-samples: {gridion364: '/mnt/fass1/kirsten/data/gridion364.fastq.gz', gridion366: '/mnt/fass1/kirsten/data/gridion366.fastq.gz', promethion365: '/mnt/fass1/kirsten/data/promethion365.fastq.gz', promethion367: '/mnt/fass1/kirsten/data/promethion367.fastq.gz'}
+samples: {gridion364: '/mnt/fass1/kirsten/data/gridion364.fastq', gridion366: '/mnt/fass1/kirsten/data/gridion366.fastq', promethion365: '/mnt/fass1/kirsten/data/promethion365.fastq', promethion367: '/mnt/fass1/kirsten/data/promethion367.fastq'}
 
 species: ['Bacillus subtilis', 'Listeria monocytogenes', 'Enterococcus faecalis', 'Staphylococcus aureus', 'Salmonella enterica', 'Escherichia coli', 'Pseudomonas aeruginosa', 'Lactobacillus fermentum', 'Saccharomyces cerevisiae', 'Cryptococcus neoformans']

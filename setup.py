@@ -10,27 +10,23 @@ This script creates the structure of folders used in this project for reproducib
 
 #####################################################################################
 
-import os
+import os, yaml
 
-config = open("config.yaml", "r").read()
-variables = config.split('\n')
-
-# filter comments and empty entries
-variables = [x for x in variables if not "#" in x and not '' == x]
-# get path to main folder
-for x in variables:
-    if "path" in x:
-        path = x.split("[")[1][:-1]
-        classification_path=path+"/classification"
-    if "classification" in x:
-        classification_tools = x.split("{")[1][:-1].split(", ")
+config = open("config.yaml", "r")
+parsed_yaml = yaml.load(config)
+classification_tools = parsed_yaml['classification']
+path=parsed_yaml['path']
+classification_path=path+"/result/classification"
 
 def generate_folder(path, folders=[]):
     if os.path.exists(path):
         print("This folder already exists!", path)
     else:
         print(path)
-        os.mkdir(path)
+        try:
+            os.mkdir(path)
+        except FileNotFoundError:
+            os.makedirs(path)
     
     if len(folders)>0:
         for folder in folders:

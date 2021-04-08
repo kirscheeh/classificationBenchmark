@@ -24,7 +24,7 @@ def get_path(config): #get path to working directory
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
             path = parsed_yaml['path']
-        return path[0]
+        return path
     else:
         print('Error! No config file', config)
 

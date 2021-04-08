@@ -1,7 +1,6 @@
 ### note ccmetagen 366: mapped:80.737475%
 
 # TODO LIST
-- install Jellyfish for MetaOthello
 
 - more information on benchmarking
   - leave one taxa out approach aka clade exclusion
@@ -11,10 +10,6 @@
 
 - centrifuge
   - no difference if w/ or w/o -ignore-quals 
-for seq2taxid.map
-wget https://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
-gunzip nucl_gb.accession2taxid.gz
-cut -d $'\t' -f 2,3 nucl_gb.accession2taxid > seqid2taxid.map
 
 - kslam
   - without parameter for num_reads_at_once: bad alloc
