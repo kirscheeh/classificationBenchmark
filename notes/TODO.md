@@ -18,7 +18,11 @@
 - clark
   - 364 took so much time because of db built 
   - 1 day, 7:02:37.059451
-
+taxmaps error
+- gem-mapper: unrecognized option '--fast-mapping'
+GEM-Mapper error:
+> Option not recognized
+- korrektur in taxMaps file
 # Tools that did not work
 ## Lime
 - Installation via git and make commands
