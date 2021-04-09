@@ -9,22 +9,26 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "gridion364 gridion366".split(" ") # list(config["samples"])
-TOOLS= 'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion364"#list(config["samples"])
+TOOLS= "taxmaps"#'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
 RUNS='default'# custom customHit'.split(" ")
 
 rule all:
     input:
 # CLASSIFICATION 
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+## KMA (for CCMetagen)
+#        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
+## for CLARK-Output
+#        expand("{path}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv", run=RUNS, sample=SAMPLES, path=PATH),
 # REPORT
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 
@@ -127,7 +131,7 @@ rule kaiju:
         medianHitLength=get_medianHitLength,
         dbDefault = DB_default['kaiju']+"/kaiju_db_refseq.fmi",
         dbCustom = DB_custom['kaiju']+"/refseqBacFung.kaiju.fmi",
-        nodes = DB_default['kaiju']+"/nodes.dmp",
+        nodes = DB_default['nodes'],
     run:
         # -t    name of nodes.dmp file
         # -f    name of database (.fmi) file
@@ -145,8 +149,8 @@ rule kaiju:
 
 rule kaiju_summary:
     input:
-        nodes = DB_default['kaiju']+"/nodes.dmp",
-        names= DB_default['kaiju']+"/names.dmp",
+        nodes = DB_default['nodes'],
+        names= DB_default['names'],
         files = "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification" 
     output:
         "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.report"
@@ -161,7 +165,7 @@ rule clark:
         fastq = "{PATH}/data/{sample}.fastq",
 	    #targets = DB_default["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
     output:
-        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" 
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
@@ -204,32 +208,71 @@ rule clark_abundance:
             shell("{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.dbCustom} > {output}"),
             shell("mv {input.res} {params.unnamed}")
 
+rule taxmaps: # many folders, fix output
+    input:
+        dbDefault = DB_default['taxmaps']+"/refseq_complete_bacarchvir.lcak300.gem",
+        taxonomy = DB_default['taxmaps']+"/taxonomy.tbl.gz",
+        nodes = DB_default['nodes'],
+        files = "{PATH}/data/{sample}.fastq"
+    benchmark:
+        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.taxmaps.benchmark.txt'
+    output:
+        o = '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.classification',
+	folder = '{PATH}/result/classification/taxmaps/{run}/{sample}' 
+    threads: 8
+    params:
+        runid=get_run,
+	prefix = "{sample}_{run}.taxmaps.classification"
+    log:
+        "{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log"
+    conda:
+        'envs/taxmaps.yaml' 
+    run:
+        # -f        input fastq
+        # -l        in preprocessing: minimum read length for mapping
+        # -C        in preprocessing: entropy cutoff for low complexity filtering
+        # -d        index files
+        # -t        taxonomic rable
+        # --cov     coverage histogram
+        # -o        output directory
+        if 'default' in {params.runid}:
+            shell('export PERL5LIB=/home/re85gih/miniconda3/envs/taxmaps/opt/krona/lib/'),
+            shell('export PATH=$PATH:/home/re85gih/projectClassification/taxmaps/'),
+            shell('taxMaps -f {input.files} -c {threads} -t {input.taxonomy} -d {input.dbDefault} -o {output.folder} -p {params.prefix}')
+        elif 'medium' in {params.runid}:
+            pass
+        elif 'restrictive' in {params.runid}:
+            pass   
+        else:
+            print("TaxMaps -- Nothing to do here:", {params.runid})
         
 # preprocessing for ccmetagen
 rule kma:
     input:
         "{PATH}/data/{sample}.fastq"
     output:
-        result = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate.res",
-        mapstat = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate.mapstat"
+        result = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res",
+        mapstat = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.mapstat"
     benchmark:
         "{PATH}/result/classification/benchmarks/{sample}_{run}.kma.benchmark.txt"
     conda:
-        "env/main.yaml"
+        "envs/main.yaml"
     threads: 8
     params:
-        dbDefault = DB_default["ccmetagen"], #+"/compress_ncbi_nt/ncbi_nt",
+        dbDefault = DB_default["ccmetagen"]+"/ncbi_nt",
         dbCustom = DB_custom["ccmetagen"],
+        result="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate",
     shell:
-        'kma -i {input} -t_db {params.db} -o {output.result}[:-4] -t {threads} -1t1 -mem_mode -and -ef'
+        'kma -i {input} -t_db {params.dbDefault} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef'
 
 rule ccmetagen:
     input:
-        kma = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate.res",
-        fast1 = "{PATH}/data/{sample}.fastq",
-        mapstat = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate.mapstat"
+        kma = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res",
+        #fastq = "{PATH}/data/{sample}.fastq",
+        mapstat = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.mapstat"
     output:
-        "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv"
+        "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv",
+        "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification_stats.csv"
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.ccmetagen.benchmark.txt"
     threads: 8
@@ -274,7 +317,8 @@ rule diamond:
     params:
         runID=get_run,
         dbDefault = DB_default["diamond"],#+"/nr"
-        dbCustom = DB_custom["diamond"]
+        dbCustom = DB_custom["diamond"],
+	medianHitLength=get_medianHitLength
     run:
         # --outfmt defines format as taxonomic classification
         # --more-sensitive more sensitive than sensitive, which is <40% identity
@@ -284,7 +328,7 @@ rule diamond:
         elif 'custom' in {params.runID}:
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102')
         elif 'customHit' in {params.runID}:
-            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 --more-sensitive')
+            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 --id {params.medianHitLength}')
         else:
             print("Diamond -- Nothing to do here:", {params.runID})
 

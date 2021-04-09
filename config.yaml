@@ -2,10 +2,10 @@
 path: /mnt/fass1/kirsten
 
 # path to the folders where the needed databases and/or indices are located
-DB_default: {kaiju: '/mnt/fass1/kirsten/databases/kaiju', kaiju_all: '/mnt/fass1/kirsten/databases/kaiju_all', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed',clark: '/mnt/fass1/kirsten/database/clark', diamond: '/mnt/fass1/kirsten/databases/diamond/nr.dmnd', ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen'}
+DB_default: {taxmaps: '/mnt/fass1/kirsten/databases/taxmaps', nodes: '/mnt/fass1/kirsten/databases/custom/nodes.dmp', names: '/mnt/fass1/kirsten/databases/custom/names.dmp',kaiju: '/mnt/fass1/kirsten/databases/kaiju', kraken2: '/mnt/fass1/database/kraken2-database', centrifuge: '/mnt/fass1/kirsten/databases/centrifuge/p_compressed', clark: '/mnt/fass1/kirsten/database/clark', diamond: '/mnt/fass1/kirsten/databases/diamond/nr.dmnd', ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen/compress_ncbi_nt'}
 
 # database build on refseq of fungi and bacteria
-DB_custom: {kaiju: '/mnt/fass1/kirsten/databases/custom/kaiju', kraken2: '/mnt/fass1/kirsten/databases/custom/kraken2', centrifuge: '/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.centrifuge',clark: '/mnt/fass1/kirsten/database/clark', diamond: '/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd',  ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen'}
+DB_custom: {names:'/mnt/fass1/kirsten/databases/custom/names.dmp',nodes: '/mnt/fass1/kirsten/databases/custom/nodes.dmp', kaiju: '/mnt/fass1/kirsten/databases/custom/kaiju', kraken2: '/mnt/fass1/kirsten/databases/custom/kraken2', centrifuge: '/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.centrifuge',clark: '/mnt/fass1/kirsten/database/clark', diamond: '/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd',  ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen'}
 # incorporated tools
 
 # preprocessing: {} ???

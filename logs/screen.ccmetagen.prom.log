@@ -1,0 +1,61 @@
+/data/fass1/kirsten/result/classificationBenchmark
+/data/fass1/kirsten/result/classificationBenchmark/scripts/getting.py:12: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  parsed_yaml = yaml.load(c)
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	2	ccmetagen
+	2	kma
+	2	rename_ccmetagen
+	7[0m
+[32m[0m
+[32mrule kma:
+    input: /mnt/fass1/kirsten/data/promethion367.fastq
+    output: /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion367_default.kma.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion367_default.kma.res
+    jobid: 5
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/promethion367_default.kma.benchmark.txt
+    wildcards: sample=promethion367, PATH=/mnt/fass1/kirsten, run=default
+    threads: 8[0m
+[32m[0m
+# Reading inputfile: 	/mnt/fass1/kirsten/data/promethion367.fastq
+# Phred scale:	33
+# Collecting k-mer scores.
+#
+# Total time used for DB loading: 215.08 s.
+#
+# Finding k-mer ankers
+Error: 28 (No space left on device)
+[31mError in job kma while creating output files /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion367_default.kma.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion367_default.kma.res.[0m
+[31mRuleException:
+CalledProcessError in line 227 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'kma -i /mnt/fass1/kirsten/data/promethion367.fastq -t_db /mnt/fass1/kirsten/databases/ccmetagen/compress_ncbi_nt/ncbi_nt -o /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion367_default.kma.res -t 8 -1t1 -mem_mode -and -ef' returned non-zero exit status 28
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 227, in __rule_kma
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[33mJob failed, going on with independent jobs.[0m
+[32m[0m
+[32mrule kma:
+    input: /mnt/fass1/kirsten/data/promethion365.fastq
+    output: /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion365_default.kma.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion365_default.kma.res
+    jobid: 2
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/promethion365_default.kma.benchmark.txt
+    wildcards: sample=promethion365, PATH=/mnt/fass1/kirsten, run=default
+    threads: 8[0m
+[32m[0m
+# Collecting k-mer scores.
+# Reading inputfile: 	/mnt/fass1/kirsten/data/promethion365.fastq
+# Phred scale:	33
+#
+# Total time used for DB loading: 208.36 s.
+#
+# Finding k-mer ankers
+Error: 28 (No space left on device)
+[31mError in job kma while creating output files /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion365_default.kma.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion365_default.kma.res.[0m
+[31mRuleException:
+CalledProcessError in line 227 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'kma -i /mnt/fass1/kirsten/data/promethion365.fastq -t_db /mnt/fass1/kirsten/databases/ccmetagen/compress_ncbi_nt/ncbi_nt -o /mnt/fass1/kirsten/result/classification/ccmetagen/default/promethion365_default.kma.res -t 8 -1t1 -mem_mode -and -ef' returned non-zero exit status 28
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 227, in __rule_kma
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[33mJob failed, going on with independent jobs.[0m
+[31mExiting because a job execution failed. Look above for error message[0m
