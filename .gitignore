@@ -10,3 +10,4 @@ taxdump.tar.gz
 testsnakemake/*
 stats/*.files
 scripts/*__init__.py*
+diamond.log

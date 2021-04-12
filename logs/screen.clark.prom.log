@@ -24,3 +24,4 @@ CLARK version 1.2.5 (UCR CS&E. Copyright 2013-2018 Rachid Ounit, rouni001@cs.ucr
 Loading database [/mnt/fass1/kirsten/databases/clark/db_central_k31_t15625_s1610612741_m0.tsk.*] ...
 Loading done (database size: 131353 MB read, with sampling factor 2)
 Mode: Default,	Processing file: /mnt/fass1/kirsten/data/promethion367.fastq,	 using 8 CPU.
+

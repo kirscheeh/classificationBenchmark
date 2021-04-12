@@ -9,9 +9,9 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= "centrifuge"#'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
-RUNS='quals'# custom customHit'.split(" ")
+SAMPLES = list(config["samples"])
+TOOLS="kaiju" #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+RUNS='default'# custom customHit'.split(" ")
 
 rule all:
     input:
@@ -22,13 +22,13 @@ rule all:
 ## for CLARK-Output
 #        expand("{path}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv", run=RUNS, sample=SAMPLES, path=PATH),
 # REPORT
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
-        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 
