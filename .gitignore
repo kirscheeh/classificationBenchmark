@@ -11,3 +11,4 @@ testsnakemake/*
 stats/*.files
 scripts/*__init__.py*
 protocol/test*
+diamond.log

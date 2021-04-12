@@ -15,7 +15,6 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-print(os.getcwd())
 config='config.yaml'
 species = get_species(config)
 
@@ -67,7 +66,7 @@ def get_toolsClassification(config): # returns classification tools
 
 def get_abundanceSampleSpecies(areport, config): #returns abundance of expected species
     species = get_species(config)
-    #predictions={sp:0 for (sp, 0) in species}
+    predictions={sp:0 for sp in species}
 
     for s in species:
         # grepping entries that include species name
@@ -86,8 +85,9 @@ def get_abundanceSampleSpecies(areport, config): #returns abundance of expected 
                 
         os.system('rm helping.log')
     
-    #print(list(predictions.values()))
+    print(predictions)
     return predictions
+#get_abundanceSampleSpecies(sys.argv[1], sys.argv[2])
 
 def get_APS(areport, truth, config=config, tool=False, printing=False): #caclulates abundance profile similarities, either between truth and tool output or between tools
     

@@ -1,173 +1,0 @@
-[33m
-Tip of the Day:	[0m[36mTrautes Heim, kurzer Sinn.
-
-[0m
-(base) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:16:06 [1;32m/mnt/fass1/kirsten[1;34m][0mconda activate projectMAN[KN[K[KAIN
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:16:15 [1;32m/mnt/fass1/kirsten[1;34m][0mcd result/classificationBenchmark/
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:16:18 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -j -k -- use-conda
-[33mProvided cores: 48[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	catbat
-	2[0m
-[32m[0m
-[32mrule catbat:
-    input: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy, /mnt/fass1/kirsten/data/gridion364_100.fastq
-    output: /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt
-    log: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.catbat.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.catbat.benchmark.txt
-    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364_100
-    threads: 8[0m
-[32m[0m
-^C[33mTerminating processes on user request.[0m
-[33mJob failed, going on with independent jobs.[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:21:54 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -j -k --uuse-conda
-[33mProvided cores: 48[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	catbat
-	2[0m
-[32m[0m
-[32mrule catbat:
-    input: /mnt/fass1/kirsten/data/gridion364_100.fastq, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy
-    output: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt, /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs
-    log: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.catbat.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.catbat.benchmark.txt
-    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364_100
-    threads: 8[0m
-[32m[0m
-/bin/bash: CAT: command not found
-[31mError in job catbat while creating output files /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt.[0m
-[31mRuleException:
-CalledProcessError in line 361 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Command 'CAT contigs -c /mnt/fass1/kirsten/data/gridion364_100.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618 -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs' returned non-zero exit status 127
-  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 361, in __rule_catbat
-  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-[33mJob failed, going on with independent jobs.[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:22:22 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -j -k --uuse-conda[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C8-k --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:22:22 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[C[C[C[C[C[C[C[C[C[C[C[C[C[C -k --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:22:22 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
-
-[33mProvided cores: 8[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	catbat
-	2[0m
-[32m[0m
-[32mrule catbat:
-    input: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy, /mnt/fass1/kirsten/data/gridion364_100.fastq
-    output: /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt
-    log: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.catbat.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.catbat.benchmark.txt
-    wildcards: sample=gridion364_100, PATH=/mnt/fass1/kirsten, run=default
-    threads: 8[0m
-[32m[0m
-/bin/bash: CAT: command not found
-[31mError in job catbat while creating output files /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt.[0m
-[31mRuleException:
-CalledProcessError in line 361 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Command 'CAT contigs -c /mnt/fass1/kirsten/data/gridion364_100.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618 -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs' returned non-zero exit status 127
-  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 361, in __rule_catbat
-  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-[33mJob failed, going on with independent jobs.[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:22:54 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msm[Knakemake --use-co nda
-[33mProvided cores: 1[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	catbat
-	2[0m
-[32m[0m
-[32mrule catbat:
-    input: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618, /mnt/fass1/kirsten/data/gridion364_100.fastq
-    output: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt, /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs
-    log: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.catbat.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.catbat.benchmark.txt
-    wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=gridion364_100[0m
-[32m[0m
-/bin/bash: CAT: command not found
-[31mError in job catbat while creating output files /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt, /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs.[0m
-[31mRuleException:
-CalledProcessError in line 361 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Command 'CAT contigs -c /mnt/fass1/kirsten/data/gridion364_100.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618 -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs' returned non-zero exit status 127
-  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 361, in __rule_catbat
-  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-[33mWill exit after finishing currently running jobs.[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:23:15 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake ---use-conda
-[33mProvided cores: 1[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	catbat
-	2[0m
-[32m[0m
-[32mrule catbat:
-    input: /mnt/fass1/kirsten/data/gridion364_100.fastq, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618, /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy
-    output: /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt
-    log: /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.catbat.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.catbat.benchmark.txt
-    wildcards: PATH=/mnt/fass1/kirsten, sample=gridion364_100, run=default[0m
-[32m[0m
-# CAT v5.2.3.
-
-CAT is running. Protein prediction, alignment, and contig classification are carried out.
-Rarw!
-
-Supplied command: /data/fass1/kirsten/result/classificationBenchmark/.snakemake/conda/949d0def/bin/CAT contigs -c /mnt/fass1/kirsten/data/gridion364_100.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618 -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs
-
-Contigs fasta: /mnt/fass1/kirsten/data/gridion364_100.fastq
-Taxonomy folder: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy/
-Database folder: /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/
-Parameter r: 10
-Parameter f: 0.5
-Log file: /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs.log
-
------------------
-
-Doing some pre-flight checks first.
-[2021-03-22 14:32:38] Prodigal found: Prodigal V2.6.3: February, 2016.
-[2021-03-22 14:32:38] DIAMOND found: diamond version 0.8.28.
-[2021-03-22 14:32:38] ERROR: DIAMOND database not found in database folder.
-[2021-03-22 14:32:38] ERROR: file fastaid2LCAtaxid is not found in database folder.
-[2021-03-22 14:32:38] ERROR: file taxids_with_multiple_offspring not found in database folder.
-[31mError in job catbat while creating output files /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs, /mnt/fass1/kirsten/result/classification/catbat/default/gridion364_100_default.out.CAT.ORF2LCA.txt.[0m
-[31mRuleException:
-CalledProcessError in line 361 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Command 'CAT contigs -c /mnt/fass1/kirsten/data/gridion364_100.fastq -d /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618 -t /mnt/fass1/kirsten/databases/catbat/CAT_prepare_20200618/2020-06-18_taxonomy -o /mnt/fass1/kirsten/result/classification/catbat/contigs/gridion364_100_default.catbat.contigs' returned non-zero exit status 1
-  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 361, in __rule_catbat
-  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-[33mWill exit after finishing currently running jobs.[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake ---use-conda[Cj 8 -k --use-conda[C[C[C[2P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mcd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -[7Pj -k --use-conda[C[C[C[2@8 [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8P-use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csnakemake ---use-conda[Cj 8 -k --use-conda[C[C[C[2P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mcd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[Conda activ[8Pate projectMAIN[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csnakemake --j 8 -k --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mcd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[Conda activ[8Pate projectMAIN[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbashexitturmexitbashexitscreen -r 221454.diamondOutput[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[C[C[C[C[C[C[C[Cls [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctail gridioon364_100_default.kslam.classification[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mhead
-[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[4Pls -al
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd classifiication/kslam/default/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[C[C[Cresult/ [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscreen -r 119134.kslam[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[C[C[C[C[C[C[C[Cls [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csnakemake --k -j 16 --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefile [K[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -k -j 16 --use-conda[C[C[C[C[C[C[C[C[K[Cpn[K[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefile [A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -[2Ppn[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mcd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[Conda activ[8Pate projectMAIN[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbashexitturmexitturmexitbashexitconda activvate projectMAIN[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[Cd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -pn[K[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefile [A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -[2Ppnk -j 16 --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefile [K[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -k -j 16 --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscreen -ls [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cr 119134.kslam[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mcd result/ [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cclassifiication/kslam/default/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[4Pls -al
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chead gridioon364_100_default.kslam.classification[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mtail
-[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mscreen -ls [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cr 221454.diamondOutput[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbashexitturmexitbashexitconda activvate projectMAIN[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[Cd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -[5Pj 8 -k --use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[6Pexit
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cconda activvate projectMAIN[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[Cd result/classificationBenchmark/[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -[7Pj -k --use-conda[C[C[C[2@8 [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8P-use-conda[A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m14:32:38 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K
-[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit
-exit
