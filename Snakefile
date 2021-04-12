@@ -10,13 +10,13 @@ DB_custom= dict(config["DB_custom"])
 PATH = config["path"]
 
 SAMPLES = "gridion364"#list(config["samples"])
-TOOLS= "taxmaps"#'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
-RUNS='default'# custom customHit'.split(" ")
+TOOLS= "centrifuge"#'ccmetagen centrifuge kraken2 clark kaiju'.split(" ") #list(config["classification"])
+RUNS='quals'# custom customHit'.split(" ")
 
 rule all:
     input:
 # CLASSIFICATION 
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 ## KMA (for CCMetagen)
 #        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 ## for CLARK-Output
@@ -26,9 +26,9 @@ rule all:
 # GENERATING (comparable) REPORTS
 #        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
-#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
-#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # ABUNANCE PROFILE SIMILARITY
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
 
@@ -163,9 +163,10 @@ rule kaiju_summary:
 rule clark:
     input:
         fastq = "{PATH}/data/{sample}.fastq",
-	    #targets = DB_default["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
+        targets = DB_default["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
     output:
-        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" 
+        csv="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv",
+        stats="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification_stats.csv" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
@@ -193,7 +194,8 @@ rule clark_abundance:
     input:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv"
     output:
-        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report"
+        report="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report",
+        unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     params:
         dbDefault = DB_default["clark"], #"/mnt/fass1/database/clark_database",
         dbCustom = DB_custom["clark"],
