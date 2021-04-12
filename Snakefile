@@ -291,7 +291,7 @@ rule ccmetagen:
         if 'default' in {params.runID} or 'custom' in {params.runID}:
             shell('CCMetagen.py -o {params.output} -i {input.kma} -ef y --map {input.mapstat}')
         elif 'customHit' in {params.runID}: # is there any option? --d 0.4?
-            shell('CCMetagen.py -o {params.output} -i {input.kma} -ef y --map {input.mapstat}')
+            shell('CCMetagen.py -o {params.output} -i {input.kma} -ef y --map {input.mapstat} -c 40')
         else:
             print("CCMetagen -- Nothing to do here:", {params.runID})
 

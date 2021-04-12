@@ -1,5 +1,9 @@
 # Introduction
 # Material and Methods
+# Data -- Mock Community
+- CSS, Abkürzung CS Even und CS Log einführn
+- Dataset erklären, Spezies nennen, grobe Infos zu Spezies
+- Abundances, soweit bekannt
 <!-- conda und snakemake erwähnen-->
 ## Preprocessing
 ## Classification
@@ -7,32 +11,16 @@ Classificaton describes the process of identifying the taxon of a given species 
 
 Common approaches to solve this task k-mer based algorithms or algorithm based on the FM-Index. Explanation here about these two methods, maybe a short explanation of the ML approach?
 ### Tools
-|     Tool     |   Version  |   Type  |         Approach        |                       Reference                      |
-|:------------:|:----------:|:-------:|:-----------------------:|:----------------------------------------------------:|
-|CAT and BAT   | 5.1.2           | Protein ||https://github.com/dutilh/CAT| 
-|   Diamond    | 2.0.5          | Protein |        Alignment       | http://www.diamondsearch.org/index.php               |
-|     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  |               http://kaiju.binf.ku.dk/               |
-|   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)|       https://github.com/vrmarcelino/CCMetagen       |
-|  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | https://ccb.jhu.edu/software/centrifuge/manual.shtml |
-|     CLARK    |    1.2.5        |   DNA   |      (spaced) *k*-mer  |           http://clark.cs.ucr.edu/Overview/          |
-| DeepMicrobes |git rev. 43b654b |DNA      | Machine Learning, *k*-mer |      https://github.com/MicrobeLab/DeepMicrobes      |
-|    Kraken2   | 2.0.7-beta      |   DNA   |          *k*-mer          |         http://ccb.jhu.edu/software/kraken2/         |
-|    k-SLAM    |     1.0         |   DNA   |Alignment, *k*-mer          |            https://github.com/aindj/k-SLAM           |
-| MegaBLAST??? |                 | DNA     | Alignment||
-|  MetaOthello |git rev. 15ded5e |DNA      |          *k*-mer          |         https://github.com/xa6xa6/metaOthello        |
-| NBC          |                 | DNA     |                   |http://nbc.ece.drexel.edu/|
-|    taxMaps   |     0.2         |   DNA   |         FM-Index          |          https://github.com/nygenome/taxmaps         |
-
+|     Tool     |   Version  |   Type  |         Approach        |Default Database|                       Reference                      |
+|:------------:|:----------:|:-------:|:-----------------------:|:---:|:----------------------------------------------------:|
+|   Diamond    | 2.0.5          | Protein |        Alignment       | full Proteome Bacteria|http://www.diamondsearch.org/index.php               |
+|     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  | |              http://kaiju.binf.ku.dk/               |
+|   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)|  |     https://github.com/vrmarcelino/CCMetagen       |
+|  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | |https://ccb.jhu.edu/software/centrifuge/manual.shtml |
+|     CLARK    |    1.2.5        |   DNA   |      (spaced) *k*-mer  |  |         http://clark.cs.ucr.edu/Overview/          |
+|    Kraken2   | 2.0.7-beta      |   DNA   |          *k*-mer          ||         http://ccb.jhu.edu/software/kraken2/         |
+|BugSeq| v1 | DNA | Pipeline?? || https://bugseq.com/free |
 #### Protein-Level Classification
-##### CAT and BAT
-The Contig Annotation Tool (CAT) and the Bin Annotation Tool (BAT) are expecially for the classification of long reads or assembled metagenomes. For both, the process of classification involves gene calling, mapping of predicted open reading frames (ORF) against a protein database and classification of the contig or the metagenomic assembled genomes (MAG) based on the ORFs [catbat](). <br>
-The database files <tt>CAT_prepare_20200618</tt> are downloaded from <tt>tbb.bio.uu.nl/bastiaan/CAT_prepare/</tt> as of 07/12/2020.
-
-    ???
-    'CAT contigs -c {input} -d {databse} -t {taxonomy} -o {output}',
-    'CAT bins -b {input} -d {database} -t {taxonomy} -o {output}',
-    'CAT add_names -i {ORF2LCA / classification file} -o {output file} -t {taxonomy folder} --only_official'
-
 ##### Diamond
 This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data. <br>
 The database was created on 14/12/2020 with the <tt>diamond makedb</tt> command and sequences downloaded on 27/7/2019 (genomes/bacteria...)
@@ -89,7 +77,6 @@ The bacterial (and virus) databse was build using the script <tt>set_targets.sh<
         # --long    for long reads (only for full mode)
         # -m        mode of execution
 
-##### DeepMicrobes
 ##### Kraken2
 The taxonomic sequence classifier <tt> Kraken2 </tt> [Kraken2]() examines *k*-mers of a query sequence and uses those information to query a database. During the query, the *k*-mers are mapped to the lowest common ancestor of the genomes that contain a given *k*-mer [Kraken2](). <br>
 ??? Ich will die bestehende DB nutzen, aber da steht nicht wie und woher die kam ???
@@ -103,51 +90,19 @@ The taxonomic sequence classifier <tt> Kraken2 </tt> [Kraken2]() examines *k*-me
         # --output              prints output to filename
         # --report              prints report with aggregate counts/cladde to file
         
-##### k-SLAM
-<tt> k-SLAM</tt> [kslam]() uses an alignment based approach for metagenomic analysis. To built thes alignments, a *k*-mer based approach s use. The found alignments of reads and genome are validated by using the Smith-Waterman algorithm. By identifying the lowest common ancestor, the taxonomy of the sample is concluded [kslam](). <br>
-A database of bacteria was built using the <tt>install_slam.sh</tt> script as of 28/11/2020.
-
-    SLAM --db {databse} (--min-alignment-score INT) --output-file {output} {input}
-
-    # Parameters
-        # --db                      database file
-        # --min-alignment-score     alignment score cutoff
-
-##### MegaBLAST ???
-##### MetaOthello
-The probabilistic hashin classifier <tt>MetaOthello</tt> employs a new data structure that helps to identify a taxon based on its *k*-mer [metaothello]().
-The used index was downloaded from <tt>https://drive.google.com/open?id=0BxgO-FKbbXRIa0Flc3Q4bWtycGM</tt> as of 7/12/2020.
 
 
-    ./classifier \
-    <path_to_bacterial_index> \
-    {output} \
-    <Kmer_length> \
-    <threads_num> \
-    fq \
-    SE \
-    <bacterial_speciesId2taxoInfo_file> \ 
-    <NCBI_names_file> \
-    {input} \
-    
 ##### NBC
 The <tt>NBC</tt> taxonomic classifier implemented the naïve bayes classifier for metagenomic samples. These classifiers are based on the Bayes theorem. This tool is used as a webserver with <tt>http://nbc.ece.drexel.edu/</tt>
-##### taxMaps
-<tt>taxMaps</tt> [taxMaps]() is a classification tool designed for short read metagenomic samples. It consists of several steps preceding the actual task of taxonomic classification. There is the preprocessing with quality trimming and adapter cutting as well as mapping. Here, only the taxonomic classification is done. The approach is based on the FM-Index [taxMaps](). <br> <!-- Index last edited: 06/03/2018-->
-A pre-built index (refseq_complete_bacarchive) is used which was downloaded from <tt>ftp://ftp.nygenome.org/taxmaps/Indexes/</tt> as of 27/11/2020. The taxonomy table was downloaded from there as well.
 
-    taxMaps -f {input} -t taxonomy.tbl.gz -d taxmaps/*.gem.* --cov -o {output}
 
-    # Parameters
-        # -f        input fastq
-        # -l        in preprocessing: minimum read length for mapping
-        # -C        in preprocessing: entropy cutoff for low complexity filtering
-        # -d        index files
-        # -t        taxonomic rable
-        # --cov     coverage histogram
-        # -o        output directory
-        
-
+#### Others
+- snakemake
+- R
+- conda
+- Python
+- Bash
+  
 ### Metrics
 Introduction on diffivulties regarding the comparison of different tools with differents databases etc
 
@@ -162,7 +117,26 @@ For this metric, a ground-truth is needed.
 #### Computational Requirements
 Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime and amount of memory. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task and the memory usage in MiB.
 # Results and Discussion
-## Installation
+## Installation: Usability
+### Unused Tools
+## CS Even
+### Protein-Level Classification
+#### Classification Results Diamond
+#### Classification Results Kaiju
+### DNA-Level Classification
+#### Classification Results Kraken2
+#### Classification Results Centrifuge
+#### Classification Results CLARK
+#### Classification Results CCMetagen
+## CS Log
+### Protein-Level Classification
+#### Classification Results Diamond
+#### Classification Results Kaiju
+### DNA-Level Classification
+#### Classification Results Kraken2
+#### Classification Results Centrifuge
+#### Classification Results CLARK
+#### Classification Results CCMetagen
 # Conclusion
 # Additional Information
 
