@@ -113,3 +113,15 @@ s	h:m:s
 97908.76425027847	1 day, 3:11:48.764250
 
 
+piecer ccmetagen
+start="$2"
+end="$3"
+sed -e "1,${start}d;${end}q" $1 > $2
+
+#head -12000000 "$1" > "$2" 
+#for i in {1..15} #12
+#do
+#    start=$((12000000*i))
+#    end=$((start+12000000))
+#    sed -e "1,${start}d;${end}q" $1 > $2
+#done

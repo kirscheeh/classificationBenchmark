@@ -1,25 +1,42 @@
 # Introduction
 # Material and Methods
 # Data -- Mock Community
+The underlying dataset used for this evaluation consists of four sequencing results of two samples. The sequenced communities are are commercially-available mock communities with ten species, eight bacteria and two fungi (TABLE 1). ZymoBIOMICS Microbial Community Standards offers  datasets for microbiomics and metagenomics studies to ensure reproducibility [Zymo]. The used products are CS (Even) and CSII (Log), therefore the expected abundancies of the different species are known (TABLE 1). Note that each CS was sequenced with GridION as well as PromethION, whereas PromethION sequenced at greater depth. The GridION samples have an average of 3.5 million reads, with an median read quality of 10 [PAPER]. The PromethION samples have an average redcount of 35.1 million reads with a median read quality of 10.6 [PAPEr].
+- tabelle: oben in spalten vllt spezies, dann für samples die abundancies?
+- table mit quality und read infos der 4 samples?
+
+| FASTQ accession         | ERR3152364 | ERR3152366 | ERR3152365    | ERR3152367    |
+|-------------------------|------------|------------|---------------|---------------|
+| Sequencer               | GridION    | GridION    | PromethION    | PromethION    |
+| Zymo Community Standard | CS Even    | CSII Log   | CS Even       | CSII Log      |
+| Working Name            | gridion364 | gridion366 | promethion365 | promethion367 |
+| Reads (M)               | 3.59       | 3.67       | 35.7          | 34.5          |
+| Quality (Median Q)      | 10.3       | 9.8        | 10.5          | 10.7          |
+| N50 (kb)                | 5.3        | 5.4        | 5.4           | 5.4           |
+
 - CSS, Abkürzung CS Even und CS Log einführn
 - Dataset erklären, Spezies nennen, grobe Infos zu Spezies
 - Abundances, soweit bekannt
 <!-- conda und snakemake erwähnen-->
+
 ## Preprocessing
 ## Classification
 Classificaton describes the process of identifying the taxon of a given species [1]. blah
 
 Common approaches to solve this task k-mer based algorithms or algorithm based on the FM-Index. Explanation here about these two methods, maybe a short explanation of the ML approach?
 ### Tools
-|     Tool     |   Version  |   Type  |         Approach        |Default Database|                       Reference                      |
-|:------------:|:----------:|:-------:|:-----------------------:|:---:|:----------------------------------------------------:|
-|   Diamond    | 2.0.5          | Protein |        Alignment       | full Proteome Bacteria|http://www.diamondsearch.org/index.php               |
-|     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  | |              http://kaiju.binf.ku.dk/               |
-|   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)|  |     https://github.com/vrmarcelino/CCMetagen       |
-|  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | |https://ccb.jhu.edu/software/centrifuge/manual.shtml |
-|     CLARK    |    1.2.5        |   DNA   |      (spaced) *k*-mer  |  |         http://clark.cs.ucr.edu/Overview/          |
-|    Kraken2   | 2.0.7-beta      |   DNA   |          *k*-mer          ||         http://ccb.jhu.edu/software/kraken2/         |
-|BugSeq| v1 | DNA | Pipeline?? || https://bugseq.com/free |
+
+|     Tool     |   Version  |   Type  |         Approach        |Default Database| Reference                                 |
+|:------------:|:----------:|:-------:|:-----------------------:|:--------------:|:-----------------------------------------:|
+|   Diamond    | 2.0.5      | Protein |        Alignment        | full Proteome Bacteria|http://www.diamondsearch.org/index.php |
+|     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  |refseq |              http://kaiju.binf.ku.dk/               |
+|   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)| refseq |     https://github.com/vrmarcelino/CCMetagen       |
+|  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | complete genomes|https://ccb.jhu.edu/software/centrifuge/manual.shtml |
+|     CLARK    |    1.2.5        |   DNA   |      (spaced) *k*-mer  | refseq |         http://clark.cs.ucr.edu/Overview/          |
+|    Kraken2   | 2.0.7-beta      |   DNA   |          *k*-mer          |-|         http://ccb.jhu.edu/software/kraken2/         |
+|BugSeq| v1 | DNA | Pipeline?? |-| https://bugseq.com/free |
+
+
 #### Protein-Level Classification
 ##### Diamond
 This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data. <br>
@@ -107,7 +124,7 @@ The <tt>NBC</tt> taxonomic classifier implemented the naïve bayes classifier fo
 Introduction on diffivulties regarding the comparison of different tools with differents databases etc
 
 #### Area-Under-Precision-Recall Curve
-The Area-Under-Precision-Recall curve (AUPR) is a metric that combines the most important measures for metagenomic classification: precision and recall [[1]](). Precision is defined as $precision=\frac{TP}{TP+FP}$, i.e. the ratio between true positive (TP) classification results and the total numer of classification results that are reported as true, inclusing falsly positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. $recall=\frac{TP}{TP+FN}$. <br>
+The Area-Under-Precision-Recall curve (AUPR) is a metric that combines the most important measures for metagenomic classification: precision and recall [[1]](). Precision is defined as $precision=\frac{TP}{TP+FP}$, i.e. the ratio between true positive (TP) classification results and the total numer of classification results that are reported as true, including false positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. $recall=\frac{TP}{TP+FN}$. <br>
 The AUPR curve can be used to evaluate precision and recall across different abundance thresholds. If the threshold are chosen accordingly in the range from 0-1.0, the AUPR returns a single metric considering precision and recall. In short: This metric considers the number of correctly identified species [[1]]().
 For this metric, a ground-truth is needed.
 - and the information here that i used a script to calculate this
@@ -116,28 +133,104 @@ For this metric, a ground-truth is needed.
 #### Abundace Profile Similarity
 #### Computational Requirements
 Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime and amount of memory. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task and the memory usage in MiB.
+
 # Results and Discussion
+
 ## Installation: Usability
+- installation wasy, what does that mean? which tools are in that category?
+
 ### Unused Tools
-## CS Even
-### Protein-Level Classification
-#### Classification Results Diamond
-#### Classification Results Kaiju
-### DNA-Level Classification
-#### Classification Results Kraken2
-#### Classification Results Centrifuge
-#### Classification Results CLARK
-#### Classification Results CCMetagen
-## CS Log
-### Protein-Level Classification
-#### Classification Results Diamond
-#### Classification Results Kaiju
-### DNA-Level Classification
-#### Classification Results Kraken2
-#### Classification Results Centrifuge
-#### Classification Results CLARK
-#### Classification Results CCMetagen
+#### MetaOthello
+- installation easy, but classification lead to segmentation fault
+- similar issuse was discussed on the github, but didn't get solved
+- didn't use it
+
+#### taxMaps
+- installation troublesome
+- weird output
+- bad alloc I couldn't fix
+
+#### LiME
+- Installation cia git required sudo rights
+- separate installation of needed dependencies did not work
+
+#### kslam
+- bad alloc for more than 100 reads
+
+
+## Default Database
+
+### Classification Result CS Even
+
+| gridion364         | Diamond | Kaiju | BugSeq | CCMetagen   | Centrifuge | CLARK | Kraken2 | taxMaps || promethion365      | Diamond | Kaiju | BugSeq | CCMetagen | Centrifuge | CLARK | Kraken2 | taxMaps |
+|:--------------------|---------|-------|--------|-------------|------------|-------|---------|---------|:--:|:--------------------|---------|-------|--------|-----------|------------|-------|---------|---------|
+| unclassified       | 15.68   | 14.08 |        | 26.74       | 10.5       | 21.89 | 9.13    |         || unclassified       |         |       |        |           |            |       |         |         |
+| *B. subtilis*      | 0.39    | 0.81  |        | 0.36        | 18.37      | 7.33  | 17.51   |         || *B. subtilis*      |         |       |        |           |            |       |         |         |
+| *L. monocytogenes* | 2.89    | 9.32  |        | 11.33       | 13.51      | 13.24 | 12.87   |         || *L. monocytogenes* |         |       |        |           |            |       |         |         |
+| *E. faecalis*      | 1.01    | 10.27 |        | 1.79        | 11.18      | 11.45 | 11.11   |         || *E. faecalis*      |         |       |        |           |            |       |         |         |
+| *S. aureus*        | 0.4     | 4.15  |        | 9.84        | 11.24      | 11.21 | 11.07   |         || *S. aureus*        |         |       |        |           |            |       |         |         |
+| *S. enterica*      | 0.26    | 1.78  |        | 0.0         | 6.0        | 5.65  | 5.69    |         || *S. aurus*        |         |       |        |           |            |       |         |         |
+| *E. coli*          | 0.12    | 0.21  |        | 2.07        | 5.93       | 4.96  | 5.25    |         || *S. aurus*        |         |       |        |           |            |       |         |         |
+| *P. aeruginosa*    | 0.1     | 1.1   |        | 3.39        | 5.21       | 4.56  | 4.48    |         || *S. enterica*      |         |       |        |           |            |       |         |         |
+| *L. fermentum*     | 0.0     | 12.5  |        | 0.0         | 14.51      | 0     | 14.14   |         || *E. coli*          |         |       |        |           |            |       |         |         |
+| *S. cerevisiae*    | -       | -     |        | 0.89        | -          | -     | 2.18    |         || *E. coli*          |         |       |        |           |            |       |         |         |
+| *C. neoformans*    | -       | -     |        | 1.14 x 10-6 | -          | -     | 2.0     |         || *E. coli*          |         |       |        |           |            |       |         |         |
+
+
+| promethion365      | Diamond | Kaiju | BugSeq | CCMetagen | Centrifuge | CLARK | Kraken2 | taxMaps |
+|--------------------|---------|-------|--------|-----------|------------|-------|---------|---------|
+| unclassified       |         |       |        |           |            |       |         |         |
+| *B. subtilis*      |         |       |        |           |            |       |         |         |
+| *L. monocytogenes* |         |       |        |           |            |       |         |         |
+| *E. faecealis*      |         |       |        |           |            |       |         |         |
+| *S. aurus*        |         |       |        |           |            |       |         |         |
+| *S. enterica*      |         |       |        |           |            |       |         |         |
+| *E. coli*          |         |       |        |           |            |       |         |         |
+| *P. aeruginosa*    |         |       |        |           |            |       |         |         |
+| *L. fermentum*     |         |       |        |           |            |       |         |         |
+| *S. cerevisiae*    |         |       |        |           |            |       |         |         |
+| *C. neoformans*    |         |       |        |           |            |       |         |         |
+
+#### Diamond
+
+#### Kaiju
+|||
+|:--:|:--:|
+|![](../stats/pics/gridion364_default.kaiju.piechart.png)|![](../stats/pics/gridion364_default.kaiju.piechart.png)|
+|gridion, erklärung, was man fines sieht|promethion, hier feine erklärung|
+
+
+| gridion366         | Diamond     | Kaiju        | BugSeq | CCMetagen   | Centrifuge  | CLARK        | Kraken2     | taxMaps |
+|:--------------------|-------------|--------------|--------|-------------|-------------|--------------|-------------|---------|
+| unclassified       | 12.05       | 11.06        |        | 25.4        | 7.21        | 11.76        | 8.52        |         |
+| *B. subtilis*      | 0.03        | 0.05         |        | 0.02        | 1.08        | 0.44         | 1.03        |         |
+| *L. monocytogenes* | 18.87       | 57.91        |        | 71.49       | 84.59       | 82.71        | 81.29       |         |
+| *E. faecalis*      | 2.7 x 10-5  | 0.01         |        | 0           | 0.03        | 0.14         | 0.16        |         |
+| *S. aureus*        | 8.18 x 10-7 | 4.01 x 10-5  |        | 0           | 8.02 x 10-5 | 6.03 x 10-05 | 3.79 x 10-5 |         |
+| *S. enterica*      | 2.18 x 10-5 | 0.02         |        | 0           | 0.06        | 0.04         | 0.05        |         |
+| *E. coli*          | 1.28 x 10-5 | 0.02         |        | 8.18 x 10-7 | 0.06        | 0.04         | 0.05        |         |
+| *P. aeruginosa*    | 0.1         | 0.97         |        | 2.82        | 4.65        | 4.0          | 3.98        |         |
+| *L. fermentum*     | 0           | 4.31 x 10 -5 |        | 0           | 5.24 x 10-5 | 0            | 5.12 x 10-5 |         |
+| *S. cerevisiae*    | -           | -            |        | 0.19        | -           | -            | 0.7         |         |
+| *C. neoformans*    | -           | -            |        | 0           | -           | -            | 2.7 x 10-5  |         |
+
+| promethion367      | Diamond | Kaiju | BugSeq | CCMetagen | Centrifuge | CLARK | Kraken2 | taxMaps |
+|--------------------|---------|-------|--------|-----------|------------|-------|---------|---------|
+| unclassified       |         |       |        |           |            |       |         |         |
+| *B. subtilis*      |         |       |        |           |            |       |         |         |
+| *L. monocytogenes* |         |       |        |           |            |       |         |         |
+| *E. faecalis*      |         |       |        |           |            |       |         |         |
+| *S. aureus*        |         |       |        |           |            |       |         |         |
+| *S. enterica*      |         |       |        |           |            |       |         |         |
+| *E. coli*          |         |       |        |           |            |       |         |         |
+| *P. aeruginosa*    |         |       |        |           |            |       |         |         |
+| *L. fermentum*     |         |       |        |           |            |       |         |         |
+| *S. cerevisiae*    |         |       |        |           |            |       |         |         |
+| *C. neoformans*    |         |       |        |           |            |       |         |         |
+
+
 # Conclusion
+
 # Additional Information
 
 # Sources
@@ -165,3 +258,5 @@ Additionally to the quality of the different classifiers, the computational requ
 [metaothello](https://doi.org/10.1093/bioinformatics/btx432) Liu, X., Yu, Y., Liu, J., Elliott, C. F., Qian, C., & Liu, J. (2018). A novel data structure to support ultra-fast taxonomic classification of metagenomic sequences with k-mer signatures. *Bioinformatics*, 34(1), 171-178.
 
 [nbc](https://doi.org/10.1093/bioinformatics/btq619) Rosen, G. L., Reichenberger, E. R., & Rosenfeld, A. M. (2011). NBC: the Naive Bayes Classification tool webserver for taxonomic classification of metagenomic reads. *Bioinformatics*, 27(1), 127-129.
+
+[Zymo] https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards

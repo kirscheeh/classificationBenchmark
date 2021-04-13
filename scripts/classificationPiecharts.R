@@ -3,7 +3,6 @@
 
 args <- commandArgs(trailingOnly=TRUE)
 report <- read.csv(args[1], sep="\t")
-
 sample.name.splitted <- strsplit(args[1], "/")
 sample.name.vector <- sample.name.splitted[[1]]
 sample.name <- sample.name.vector[length(sample.name.vector)]

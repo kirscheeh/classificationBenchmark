@@ -9,13 +9,13 @@
 #if (length(packages.new)>0) { 
 #    install.packages("PRROC", lib="/home/re85gih/miniconda3/envs/projectMAIN/lib/R/library")
 #}
-setwd("/mnt/fass1/kirsten/result/classificationBenchmark/scripts")
+setwd("/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/scripts") #/mnt/fass1/kirsten/result/
 require(PRROC)
 
 # extract data sheet
 args <- commandArgs(trailingOnly=TRUE)
 sample.data <- read.csv(args[1], sep="\t")
-
+print(args)
 # name for plot
 sample.name.splitted <- strsplit(args[3], "/")
 sample.name.vector <- sample.name.splitted[[1]]

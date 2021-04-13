@@ -49,6 +49,9 @@ def get_medianHitLength(wildcards):
     else:
         return 22 # default 
 
+def get_sample(wildcards):
+    return wildcards.sample
+
 rule centrifuge:
     input: 
         fastq = "{PATH}/data/{sample}.fastq"
@@ -265,8 +268,13 @@ rule kma:
         dbDefault = DB_default["ccmetagen"]+"/ncbi_nt",
         dbCustom = DB_custom["ccmetagen"],
         result="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate",
+        sample=get_sample
+        script="{PATH}/result/classificationBenchmark/scripts/ccmetagen.piecer.sh"
     shell:
-        'kma -i {input} -t_db {params.dbDefault} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef'
+        if 'promethion' in {params.sample}:
+            '{params.script} {input} helper.fastq {params.dbDefault} {output.result}'
+        else:
+            'kma -i {input} -t_db {params.dbDefault} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef'
 
 rule ccmetagen:
     input:
