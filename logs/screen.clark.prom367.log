@@ -1,0 +1,25 @@
+/data/fass1/kirsten/result/classificationBenchmark/scripts/getting.py:12: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  parsed_yaml = yaml.load(c)
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	clark
+	1	clark_abundance
+	3[0m
+[32m[0m
+[32mrule clark:
+    input: /mnt/fass1/kirsten/data/promethion367.fastq, /mnt/fass1/database/clark_database/targets.txt
+    output: /mnt/fass1/kirsten/result/classification/clark/default/promethion367_default.clark.classification.csv, /mnt/fass1/kirsten/result/classification/clark/default/promethion367_default.clark.classification_stats.csv
+    jobid: 2
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/promethion367_default.clark.benchmark.txt
+    wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=promethion367
+    threads: 8[0m
+[32m[0m
+/data/fass1/kirsten/result/classificationBenchmark/scripts/getting.py:12: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  parsed_yaml = yaml.load(c)
+CLARK version 1.2.5 (UCR CS&E. Copyright 2013-2018 Rachid Ounit, rouni001@cs.ucr.edu) 
+Loading database [/mnt/fass1/kirsten/databases/clark/db_central_k31_t15625_s1610612741_m0.tsk.*] ...
+Loading done (database size: 131353 MB read, with sampling factor 2)
+Mode: Default,	Processing file: /mnt/fass1/kirsten/data/promethion367.fastq,	 using 8 CPU.

@@ -9,8 +9,8 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = list(config["samples"])
-TOOLS="kaiju" #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "promethion367"#list(config["samples"])
+TOOLS="clark" #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
 RUNS='default'# custom customHit'.split(" ")
 
 rule all:
@@ -24,7 +24,7 @@ rule all:
 # REPORT
         expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
@@ -195,19 +195,20 @@ rule clark_abundance:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv"
     output:
         report="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report",
-        unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
+        #unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     params:
-        dbDefault = DB_default["clark"], #"/mnt/fass1/database/clark_database",
-        dbCustom = DB_custom["clark"],
+        taxonomy=DB_default['clark_taxonomy'],       
+      # dbDefault = DB_default["clark"], #"/mnt/fass1/database/clark_database",
+        #dbCustom = DB_custom["clark"],
         unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     conda:
         "envs/main.yaml"    
     run:
         if 'default' in {params.runID}:
-            shell("{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.dbDefault} > {output}"),
+            shell("{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomy} > {output}"),
             shell("mv {input.res} {params.unnamed}")
         else:
-            shell("{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.dbCustom} > {output}"),
+            shell("{PATH}/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomy} > {output}"),
             shell("mv {input.res} {params.unnamed}")
 
 rule taxmaps: # many folders, fix output

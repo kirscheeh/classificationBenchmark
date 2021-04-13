@@ -3,10 +3,10 @@ rule centrifuge_db:
         map = "/mnt/fass1/kirsten/databases/custom/centrifuge/seqid2taxid.map",
         nodes = "/mnt/fass1/kirsten/databases/custom/nodes.dmp",
         names ="/mnt/fass1/kirsten/databases/custom/names.dmp",
-        fna="/mnt/fass1/kirsten/databses/refseq_bac_fungi/refseq_bac_fungi.fna"
+        fna="/mnt/fass1/kirsten/databases/refseq_bac_fungi/refseq_bac_fungi.fna"
     output:
        "/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.1.cf"
-    threads: 8
+    threads: 16
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/centrifuge.custom_db.benchmark.txt"
     params:
