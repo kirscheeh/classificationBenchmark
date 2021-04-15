@@ -1,33 +1,93 @@
-#
-## Introduction
-## Material and Methods
-### Data
+# Titel
+# Introduction
+# Material and Methods
+## Data
 The present dataset consists of four samples of the underlying ZymoBIOMICS Microbial Community Standards CS and CSII (Quelle: Zymo-Website, DataPaper). Those mock communities are composed of ten microbial species, eight bacteria and two fungi (Table 1). Each of these two standards is sequenced with GridION and PromethION, resulting in four samples, two for each standard. 
-[Hier Tabelle 1]
-[Hier Tabelle 2]
-The samples sequenced with PromethION show a higher read count with an average of 35.1 million reads and a median quality of 10.6. The GridION samples consist of approximately 3.5 million reads with a quality of 10 (Table 2, Quelle Data).
-The ZymoBIOMICS Microbial Community Standards come with knowledge about the abundance of the different species, which differ for CS and CSII. In the following, CS will be referred to as CS Even, since the abundances are 12% for each bacterial species and 2% for the two fungi, whereas CSII abundances follow a log distribution and will be referred to as CS Log (Quelle: Zymo). The different abundances (expected and estimated) can be seen in Table 3 (Quelle Data, Zymo).
-[Hier Tabelle 3]
+|      Name                    	|       Taxonomic ID        	| CS EVEN                	|                         	| CS LOG                 	|
+|--------------------------	|--------------	|------------------------	|-------------------------	|------------------------	|
+|                      	| 	| Expected Abundancy (%) 	| Estimated Abundance (%) 	| Expected Abundancy (%) 	|
+| Bacillus subtilis        	| 1423         	| 12                     	| 19.32 (19.02)           	| 0.89                   	|
+| Listeria monocytogenes   	| 1639         	| 12                     	| 14.56 (14.33)           	| 89.1                   	|
+| Enterococcus faecalis    	| 1351         	| 12                     	| 14.24 (12.07)           	| 0.00089                	|
+| Staphylococcus aureus    	| 1280         	| 12                     	| 11.28 (11.11)           	| 0.000089               	|
+| Salmonella enterica      	| 28901        	| 12                     	| 9.99 (10.32)            	| 0.089                  	|
+| Escherichia coli         	| 562          	| 12                     	| 9.93 (10.26)            	| 0.089                  	|
+| Pseudomonas aeruginosa   	| 287          	| 12                     	| 9.7 (10.11)             	| 8.9                    	|
+| Lactobacillus fermentum  	| 1613         	| 12                     	| 9.28 (9.13)             	| 0.0089                 	|
+| Saccharomyces cerevisiae 	| 4932         	| 2                      	| 1.92 (1.87)             	| 0.89                   	|
+| Cryptococcus neoformans  	| 5207         	| 2                      	| 1.78 (1.77)             	| 0.00089                	|
+|||
 
-### Tools
-### Classification
-#### Others
-Additional to the classification tools, conda (Referenz) is used to organise and coordinate the different requirements of the tools. The tools themselves and their execution are structured with snakemake (Referenz). Some analysis is done with Python, R and Bash (Tabelle 4).
-[Hier Tabelle 4]
-### Metrics
-## Results and Discussion
-### Comparison using the metrics
-#### Area under Preicison Recall Curve
-#### Abundance Profile Similarity
-#### Time
-### Classification Results
+**Tabel 1: General information about the used species.** This table shows the different species included in the mock communities with their taxonomic ID and expected as well as estimated proportion of genome. Note that the CS Even samples have differen measured proportions for GridION (PromethION) that expected. There is no information about the measured proportions for CS Log.<br> <br>
+
+| FASTQ accession         | ERR3152364 | ERR3152366 | ERR3152365    | ERR3152367    |
+|-------------------------|------------|------------|---------------|---------------|
+| Sequencer               | GridION    | GridION    | PromethION    | PromethION    |
+| Zymo Community Standard | CS Even    | CS Log     | CS Even       | CS Log        |
+| Working Name            | gridion364 | gridion366 | promethion365 | promethion367 |
+| Reads (M)               | 3.59       | 3.67       | 35.7          | 34.5          |
+| Quality (Median Q)      | 10.3       | 9.8        | 10.5          | 10.7          |
+| N50 (kb)                | 5.3        | 5.4        | 5.4           | 5.4           |
+|||
+
+**Tabel 2: General information about the samples.** this table shows different information about the four samples of this project, inclusinf information about the quality and read length of the samples as well as information about the used terms. In general, the PromethION samples are sequenced with greater depth resulting in more than 34 million reads, whereas the GridION samples have around 3.6 million reads. The quality of all samples ranges from 9.8 to 10.7. The N50 is 5.4 except for gridion364, where it is 5.3. The information are gathered from Nicholls et al. [Quelle Data Paper].<br> <br>
+
+The samples sequenced with PromethION show a higher read count with an average of 35.1 million reads and a median quality of 10.6. The GridION samples consist of approximately 3.5 million reads with a quality of 10 (Table 2, Quelle Data).
+The ZymoBIOMICS Microbial Community Standards come with knowledge about the abundance of the different species, which differ for CS and CSII. In the following, CS will be referred to as CS Even, since the abundances are 12% for each bacterial species and 2% for the two fungi, whereas CSII abundances follow a log distribution and will be referred to as CS Log (Quelle: Zymo). The different abundances (expected and estimated) can be seen in Table 1 (Quelle Data, Zymo).
+
+
+## Tools
+## Classification
+### Others
+Additional to the classification tools, conda [conda](https://docs.anaconda.com/ "Anaconda Software Distribution. (2020). Anaconda Documentation. Anaconda Inc. Retrieved from https://docs.anaconda.com/") is used to organise and coordinate the different requirements of the tools. The tools themselves and their execution are structured with snakemake [snakemake](https://snakemake.readthedocs.io/en/stable/ "Köster, J., & Rahmann, S. (2012). Snakemake—a scalable bioinformatics workflow engine. Bioinformatics, 28(19), 2520-2522."). Some analysis is done with Python, R and Bash (Table 3).
+
+|           	| Version   	| Reference                                                	|
+|-----------	|-----------	|----------------------------------------------------------	|
+| conda     	| 4.7.5     	| [conda](https://docs.anaconda.com/)                     	| 
+| snakemake 	| 3.10.0    	| [snakemake](https://snakemake.readthedocs.io/en/stable/) 	| 
+| Python    	| 3.8.8     	| [Python](https://www.python.org)                         	| 
+| R         	| 3.4.4     	| [R](https://www.r-project.org/)                          	| 
+| Bash      	| 4.4.12(1) 	|                                                       	| 
+|||
+
+**Table 3: Overview of additional software and the used versions**. 
+## Metrics
+- Introduction on diffivulties regarding the comparison of different tools with differents databases etc
+- explaining scripts used to make it comparable, list the way how the information was retrieved for the different tools
+
+### Area-Under-Precision-Recall Curve
+The Area-Under-Precision-Recall curve (AUPR) is a metric that combines the most important measures for metagenomic classification: precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.") . Precision is defined as $precision=\frac{TP}{TP+FP}$, i.e. the ratio between true positive (TP) classification results and the total number of classification results that are reported as true, including false positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. $recall=\frac{TP}{TP+FN}$. <br>
+The AUPR curve can be used to evaluate precision and recall across different abundance thresholds. If the thresholds are chosen accordingly in the range from 0-1.0, the AUPR returns a single metric considering precision and recall. In short: This metric considers the number of correctly identified species [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.").To identify true positive and false positive hit, a ground truth is needed, which is given due to the underlying ZymoBIOMICS Microbial Community Standards. <br>
+The Precision-Recall Curves and the AUPR are calculated within the [Bash script PRCurve.sh](../scripts/PRCurve.sh) which uses the [Python script extractingVal4Vis.py](../scripts/extractingVal4Vis.py) for extracting the ground truth vectors and vectors with abundances of the species as an input for the [R script visPRCurve.R](../scripts/visPRCurve.R) which then visualizes the values as a precision-recall curve. The used R package is [PRROC](https://cran.r-project.org/web/packages/PRROC/index.html "Jens Keilwagen, Ivo Grosse and Jan Grau (2014). Area under Precision-Recall Curves for Weighted and Unweighted Data. PLOS ONE (9) 3.").
+
+### Abundace Profile Similarity
+This metric is based on the abundance the different classifier detect for the given species.
+### Computational Requirements
+Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime and amount of memory. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task and the memory usage in MiB.
+# Results and Discussion
+## Comparison using the metrics
+### Area under Preicison Recall Curve
+### Abundance Profile Similarity
+### Multi Locus Sequence Typing
+- Bacillus subtilis https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=alleleInfo&locus=purH&allele_id=105
+- Listeria monocytogenes 
+- Enterococcus faecalis https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=locusInfo&locus=gki 
+- Staphylococcus aureus https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=locusInfo&locus=gmk 
+- Salmonella enterica 
+- Escherichia coli
+- Pseudomonas aeruginosa https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=locusInfo&locus=acsA
+- Lactobacillus fermentum
+- Saccharomyces cerevisiae
+- Cryptococcus neoformans
+### Time
+## Classification Results
 The following section shows the species in the diagrams that had an abundance of at least one per cent. Reads that were not assigned to a species but other taxa, or are below the 1% mark, are summarized in "Others".
-#### Diamond
+### Diamond
 As mentioned earlier **[Tabelle X]**, Diamond can classify 84.23% and [PromethionEven Hier], respectively, for the CS Even samples (gridion364, promethion365, Link zu areports) with the default database. However, in the sample sequenced with GridION, Diamond is only able to identify Limosilactobacillus fermentum with 4.812% abundance, Enterococcus faecalis with 1.012% and Listeria monocytogenes with 2.895% on species level. Over 75% of the reads couldn’t be assigned to a species. For PromethION, the results are [similar, different, whatever]. therefore, Diamond is not able to classify the majority of the species in the sample, with many species having low abundances **[Tabelle X]**. This does [not] change for a greater sequencing depth.
 |||
 |:--|:--|
-|![Gridion364: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion364_default.diamond.piechart.jpeg)|**Gridion364: Piechart for Classification Results of Diamond (default)**. The diagram shows the three species classified with more than one per cent of reads assigned: Listeria monocytogenes (2.895%), Enterococcus faecalis (1.012%) and Limosilactobacillus fermentum (4,812%). 75.606% of the reads could not be assigned to a species, but other taxa and 15.676% of the reads could not be assigned at all.|
-|![Promethion365: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion364_default.diamond.piechart.jpeg)|**Promethion365: Piechart for Classification Results of Diamond (default).**|
+|![Gridion364: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion364_default.diamond.piechart.jpeg)\label{diamond364D}|**Gridion364: Piechart for Classification Results of Diamond (default)**. The diagram shows the three species classified with more than one per cent of reads assigned: Listeria monocytogenes (2.895%), Enterococcus faecalis (1.012%) and Limosilactobacillus fermentum (4,812%). 75.606% of the reads could not be assigned to a species, but other taxa and 15.676% of the reads could not be assigned at all.|
+|![Promethion365: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion364_default.diamond.piechart.jpeg)\label{diamond365D}|**Promethion365: Piechart for Classification Results of Diamond (default).**|
 |||
 
 ***Figure 1: Classification Results for Diamond, CS Even*** <br> <br>
@@ -38,8 +98,8 @@ Regarding the CS Log samples and the default database, Listeria monocytogenes is
 
 |||
 |:--|:--|
-|![Gridion366: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion366_default.diamond.piechart.jpeg)|**Gridion366: Piechart for Classification Results of Diamond (default)**. The only species with more than one per cent of reads assigned to is Listeria monocytogenes with 18.873%. 12.051% of the reads could not be assigned to any taxa, whereas 69.076% of the reads could not be assigned on species level or the corresponding species have an abundance below 1%.|
-|![Promethion367: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion364_default.diamond.piechart.jpeg)|**Promethion367: Piechart for Classification Results of Diamond (default).**|
+|![Gridion366: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion366_default.diamond.piechart.jpeg)\label{diamond366D}|**Gridion366: Piechart for Classification Results of Diamond (default)**. The only species with more than one per cent of reads assigned to is Listeria monocytogenes with 18.873%. 12.051% of the reads could not be assigned to any taxa, whereas 69.076% of the reads could not be assigned on species level or the corresponding species have an abundance below 1%.|
+|![Promethion367: Piechart for Classification Results of Diamond (default)](../stats/pics/gridion364_default.diamond.piechart.jpeg)\label{diamond367D}|**Promethion367: Piechart for Classification Results of Diamond (default).**|
 |||
 
 ***Figure 2: Classification Results for Diamond, CS Log*** <br> <br>
@@ -50,9 +110,7 @@ An explanation for the poor results might be that Diamonds key features are pair
 
 Due to the relatively long runtime [Table Time], no specifications and different parameters are used. <br> <br>
 
-
-
-#### Kaiju
+### Kaiju
 |||
 |:--|:--|
 |![Gridion364: Piechart for Classification Results of Kaiju (default)](../stats/pics/gridion364_default.kaiju.piechart.jpeg)\label{kaiju364D}|**Gridion364: Piechart for Classification Results of Kaiju (default)**. The diagram is parted into ten pieces, whereby 40.786% of reads could not be assigned to a taxon on species level, 3.883% of the reads are therefore assigned to a species but with less than 1% abundance and 14.078% of the reads are unclassified. The three most abundant species are Lactobacillus fermentum, Enterococcus faecalis and Listeria monocytogenes with 12.503%, 10.269% and 9.322%, respectively. The abundances of Pseudomonas aeruginoa, Salmonella enterica, Escherichia coli and Staphylococcus aureus range between 1.104% and 4.151%.|
@@ -60,7 +118,6 @@ Due to the relatively long runtime [Table Time], no specifications and different
 |||
 
 ***Figure 3: Classification Results for Kaiju, CS Even*** <br> <br>
-
 
 The other protein-based classifier used in this comparison is Kaiju. Considering the CS Even samples, Kaiju is able to identify seven of the ten species in both samples and the abundances are similar as well. 3.883% and 3.786% of reads could not be classified at all for GridION and PromethION, respectively and roughly 40% of the reads in both samples could not be assigned on the species level, therefore roughly 3.8% of the reads are assigned to species that do not reach the 1% abundance mark (Tabelle Y). The plots produced on Kaiju outputs include an entry for the percentage of reads that could not be assigned to any taxa on species level due to the way Kaiju generates outputs, see \ref{kaiju364D} and \ref{kaiju365D}. 
 The identified species are Lactobacillus fermentum, Enterococcus faecalis, Listeria monocytogenes, Staphylococcus aureus, Escherichia coli, Salmonella enterica and Pseudomonas aeruginosa. The default database does not include fungi, therefore the species that is not classified, although present in the reference database, is Bacillus subtilis. 
@@ -75,7 +132,7 @@ The identified species are Lactobacillus fermentum, Enterococcus faecalis, Liste
 | PromethION 367     	| 58.031           	| -           	| -         	| -           	| -       	| -             	| -            	|   	| 12.866       	| 3.135  	| 25.968 	|
 |||
 
-***Table 1: Abundances of classified species, Kaiju.*** The table shows the classificaiton results of Kaiju for all four samples considering the default database (in %). Note that the species that is present in the reference database but no classified is Bacillus subtilis. The two fungis can not be identified with the default databnase, because id only includes microbial genomes or proteomes. <br> <br>
+***Table 1: Abundances of classified species, Kaiju.*** The table shows the classificaiton results of Kaiju for all four samples considering the default database (in %). Note that the species that is present in the reference database but no classified is Bacillus subtilis. The two fungis can not be identified with the default database, because it only includes microbial genomes or proteomes. <br> <br>
 
 The CS Log samples are similar as well.  Kaiju is able to assign 57.905% and 58.031% of the reads to Listeria monocytogenes, depending on the sequencing machine (GridION, PromethION). Roughly 11% and 12.866% of the reads could not be assigned at all, whereas 27.644% and 25.968% could not be assigned to a taxon on species level, respectively. Around 3% of the reads are assigned to species with less than 1% abundance, see \ref{kaiju364D} and \ref{kaiju365D}. 
 
@@ -87,11 +144,11 @@ The CS Log samples are similar as well.  Kaiju is able to assign 57.905% and 58.
 
 ***Figure 4: Classification Results for Kaiju, CS Log*** <br> <br>
 
-#### CCMetagen
+### CCMetagen
 CCMetagen uses the KMA for aligning, which is designed to map reads against redundant databases. The tool is supposed to work for large datasets, however, no classification could be done for the deep sequences samples with PromethION. KAM throws an error stating not enough space on the device. Therefore, there are only one CS Even and one CS Log sample to analyse.
 |||
 |:--|:--|
-|![Gridion364: Piechart for Classification Results of CCmetagen (default)](../stats/pics/gridion364_default.ccmetagen.piechart.jpeg)\label{ccmetagen367D}|**Gridion364: Piechart for Classification Results of CCMetagen (default).**  26.736% of reads couöd not be assigned to any taxon, whereas 19.458% of reads are not assigned to a taxon on species level or the species do not reach 1% abundance. The identified species are Enterococcus faecalis (1.795%), Escherichia coli (2.069%), Pseudomonas aeruginosa (3.387%), Limosilactobacillus fermentum (9.083%), Staphylococcus aureus (9.837%), Listeria monocytogenes (11.326%) and Bacillus spizizenii (16.309%).|
+|![Gridion364: Piechart for Classification Results of CCmetagen (default)](../stats/pics/gridion364_default.ccmetagen.piechart.jpeg)\label{ccmetagen364D}|**Gridion364: Piechart for Classification Results of CCMetagen (default).**  26.736% of reads couöd not be assigned to any taxon, whereas 19.458% of reads are not assigned to a taxon on species level or the species do not reach 1% abundance. The identified species are Enterococcus faecalis (1.795%), Escherichia coli (2.069%), Pseudomonas aeruginosa (3.387%), Limosilactobacillus fermentum (9.083%), Staphylococcus aureus (9.837%), Listeria monocytogenes (11.326%) and Bacillus spizizenii (16.309%).|
 |||
 
 ***Figure X: Classification Results for CCMetagen, CS Even, GridION*** <br> <br>
@@ -102,14 +159,12 @@ Considering the CS Log sample sequenced with GridION, CCMetagen is able to assig
 
 |||
 |:--|:--|
-|![Gridion366: Piechart for Classification Results of CCmetagen (default)](../stats/pics/gridion366_default.ccmetagen.piechart.jpeg)\label{ccmetagen367D}|**Gridion366: Piechart for Classification Results of CCMetagen (default).**  26.736% of reads couöd not be assigned to any taxon, whereas 19.458% of reads are not assigned to a taxon on species level or the species do not reach 1% abundance. The identified species are Enterococcus faecalis (1.795%), Escherichia coli (2.069%), Pseudomonas aeruginosa (3.387%), Limosilactobacillus fermentum (9.083%), Staphylococcus aureus (9.837%), Listeria monocytogenes (11.326%) and Bacillus spizizenii (16.309%).|
+|![Gridion366: Piechart for Classification Results of CCmetagen (default)](../stats/pics/gridion366_default.ccmetagen.piechart.jpeg)\label{ccmetagen366D}|**Gridion366: Piechart for Classification Results of CCMetagen (default).**  26.736% of reads couöd not be assigned to any taxon, whereas 19.458% of reads are not assigned to a taxon on species level or the species do not reach 1% abundance. The identified species are Enterococcus faecalis (1.795%), Escherichia coli (2.069%), Pseudomonas aeruginosa (3.387%), Limosilactobacillus fermentum (9.083%), Staphylococcus aureus (9.837%), Listeria monocytogenes (11.326%) and Bacillus spizizenii (16.309%).|
 |||
 
 ***Figure X: Classification Results for CCMetagen, CS Log, GridION*** <br> <br>
 
-<br> <br>
-
-#### Centrifuge
+### Centrifuge
 For the CS Even samples, Centrifuge is able to classify 89.504% and 87.086% for GridION364 and PromethION365, respectively. Between 3.5% and 3.9% of the reads could not be assigned to a taxon on species level. 
 Since the default database of Centrifuge does not contain fungal genomes, Centrifuge is only able to identify the eight bacterial species. Those species are identified with abundances ranging between 6% for Salmonella enterica and 18.368% for Bacillus substilis for GridION and between 5.936% for Salmonella enterica and 17.724% for Bacillus subtilis for PromethION, respectively (see Table 2). The classification results therefore do not improve with greater sequencing depth. 
 
@@ -131,23 +186,89 @@ Since the default database of Centrifuge does not contain fungal genomes, Centri
 | PromethION 367     	| 1.069       	| 82.068           	|      -       	|   -        	|       -      	|      -   	| 4.532         	|       -       	|   	| 9.649        	| 2.682 	|
 |||
 
-***Table 2: Abundances of classified species, Centrifuge.*** The table shows the classificaiton results of Centrifuge for all four samples considering the default database (in %). TEXT TEXT TEXT. <br> <br>
+***Table 2: Abundances of classified species, Centrifuge.*** The table shows the classificaiton results of Centrifuge for all four samples considering the default database (in %). The two fungis can not be identified with the default database, because it only includes microbial genomes. <br> <br>
 
 The CS Log results show similarity betweent the samples as well. Three species can be identified with the majotrity of reads assigned to Listeria monocytogenes (84.591% and 82.068% for GridIOn and PromethION, respectively). Centrifuge assigned about 1% of the reads to Bacillus subtilis and 4.5% to Pseudomonas aeruginosa. The sample sequences with GridION shows slightly less uncassified reads with 7.214% in contrast to 9.649% for PromethION. There are about 2.5% reads that could not be assigned to a taxon on species level (Table, Picture).
 
 |||
 |:--|:--|
-|![Gridion366: Piechart for Classification Results of Centrifuge (default)](../stats/pics/gridion366_default.centrifuge.piechart.jpeg)\label{centrifuge364D}|**Gridion366: Piechart for Classification Results of Centrifuge (default)**. Centrifuge is able to identify all bacterial species in the sample with relatively high abundances (6% to 18.368%). 10.496% of the reads could not be classified and 3.541% could not be assigned to a taxon on species level or exceed the 1% abundance mark.|
-|![Promethion367: Piechart for Classification Results of Centrifuge (default)](../stats/pics/promethion367_default.centrifuge.piechart.jpeg)\label{centrifuge365D}|**Promethion365: Piechart for Classification Results of Centifuge (default).** Centrifuge is able to identify all bacterial species in the sample with relatively high abundances (5.936% to 17.724%). 12.914% of the reads could not be classified and 3.974% could not be assigned to a taxon on species level or exceed the 1% abundance mark.|
+|![Gridion366: Piechart for Classification Results of Centrifuge (default)](../stats/pics/gridion366_default.centrifuge.piechart.jpeg)\label{centrifuge366D}|**Gridion366: Piechart for Classification Results of Centrifuge (default)**. In this sample, 8.52% of reads could not be classified at all and 5.18% of reads are assigned to taxa that are not on species level or the corresponding species has below 1% abundance. The remaining reads are assigned to Listeria monocytogenes (81.293%), Pseudomonas aeruginosa (3.98%) and Bacillus subtilis (1.027%)|
+|![Promethion367: Piechart for Classification Results of Centrifuge (default)](../stats/pics/promethion367_default.centrifuge.piechart.jpeg)\label{centrifuge367D}|**Promethion367: Piechart for Classification Results of Centifuge (default).** In this sample, 10.4% of reads could not be classified at all and 4.805% of reads are assigned to taxa that are not on species level or the corresponding species has below 1% abundance. The remaining reads are assigned to Listeria monocytogenes (79.702%), Pseudomonas aeruginosa (4.069%) and Bacillus subtilis (1.023%).|
 |||
+
+***Figure X: Classification Results for Centrifuge, CS Log*** <br> <br>
 
 [Results Custom Database]
 [Results Restricted Run]
-#### Next Tool
-#### Next Tool
-#### Next Tool
-#### Next Tool
-### Stuff that didn't work
-## Conclusion
+<br> <br>
+
+### CLARK
+As for CLARK, the results of the CS Even samples are similar for GridION and PromethION. The default database does not include fungi, therefore they cannot be considered here. 
+Additional to the expected species, CLARK assigned 1.046% and 1.041% of the reads to Bacillus vallismortis for GridION and PromethION, respectively. 21.888% (22.801%) of reads are not classified, 4.068% (4.979%) could not be assigned to a taxon on species level. The bacterial species have abundances ranging from 4.562% to 14.609% and 4.66% to 13.894% (Table X). As seen for other classifiers, reads are assigned to Limosilactobacillus fermentum, which is a close relative to Lactobacillus fermentum (Figure X).
+|||
+|:--|:--|
+|![Gridion364: Piechart for Classification Results of CLARK (default)](../stats/pics/gridion364_default.clark.piechart.jpeg)\label{clark364D}|**Gridion364: Piechart for Classification Results of CLARK (default)**. Since 25.946% of reads could not be assigned at all or to a species, the remaining reads are assigned to Bacillus subtilis, Bacillus vallismortis, Enterococcus faecalis, Escherichia coli, Limosilactobacillus fermentum, Listeria monocytogenes, Pseudomonas aeruginosa, Salmonella enterica and Staphylococcus aureus.|
+|![Promethion365: Piechart for Classification Results of CLARK (default)](../stats/pics/promethion365_default.clark.piechart.jpeg)\label{clark365D}|**Promethion365: Piechart for Classification Results of CLARK (default).** Since 27.78%% of reads could not be assigned at all or to a species, the remaining reads are assigned to Bacillus subtilis, Bacillus vallismortis, Enterococcus faecalis, Escherichia coli, Limosilactobacillus fermentum, Listeria monocytogenes, Pseudomonas aeruginosa, Salmonella enterica and Staphylococcus aureus.|
+|||
+
+***Figure 5: Classification Results for Centrifuge, CS Even*** <br> <br>
+
+| Classified species 	| B. subtilis 	| L. monocytogenes 	| E. faecalis 	| S. aureus 	| S. enterica 	| E. coli 	| P. aeruginosa 	| L. fermentum 	| B. vallismortis 	|   	| unclassified 	| other 	|
+|--------------------	|-------------	|------------------	|-------------	|-----------	|-------------	|---------	|---------------	|--------------	|-----------------	|---	|--------------	|-------	|
+| CS Even            	|             	|                  	|             	|           	|             	|         	|               	|              	|                 	|   	|              	|       	|
+| GridION 364        	| 7.332       	| 13.242           	| 11.445      	| 11.208    	| 5.649       	| 4.961   	| 4.562         	| 14.609       	| 1.046           	|   	| 21.888       	| 4.068 	|
+| PromethION 365     	| 7.219       	| 12.79            	| 11.064      	| 10.809    	| 5.651       	| 5.092   	| 4.66          	| 13.894       	| 1.041           	|   	| 22.801       	| 4.979 	|
+| CS Log             	|             	|                  	|             	|           	|             	|         	|               	|              	|                 	|   	|              	|       	|
+| GridION 366        	| -           	| 82.708           	| -           	| -         	| -           	| -       	| 3.997         	| -            	| -               	|   	| 11.764       	| 1.531 	|
+| PromethION 367     	| -           	| 80.632           	| -           	| -         	| -           	| -       	| 4.021         	| -            	| -               	|   	| 13.261       	| 2.086 	|
+|||
+
+***Table 2: Abundances of classified species, CLARK.*** The table shows the classificaiton results of CLARK for all four samples considering the default database (in %). Note that, in this case, L. fermentum refers to Limosilactobacillus fermentum. The two fungis can not be identified with the default database, because it only includes microbial genomes.<br> <br>
+
+CLARK is also able to identify Listeria monocytogenes as the most prominent species in the CS Log samples. 82.708% and 80.632% of the reads are assigned to this species from the GridION and PromethION sample, respectively. In both samples, Pseudomonas aeruginosa can be identified as well with 3.997% and 4.021%, respectively. Roughly 12% of the reads could not be classified and roughly 1.75% of the reads could not be assigned to a taxon on species level (Figure X).
+|||
+|:--|:--|
+|![Gridion366: Piechart for Classification Results of CLARK (default)](../stats/pics/gridion366_default.clark.piechart.jpeg)\label{clark366D}|**Gridion366: Piechart for Classification Results of CLARK (default)**. Listeria monocytogenes and Pseudomonas aeruginosa are the identified species with 82.708% of reads and 3.997%, respectively. 11.764% of reads are not classified, whereas 1.531% of reads are not assigned to a taxon on species level or the assigned species has an abundance below 1%. |
+|![Promethion367: Piechart for Classification Results of CLARK (default)](../stats/pics/promethion367_default.clark.piechart.jpeg)\label{clark367D}|**Promethion367: Piechart for Classification Results of CLARK (default).**  Listeria monocytogenes and Pseudomonas aeruginosa are the identified species with 80.632% of reads and 4.021%, respectively. 31.261% of reads are not classified, whereas 2.086% of reads are not assigned to a taxon on species level or the assigned species has an abundance below 1%.|
+|||
+
+***Figure 5: Classification Results for Centrifuge, CS Log*** <br> <br>
+
+[Custom Database]
+[Resttricted Parameters?] <br> <br>
+
+### Kraken2
+The Kraken default database includes the fungal genomes, therefore this is the only classifier that has the possibility to accurately identify all present species. Both the GridION and PromethION sequences sample are able to identify all ten species, no other species are identified. The read abundances range from 2.003% to 17.514% for GridION364 and 1.954% to 16.991% for PromethION365. On average for the CS Even samples, 10% of reads could not be classified at all, and 4.5% are not assigned on species level (Figure Y, Table X(OBEN)).
+
+|||
+|:--|:--|
+|![Gridion364: Piechart for Classification Results of Kraken2 (default)](../stats/pics/gridion364_default.kraken2.piechart.jpeg)\label{kraken364D}|**Gridion364: Piechart for Classification Results of Kraken2 (default)**. Kraken2 identified the species present in the CS Even samples, the abundances range from 2.003% for Cryptococcus neoformans to 17.514% for Bacillus subtilis. 9.13% of the reads are unclassified and 4.566% of the reads are assigned to a taxon on a different level (not species) or the corresponding species has no abundance of 1%.|
+|![Promethion365: Piechart for Classification Results of Kraken2 (default)](../stats/pics/promethion365_default.kraken2.piechart.jpeg)\label{kraken365D}|**Promethion365: Piechart for Classification Results of CLARK (default).** Kraken2 identified the species present in the CS Even samples, the abundances range from 1.954% for Cryptococcus neoformans to 16.991% for Bacillus subtilis. 11.42% of the reads are unclassified and 4.569% of the reads are assigned to a taxon on a different level (not species) or the corresponding species has no abundance of 1%. |
+|||
+
+***Figure Y: Classification Results for Kraken2, CS Even*** <br> <br>
+
+The classification results for CS Log are similar between the sequencing methods as well. The majority of reads is assigned to Listeria monocytogenes (81.293% and 79.702%, respectively). The other two identified species are Pseudomonas aeruginosa and Bacillus subtilis with roughly 4% and 1%, respectively (Figure A).
+|||
+|:--|:--|
+|![Gridion366: Piechart for Classification Results of Kraken2 (default)](../stats/pics/gridion366_default.kraken2.piechart.jpeg)\label{kraken366D}|**Gridion366: Piechart for Classification Results of Kraken2 (default)**. Kraken2 identified the species present in the CS Even samples, the abundances range from 2.003% for Cryptococcus neoformans to 17.514% for Bacillus subtilis. 9.13% of the reads are unclassified and 4.566% of the reads are assigned to a taxon on a different level (not species) or the corresponding species has no abundance of 1%.|
+|![Promethion367: Piechart for Classification Results of Kraken2 (default)](../stats/pics/promethion367_default.kraken2.piechart.jpeg)\label{kraken367D}|**Promethion367: Piechart for Classification Results of CLARK (default).** Kraken2 identified the species present in the CS Even samples, the abundances range from 1.954% for Cryptococcus neoformans to 16.991% for Bacillus subtilis. 11.42% of the reads are unclassified and 4.569% of the reads are assigned to a taxon on a different level (not species) or the corresponding species has no abundance of 1%. |
+|||
+
+***Figure A: Classification Results for Kraken2, CS Log*** <br> <br>
+
+[Custom Databse]
+[Restricted Parameter]
+### BugSeq
+### MetaMaps
+
+## Stuff that didn't work
+# Conclusion
 # Attachments and Supplementary Information
 # Citations
+
+[[1]](https://doi.org/10.1016/j.cell.2019.07.010) Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.
+
+[conda](Anaconda Software Distribution. (2020). Anaconda Documentation. Anaconda Inc. Retrieved from https://docs.anaconda.com/)
+
+[PRROC](https://cran.r-project.org/web/packages/PRROC/index.html "Jens Keilwagen, Ivo Grosse and Jan Grau (2014). Area under Precision-Recall Curves for Weighted and Unweighted Data. PLOS ONE (9) 3.").

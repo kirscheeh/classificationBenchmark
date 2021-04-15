@@ -2,6 +2,11 @@
 
 # TODO LIST
 
+## kraken 2 git
+  /home/re85gih/projectClassification/kraken2/kraken2
+  /home/re85gih/projectClassification/kraken2/kraken2-build
+  /home/re85gih/projectClassification/kraken2/kraken2-inspect
+
 - more information on benchmarking
   - leave one taxa out approach aka clade exclusion
   - existing benchmarking datasets
