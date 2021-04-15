@@ -9,22 +9,22 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "promethion367"#list(config["samples"])
-TOOLS="clark" #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
-RUNS='default'# custom customHit'.split(" ")
+SAMPLES = "gridion364"#list(config["samples"])
+TOOLS="centrifuge" #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
     input:
 # CLASSIFICATION 
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 ## KMA (for CCMetagen)
 #        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 ## for CLARK-Output
 #        expand("{path}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv", run=RUNS, sample=SAMPLES, path=PATH),
 # REPORT
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
@@ -79,7 +79,7 @@ rule centrifuge:
         if 'default' in {params.runID}:
             shell('centrifuge -q -x {params.dbDefault} {input.fastq} --report-file {output.report} -S {output.files}')
         elif 'custom' in {params.runID}:
-            shell('centrifuge -q -x {params.db_custon} {input.fastq} --report-file {output.report} -S {output.files}')
+            shell('centrifuge -q -x {params.dbCustom} {input.fastq} --report-file {output.report} -S {output.files}')
         elif 'customHit' in {params.runID}:  # no default hit length
              shell('centrifuge -q -x {params.dbDefault} {input.fastq} --report-file {output.report} -S {output.files} --ignore-quals --min-hit-length {params.medianlength}')
         else:
@@ -268,13 +268,14 @@ rule kma:
         dbDefault = DB_default["ccmetagen"]+"/ncbi_nt",
         dbCustom = DB_custom["ccmetagen"],
         result="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate",
-        sample=get_sample
+        sample=get_sample,
+        runID=get_run,
         script="{PATH}/result/classificationBenchmark/scripts/ccmetagen.piecer.sh"
-    shell:
+    run:
         if 'promethion' in {params.sample}:
-            '{params.script} {input} helper.fastq {params.dbDefault} {output.result}'
+            shell('{params.script} {input} helper.fastq {params.dbDefault} {output.result}')
         else:
-            'kma -i {input} -t_db {params.dbDefault} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef'
+            shell('kma -i {input} -t_db {params.dbDefault} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef')
 
 rule ccmetagen:
     input:

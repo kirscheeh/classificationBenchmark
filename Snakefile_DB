@@ -31,7 +31,7 @@ rule diamond_db:
         "envs/diamond.yaml"
     params:
         "/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond"
-    threads: 8
+    threads: 16
     shell:
         "diamond makedb --in {input.faa} -d {params} --taxonmap {input.map} --taxonnodes {input.nodes} --taxonnames {input.names}"
 
@@ -47,29 +47,29 @@ rule kaiju_db:
         "envs/main.yaml"
     params:
         bwt="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju"
-    threads: 8
+    threads: 16
     run:
-        shell('kaiju-mkbwt -n {threads} -a DNA -o {params.bwt}'),
+        shell('kaiju-mkbwt -n {threads} -a DNA -o {params.bwt} {input}'),
         shell('kaiju-mkfmi -r {params.bwt}')
 
 
 rule kraken2_db:
     input:
         fungi="/mnt/fass1/kirsten/databases/refseq_bac_fungi/fungi.fna",
-        bacteria="/mnt/fass1/kirsten/databases/refseq/bacteria.fna",
+        bacteria="/mnt/fass1/kirsten/databases/refseq_bac_fungi/bacteria.fna",
     output:
         "/mnt/fass1/kirsten/databases/custom/kraken2"
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/kraken2.custom_db.benchmark.txt"
     conda:
         "envs/main.yaml"
-    threads: 8
+    threads: 16
     run:
-        shell('kraken2-build --download-taxonomy --db {output.db}'),
-        shell('kraken2-build --add-to-library {input.fungi} --db {output.db} --threads {threads}'),
-        shell('kraken2-build --add-to-library {input.bacteria} --db {output.db} --threads {threads}'),
-        shell('kraken2-build --build {output.db} --threads {threads}'),
-        shell('kraken2-build --clean')
+        #shell('/home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {output}'),
+        #shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {output} --threads {threads}'),
+       # shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {output} --threads {threads}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db {output}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --clean')
 
 
 #rule clark_db:
