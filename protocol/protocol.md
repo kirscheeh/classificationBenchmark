@@ -16,7 +16,6 @@ The present dataset consists of four samples of the underlying ZymoBIOMICS Micro
 | *Lactobacillus fermentum*  	| 1613         	| 12                     	| 9.28 (9.13)             	| 0.0089                 	|
 |  *Saccharomyces cerevisiae* 	| 4932         	| 2                      	| 1.92 (1.87)             	| 0.89                   	|
 | *Cryptococcus neoformans*  	| 5207         	| 2                      	| 1.78 (1.77)             	| 0.00089                	|
-|||
 
 ***Tabel 1: General information about the used species.*** This table shows the different species included in the mock communities with their taxonomic ID and expected as well as estimated proportion of genome. Note that the CS Even samples have differen measured proportions for GridION (PromethION) that expected. There is no information about the measured proportions for CS Log. The information are gathered from [DataPaper](https://doi.org/10.1093/gigascience/giz043 "Nicholls, S. M., Quick, J. C., Tang, S., & Loman, N. J. (2019). Ultra-deep, long-read nanopore sequencing of mock microbial community standards. Gigascience, 8(5), giz043."), [ZymoEven](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard "Zymo Research Corporation, Irvine, CA, USA. Product D6300, Lot ZRC190633") and [ZymoLog](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard-ii-log-distribution "Zymo Research Corporation, Irvine, CA, USA. Product D6310, Lot ZRC190842").<br> <br>
 
@@ -28,7 +27,6 @@ The present dataset consists of four samples of the underlying ZymoBIOMICS Micro
 | Reads (M)               | 3.59       | 3.67       | 35.7          | 34.5          |
 | Quality (Median Q)      | 10.3       | 9.8        | 10.5          | 10.7          |
 | N50 (kb)                | 5.3        | 5.4        | 5.4           | 5.4           |
-|||
 
 ***Tabel 2: General information about the samples.***  This table shows different information about the four samples of this project, inclusinf information about the quality and read length of the samples as well as information about the used terms. In general, the PromethION samples are sequenced with greater depth resulting in more than 34 million reads, whereas the GridION samples have around 3.6 million reads. The quality of all samples ranges from 9.8 to 10.7. The N50 is 5.4 except for gridion364, where it is 5.3. The information are gathered from Nicholls et al., 2019 [DataPaper](https://doi.org/10.1093/gigascience/giz043 "Nicholls, S. M., Quick, J. C., Tang, S., & Loman, N. J. (2019). Ultra-deep, long-read nanopore sequencing of mock microbial community standards. Gigascience, 8(5), giz043.").<br> <br>
 
@@ -37,7 +35,7 @@ The ZymoBIOMICS Microbial Community Standards come with knowledge about the abun
 
 
 ## Tools
-
+The detailed commands for the classifcation and postprocessing of the outputs can be seen in [Snakefile](../Snakefile), the detailed commands for database construction are saved in [Snakefile_DB](../Snakefile_DB).
 ## Classification
 |     Tool     |   Version  |   Type  |         Approach        |Default Database| Reference                                 |
 |:------------:|:----------:|:-------:|:-----------------------:|:--------------:|:-----------------------------------------:|
@@ -51,6 +49,113 @@ The ZymoBIOMICS Microbial Community Standards come with knowledge about the abun
 
 ***Table X: Overview of used classification tools and general information.***
 
+#### Diamond
+This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data [Diamond](https://doi.org/10.1038/nmeth.3176 "Buchfink, B., Xie, C., & Huson, D. H. (2015). Fast and sensitive protein alignment using DIAMOND. Nature methods, 12(1), 59-60."). <br>
+The default database is based on the full bacterial genomes (as of 27/07/2019), whereas the custom database consists of the beforementioned refseq sequences of bacteria and fungi. 
+
+    diamond makedb --in {input.faa} -d prefix --taxonmap {map} --taxonnodes {nodes} --taxonnames {names}
+
+    # Parameters:
+    #   -d      prefix of database file name
+
+To use DIAMOND for taxonomic classification, the output format has to be defined. This is done with <tt>--outfmt 102</tt>.
+
+    diamond blastx --db {database} -q {input.fastq} -o {output} -p {threads} --outfmt 102 [--id FLOAT]
+
+    # Parameters:
+    #   --outfmt    output format, 102 for taxonomic classification (default: BLAST tabular format)
+    #   --id        minimum query cover % to report an alignment
+
+#### Kaiju
+Kaiju [Kaiju](https://doi.org/10.1186/s13062-018-0208-7 "Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*,* 7(1), 1-9.") is a fast and sensitive tool for taxonomic classification of metagenomic samples that uses a reference database of annotated protein-coding genes of microbial genomes. The DNA reads are translated into the six reading frames and split according to the stop codons. The resulting fragments are sorted regarding their length and due to the usage of the Ferragina and Mazini-Index (FM-Index), exact matches can be searched between read and database-reference in effient time by Kaiju. <br>
+The default database consists of the downloaded index <tt>kaiju\_db\_refseq\_2020-05-25</tt> which was downloaded from the [Kaiju webserver](http://kaiju.binf.ku.dk/server) as of 28/11/2020. <br>
+Building a custom database consists of two steps:
+    
+    kaiju-mkbwt -n {threads} -a DNA -o {bwt}
+    kaiju-mkfmi -r {bwt}
+
+    # Parameters:
+    #   -a      used alphabet
+    #   -r      removing unused files
+    #   -o      name of the BWT output file
+
+<tt>kaiju-mkbwt</tt> takes a fasta file as an input and generates the corresponding Burrows-Wheeler-Transform (BWT), whereas <tt>kaiju-mkfmi</tt> the BWT as an input uses to generate the needed index file. <br>
+To generate reports, the following command is used. Since this comparison is absed on species level, the report is generated for species, hence the parameter <tt>-r species</tt>.
+    
+    kaiju -t nodes.dmp -f index.fmi -i {input.fastq} -o {output.classification} [-m INT]
+    kaiju2table -t {input.nodes} -n {input.names} -r species -o {output.report} {input.classification}
+
+    # Parameters
+    #   -r      taxonomic rank
+    #   -m      minimum match length (default: 11)
+
+#### BugSeq
+BugSeq [BugSeq](https://doi.org/10.1186/s12859-021-04089-5 "Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. BMC bioinformatics, 22(1), 1-12.") is a cloud-based pipeline for classification, therefore no parameters can be specified. The website can be reached with [https://bugseq.com/free](https://bugseq.com/free).
+
+#### CCMetagen
+This classifier uses a k-mer alignment (KMA) \cite{kma} mapping method and produces ranked taxonomic classification results.<br>
+The used indexed database was downloaded from their [website](http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip) as of 08/12/2020.
+
+    CCMetagen.py  -o {output} -r RefSeq -i {kma} -ef y [-c INT]
+    
+    # Parameters    
+        # -r    reference database
+        # -i    path to kma result
+        # -ef   extended output file that includes percentage of classified reads
+        # -c    minimum coverage of the reference sequence (%)
+
+The custom database using the refseq of bacteria and fungi can be created with the following command:
+
+    NO IDEA 
+    
+#### Centrifuge
+Centrifuge [Centrifuge](https://doi.org/10.1101%2Fgr.210641.116 "Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.") is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found. <br>
+The used indices are downloaded from their [website](https://genome-idx.s3.amazonaws.com/centrifuge/p\_compressed_2018_4\_15.tar.gz) as of 15/01/2021. <br>
+The custom database can be created with the following command, where <tt>prefix</tt> is the prefic the index files will carry. The \texttt{seqid2taxid.map} file can be generated using NCBI's accession-to-taxid file for nucleotides (as of 07/04/2021). This spares the download of all sequences that should be included in the index.
+
+    centrifuge-build -p {threads} --conversion-table {seqid2taxid.map} --taxonomy-tree {nodes.dmp} --name-table {names.dmp} {input.fna} {prefix}
+
+For classification with Centrifuge, several parameters are used. The minimum hit length is set to the median read length of each sample.
+
+    centrifuge -q -x {index} {input.fastq} --report-file {report} -S {output} [--ignore-quals --min-hit-length INT]
+        
+    # Parameters:
+        # -q                files are fastq
+        # --ignore-quals    treat all quality values as 30 on Phred scale
+        # --min-hit-length  minimum length of partial hits
+
+#### CLARK
+CLARK is a taxonomic classification tool for metagenomic samples of any format (reads, contigs, scaffolds, assemblies, ...). The method is based on discriminativem k-mers which is used in supervised sequence classification. The bacterial (and virus) database was build using the in-build script <tt>set\_targets.sh</tt> as of 7/12/2020. Classification is done with the following command:
+
+    CLARK --long -O {input.fastq} -R {output} -D {database} -n {threads} -T {targets} [-t 2]
+        
+    # Parameters
+        # -t    minimum of k-mer frequency/occurence for the discriminative k-mers
+
+#### Kraken2
+The taxonomic sequence classifier Kraken2 examines k-mers of a query sequence and uses those information to query a database. During the query, the k-mers are mapped to the lowest common ancestor of the genomes that contain a given k-mer. <br>
+The used default database is <tt>/mnt/fass1/database/kraken2-database</tt>. The custom database can be generated using the following commands with the <tt>clean</tt> command removing unnecessary files.
+
+    kraken2-build --download-taxonomy --db {database}
+    kraken2-build --add-to-library {input.fungi.fna} --db {database} --threads {threads}
+    kraken2-build --add-to-library {input.bacteria.fna} --db {database} --threads {threads}
+    kraken2-build --build {database} --threads {threads}
+    kraken2-build --clean
+
+For taxonomic classification, the following command can be used:
+
+    kraken2 --db {database} --unclassified-out {output.unclassified} --report {report} --threads {threads} --output {output} {input.fastq} [--confidence 0.05]
+
+    # Parameters 
+        # --confidence          threshold that must be in [0,1]
+        # --unclassified-out    prints unclassified sequences to filename
+
+#### MetaMaps
+This tool is for metagenomic long-read analyses, it is based on the mapping algorithm MetaMap. !!! fortsetzen
+
+    ./metamaps mapDirectly --all -r {database.fna} -q {input.fastq} -o {output.classification} -t {threads}
+    ./metamaps classify --mappings c{output.classification} --DB {database} -t {threads}
+
 ### Others
 Additional to the classification tools, conda [conda](https://docs.anaconda.com/ "Anaconda Software Distribution. (2020). Anaconda Documentation. Anaconda Inc. Retrieved from https://docs.anaconda.com/") is used to organise and coordinate the different requirements of the tools. The tools themselves and their execution are structured with snakemake [snakemake](https://snakemake.readthedocs.io/en/stable/ "Köster, J., & Rahmann, S. (2012). Snakemake—a scalable bioinformatics workflow engine. Bioinformatics, 28(19), 2520-2522."). Some analysis is done with Python, R and Bash (Table 3).
 
@@ -61,14 +166,13 @@ Additional to the classification tools, conda [conda](https://docs.anaconda.com/
 | Python    	| 3.8.8     	| [Python](https://www.python.org)                         	| 
 | R         	| 3.4.4     	| [R](https://www.r-project.org/)                          	| 
 | Bash      	| 4.4.12(1) 	|                                                       	| 
-|||
 
 ***Table 3: Overview of additional software and the used versions***. 
 ## Metrics
 The difficulty in bechmarking different classifiers since the chosen metrics can affect the evaluated performance. <br>
 Precision and recall are considered as the most important metrics in this context, which are commonly used in bechmarking studies [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). The F1 score (harmonic mean of precision and recall) does not provide a realistic estimate of performance since it is based on a single precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). <br>
 
-Dealing with a lot of different tools involves dealing with a lot of different output formats, therefore all the following calculations are based on preprocessed output formats <tt>areport</tt>. The python scripts generating these outputs are specific for the different tools and can be found in [scripts](../scripts) with the names "(tool)Output.py". The areports consist of five columns: abundance, read count, taxonomic rank, taxonomic ID and scientific species name. For the analyses, only the entries of species are considered.
+Dealing with a lot of different tools involves dealing with a lot of different output formats, therefore all the following calculations are based on preprocessed output formats <tt>areport</tt>. The python scripts generating these outputs are specific for the different tools and can be found in [scripts](../scripts) with the names <tt>(tool)Output.py</tt>. The areports consist of five columns: abundance, read count, taxonomic rank, taxonomic ID and scientific species name. For the analyses, only the entries of species are considered.
 
 ### Area-Under-Precision-Recall Curve
 The Area-Under-Precision-Recall curve (AUPR) is a metric that combines those most important measures for metagenomic classification precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). Precision is defined as precision=<sup>TP</sup>&frasl;<sub>TP+FP</sub>, i.e. the ratio between true positive (TP) classification results and the total number of classification results that are reported as true, including false positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. recall=<sup>TP</sup>&frasl;<sub>TP+FN</sub>. <!-- $precision=\frac{TP}{TP+FP}$ $recall=\frac{TP}{TP+FN}$--> <br>
@@ -82,16 +186,16 @@ This metric is based on the abundances the different classifier detect for the g
 The abundance profiles are determined with the pairwise distances between the abundances of ground-truth and the abundances estimated by the classifiers at species level [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). To calculate the euclidion distance, the python script [abundanceProfileSimilarity.py](../scripts/abundanceProfileSimilarity.py) is used which uses Scipy's [spatial.distance](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html) package.
 
 ### Multi Locus Sequence Typing
-- *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=alleleInfo&locus=purH&allele_id=105
-- *Listeria monocytogenes* 
-- *Enterococcus faecalis* https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=locusInfo&locus=gki 
-- *Staphylococcus aureus* https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=locusInfo&locus=gmk 
-- *Salmonella enterica* 
-- *Escherichia coli*
-- *Pseudomonas aeruginosa* https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=locusInfo&locus=acsA
-- *Lactobacillus fermentum*
--  *Saccharomyces cerevisiae*
--  *Cryptococcus neoformans*
+- *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
+- *Listeria monocytogenes* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=schemeInfo&scheme_id=2
+- *Enterococcus faecalis* https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=schemeInfo&scheme_id=1
+- *Staphylococcus aureus* https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=schemeInfo&scheme_id=1
+- *Salmonella enterica* https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=schemeInfo&scheme_id=2
+- *Escherichia coli* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_ecoli_seqdef&page=schemeInfo&scheme_id=1
+- *Pseudomonas aeruginosa* https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=schemeInfo&scheme_id=1
+- *Lactobacillus fermentum* parB, ychF, pyrG, atpF, recA, ileS, recG, and leuS https://link.springer.com/article/10.1007/s00203-017-1346-5 https://link.springer.com/article/10.1007/s00203-017-1346-5/tables/2
+- *Saccharomyces cerevisiae*
+- *Cryptococcus neoformans* CAP59, GPD1, LAC1, PLB1, SOD1, URA5 and IGS1. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2884100/
 
 ### Computational Requirements
 Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime for classification and database construction, if possible. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task. <!-- The results are then compared to [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.") -->
@@ -102,6 +206,7 @@ Additionally to the quality of the different classifiers, the computational requ
 ### Abundance Profile Similarity
 ### Multi Locus Sequence Typing
 ### Time
+
 |            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
 |------------	|----------------	|----------------	|-----------------------	|----------------	|----------------	|----------------	|-------------------------	|
 | gridion364 	| 0:58:33.332763 	| 0:00:19.790294 	| 0:42:52.407070	        | 3:28:34.545058 	| 3:30:55.818875 	| 0:08:55.109309 	|         -                	|       	
@@ -109,7 +214,18 @@ Additionally to the quality of the different classifiers, the computational requ
 | promethion365 |            -    	|                -	|   5:35:37.829886          |1 day, 14:05:20.470530 |1 day, 9:14:36.672953   	|    1:26:06.232660            	|         -                	|       	
 | promethion367 | -                 |-                  |5:24:34.567883             |1 day, 9:46:48.769590|1 day, 4:03:14.998929|1:27:05.043035 |- |
 
-*** Table Time: Overview of time consumption for the default runs.*** Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/default.
+***Table Time: Overview of time consumption for the default runs.*** Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/default. <br> <br>
+
+
+|            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
+|------------	|----------------	|----------------	|-----------------------	|----------------	|----------------	|----------------	|-------------------------	|
+| gridion364 	| 0:58:33.332763 	| 0:00:19.790294 	| 0:42:52.407070	        | 3:28:34.545058 	| 3:30:55.818875 	| 0:08:55.109309 	|         -                	|       	
+| gridion366 	| 2:03:00.949100 	| 0:00:12.93     	|    0:38:11.365624         | 4:45:25.614299 	| 3:40:21.257391 	| 0:11:17.788488 	| 4 days, 10:02:19.511836 	|       	
+| promethion365 |            -    	|                -	|   5:35:37.829886          |1 day, 14:05:20.470530 |1 day, 9:14:36.672953   	|    1:26:06.232660            	|         -                	|       	
+| promethion367 | -                 |-                  |5:24:34.567883             |1 day, 9:46:48.769590|1 day, 4:03:14.998929|1:27:05.043035 |- |
+
+***Table Time: Overview of time consumption for the custom runs.*** Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/custom.
+
 
 ## Classification Results
 The following section shows the species in the diagrams that had an abundance of at least one per cent. Reads that were not assigned to a species but other taxa, or are below the 1% mark, are summarized in "Others".
@@ -161,7 +277,6 @@ The identified species are *Lactobacillus fermentum*, *Enterococcus faecalis*,  
 | CS Log             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|        	|        	|
 | GridION 366        	| 57.905           	| -           	| -         	| -           	| -       	| -             	| -            	|   	| 11.062       	| 3.389  	| 27.644 	|
 | PromethION 367     	| 58.031           	| -           	| -         	| -           	| -       	| -             	| -            	|   	| 12.866       	| 3.135  	| 25.968 	|
-|||
 
 ***Table 1: Abundances of classified species, Kaiju.*** The table shows the classificaiton results of Kaiju for all four samples considering the default database (in %). Note that the species that is present in the reference database but no classified is *Bacillus subtilis*. The two fungis can not be identified with the default database, because it only includes microbial genomes or proteomes. <br> <br>
 
@@ -215,7 +330,6 @@ Since the default database of Centrifuge does not contain fungal genomes, Centri
 | CS Log             	|             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|       	|
 | GridION 366        	| 1.085       	| 84.591           	|     -        	|    -       	|     -        	|       -  	| 4.653         	|      -        	|   	| 7.214        	| 2.457 	|
 | PromethION 367     	| 1.069       	| 82.068           	|      -       	|   -        	|       -      	|      -   	| 4.532         	|       -       	|   	| 9.649        	| 2.682 	|
-|||
 
 ***Table 2: Abundances of classified species, Centrifuge.*** The table shows the classificaiton results of Centrifuge for all four samples considering the default database (in %). The two fungis can not be identified with the default database, because it only includes microbial genomes. <br> <br>
 
@@ -252,7 +366,6 @@ Additional to the expected species, CLARK assigned 1.046% and 1.041% of the read
 | CS Log             	|             	|                  	|             	|           	|             	|         	|               	|              	|                 	|   	|              	|       	|
 | GridION 366        	| -           	| 82.708           	| -           	| -         	| -           	| -       	| 3.997         	| -            	| -               	|   	| 11.764       	| 1.531 	|
 | PromethION 367     	| -           	| 80.632           	| -           	| -         	| -           	| -       	| 4.021         	| -            	| -               	|   	| 13.261       	| 2.086 	|
-|||
 
 ***Table 2: Abundances of classified species, CLARK.*** The table shows the classificaiton results of CLARK for all four samples considering the default database (in %). Note that, in this case, L. fermentum refers to *Limosilactobacillus fermentum*. The two fungis can not be identified with the default database, because it only includes microbial genomes.<br> <br>
 
@@ -311,3 +424,11 @@ The classification results for CS Log are similar between the sequencing methods
 [ZymoEven](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard) Zymo Research Corporation, Irvine, CA, USA. Product D6300, Lot ZRC190633
 
 [ZymoLog](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard-ii-log-distribution) Zymo Research Corporation, Irvine, CA, USA. Product D6310, Lot ZRC190842
+
+[Diamond](https://doi.org/10.1038/nmeth.3176) Buchfink, B., Xie, C., & Huson, D. H. (2015). Fast and sensitive protein alignment using DIAMOND. Nature methods, 12(1), 59-60.
+
+[Kaiju](https://doi.org/10.1186/s13062-018-0208-7) Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*,* 7(1), 1-9.
+
+[BugSeq](https://doi.org/10.1186/s12859-021-04089-5) Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. BMC bioinformatics, 22(1), 1-12.
+
+[Centrifuge](https://doi.org/10.1101%2Fgr.210641.116) Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.
