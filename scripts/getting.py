@@ -4,7 +4,6 @@ import os, yaml, sys
 import numpy as np
 from numpy import array
 from numpy.linalg import norm
-# from scipy.spatial import distance
 
 def get_species(config): # expected species in sample
     if os.path.isfile(config):
@@ -15,7 +14,7 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-config='config.yaml'
+config='/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml'
 species = get_species(config)
 
 def get_path(config): #get path to working directory
@@ -85,46 +84,9 @@ def get_abundanceSampleSpecies(areport, config): #returns abundance of expected 
                 
         os.system('rm helping.log')
     
-    print(predictions)
+    #print(predictions)
     return predictions
 #get_abundanceSampleSpecies(sys.argv[1], sys.argv[2])
-
-def get_APS(areport, truth, config=config, tool=False, printing=False): #caclulates abundance profile similarities, either between truth and tool output or between tools
-    
-    predi = get_abundanceSampleSpecies(areport, config).values()
-    pred=list(predi)
-
-    if tool:
-        try:
-            t = get_abundanceSampleSpecies(truth, config).values()
-            truth=list(t)
-        except:
-            pass
-            return 0
-    sampleName = get_sampleName(areport)
-    if sampleName in ['gridion364', 'promethion365']:
-        truth=[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
-        get_APS(areport, truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02], printing=True)
-    else:
-        truth=[0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
-
-    try:
-        t = np.array(truth)
-        p = np.array(pred)
-        l2 = np.sum(np.power((t-p),2))
-        # l2 = distance.euclidean(t, p)
-
-        if printing:
-            print(areport.split("/")[-1], l2)
-        return l2
-    except Exception as e:
-        print("An error occured.", e)
-
-# CS even:
-# measured [0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
-# expected [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02]
-# CS log:
-# expected: [0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
 
 def get_numberReads(file, fastq=True): # returns number of reads in sample
     with open(file, "r") as f:
