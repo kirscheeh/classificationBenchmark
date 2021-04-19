@@ -9,8 +9,8 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "gridion364"#list(config["samples"])
-TOOLS="centrifuge" #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+SAMPLES = list(config["samples"])
+TOOLS="centrifuge kraken2".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
 RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
@@ -142,11 +142,11 @@ rule kaiju:
         # -o    name of output file  
         # -m    minimum match length (default: 11)        
         if 'default' in {params.runID}:
-            shell('kaiju -t {input.nodes} -f {input.dbDefault} -i {input.fastq} -o {output.files} -z {threads} -v')
+            shell('kaiju -t {params.nodes} -f {params.dbDefault} -i {input.fastq} -o {output.files} -z {threads} -v')
         if 'custom' in {params.runID}:
-            shell('kaiju -t {input.nodes} -f {input.dbCustom} -i {input.fastq} -o {output.files} -z {threads} -v')
+            shell('kaiju -t {params.nodes} -f {params.dbCustom} -i {input.fastq} -o {output.files} -z {threads} -v')
         elif 'customHit' in {params.runID}:
-            shell('kaiju -t {input.nodes} -f {input.dbCustom} -i {input.files} -o {output.fastq} -z {threads} -v -m {params.medianHitLength}')
+            shell('kaiju -t {params.nodes} -f {params.dbCustom} -i {input.files} -o {output.fastq} -z {threads} -v -m {params.medianHitLength}')
         else:
             print("Kaiju -- Nothing to do here:", {params.runID})
 

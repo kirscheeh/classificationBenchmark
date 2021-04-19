@@ -49,8 +49,8 @@ rule kaiju_db:
         bwt="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju"
     threads: 16
     run:
-        shell('kaiju-mkbwt -n {threads} -a DNA -o {params.bwt} {input}'),
-        shell('kaiju-mkfmi -r {params.bwt}')
+        #shell('kaiju-mkbwt -n {threads} -a DNA -o {params.bwt} {input}'),
+        shell('kaiju-mkfmi -filenm {params.bwt}')
 
 
 rule kraken2_db:

@@ -3,8 +3,12 @@
 import sys
 import getting
 def get_rank(name):
-    rank_code = {'species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
-    return rank_code[name]
+    try:
+        rank_code = {'leaf':'L', 'subspecies': 'SP', 'strain': 'ST', 'species': 'S', 'genus': 'G', 'family': 'F', 'order':'O', 'class':'C', 'phylum':'P', 'kingdom': 'K', 'superkingdom': 'D'}
+        return rank_code[name]
+    except KeyError:
+        print("Key Error", name)
+        return 0
 
 if not len(sys.argv) == 4:
     print("An error occured.")
@@ -35,9 +39,10 @@ else:
             hits = int(l[4])
             unclassified_test+=hits
             abundance = hits/numReadsTotal
-            rank = get_rank(l[2])
+            rank = get_rank(l[2])            
             taxID = l[1]
             speciesName=l[0]
-            areport.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(speciesName))
+            if not rank == 0:
+                areport.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(speciesName))
     
     print(unclassified_test)
