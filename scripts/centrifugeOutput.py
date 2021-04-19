@@ -21,15 +21,15 @@ else:
         for line in lines[1:]:
             if line.split("\t")[1] == "unclassified":
                     numReadsUnclassified +=1
-    
+        numReadsTotal=len(lines)-1 #header
     sample = getting.get_sampleName(sys.argv[1]) #number of lines in classificatoin file doesnt correspond to number of reads
-    numReadsTotal = getting.get_numberReadsSample(sample)
+    #numReadsTotal = 0 #getting.get_numberReadsSample(sample)
 
     abundanceUnclassified=numReadsUnclassified/numReadsTotal
 
     areport = open(sys.argv[3], "w")
     areport.write("Abundance\tnumReads\ttaxRank\ttaxID\tName\n")
-    areport.write(str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified")
+    areport.write(str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified") #areport.write(str(0)+"\t"+str(0)+"\t"+"U\t0\tunclassified")
     unclassified_test=0
     with open(sys.argv[2], "r") as report:
         lines = report.readlines()
@@ -37,6 +37,7 @@ else:
         for line in lines[1:]:
             l = line.split("\t")
             hits = int(l[4])
+     #       numReadsTotal+=hits
             unclassified_test+=hits
             abundance = hits/numReadsTotal
             rank = get_rank(l[2])            
@@ -44,5 +45,13 @@ else:
             speciesName=l[0]
             if not rank == 0:
                 areport.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(speciesName))
-    
-    print(unclassified_test)
+    areport.close()
+
+   # abundanceUnclassified=numReadsUnclassified/numReadsTotal
+   # print(numReadsTotal)
+   # with open(sys.argv[3], 'r') as f:
+   #     lines=f.readlines()
+   #     lines[1]=str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\tU\t0\tunclassified\n"
+   # with open (sys.argv[3], 'w') as f:
+   #     for line in lines:
+   #         f.write(line)
