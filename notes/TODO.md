@@ -132,3 +132,7 @@ sed -e "1,${start}d;${end}q" $1 > $2
 #done
 
 error: Error: 28 (No space left on device)
+
+
+# FÜR CENTRIFUGE DB
+seqid2taxid.map von kraken2 genutzt!
