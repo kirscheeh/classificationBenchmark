@@ -186,17 +186,32 @@ This metric is based on the abundances the different classifier detect for the g
 The abundance profiles are determined with the pairwise distances between the abundances of ground-truth and the abundances estimated by the classifiers at species level [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). To calculate the euclidion distance, the python script [abundanceProfileSimilarity.py](../scripts/abundanceProfileSimilarity.py) is used which uses Scipy's [spatial.distance](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html) package.
 
 ### Multi Locus Sequence Typing
-- *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
-- *Listeria monocytogenes* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=schemeInfo&scheme_id=2
-- *Enterococcus faecalis* https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=schemeInfo&scheme_id=1
-- *Staphylococcus aureus* https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=schemeInfo&scheme_id=1
-- *Salmonella enterica* https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=schemeInfo&scheme_id=2
-- *Escherichia coli* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_ecoli_seqdef&page=schemeInfo&scheme_id=1
-- *Pseudomonas aeruginosa* https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=schemeInfo&scheme_id=1
-- *Lactobacillus fermentum* parB, ychF, pyrG, atpF, recA, ileS, recG, and leuS https://link.springer.com/article/10.1007/s00203-017-1346-5 https://link.springer.com/article/10.1007/s00203-017-1346-5/tables/2
-- *Saccharomyces cerevisiae*
-- *Cryptococcus neoformans* CAP59, GPD1, LAC1, PLB1, SOD1, URA5 and IGS1. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2884100/
+Multi Locus Sequence Typing (MLST) describes using, in general, seven preserved and well-known genes or loci to identify species and especially strains and therefore to analyze the molecular evolution [MLSTToxi](https://www.sciencedirect.com/science/article/pii/S0580951715000148 "Dingle, T. C., & MacCannell, D. R. (2015). Molecular strain typing and characterisation of toxigenic Clostridium difficile. *Methods in Microbiology*, 42, 329-357."). From the genes, internal fragments of 450 to 500 bp are used. There are different sequences for each gene representing the different alleles. A selection of those alleles for each strain/isolate defines the sequence type (ST) or allelic profile. The collection of ST is the MLST scheme for the species, i.e. each isolate/srain is characterized by the the alleles at the gene loci [PubMLST](https://pubmlst.org/multilocus-sequence-typing "Public databases for molecular typing and microbial genome diversity. Multi-Locus Sequence Typing. Retrieved from https://pubmlst.org/multilocus-sequence-typing. Last visited on 21/04/2021."). <br>
+Here, MLSTs are used as an additional validation of the classifiers performances. <br>
 
+The chosen sequence types for each species are retrieved from [PubMLST](https://pubmlst.org/) for most species. An overview of the used genes and alleles can be seen in Table XYZ. The first ST is selected for each species. <br>
+The database has no entry for *Lactobacillus fermentum* fermentum, therefore the MLST is retrieved from Poluektova et al. [MLSTfermentum](https://doi.org/10.1007/s00203-017-1346-5 "Poluektova, E. U., Yunes, R. A., Epiphanova, M. V., Orlova, V. S., & Danilenko, V. N. (2017). The Lactobacillus rhamnosus and Lactobacillus fermentum strains from human biotopes characterized with MLST and toxin-antitoxin gene polymorphism. *Archives of microbiology*, 199(5), 683-690."). The first entry for each gene is used. <br> 
+The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et al. [MLSTcryptococcus](https://doi.org/10.1080/13693780902953886 "Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570.") , the sequences are gathered from the [International Fungal Multi Locus sequence Typing Database](https://mlst.mycologylab.org/). For the Allele Type Number, one is chosen across all genes. <br>
+
+|      	|      	|      	|      	|      	|      	|      	|      	| |                          	|       	|      	|      	|      	|      	|      	|      	|      	|
+|------------------------	|------	|------	|------	|------	|------	|------	|------	|-|--------------------------	|-------	|------	|------	|------	|------	|------	|------	|------	|
+|Bacillus subtilis||||||||| Escherichia coli         	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                   	| glpF 	| ilvD 	| pta  	| purH 	| pycA 	| rpoD 	| tpiA 	||                          	| dinB  	| icdA 	| pabB 	| polB 	| putP 	| trpA 	| trpB 	| uidA 	|
+|                  	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	||                          	| 1     	| 1    	| 2    	| 1    	| 1    	| 2    	| 3    	| 1    	|
+| Listeria Monocytogenes 	|      	|      	|      	|      	|      	|      	|      	| | Pseudomonas aeruginosa   	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                        	| abcZ 	| bglA 	| cat  	| dapE 	| dat  	| ldh  	| lhkA 	| |                          	| acsA  	| aroE 	| guaA 	| mutL 	| nuoD 	| ppsA 	| trpE 	|      	|
+|                        	| 3    	| 1    	| 1    	| 1    	| 3    	| 1    	| 3    	| |                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|      	|
+| Enerococcus faecalis   	|      	|      	|      	|      	|      	|      	|      	| | Lactobacillus fermentum  	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                        	| gdh  	| gyd  	| pstS 	| gki  	| aroE 	| xpt  	| yqiL 	| |                          	| parB  	| ychF 	| pyrG 	| atpF 	| recA 	| ileS 	| recG 	| leuS 	|
+|                        	| 3    	| 1    	| 16   	| 1    	| 1    	| 1    	| 1    	| |                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|
+| Staphylococcus aurueus 	|      	|      	|      	|      	|      	|      	|      	|| Saccharomyces cerevisiae 	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                        	| arcC 	| aroE 	| glpF 	| gmk  	| pta  	| tpi  	| yqiL 	||                          	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	||                          	|       	|      	|      	|      	|      	|      	|      	|      	|
+| Salmonella enterica    	|      	|      	|      	|      	|      	|      	|      	|| Cryptococcus neoformans  	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                        	| aroC 	| dnaN 	| hemD 	| hisD 	| purE 	| sucA 	| thrA 	||                          	| cap59 	| gpd1 	| lac1 	| plb1 	| sod1 	| ura5 	| lgs1 	|      	|
+|                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 5    	||                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|      	|
+
+**Table XYZ: Overview of MLST schemes for given species**. This table shows the selected gene fragments for each species. The first line contains the included genes whereas the second line states which locus is used in that allelic profile.
 ### Computational Requirements
 Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime for classification and database construction, if possible. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task. <!-- The results are then compared to [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.") -->
 
@@ -204,6 +219,7 @@ Additionally to the quality of the different classifiers, the computational requ
 ## Comparison using the metrics
 ### Area under Preicison Recall Curve
 ### Abundance Profile Similarity
+- da wird eh nur species level machen, ist strain level egal bei den MLST, also sollte es keine probleme geben, welches ich genommen hab
 ### Multi Locus Sequence Typing
 ### Time
 
@@ -413,22 +429,56 @@ The classification results for CS Log are similar between the sequencing methods
 
 [[1]](https://doi.org/10.1016/j.cell.2019.07.010) Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.
 
-[conda](Anaconda Software Distribution. (2020). Anaconda Documentation. Anaconda Inc. Retrieved from https://docs.anaconda.com/)
+[conda](Anaconda Software Distribution. (2020). Anaconda Documentation. *Anaconda Inc.* Retrieved from https://docs.anaconda.com/)
 
 [PRROC](https://cran.r-project.org/web/packages/PRROC/index.html "Jens Keilwagen, Ivo Grosse and Jan Grau (2014). Area under Precision-Recall Curves for Weighted and Unweighted Data. PLOS ONE (9) 3.").
 
-[DataPaper](https://doi.org/10.1093/gigascience/giz043) Nicholls, S. M., Quick, J. C., Tang, S., & Loman, N. J. (2019). Ultra-deep, long-read nanopore sequencing of mock microbial community standards. Gigascience, 8(5), giz043.
+[DataPaper](https://doi.org/10.1093/gigascience/giz043) Nicholls, S. M., Quick, J. C., Tang, S., & Loman, N. J. (2019). Ultra-deep, long-read nanopore sequencing of mock microbial community standards. *Gigascience*, 8(5), giz043.
 
-[Morgan2012](https://doi.org/10.1186/gb-2012-13-9-r79) Morgan, X. C., Tickle, T. L., Sokol, H., Gevers, D., Devaney, K. L., Ward, D. V., ... & Huttenhower, C. (2012). Dysfunction of the intestinal microbiome in inflammatory bowel disease and treatment. Genome biology, 13(9), 1-18.
+[Morgan2012](https://doi.org/10.1186/gb-2012-13-9-r79) Morgan, X. C., Tickle, T. L., Sokol, H., Gevers, D., Devaney, K. L., Ward, D. V., ... & Huttenhower, C. (2012). Dysfunction of the intestinal microbiome in inflammatory bowel disease and treatment. *Genome Biology*, 13(9), 1-18.
 
 [ZymoEven](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard) Zymo Research Corporation, Irvine, CA, USA. Product D6300, Lot ZRC190633
 
 [ZymoLog](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard-ii-log-distribution) Zymo Research Corporation, Irvine, CA, USA. Product D6310, Lot ZRC190842
 
-[Diamond](https://doi.org/10.1038/nmeth.3176) Buchfink, B., Xie, C., & Huson, D. H. (2015). Fast and sensitive protein alignment using DIAMOND. Nature methods, 12(1), 59-60.
+[Diamond](https://doi.org/10.1038/nmeth.3176) Buchfink, B., Xie, C., & Huson, D. H. (2015). Fast and sensitive protein alignment using DIAMOND. *Nature methods*, 12(1), 59-60.
 
-[Kaiju](https://doi.org/10.1186/s13062-018-0208-7) Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*,* 7(1), 1-9.
+[Kaiju](https://doi.org/10.1186/s13062-018-0208-7) Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*, 7(1), 1-9.
 
-[BugSeq](https://doi.org/10.1186/s12859-021-04089-5) Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. BMC bioinformatics, 22(1), 1-12.
+[BugSeq](https://doi.org/10.1186/s12859-021-04089-5) Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. *BMC bioinformatics*, 22(1), 1-12.
 
 [Centrifuge](https://doi.org/10.1101%2Fgr.210641.116) Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.
+
+[PubMLST](https://pubmlst.org/multilocus-sequence-typing) Public databases for molecular typing and microbial genome diversity. Multi-Locus Sequence Typing. Retrieved from https://pubmlst.org/multilocus-sequence-typing. Last visited on 21/04/2021.
+
+[MLSTToxi](https://www.sciencedirect.com/science/article/pii/S0580951715000148) Dingle, T. C., & MacCannell, D. R. (2015). Molecular strain typing and characterisation of toxigenic Clostridium difficile. *Methods in Microbiology*, 42, 329-357.
+
+[MLSTfermentum](https://doi.org/10.1007/s00203-017-1346-5) Poluektova, E. U., Yunes, R. A., Epiphanova, M. V., Orlova, V. S., & Danilenko, V. N. (2017). The Lactobacillus rhamnosus and Lactobacillus fermentum strains from human biotopes characterized with MLST and toxin-antitoxin gene polymorphism. *Archives of microbiology*, 199(5), 683-690.
+
+[MLSTcryptococcus](https://doi.org/10.1080/13693780902953886) Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570.
+
+
+
+### rest
+- *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
+- *Listeria monocytogenes* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=schemeInfo&scheme_id=2
+  - https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=downloadProfiles&scheme_id=2
+- *Enterococcus faecalis* https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=schemeInfo&scheme_id=1
+- *Staphylococcus aureus* https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=schemeInfo&scheme_id=1
+- *Salmonella enterica* https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=schemeInfo&scheme_id=2
+- https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=downloadProfiles&scheme_id=2
+- *Escherichia coli* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_ecoli_seqdef&page=schemeInfo&scheme_id=1
+   - https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_ecoli_seqdef&page=downloadProfiles&scheme_id=1
+- *Pseudomonas aeruginosa* https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=schemeInfo&scheme_id=1
+- *Lactobacillus fermentum* parB, ychF, pyrG, atpF, recA, ileS, recG, and leuS https://link.springer.com/article/10.1007/s00203-017-1346-5 https://link.springer.com/article/10.1007/s00203-017-1346-5/tables/2
+    - https://doi.org/10.1007/s00203-017-1346-5
+    - 
+    - 
+    - found in additional information
+- *Saccharomyces cerevisiae*
+  - ACC1, ADP1, GLN4, MET4, NUP116, and RPN2, https://link.springer.com/content/pdf/10.1007/s10068-018-0335-z.pdf
+- *Cryptococcus neoformans* CAP59, GPD1, LAC1, PLB1, SOD1, URA5 and IGS1. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2884100/
+- 
+  - https://mlst.mycologylab.org/page/Allele_Search/30707
+  - https://academic.oup.com/view-large/16644048
+  - based on second links genes, the database of first link was used to get a sequence for each loci --> allele location 1

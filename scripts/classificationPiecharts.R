@@ -3,11 +3,14 @@
 
 args <- commandArgs(trailingOnly=TRUE)
 report <- read.csv(args[1], sep="\t")
-sample.name.splitted <- strsplit(args[1], "/")
+name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/test_default.areport"
+report <- read.csv(name, sep="\t")
+sample.name.splitted <- strsplit(name, "/")
 sample.name.vector <- sample.name.splitted[[1]]
 sample.name <- sample.name.vector[length(sample.name.vector)]
 
-abundances <- report[,c(1,3,5)]
+abundances <- report[,c(1, 3,5)]
+sum(abundances[,1])
 
 # getting species with at least 1% abundance
 species <- c()
@@ -21,6 +24,7 @@ species.matrix <- matrix(species, ncol=3, byrow=TRUE)
 
 # preparing slices
 species.slices <- as.numeric(species.matrix[,1])
+sum(species.slices)
 underOnePercent <- 1-sum(species.slices)
 species.slices <- c(species.slices, underOnePercent)
 

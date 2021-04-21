@@ -136,3 +136,8 @@ error: Error: 28 (No space left on device)
 
 # FÜR CENTRIFUGE DB
 seqid2taxid.map von kraken2 genutzt!
+
+# diamond
+promethion run failed after around two weeks
+started around 04/03/2021, failed on 04/20/2021
+/bin/bash: line 1:  9667 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/diamond/nr -q /mnt/fass1/kirsten/data/promethion367.fastq -o /mnt/fass1/kirsten/result/classification/diamond/default/promethion367_default.diamond.classification -p 8 --log --outfmt 102
