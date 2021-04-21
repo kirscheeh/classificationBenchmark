@@ -1,121 +1,0 @@
-[33m
-Tip of the Day:	[0m[36mAusnahmen werden die Ersten sein.
-
-[0m
-(base) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:36:08 [1;32m/mnt/fass1/kirsten[1;34m][0mcond a[K[Ka activate projectMAIN
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:36:14 [1;32m/mnt/fass1/kirsten[1;34m][0mcd reCL[K[Ksult/CL[K[KclassificationBenchmark/
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:36:23 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano[K[K[K[Ksnakemake -pn [A
-[31mMissingInputException in line 12 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Missing input files for rule all:
-/mnt/fass1/kirsten/result/classification/kslam/contigs/gridion364_default.kslam.contigs[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:36:37 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefilee 
-[?1049h[1;28r(B[m[4l[?7h[?1h=[?1h=[?1h=[39;49m[?25l[39;49m(B[m[H[2J[26;43H(B[0;7m[ Reading File ](B[m[26;42H(B[0;7m[ Read 454 lines ](B[m[H[39;49m(B[0;7m  GNU nano 2.7.4                              File: Snakefile                                        [3;1H(B[m# Snakefile for project work of benchmarking different classification tools regarding their usabilit$[5;1Hconfigfile: "config.yaml"[7d########## VARIABLE DEFINITION[8dDI= dict(config["dataIndex"])[9dPATH = config["path"][10dSAMPLES = "gridion364"#list(config["samples"])[11dTOOLS= 'kslam'#list(config["classification"])[12dRUNS='default'# medium restrictive'.split()[14drule all:[15;5Hinput:[16d#[9Gexpand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run$[17;1H#[9Gexpand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, $[18;8H#expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, s$[19;8Hexpand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOLS$[21;1H# creating the project structure[22drule create:[23;5Hshell:[24d'python structure.py'[27d(B[0;7m^G(B[m Get Help   (B[0;7m^O(B[m Write Out  (B[0;7m^W(B[m Where Is   (B[0;7m^K(B[m Cut Text   (B[0;7m^J(B[m Justify    (B[0;7m^C(B[m Cur Pos    (B[0;7m^Y(B[m Prev Page[28d(B[0;7m^X(B[m Exit[15G(B[0;7m^R(B[m Read File  (B[0;7m^\(B[m Replace    (B[0;7m^U(B[m Uncut Text (B[0;7m^T(B[m To Spell   (B[0;7m^_(B[m Go To Line (B[0;7m^V(B[m Next Page[26d[?12l[?25h[3d[4d[5d[6d[7d[8d[9d[10d[11d[12d[13d[14d[15d[16d[17d[18d[19d[20d[A[1;92H(B[0;7mModified[19d(B[m#[8G expand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOL#[A[A[A[7G[1K expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=[26d(B[0;7mSave modified buffer?  (Answering "No" will DISCARD changes.)                                        [27;1H Y(B[m Yes[K[28d(B[0;7m N(B[m No  [15G  (B[0;7m^C(B[m Cancel[K[26;63H[27d(B[0;7m^G(B[m Get Help[27;26H(B[0;7mM-D(B[m DOS Format[27;51H(B[0;7mM-A(B[m Append[27;76H(B[0;7mM-B(B[m Backup File[28d(B[0;7m^C(B[m Cancel[17G         (B[0;7mM-M(B[m Mac Format[28;51H(B[0;7mM-P(B[m Prepend[28;76H(B[0;7m^T(B[m To Files[26d(B[0;7mFile Name to Write: Snakefile                                (B[m[26;30H[?25l[26;41H[1K (B[0;7m[ Wrote 454 lines ](B[m[K[J[1;92H(B[0;7m        [28;101H(B[m[28;1H[?12l[?25h[?1049l[?1l>(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:37:22 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefilee [A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:37:22 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -pn [K[A
-[32m[0m
-[32mrule kslam:
-    input: /mnt/fass1/kirsten/data/gridion364.fastq, /mnt/fass1/kirsten/databases/kslam
-    output: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification
-    log: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_default.kslam.benchmark.txt
-    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364[0m
-[32m[0m
-[32mFinished job 1.[0m
-[32m[0m
-[32mlocalrule all:
-    input: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification
-    jobid: 0[0m
-[32m[0m
-[32mFinished job 0.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	kslam
-	2[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:37:26 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -k  -j 16
-[33mProvided cores: 16[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	kslam
-	2[0m
-[32m[0m
-[32mrule kslam:
-    input: /mnt/fass1/kirsten/databases/kslam, /mnt/fass1/kirsten/data/gridion364.fastq
-    output: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification
-    log: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_default.kslam.benchmark.txt
-    wildcards: run=default, PATH=/mnt/fass1/kirsten, sample=gridion364
-    threads: 8[0m
-[32m[0m
-/bin/bash: SLAM: command not found
-[31mError in job kslam while creating output file /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification.[0m
-[31mRuleException:
-CalledProcessError in line 222 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Command 'SLAM --db=/mnt/fass1/kirsten/databases/kslam --output-file=/mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification /mnt/fass1/kirsten/data/gridion364.fastq' returned non-zero exit status 127
-  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 222, in __rule_kslam
-  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-[33mJob failed, going on with independent jobs.[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:38:08 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -k --j 16 --use-conda
-[33mProvided cores: 16[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	kslam
-	2[0m
-[32m[0m
-[32mrule kslam:
-    input: /mnt/fass1/kirsten/data/gridion364.fastq, /mnt/fass1/kirsten/databases/kslam
-    output: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification
-    log: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_default.kslam.benchmark.txt
-    wildcards: PATH=/mnt/fass1/kirsten, sample=gridion364, run=default
-    threads: 8[0m
-[32m[0m
-terminate called after throwing an instance of 'std::bad_alloc'
-  what():  std::bad_alloc
-/bin/bash: line 1: 19208 Aborted                 SLAM --db=/mnt/fass1/kirsten/databases/kslam --output-file=/mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification /mnt/fass1/kirsten/data/gridion364.fastq
-[31mError in job kslam while creating output file /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification.[0m
-[31mRuleException:
-CalledProcessError in line 222 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
-Command 'SLAM --db=/mnt/fass1/kirsten/databases/kslam --output-file=/mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification /mnt/fass1/kirsten/data/gridion364.fastq' returned non-zero exit status 134
-  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 222, in __rule_kslam
-  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-[33mJob failed, going on with independent jobs.[0m
-[31mExiting because a job execution failed. Look above for error message[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:45:34 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefilee 
-[?1049h[1;35r(B[m[4l[?7h[?1h=[?1h=[?1h=[39;49m[?25l[39;49m(B[m[H[2J[33;43H(B[0;7m[ Reading File ](B[m[33;42H(B[0;7m[ Read 454 lines ](B[m[H[39;49m(B[0;7m  GNU nano 2.7.4                              File: Snakefile                                        [3;1H(B[m# Snakefile for project work of benchmarking different classification tools regarding their usabilit$[5;1Hconfigfile: "config.yaml"[7d########## VARIABLE DEFINITION[8dDI= dict(config["dataIndex"])[9dPATH = config["path"][10dSAMPLES = "gridion364"#list(config["samples"])[11dTOOLS= 'kslam'#list(config["classification"])[12dRUNS='default'# medium restrictive'.split()[14drule all:[15;5Hinput:[16;8Hexpand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=$[17;1H#[9Gexpand("{path}/result/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, $[18;8H#expand("{path}/result/classification/{tool}/{run}/{sample}.{tool}.intermediate", run=RUNS, s$[19;1H#[9Gexpand("{path}/result/classification/{tool}/contigs/{sample}_{run}.{tool}.contigs",tool=TOOL$[21;1H# creating the project structure[22drule create:[23;5Hshell:[24d'python structure.py'[26ddef get_run(wildcards): #returns the current value of variable/wildcard run[27;5Hreturn wildcards.run[29ddef get_tool(wildcards): #returns the current value of variable/wildcard run[30;5Hreturn wildcards.tool[32drule centrifuge:[34d(B[0;7m^G(B[m Get Help   (B[0;7m^O(B[m Write Out  (B[0;7m^W(B[m Where Is   (B[0;7m^K(B[m Cut Text   (B[0;7m^J(B[m Justify    (B[0;7m^C(B[m Cur Pos    (B[0;7m^Y(B[m Prev Page[35d(B[0;7m^X(B[m Exit[15G(B[0;7m^R(B[m Read File  (B[0;7m^\(B[m Replace    (B[0;7m^U(B[m Uncut Text (B[0;7m^T(B[m To Spell   (B[0;7m^_(B[m Go To Line (B[0;7m^V(B[m Next Page[33d[?12l[?25h[3d[4d[5d[6d[7d[8d[9d[10d[11d[ASAMPLES = "gridi[33d[K[10;18Hn364[1;92H(B[0;7mModified[10;22H(B[m_"#list(config["samples"])[10;23H1"#list(config["samples"])[10;24H0"#list(config["samples"])[10;25H00"#list(config["samples"])[10;26H[33d(B[0;7mSave modified buffer?  (Answering "No" will DISCARD changes.)                                        [34;1H Y(B[m Yes[K[35d(B[0;7m N(B[m No  [15G  (B[0;7m^C(B[m Cancel[K[33;63H[34d(B[0;7m^G(B[m Get Help[34;26H(B[0;7mM-D(B[m DOS Format[34;51H(B[0;7mM-A(B[m Append[34;76H(B[0;7mM-B(B[m Backup File[35d(B[0;7m^C(B[m Cancel[17G         (B[0;7mM-M(B[m Mac Format[35;51H(B[0;7mM-P(B[m Prepend[35;76H(B[0;7m^T(B[m To Files[33d(B[0;7mFile Name to Write: Snakefile                                (B[m[33;30H[?25l[33;41H[1K (B[0;7m[ Wrote 454 lines ](B[m[K[J[1;92H(B[0;7m        [35;101H(B[m[35;1H[?12l[?25h[?1049l[?1l>(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:56:49 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[H[2J(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:56:49 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0mnano Snakefilee [A(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m18:56:49 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0msnakemake -k -j 16 --use-conda[C[C[C[C[C[K --use-conda
-[33mProvided cores: 16[0m
-[33mRules claiming more threads will be scaled down.[0m
-[33mJob counts:
-	count	jobs
-	1	all
-	1	kslam
-	2[0m
-[32m[0m
-[32mrule kslam:
-    input: /mnt/fass1/kirsten/databases/kslam, /mnt/fass1/kirsten/data/gridion364_100.fastq
-    output: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_100_default.kslam.classification
-    log: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_100_default.kslam.log
-    jobid: 1
-    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/default/gridion364_100_default.kslam.benchmark.txt
-    wildcards: PATH=/mnt/fass1/kirsten, run=default, sample=gridion364_100
-    threads: 8[0m
-[32m[0m
-cd  [32mFinished job 1.[0m
-[32m1 of 2 steps (50%) done[0m
-[32m[0m
-[32mlocalrule all:
-    input: /mnt/fass1/kirsten/result/classification/kslam/default/gridion364_100_default.kslam.classification
-    jobid: 0[0m
-[32m[0m
-[32mFinished job 0.[0m
-[32m2 of 2 steps (100%) done[0m
-(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m19:36:25 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;34m][0m[K(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m19:36:25 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;334m][0m[H[2J(projectMAIN) [1;34m[[1;32mre85gih[1;34m@[1;32mprost[1;34m [1;34m19:36:25 [1;32m/mnt/fass1/kirsten/result/classificationBenchmark[1;334m][0mls[K[Kexit
-exit

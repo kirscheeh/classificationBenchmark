@@ -1,6 +1,6 @@
 rule centrifuge_db:
     input:
-        map = "/mnt/fass1/kirsten/databases/custom/centrifuge/seqid2taxid.map",
+        map = "/mnt/fass1/kirsten/databases/custom/centrifuge/seqid2taxid.map", #copied from Kraken2
         nodes = "/mnt/fass1/kirsten/databases/custom/nodes.dmp",
         names ="/mnt/fass1/kirsten/databases/custom/names.dmp",
         fna="/mnt/fass1/kirsten/databases/refseq_bac_fungi/refseq_bac_fungi.fna"
@@ -19,7 +19,7 @@ rule centrifuge_db:
 
 rule diamond_db:
     input: 
-        #faa="",
+        faa="/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa",
         map="/mnt/fass1/genomes/new_bacteria/bacteria_blast_db/prot_accession2taxid.txt",
         nodes="/mnt/fass1/kirsten/databases/custom/nodes.dmp",
         names="/mnt/fass1/kirsten/databases/custom/names.dmp"
@@ -33,12 +33,12 @@ rule diamond_db:
         "/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond"
     threads: 16
     shell:
-        "diamond makedb --in {input.faa} -d {params} --taxonmap {input.map} --taxonnodes {input.nodes} --taxonnames {input.names}"
+        "diamond makedb --in {input.faa} -d {params} --taxonmap {input.map} --taxonnodes {input.nodes} --taxonnames {input.names} -p {threads}"
 
 
 rule kaiju_db:
     input:
-        fna="/mnt/fass1/kirsten/databases/refseq_bac_fungi/refseq_bac_fungi.fna"
+        faa="/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa"
     output:
         fmi="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju.fmi"
     benchmark:
@@ -49,7 +49,7 @@ rule kaiju_db:
         bwt="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju"
     threads: 16
     run:
-        #shell('kaiju-mkbwt -n {threads} -a DNA -o {params.bwt} {input}'),
+        shell('kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {params.bwt} {input}'),
         shell('kaiju-mkfmi -filenm {params.bwt}')
 
 
@@ -72,8 +72,18 @@ rule kraken2_db:
         shell('/home/re85gih/projectClassification/kraken2/kraken2-build --clean')
 
 
-#rule clark_db:
-#    pass
+rule clark_db:
+    input:
+        refseq ="/mnt/fass1/kirsten/databases/custom/clark/"
+    benchmark:
+        "/mnt/fass1/kirsten/result/classification/benchmarks/databases/clark.custom_db.benchmark.txt"
+    output:
+        "/mnt/fass1/kirsten/databases/custom/clark/helper.txt"
+    threads: 16
+    run:
+        shell('/mnt/fass1/kirsten/tools/CLARKSCV1.2.6.1/set_targets.sh {input} custom'),
+        shell('touch {output}') 
+
 
 
 rule metamaps_db:
@@ -87,9 +97,9 @@ rule metamaps_db:
     conda:
         "envs/metamaps.yaml"
     run:
-        shell('perl downloadRefSeq.pl --taxonomyOutDirectory {output.taxonomy}'),
-        shell('perl annotateRefSeqSequencesWithUniqueTaxonIDs.pl --refSeqDirectory {input.refseq} --taxonomyInDirectory {output.taxonomy} --taxonomyOutDirectory {output.uniqueID}'),
-        shell('perl buildDB.pl --DB {output.db} --taxonomy {output.uniqueID}')
+        shell('perl /home/re85gih/projectClassification/MetaMaps/downloadRefSeq.pl --taxonomyOutDirectory {output.taxonomy}'),
+        shell('perl /home/re85gih/projectClassification/MetaMaps/annotateRefSeqSequencesWithUniqueTaxonIDs.pl --refSeqDirectory {input.refseq} --taxonomyInDirectory {output.taxonomy} --taxonomyOutDirectory {output.uniqueID}'),
+        shell('perl /home/re85gih/projectClassification/MetaMaps/buildDB.pl --DB {output.db} --taxonomy {output.uniqueID}')
 
 #rule ccmetagen_db:
 #    pass

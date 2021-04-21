@@ -1,4 +1,0 @@
-# 19.03.2021
-terminate called after throwing an instance of 'std::bad_alloc'
-  what():  std::bad_alloc
-/bin/bash: line 1: 19208 Aborted                 SLAM --db=/mnt/fass1/kirsten/databases/kslam --output-file=/mnt/fass1/kirsten/result/classification/kslam/default/gridion364_default.kslam.classification /mnt/fass1/kirsten/data/gridion364.fastq

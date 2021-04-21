@@ -9,8 +9,8 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = list(config["samples"])
-TOOLS="centrifuge kraken2".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion364" # list(config["samples"])
+TOOLS="kaiju" #.split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
 RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
