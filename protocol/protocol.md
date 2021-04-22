@@ -71,9 +71,9 @@ To use DIAMOND for taxonomic classification, the output format has to be defined
 #### Kaiju
 Kaiju [Kaiju](https://doi.org/10.1186/s13062-018-0208-7 "Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*,* 7(1), 1-9.") is a fast and sensitive tool for taxonomic classification of metagenomic samples that uses a reference database of annotated protein-coding genes of microbial genomes. The DNA reads are translated into the six reading frames and split according to the stop codons. The resulting fragments are sorted regarding their length and due to the usage of the Ferragina and Mazini-Index (FM-Index), exact matches can be searched between read and database-reference in effient time by Kaiju. <br>
 The default database consists of the downloaded index <tt>kaiju\_db\_refseq\_2020-05-25</tt> which was downloaded from the [Kaiju webserver](http://kaiju.binf.ku.dk/server) as of 28/11/2020. <br>
-Building a custom database consists of two steps:
+Building a custom database consists of two steps and the sequence headers need to consist of the NCBI taxonomic ID and optinally a prefix spearated with an underscore. To achieve this format, the protein sequence file [refseq_bac_fung.faa](/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa) is altered with the script [changeHeaderKaiju.py](scripts/../../scripts/changeHeaderkiaju.py). The commands to build the custom database can be seen in the following box.
     
-    kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {bwt}
+    kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {bwt} {input.faa}
     kaiju-mkfmi -r {bwt}
 
     # Parameters:
@@ -228,7 +228,6 @@ The runs are performed on <tt>Linux prost 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1
 - da wird eh nur species level machen, ist strain level egal bei den MLST, also sollte es keine probleme geben, welches ich genommen hab
 ### Multi Locus Sequence Typing
 ### Time
-Runtime is a secondary metric to evaluate tools. There is no explicit effect on the output, but tools that classify in efficient time have an advantage considering the increasing data sets.
 
 |            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
 |------------	|----------------	|----------------	|-----------------------	|----------------	|----------------	|----------------	|-------------------------	|
@@ -237,19 +236,42 @@ Runtime is a secondary metric to evaluate tools. There is no explicit effect on 
 | promethion365 |            -    	|                -	|   5:35:37.829886          |1 day, 14:05:20.470530 |1 day, 9:14:36.672953   	|    1:26:06.232660            	|         -                	|       	
 | promethion367 | -                 |-                  |5:24:34.567883             |1 day, 9:46:48.769590|1 day, 4:03:14.998929|1:27:05.043035 |- |
 
-***Table Time: Overview of time consumption for the default runs.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front. Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/default. <br> <br>
+***Table Time 1: Overview of time consumption for the default runs.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front. Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/default. <br> <br>
+
+Runtime is a secondary metric to evaluate tools. There is no explicit effect on the output, but tools that classify in efficient time have an advantage considering the increasing data sets. <br>
+Looking at all the tools, Kraken2 was by far the fastest with the default database (Table Time 1). The GridION samples took a few minutes (0:08:55, 0:11:17), the PromethION samples about one and a half hours (1:26:06 and 1:27:05 for promethion365 and promethion367, respectively). Thus, even the promethion samples are classified faster with Kraken2 than the gridion samples with most other tools. <br>
+Diamond needs about four and a half days for the GridION samples, the calculations for the PromethION samples stopped after about 14 days without a result and were not restarted because of this high computing time. KMA/CCMetagen also had problems ([Error: 28](logs/ols/screen.kma.promethion.log "Log, KMA and promethion367 (Line 25)")) with the PromethION samples, which contain on average ten times as many reads as the GridION samples. <br>
+Centrifuge and Kaiju need up to 4:45:25 hours (Centrifuge, gridion366) for the GridION samples and up to 1 day, 14:05:20 hours (Centrifuge, promethion365) for the PromethION samples with Kaiju being a little faster (gridion366: 3:40:21, promethion365: 1 day, 9:14:36). <br>
+CLARK's performance is between those extremes. It needs 40 minutes for the GridION samples (0:42:52 fo 364 and 0:38:11 for 366, repsectively) and about five and a half hours for the PromethION samples.
+
+!!! This trend can be observed within the custom database as well (Table Time 2). Kraken2 is still fastest with similar times, around 12 minutes for the GridION samples and one and a half hours for the PromethION samples.<br>
+- here info abou ccmetagen and diamond
+Centrifuge performed a slower which might be explained with the greater number of species in the custom database. The Centrifuge used default database does not contain fungal sequences. 
+- kaiju noch machen
+- dann clark
 
 
-|            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
-|------------	|----------------	|----------------	|-----------------------	|----------------	|----------------	|----------------	|-------------------------	|
-| gridion364 	| 0:58:33.332763 	| 0:00:19.790294 	| 0:42:52.407070	        | 3:28:34.545058 	| 3:30:55.818875 	| 0:08:55.109309 	|         -                	|       	
-| gridion366 	| 2:03:00.949100 	| 0:00:12.93     	|    0:38:11.365624         | 4:45:25.614299 	| 3:40:21.257391 	| 0:11:17.788488 	| 4 days, 10:02:19.511836 	|       	
-| promethion365 |            -    	|                -	|   5:35:37.829886          |1 day, 14:05:20.470530 |1 day, 9:14:36.672953   	|    1:26:06.232660            	|         -                	|       	
-| promethion367 | -                 |-                  |5:24:34.567883             |1 day, 9:46:48.769590|1 day, 4:03:14.998929|1:27:05.043035 |- |
+|            	| kma            	| ccmetagen      	| clark          | centrifuge           	| kaiju          	    | kraken2        	| diamond                 	|
+|------------	|----------------	|----------------	|--------------- |----------------      	|----------------    	|----------------	|-------------------------	|
+| gridion364 	|                	|                	| 	             | 5:09:32.420430       	| 3:13:05.844424 	    | 0:12:03.455402 	|         -                	|       	
+| gridion366 	|                	|                	|                | 5:31:10.976138       	|               	    | 0:12:31.477754 	|          	|       	
+| promethion365 |            -    	|                -	|                | 2 days, 6:49:22.551248   |                       | 1:26:16.939620    |         -                	|       	
+| promethion367 | -                 |-                  |                | 2 days, 3:59:35.103469   |                       |1:29:48.305022     |-                          |
 
-***Table Time: Overview of time consumption for the custom runs.*** Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/custom.
+***Table Time 2: Overview of time consumption for the custom runs.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front. Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/custom. <br> <br>
 
+The last aspect of runtime that needs to be consideres is the database creation time. <br>
+For CLARK, the builing tiome of the indices is considered, which are build with the first call of the classifier for a new database. 
+Although the runtime of Diamond is comparably worse, the time for database creation is fast with about 0:23:52. 
+- rest geht noch nicht!!!
+  
+| Tool    	| KMA 	| CLARK 	| Centrifuge             	| Kaiju              	| Kraken2 	| Diamond        	| MetaMaps 	|
+|---------	|-----	|-------	|------------------------	|--------------------	|---------	|----------------	|----------	|
+| runtime 	|     	|       	| 1 day, 14:04:24.423278 	| !!! 1:03:07.249220 	|         	| 0:23:52.417193 	|          	|
 
+***Table Time32: Overview of time consumption database creation.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front.The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/databases. <br> <br>
+
+The runtime of BugSeq can not be evaluated accordingly since the cloud service offers no information about the time the classification needed and no custom database is build.
 ## Classification Results
 The following section shows the species in the diagrams that had an abundance of at least one per cent. Reads that were not assigned to a species but other taxa, or are below the 1% mark, are summarized in "Others".
 ### Diamond
@@ -335,7 +357,8 @@ Considering the CS Log sample sequenced with GridION, CCMetagen is able to assig
 
 ### Centrifuge
 For the CS Even samples, Centrifuge is able to classify 89.504% and 87.086% for GridION364 and PromethION365, respectively. Between 3.5% and 3.9% of the reads could not be assigned to a taxon on species level. 
-Since the default database of Centrifuge does not contain fungal genomes, Centrifuge is only able to identify the eight bacterial species. Those species are identified with abundances ranging between 6% for *Salmonella enterica* and 18.368% for Bacillus substilis for GridION and between 5.936% for *Salmonella enterica* and 17.724% for *Bacillus subtilis* for PromethION, respectively (see Table 2). The classification results therefore do not improve with greater sequencing depth. 
+Since the default database of Centrifuge does not contain fungal genomes, Centrifuge is only able to identify the eight bacterial species. Those species are identified with abundances ranging between 6% for *Salmonella enterica* and 18.368% for Bacillus substilis for GridION and between 5.936% for *Salmonella enterica* and 17.724% for *Bacillus subtilis* for PromethION, respectively (see Table 2). The classification results therefore do not improve with greater sequencing depth. <br>
+Since Centrifuge assigns a read to up to five species, the abundances are calculated slightly different: the number of reads assigned to one entry is divided by the total number of assignments which can be greater than the number of reads. 
 
 |||
 |:--|:--|
@@ -348,13 +371,13 @@ Since the default database of Centrifuge does not contain fungal genomes, Centri
 | Classified species 	| B. subtilis 	| L. monocytogenes 	| E. faecalis 	| S. aureus 	| S. enterica 	| E. coli 	| P. aeruginosa 	| L. fermentum 	|   	| unclassified 	| other 	|
 |--------------------	|-------------	|------------------	|-------------	|-----------	|-------------	|---------	|---------------	|--------------	|---	|--------------	|-------	|
 | CS Even            	|             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|       	|
-| GridION 364        	| 18.368      	| 13.514           	| 11.182      	| 11.244    	| 6           	| 5.933   	| 5.21          	| 14.513       	|   	| 10.496       	| 3.541 	|
-| PromethION 365     	| 17.724      	| 13.018           	| 10.803      	| 10.782    	| 5.936       	| 5.886   	| 5.204         	| 13.759       	|   	| 12.914       	| 3.974 	|
+| GridION 364        	| 18.368      	| 13.514           	| 11.182      	| 11.244    	| 6           	| 5.933   	| 5.21          	| 14.513       	|   	| 10.496 (366,458)       	| 3.541 	|
+| PromethION 365     	| 17.724      	| 13.018           	| 10.803      	| 10.782    	| 5.936       	| 5.886   	| 5.204         	| 13.759       	|   	| 12.914 (4,624,479)       	| 3.974 	|
 | CS Log             	|             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|       	|
-| GridION 366        	| 1.085       	| 84.591           	|     -        	|    -       	|     -        	|       -  	| 4.653         	|      -        	|   	| 7.214        	| 2.457 	|
-| PromethION 367     	| 1.069       	| 82.068           	|      -       	|   -        	|       -      	|      -   	| 4.532         	|       -       	|   	| 9.649        	| 2.682 	|
+| GridION 366        	| 1.085       	| 84.591           	|     -        	|    -       	|     -        	|       -  	| 4.653         	|      -        	|   	| 7.214 (264,559)       	| 2.457 	|
+| PromethION 367     	| 1.069       	| 82.068           	|      -       	|   -        	|       -      	|      -   	| 4.532         	|       -       	|   	| 9.649 (3,335,852)       	| 2.682 	|
 
-***Table 2: Abundances of classified species, Centrifuge.*** The table shows the classificaiton results of Centrifuge for all four samples considering the default database (in %). The two fungis can not be identified with the default database, because it only includes microbial genomes. <br> <br>
+***Table 2: Abundances of classified species, Centrifuge.*** The table shows the classificaiton results of Centrifuge for all four samples considering the default database (in %). The two fungis can not be identified with the default database, because it only includes microbial genomes. The column "unclassified" also contains the abolsute number of unclassified reads.<br> <br>
 
 The CS Log results show similarity betweent the samples as well. Three species can be identified with the majotrity of reads assigned to *Listeria monocytogenes* (84.591% and 82.068% for GridIOn and PromethION, respectively). Centrifuge assigned about 1% of the reads to *Bacillus subtilis* and 4.5% to *Pseudomonas aeruginosa*. The sample sequences with GridION shows slightly less uncassified reads with 7.214% in contrast to 9.649% for PromethION. There are about 2.5% reads that could not be assigned to a taxon on species level (Table, Picture).
 
@@ -366,8 +389,9 @@ The CS Log results show similarity betweent the samples as well. Three species c
 
 ***Figure X: Classification Results for Centrifuge, CS Log*** <br> <br>
 
-[Results Custom Database]
-[Results Restricted Run]
+Using the custom database leads to slightly different results (Table A1, A2). The main change for CS Even samples is the amount of reads that are unclassified or assigned to "others". The percentage of unclassified reads has decreased to 5.052%, but 20.495% of reads are not assigned to anythin on species level or to a species that didn't reach 1% of reads. <br>
+Although fungal species are included in this database, Centrifuge is not able to assign 1% of reads to those. The remaining reads are assigned with slislightly different proportions, instead of *Lactobacillus fermentum*, *Limosilactobacillus fermentum* is identified with a similar amount of reads (14.248% and 14.671%, respectively). Instead of *Salmonella enterica*, Centrifuge identified thee subspecies of *Salmonella*: *Salmonella sp. S048_01045*, *Salmonella sp. S102_03650* and *Salmonella sp. S060_01291*, which are three unclassified *Salmonella* species [NCBISallmonella](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi). Furthermore, instead of only *Bacillus subtilis*, *Bacillus spizizenii* is identified with 9.606% of reads as well, and 2.123% or reads are assigned to *Bacillus subtilis* (Default: *B. subtilis*: 18.033%). <br>
+The CS Log samples show that th majority of reads is assigned to *Listeria monocytogenes* (366: 72.843%, 367: 70.223%), although the percentage has decreased (Table A1, Figure A1). This might be due to the identification of a new species -- *Listera innouca*. 3.405% and 2.671% of reads are assigned to this, respectively. The percentage of reads not classified has decreased to ~6.75% and the percentage of reads assigned to "others" has increased to ~13%.
 <br> <br>
 
 ### CLARK
@@ -432,6 +456,28 @@ The classification results for CS Log are similar between the sequencing methods
 ## Stuff that didn't work
 # Conclusion
 # Attachments and Supplementary Information
+| Classified Species 	| B. subtilis 	| L. monocytogenes 	| E. faecalis 	| S. aureus 	| E. coli 	| P. aeruginosa 	| Limosil. fermentum 	| S. sp. S048_01045  	| S. sp. S102_03650 	| S sp. S060_01291 	| L. innocua 	|   	| unclassified 	| others 	|
+|--------------------	|-------------	|------------------	|-------------	|-----------	|---------	|---------------	|--------------------	|--------------------	|-------------------	|------------------	|------------	|---	|--------------	|--------	|
+| CS Even            	|             	|                  	|             	|           	|         	|               	|                    	|                    	|                   	|                  	|            	|   	|              	|        	|
+| GridION 364        	| 2.123       	| 9.774            	| 14.006      	| 8.247     	| 3.703   	| 4.943         	| 14.671             	| 2.46               	| 2.465             	| 2.454            	| -          	|   	| 5.052 (266,404)       	| 20.495 	|
+| PrometION 365      	| 1.864       	| 9.238            	| 13.194      	| 7.84      	| 3.662   	| 4.825         	| 13.57              	| 2.46               	| 2.467             	| 2.456            	| -          	|   	| 5.493 (2,990,357)       	| 23.762 	|
+| CS Log             	|             	|                  	|             	|           	|         	|               	|                    	|                    	|                   	|                  	|            	|   	|              	|        	|
+| GridION 366        	| -           	| 72.843           	| -           	| -         	| -       	| 5.199         	| -                  	| -                  	| -                 	| -                	| 3.405      	|   	| 6.582 (318,073)        	| 11.971 	|
+| PromethION 367     	| -           	| 70.223           	| -           	| -         	| -       	| 4.964         	| -                  	| -                  	| -                 	| -                	| 2.671      	|   	| 6.99 (3,201,516)         	| 15.151 	|
+
+***Table A1: Abundances of classified species, Centrifuge (custom).*** The table shows the classificaiton results of Centrifuge for all four samples considering the custom database (in %). The number behind the percentage of the column containing the unclassified values is the absolut number of unclassified reads. <br> <br>
+
+|||
+|:--|:--|
+|![Gridion364: Piechart for Classification Results of Centrifuge (custom)](../stats/pics/gridion364_custom.centrifuge.piechart.jpeg)\label{centrifuge364D}|**Gridion364: Piechart for Classification Results of Centrifuge (dcustomefault)**. Centrifuge is able to identify the majority of the bacterial species correctly. Although the fungal species are included into the custom database, none are identified. Instead, Bacillus spizizenii is assigned 9.606% of reads, Salmonella enterica is not identified, but three currently unclassified Salmonella species and 14.671% od reads are classifies as Limosilactobacillus fermentum. The amount of reads assigned to something on another taxonomic level has increased to 20.495%, whereas the percentage of unclassified reads decreased to 5.052%. This is also true for the absolute number of reads.|
+|![Promethion365: Piechart for Classification Results of Centrifuge (custom)](../stats/pics/promethion365_custom.centrifuge.piechart.jpeg)\label{centrifuge365D}|**Promethion365: Piechart for Classification Results of Centifuge (custom).** Centrifuge is able to identify the majority of the bacterial species correctly. Although the fungal species are included into the custom database, none are identified. Instead, Bacillus spizizenii is assigned 9.169% of reads, Salmonella enterica is not identified, but three currently unclassified Salmonella species and 13.57% od reads are classifies as Limosilactobacillus fermentum. The amount of reads assigned to something on another taxonomic level has increased to 23.762%, whereas the percentage of unclassified reads decreased to 5.493%. This is also true for the absolute number of reads.
+|![Gridion366: Piechart for Classification Results of Centrifuge (custom)](../stats/pics/gridion366_custom.centrifuge.piechart.jpeg)\label{centrifuge366D}|**Gridion366: Piechart for Classification Results of Centrifuge (custom)**. In this sample, 6.582 of reads could not be classified at all and 11.971% of reads are assigned to taxa that are not on species level or the corresponding species has below 1% abundance. The remaining reads are assigned to *Listeria monocytogenes* (72.843%), *Pseudomonas aeruginosa* (5.199%) and *Listeria innocua* (3.405%)|
+|![Promethion367: Piechart for Classification Results of Centrifuge (custom)](../stats/pics/promethion367_custom.centrifuge.piechart.jpeg)\label{centrifuge367D}|**Promethion367: Piechart for Classification Results of Centifuge (custom).** In this sample, 10.4% of reads could not be classified at all and 4.805% of reads are assigned to taxa that are not on species level or the corresponding species has below 1% abundance. The remaining reads are assigned to *Listeria monocytogenes* (70.223%), *Pseudomonas aeruginosa* (4.964%) and *Listeria innocua* (2.671%).|
+|||
+
+***Figure A1***
+
+
 # Citations
 
 [[1]](https://doi.org/10.1016/j.cell.2019.07.010) Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.
@@ -464,7 +510,8 @@ The classification results for CS Log are similar between the sequencing methods
 
 [MLSTcryptococcus](https://doi.org/10.1080/13693780902953886) Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570.
 
-https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaObjects/203_2017_1346_MOESM1_ESM.docx
+[NCBISallmonella](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi)
+
 
 ### rest
 - *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
@@ -480,7 +527,8 @@ https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaO
 - *Lactobacillus fermentum* parB, ychF, pyrG, atpF, recA, ileS, recG, and leuS https://link.springer.com/article/10.1007/s00203-017-1346-5 https://link.springer.com/article/10.1007/s00203-017-1346-5/tables/2
     - https://doi.org/10.1007/s00203-017-1346-5
     - 
-    - 
+    - https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaObjects/203_2017_1346_MOESM1_ESM.docx
+
     - found in additional information
 - *Saccharomyces cerevisiae*
   - ACC1, ADP1, GLN4, MET4, NUP116, and RPN2, https://link.springer.com/content/pdf/10.1007/s10068-018-0335-z.pdf
