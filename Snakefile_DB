@@ -88,8 +88,9 @@ rule clark_db:
 
 rule metamaps_db:
     input:
-        refseq ="/mnt/fass1/kirsten/databases/refseq_bac_fungi/"
+        refseq ="/mnt/fass1/kirsten/databases/refseq_bac_fungi"
     output:
+        folder="/mnt/fass1/kirsten/databases/custom/metamaps",
         taxonomy = "/mnt/fass1/kirsten/databases/custom/metamaps/taxonomy",
         uniqueID = "/mnt/fass1/kirsten/databases/custom/metamaps/taxonomy_uniqueID"
     benchmark:
@@ -97,7 +98,7 @@ rule metamaps_db:
     conda:
         "envs/metamaps.yaml"
     run:
-        shell('perl /home/re85gih/projectClassification/MetaMaps/downloadRefSeq.pl --taxonomyOutDirectory {output.taxonomy}'),
+        #shell('perl /home/re85gih/projectClassification/MetaMaps/downloadRefSeq.pl --sequencesOutDirectory {output.folder} --taxonomyOutDirectory {output.taxonomy} --targetBranches '),
         shell('perl /home/re85gih/projectClassification/MetaMaps/annotateRefSeqSequencesWithUniqueTaxonIDs.pl --refSeqDirectory {input.refseq} --taxonomyInDirectory {output.taxonomy} --taxonomyOutDirectory {output.uniqueID}'),
         shell('perl /home/re85gih/projectClassification/MetaMaps/buildDB.pl --DB {output.db} --taxonomy {output.uniqueID}')
 

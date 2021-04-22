@@ -10,7 +10,7 @@ DB_custom= dict(config["DB_custom"])
 PATH = config["path"]
 
 SAMPLES = "gridion364" # list(config["samples"])
-TOOLS="kaiju" #.split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+TOOLS="centrifuge kraken2 kaiju".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
 RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
@@ -22,7 +22,7 @@ rule all:
 ## for CLARK-Output
 #        expand("{path}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv", run=RUNS, sample=SAMPLES, path=PATH),
 # REPORT
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
         expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
