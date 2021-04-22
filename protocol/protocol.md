@@ -35,7 +35,9 @@ The ZymoBIOMICS Microbial Community Standards come with knowledge about the abun
 
 
 ## Tools
-The detailed commands for the classifcation and postprocessing of the outputs can be seen in [Snakefile](../Snakefile), the detailed commands for database construction are saved in [Snakefile_DB](../Snakefile_DB).
+The detailed commands for the classifcation and postprocessing of the outputs can be seen in [Snakefile](../Snakefile), the detailed commands for database construction are saved in [Snakefile_DB](../Snakefile_DB). <br>
+- first everything with their own databases --> default
+- then custom database based on refseq bacteria and fungi found in HERE_PATH
 ## Classification
 |     Tool     |   Version  |   Type  |         Approach        |Default Database| Reference                                 |
 |:------------:|:----------:|:-------:|:-----------------------:|:--------------:|:-----------------------------------------:|
@@ -71,11 +73,11 @@ Kaiju [Kaiju](https://doi.org/10.1186/s13062-018-0208-7 "Menzel, P., Ng, K. L., 
 The default database consists of the downloaded index <tt>kaiju\_db\_refseq\_2020-05-25</tt> which was downloaded from the [Kaiju webserver](http://kaiju.binf.ku.dk/server) as of 28/11/2020. <br>
 Building a custom database consists of two steps:
     
-    kaiju-mkbwt -n {threads} -a DNA -o {bwt}
+    kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {bwt}
     kaiju-mkfmi -r {bwt}
 
     # Parameters:
-    #   -a      used alphabet
+    #   -a      used alphabet (basic proteins)
     #   -r      removing unused files
     #   -o      name of the BWT output file
 
@@ -111,7 +113,7 @@ The custom database using the refseq of bacteria and fungi can be created with t
 #### Centrifuge
 Centrifuge [Centrifuge](https://doi.org/10.1101%2Fgr.210641.116 "Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.") is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found. <br>
 The used indices are downloaded from their [website](https://genome-idx.s3.amazonaws.com/centrifuge/p\_compressed_2018_4\_15.tar.gz) as of 15/01/2021. <br>
-The custom database can be created with the following command, where <tt>prefix</tt> is the prefic the index files will carry. The \texttt{seqid2taxid.map} file can be generated using NCBI's accession-to-taxid file for nucleotides (as of 07/04/2021). This spares the download of all sequences that should be included in the index.
+The custom database can be created with the following command, where <tt>prefix</tt> is the prefic the index files will carry. The <tt>seqid2taxid.map</tt> file generated from Kraken2 during databse building is used. This spares the download of all sequences that should be included in the index.
 
     centrifuge-build -p {threads} --conversion-table {seqid2taxid.map} --taxonomy-tree {nodes.dmp} --name-table {names.dmp} {input.fna} {prefix}
 
@@ -142,7 +144,7 @@ The used default database is <tt>/mnt/fass1/database/kraken2-database</tt>. The 
     kraken2-build --build {database} --threads {threads}
     kraken2-build --clean
 
-For taxonomic classification, the following command can be used:
+For taxonomic classification, the following command is used:
 
     kraken2 --db {database} --unclassified-out {output.unclassified} --report {report} --threads {threads} --output {output} {input.fastq} [--confidence 0.05]
 
@@ -169,15 +171,15 @@ Additional to the classification tools, conda [conda](https://docs.anaconda.com/
 
 ***Table 3: Overview of additional software and the used versions***. 
 ## Metrics
-The difficulty in bechmarking different classifiers since the chosen metrics can affect the evaluated performance. <br>
-Precision and recall are considered as the most important metrics in this context, which are commonly used in bechmarking studies [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). The F1 score (harmonic mean of precision and recall) does not provide a realistic estimate of performance since it is based on a single precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). <br>
+There is a difficulty in bechmarking different classifiers since the chosen metrics can affect the evaluated performances. <br>
+Precision and recall are considered as the most important metrics in this context which are commonly used in bechmarking studies [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). The F1 score (harmonic mean of precision and recall) does not provide a realistic estimate of performance since it is based on a single precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). <br>
 
-Dealing with a lot of different tools involves dealing with a lot of different output formats, therefore all the following calculations are based on preprocessed output formats <tt>areport</tt>. The python scripts generating these outputs are specific for the different tools and can be found in [scripts](../scripts) with the names <tt>(tool)Output.py</tt>. The areports consist of five columns: abundance, read count, taxonomic rank, taxonomic ID and scientific species name. For the analyses, only the entries of species are considered.
+Dealing with a lot of different tools involves dealing with a lot of different output formats, therefore all the following calculations are based on preprocessed output formats <tt>areport</tt>. The python scripts generating these outputs are specific for the different tools and can be found in [scripts](../scripts) with the names <tt>(tool)Output.py</tt>. The areports consist of five columns: abundance, read count, taxonomic rank, taxonomic ID and scientific species name. For the analyses, only the entries on species level are considered.
 
 ### Area-Under-Precision-Recall Curve
-The Area-Under-Precision-Recall curve (AUPR) is a metric that combines those most important measures for metagenomic classification precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). Precision is defined as precision=<sup>TP</sup>&frasl;<sub>TP+FP</sub>, i.e. the ratio between true positive (TP) classification results and the total number of classification results that are reported as true, including false positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. recall=<sup>TP</sup>&frasl;<sub>TP+FN</sub>. <!-- $precision=\frac{TP}{TP+FP}$ $recall=\frac{TP}{TP+FN}$--> <br>
+The Area-Under-Precision-Recall curve (AUPR) is a metric that combines those most important measures for metagenomic classification: precision and recall [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). Precision is defined as <sup>TP</sup>&frasl;<sub>TP+FP</sub>, i.e. the ratio between true positive (TP) classification results and the total number of classification results that are reported as true, including false positive (FP) hits. Recall or sensitivity, on the other hand, is defined as the ratio of true positives against all correct classifications including false negatives (FN), i.e. <sup>TP</sup>&frasl;<sub>TP+FN</sub>. <!-- $precision=\frac{TP}{TP+FP}$ $recall=\frac{TP}{TP+FN}$--> <br>
 The AUPR provides are more realistic measure for the performance of classifiers since it is not based on one raw value (precision, recall, F1, ...) but instead on a list of values for different thresholds [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). <br>
-The AUPR curve can be used to evaluate precision and recall across different abundance thresholds. If the thresholds are chosen accordingly in the range from 0-1.0, the AUPR returns a single metric considering precision and recall. In short: This metric considers the number of correctly identified species [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.").To identify true positive and false positive hit, a ground truth is needed, which is given due to the underlying ZymoBIOMICS Microbial Community Standards. <br>
+The AUPR curve can be used to evaluate precision and recall across different abundance thresholds. If the thresholds are chosen accordingly in the range from 0-1.0, AUPR returns a single metric considering precision and recall. In short: This metric considers the number of correctly identified species [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.").To identify true positive and false positive hits, a ground truth is needed, which is given due to the underlying ZymoBIOMICS Microbial Community Standards. <br>
 The Precision-Recall Curves and the AUPR are calculated within the bash script [PRCurve.sh](../scripts/PRCurve.sh) which uses the python script [extractingVal4Vis.py](../scripts/extractingVal4Vis.py) for extracting the ground truth vectors and vectors with abundances of the species as an input for the R script  [visPRCurve.R](../scripts/visPRCurve.R) which then visualizes the values as a precision-recall curve. The used R package is [PRROC](https://cran.r-project.org/web/packages/PRROC/index.html "Jens Keilwagen, Ivo Grosse and Jan Grau (2014). Area under Precision-Recall Curves for Weighted and Unweighted Data. PLOS ONE (9) 3."). <br>
 The resulting plots also contain a baseline, which is different for each sample and represents the lowest precision. It is the number of true positives divided by the number of all hits. 
 
@@ -191,29 +193,33 @@ Here, MLSTs are used as an additional validation of the classifiers performances
 
 The chosen sequence types for each species are retrieved from [PubMLST](https://pubmlst.org/) for most species. An overview of the used genes and alleles can be seen in Table XYZ. The first ST is selected for each species. <br>
 The database has no entry for *Lactobacillus fermentum* fermentum, therefore the MLST is retrieved from Poluektova et al. [MLSTfermentum](https://doi.org/10.1007/s00203-017-1346-5 "Poluektova, E. U., Yunes, R. A., Epiphanova, M. V., Orlova, V. S., & Danilenko, V. N. (2017). The Lactobacillus rhamnosus and Lactobacillus fermentum strains from human biotopes characterized with MLST and toxin-antitoxin gene polymorphism. *Archives of microbiology*, 199(5), 683-690."). The first entry for each gene is used. <br> 
-The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et al. [MLSTcryptococcus](https://doi.org/10.1080/13693780902953886 "Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570.") , the sequences are gathered from the [International Fungal Multi Locus sequence Typing Database](https://mlst.mycologylab.org/). For the Allele Type Number, one is chosen across all genes. <br>
+The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et al. [MLSTcryptococcus](https://doi.org/10.1080/13693780902953886 "Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570."), the sequences are gathered from the [International Fungal Multi Locus sequence Typing Database](https://mlst.mycologylab.org/). For the Allele Type Number, one is chosen across all genes. <br>
 
 |      	|      	|      	|      	|      	|      	|      	|      	| |                          	|       	|      	|      	|      	|      	|      	|      	|      	|
 |------------------------	|------	|------	|------	|------	|------	|------	|------	|-|--------------------------	|-------	|------	|------	|------	|------	|------	|------	|------	|
-|Bacillus subtilis||||||||| Escherichia coli         	|       	|      	|      	|      	|      	|      	|      	|      	|
+|[*Bacillus subtilis*](https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, B. subtilis")||||||||| Escherichia coli         	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                   	| glpF 	| ilvD 	| pta  	| purH 	| pycA 	| rpoD 	| tpiA 	||                          	| dinB  	| icdA 	| pabB 	| polB 	| putP 	| trpA 	| trpB 	| uidA 	|
 |                  	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	||                          	| 1     	| 1    	| 2    	| 1    	| 1    	| 2    	| 3    	| 1    	|
-| Listeria Monocytogenes 	|      	|      	|      	|      	|      	|      	|      	| | Pseudomonas aeruginosa   	|       	|      	|      	|      	|      	|      	|      	|      	|
+| [*Listeria monocytogenes*](https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=downloadProfiles&scheme_id=2 "MLST scheme, L. monocytogenes") 	|      	|      	|      	|      	|      	|      	|      	| | [*Pseudomonas aeruginosa*](https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, P. aeruginosa")   	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| abcZ 	| bglA 	| cat  	| dapE 	| dat  	| ldh  	| lhkA 	| |                          	| acsA  	| aroE 	| guaA 	| mutL 	| nuoD 	| ppsA 	| trpE 	|      	|
 |                        	| 3    	| 1    	| 1    	| 1    	| 3    	| 1    	| 3    	| |                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|      	|
-| Enerococcus faecalis   	|      	|      	|      	|      	|      	|      	|      	| | Lactobacillus fermentum  	|       	|      	|      	|      	|      	|      	|      	|      	|
+| [*Enterococcus faecalis*](https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, E. faecalis")   	|      	|      	|      	|      	|      	|      	|      	| | [*Lactobacillus fermentum*](https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaObjects/203_2017_1346_MOESM1_ESM.docx "MLST from Supplements [MLSTfermentum], L. fermentum")  	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| gdh  	| gyd  	| pstS 	| gki  	| aroE 	| xpt  	| yqiL 	| |                          	| parB  	| ychF 	| pyrG 	| atpF 	| recA 	| ileS 	| recG 	| leuS 	|
 |                        	| 3    	| 1    	| 16   	| 1    	| 1    	| 1    	| 1    	| |                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|
-| Staphylococcus aurueus 	|      	|      	|      	|      	|      	|      	|      	|| Saccharomyces cerevisiae 	|       	|      	|      	|      	|      	|      	|      	|      	|
+| [*Staphylococcus aurueus*](https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, S. aureus") 	|      	|      	|      	|      	|      	|      	|      	|| Saccharomyces cerevisiae 	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| arcC 	| aroE 	| glpF 	| gmk  	| pta  	| tpi  	| yqiL 	||                          	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	||                          	|       	|      	|      	|      	|      	|      	|      	|      	|
-| Salmonella enterica    	|      	|      	|      	|      	|      	|      	|      	|| Cryptococcus neoformans  	|       	|      	|      	|      	|      	|      	|      	|      	|
+| [*Salmonella enterica*](https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=downloadProfiles&scheme_id=2 "MLST scheme, S. enterica")    	|      	|      	|      	|      	|      	|      	|      	|| [*Cryptococcus neoformans*](https://mlst.mycologylab.org/page/CN%20Main "Database, C. neoformans")  	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| aroC 	| dnaN 	| hemD 	| hisD 	| purE 	| sucA 	| thrA 	||                          	| cap59 	| gpd1 	| lac1 	| plb1 	| sod1 	| ura5 	| lgs1 	|      	|
 |                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 5    	||                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|      	|
 
-**Table XYZ: Overview of MLST schemes for given species**. This table shows the selected gene fragments for each species. The first line contains the included genes whereas the second line states which locus is used in that allelic profile.
+**Table XYZ: Overview of MLST schemes for given species**. This table shows the selected gene fragments for each species. The first line contains the included genes whereas the second line states which locus is used in that allelic profile. <br>
+the used MLS schemes or origins from where the sequences are gatheres are linked with the species name.
+
 ### Computational Requirements
-Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime for classification and database construction, if possible. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task. <!-- The results are then compared to [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.") -->
+Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime for classification and database construction, if possible. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task. <br>
+The runs are performed on <tt>Linux prost 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1 (2020-07-05) x86_64 GNU/Linux</tt> where eight threads are used for classificaiton and 16 for database creation.
+ <!-- The results are then compared to [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.") -->
 
 # Results and Discussion
 ## Comparison using the metrics
@@ -222,6 +228,7 @@ Additionally to the quality of the different classifiers, the computational requ
 - da wird eh nur species level machen, ist strain level egal bei den MLST, also sollte es keine probleme geben, welches ich genommen hab
 ### Multi Locus Sequence Typing
 ### Time
+Runtime is a secondary metric to evaluate tools. There is no explicit effect on the output, but tools that classify in efficient time have an advantage considering the increasing data sets.
 
 |            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
 |------------	|----------------	|----------------	|-----------------------	|----------------	|----------------	|----------------	|-------------------------	|
@@ -230,7 +237,7 @@ Additionally to the quality of the different classifiers, the computational requ
 | promethion365 |            -    	|                -	|   5:35:37.829886          |1 day, 14:05:20.470530 |1 day, 9:14:36.672953   	|    1:26:06.232660            	|         -                	|       	
 | promethion367 | -                 |-                  |5:24:34.567883             |1 day, 9:46:48.769590|1 day, 4:03:14.998929|1:27:05.043035 |- |
 
-***Table Time: Overview of time consumption for the default runs.*** Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/default. <br> <br>
+***Table Time: Overview of time consumption for the default runs.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front. Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/default. <br> <br>
 
 
 |            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
@@ -457,7 +464,7 @@ The classification results for CS Log are similar between the sequencing methods
 
 [MLSTcryptococcus](https://doi.org/10.1080/13693780902953886) Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570.
 
-
+https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaObjects/203_2017_1346_MOESM1_ESM.docx
 
 ### rest
 - *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
@@ -478,7 +485,6 @@ The classification results for CS Log are similar between the sequencing methods
 - *Saccharomyces cerevisiae*
   - ACC1, ADP1, GLN4, MET4, NUP116, and RPN2, https://link.springer.com/content/pdf/10.1007/s10068-018-0335-z.pdf
 - *Cryptococcus neoformans* CAP59, GPD1, LAC1, PLB1, SOD1, URA5 and IGS1. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2884100/
-- 
   - https://mlst.mycologylab.org/page/Allele_Search/30707
   - https://academic.oup.com/view-large/16644048
   - based on second links genes, the database of first link was used to get a sequence for each loci --> allele location 1

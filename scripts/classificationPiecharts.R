@@ -3,7 +3,7 @@
 
 args <- commandArgs(trailingOnly=TRUE)
 report <- read.csv(args[1], sep="\t")
-name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/test_default.areport"
+name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/areports/gridion366_custom.centrifuge.areport"
 report <- read.csv(name, sep="\t")
 sample.name.splitted <- strsplit(name, "/")
 sample.name.vector <- sample.name.splitted[[1]]
@@ -34,10 +34,11 @@ labels <- c(labels, "others")
 species.percent <- round(species.slices/sum(species.slices)*100, 3)
 labels <- paste(labels, species.percent) # add percentages to labels
 labels <- paste(labels,"%",sep="") # add % to labels
-
-jpeg(filename=args[2], width=850, height=632)
+save <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/stats/pics/gridion364_custom.kaiju.piechart.jpeg"
+jpeg(filename=save, width=850, height=632)
 
 pie(species.slices,labels,main=sample.name, cex=1)
 
 dev.off()
+
 
