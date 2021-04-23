@@ -227,6 +227,30 @@ The runs are performed on <tt>Linux prost 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1
 # Results and Discussion
 ## Comparison using the metrics
 ### Area under Preicison Recall Curve
+|    |    |    |    |    |    | 
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|![Gridion364: PR Curve, Diamond (default)](../stats/pics/gridion364_default.diamond.prc.jpeg)|![Gridion364: PR Curve, Kaiju (default)](../stats/pics/gridion364_default.kaiju.prc.jpeg)|![Gridion364: PR Curve, CCMetagen (default)](../stats/pics/gridion364_default.ccmetagen.prc.jpeg)|![Gridion364: PR Curve, Centrifuge (default)](../stats/pics/gridion364_default.centrifuge.prc.jpeg)|![Gridion364: PR Curve, Clark (default)](../stats/pics/gridion364_default.clark.prc.jpeg)|![Gridion364: PR Curve, Kraken2 (default)](../stats/pics/gridion364_default.kraken2.prc.jpeg)|
+| **Gridion364: PR Curve for Diamond (default)**. | **Gridion364: PR Curve for Kaiju (default)**.   |  **Gridion364: PR Curve for CCMetagen (default)**.  | **Gridion364: PR Curve for Centrifuge (default)**.  | **Gridion364: PR Curve for Clark (default)**.  |  **Gridion364: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.7029369 | AUC: 0.7253469| AUC: 0.5786301 | AUC: 1.0 |AUC: 0.7029369 | AUC: 1.0 | 
+
+|    |    |    |    |
+|:--:|:--:|:--:|:--:|
+|![Promethion365: PR Curve, Kaiju (default)](../stats/pics/promethion365_default.kaiju.prc.jpeg)|![Promethion365: PR Curve, Centrifuge (default)](../stats/pics/promethion365_default.centrifuge.prc.jpeg)|![Promethion365: PR Curve, Clark (default)](../stats/pics/promethion365_default.clark.prc.jpeg)|![Promethion365: PR Curve, Kraken2 (default)](../stats/pics/promethion365_default.kraken2.prc.jpeg)|
+| **Promethion365: PR Curve for Kaiju (default)**.   |  **Promethion365: PR Curve for Centrifuge (default)**.  | **Promethion365: PR Curve for Clark (default)**.  |  **Promethion365: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.5702636 | AUC: 0.1.0| AUC: 0.7029369 | AUC: 1.0 |
+
+
+|    |    |    |    |    |    | 
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|![Gridion366: PR Curve, Diamond (default)](../stats/pics/gridion366_default.diamond.prc.jpeg)|![Gridion366: PR Curve, Kaiju (default)](../stats/pics/gridion366_default.kaiju.prc.jpeg)|![Gridion366: PR Curve, CCMetagen (default)](../stats/pics/gridion366_default.ccmetagen.prc.jpeg)|![Gridion366: PR Curve, Centrifuge (default)](../stats/pics/gridion366_default.centrifuge.prc.jpeg)|![Gridion366: PR Curve, Clark (default)](../stats/pics/gridion366_default.clark.prc.jpeg)|![Gridion366: PR Curve, Kraken2 (default)](../stats/pics/gridion366_default.kraken2.prc.jpeg)|
+| **Gridion366: PR Curve for Diamond (default)**. | **Gridion366: PR Curve for Kaiju (default)**.   |  **Gridion366: PR Curve for CCMetagen (default)**.  | **Gridion366: PR Curve for Centrifuge (default)**.  | **Gridion366: PR Curve for Clark (default)**.  |  **Gridion366: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.5357696 | AUC: 0.3873827| AUC: 0.7760189 | AUC: 0.6062113 |AUC: 0.7600671 | AUC: 0.6724297 | 
+
+|    |    |    |    |
+|:--:|:--:|:--:|:--:|
+|![Promethion367: PR Curve, Kaiju (default)](../stats/pics/promethion365_default.kaiju.prc.jpeg)|![Promethion365: PR Curve, Centrifuge (default)](../stats/pics/promethion367_default.centrifuge.prc.jpeg)|![Promethion367: PR Curve, Clark (default)](../stats/pics/promethion367_default.clark.prc.jpeg)|![Promethion367: PR Curve, Kraken2 (default)](../stats/pics/promethion367_default.kraken2.prc.jpeg)|
+| **Promethion367: PR Curve for Kaiju (default)**.   |  **Promethion367: PR Curve for Centrifuge (default)**.  | **Promethion367: PR Curve for Clark (default)**.  |  **Promethion367: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.5702636 | AUC: 0.6138137| AUC: 0.8156916 | AUC: 0.6965986 |
 
 ### Abundance Profile Similarity
 | Classified Species 	| *B. subtilis*          	| *L. monocytogenes*     	| *E. faecalis*          	| *S. aureus*            	| *S. enterica*           	| *E. coli*               	| *P. aeruginosa*         	| *L. fermentum*        	| *S. cerevisiae*        	| *C. neoformans*         	|

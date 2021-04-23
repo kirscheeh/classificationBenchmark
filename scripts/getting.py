@@ -14,7 +14,7 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-config='/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #'config.yaml'
+config='config.yaml' #'/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #
 species = get_species(config)
 
 def get_path(config): #get path to working directory
@@ -86,7 +86,7 @@ def get_abundanceSampleSpecies(areport, config): #returns abundance of expected 
     
     print(predictions)
     return predictions
-get_abundanceSampleSpecies(sys.argv[1], sys.argv[2])
+#get_abundanceSampleSpecies(sys.argv[1], sys.argv[2])
 
 def get_numberReads(file, fastq=True): # returns number of reads in sample
     with open(file, "r") as f:
