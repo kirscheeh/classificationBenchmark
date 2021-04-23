@@ -9,20 +9,20 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "gridion364" # list(config["samples"])
-TOOLS="centrifuge kraken2 kaiju".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion364"# gridion366".split(" ") # list(config["samples"])
+TOOLS="kaiju".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
 RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
     input:
 # CLASSIFICATION 
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 ## KMA (for CCMetagen)
 #        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 ## for CLARK-Output
 #        expand("{path}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv", run=RUNS, sample=SAMPLES, path=PATH),
 # REPORT
-        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
         expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
@@ -166,10 +166,10 @@ rule kaiju_summary:
 rule clark:
     input:
         fastq = "{PATH}/data/{sample}.fastq",
-        targets = DB_default["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
+        targets = DB_custom["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
     output:
         csv="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv",
-        stats="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification_stats.csv" 
+        #stats="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification_stats.csv" 
     benchmark:
         "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
     threads: 8
@@ -177,7 +177,7 @@ rule clark:
         "envs/main.yaml"
     params:
         dbDefault = DB_default["clark"],
-        dbCustom = DB_custom["clark"],
+        dbCustom = DB_custom["clark"]+"/indices",
 	    runID=get_run,
         result = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     run:
