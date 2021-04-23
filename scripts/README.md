@@ -9,3 +9,5 @@
 | [visPRCurve.R](visPRCurve.R)                	| visualization of PR Curve with beforehand extracted values                            	|
 | [classifier]Output. py                  	| those scripts transform the clasifier-specific output into a universal form (areport) 	|
 | [classificationPiecharts.R](classificationPiecharts.R)   	| visualization of the classification results as piecharts                              	|
+| [changeHeaderKaiju.py](changeHeaderKaiju.py)| changes header of protein sequences according to needed specifications |
+| [abundanceProfileSimilarity.py](abundanceProfileSimilarity.py)| calculates abundance profile similarity using scipy.spatial|
