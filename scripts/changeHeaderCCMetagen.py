@@ -34,6 +34,8 @@ with open(nt_in) as nt:
             splited_rec = re.split (r'(>| )', line)
             accession = splited_rec[2]
             taxid = get_tax_id_dic(accession,acc2tax_dic)
+            accession = splited_rec[2]
+            taxid = get_tax_id_dic(accession,acc2tax_dic)
             line = ">" + taxid + "|" + "".join(splited_rec[2:])
         new_nt.write(line)
             

@@ -106,13 +106,15 @@ rule metamaps_db:
 
 rule ccmetagen_db:
     input:
-        fna = "/mnt/fass1/kirsten/databases/refseq_bac_fungi.fna"
+        fna = "/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.ccmetagen.fna"
     output:
-        "/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.kma.index"
+        "/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.kma.name"
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/kma.custom_db.benchmark.txt"
     conda:
         "envs/main.yaml"
+    params:
+	"/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.kma"
     shell:
-        "kma -i {input} -o {output} -Sparse TG -NI"
+        "kma_index -i {input} -o {params}"
 
