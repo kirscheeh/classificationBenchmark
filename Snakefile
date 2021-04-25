@@ -9,14 +9,14 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES = "gridion364"# gridion366".split(" ") # list(config["samples"])
-TOOLS="kaiju".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
+SAMPLES = "gridion366"# gridion366".split(" ") # list(config["samples"])
+TOOLS="diamond".split(" ") #'centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
 RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
     input:
 # CLASSIFICATION 
-#        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 ## KMA (for CCMetagen)
 #        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 ## for CLARK-Output

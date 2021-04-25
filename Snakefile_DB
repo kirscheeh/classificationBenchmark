@@ -38,7 +38,7 @@ rule diamond_db:
 
 rule kaiju_db:
     input:
-        faa="/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa"
+        faa="/mnt/fass1/kirsten/databases/custom/kaiju/refseq_bac_fung.kaiju.faa"
     output:
         fmi="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju.fmi"
     benchmark:
