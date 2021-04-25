@@ -58,17 +58,19 @@ rule kraken2_db:
         fungi="/mnt/fass1/kirsten/databases/refseq_bac_fungi/fungi.fna",
         bacteria="/mnt/fass1/kirsten/databases/refseq_bac_fungi/bacteria.fna",
     output:
-        "/mnt/fass1/kirsten/databases/custom/kraken2"
+        "/mnt/fass1/kirsten/databases/custom/kraken2/hash.k2d"
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/kraken2.custom_db.benchmark.txt"
     conda:
         "envs/main.yaml"
     threads: 16
+    params:
+        "/mnt/fass1/kirsten/databases/custom/kraken2"
     run:
-        #shell('/home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {output}'),
-        #shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {output} --threads {threads}'),
-       # shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {output} --threads {threads}'),
-        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db {output}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {params}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {params} --threads {threads}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {params} --threads {threads}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db /dev/null'),
         shell('/home/re85gih/projectClassification/kraken2/kraken2-build --clean')
 
 
