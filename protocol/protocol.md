@@ -134,6 +134,10 @@ CLARK is a taxonomic classification tool for metagenomic samples of any format (
     # Parameters
         # -t    minimum of k-mer frequency/occurence for the discriminative k-mers
 
+- for database
+- set_targets.sh , dann bearbetiet
+- .custom.fileToAccssnTaxID mit seqid2taxid-map von kraken2 bearbeitet und angepasst
+
 #### Kraken2
 The taxonomic sequence classifier Kraken2 examines k-mers of a query sequence and uses those information to query a database. During the query, the k-mers are mapped to the lowest common ancestor of the genomes that contain a given k-mer. <br>
 The used default database is <tt>/mnt/fass1/database/kraken2-database</tt>. The custom database can be generated using the following commands with the <tt>clean</tt> command removing unnecessary files.
@@ -190,7 +194,7 @@ The resulting plots also contain a baseline, which is different for each sample 
 This metric is based on the abundances the different classifier detect for the given species of the sample. This might be important as the changes in microbial population composition play a role in phenotypic effect [Morgan2012](https://doi.org/10.1186/gb-2012-13-9-r79 "Morgan, X. C., Tickle, T. L., Sokol, H., Gevers, D., Devaney, K. L., Ward, D. V., ... & Huttenhower, C. (2012). Dysfunction of the intestinal microbiome in inflammatory bowel disease and treatment. Genome biology, 13(9), 1-18."). The abundance that is considered here is based in the number of reads assigned to a certain species divided by the total number of reads, therefore the read counts are not corrected for genome size. <br>
 The abundance profiles are determined with the pairwise distances between the abundances of ground-truth and the abundances estimated by the classifiers at species level [[1]](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). To calculate the euclidion distance, the python script [abundanceProfileSimilarity.py](../scripts/abundanceProfileSimilarity.py) is used which uses Scipy's [spatial.distance](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html) package.
 
-### Multi Locus Sequence Typing
+## Multi Locus Sequence Typing
 Multi Locus Sequence Typing (MLST) describes using, in general, seven preserved and well-known genes or loci to identify species and especially strains and therefore to analyze the molecular evolution [MLSTToxi](https://www.sciencedirect.com/science/article/pii/S0580951715000148 "Dingle, T. C., & MacCannell, D. R. (2015). Molecular strain typing and characterisation of toxigenic Clostridium difficile. *Methods in Microbiology*, 42, 329-357."). From the genes, internal fragments of 450 to 500 bp are used. There are different sequences for each gene representing the different alleles. A selection of those alleles for each strain/isolate defines the sequence type (ST) or allelic profile. The collection of ST is the MLST scheme for the species, i.e. each isolate/srain is characterized by the the alleles at the gene loci [PubMLST](https://pubmlst.org/multilocus-sequence-typing "Public databases for molecular typing and microbial genome diversity. Multi-Locus Sequence Typing. Retrieved from https://pubmlst.org/multilocus-sequence-typing. Last visited on 21/04/2021."). <br>
 Here, MLSTs are used as an additional validation of the classifiers performances. <br>
 
@@ -217,7 +221,15 @@ The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et 
 |                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 5    	||                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|      	|
 
 **Table XYZ: Overview of MLST schemes for given species**. This table shows the selected gene fragments for each species. The first line contains the included genes whereas the second line states which locus is used in that allelic profile. <br>
-the used MLS schemes or origins from where the sequences are gatheres are linked with the species name.
+the used MLS schemes or origins from where the sequences are gatheres are linked with the species name. <br>
+
+The sequences are concatenated into the file [MLSTS.fasta]() and blasted against each sample. To generate a database for each sample, the following command is used:
+
+    makeblastdb -in input.fasta -parse_seqids -dbtype nucl -out output.prefix
+
+Since the use of those MLSTs is to validate the occurence of species in the sample, it is sufficient to return one hit per sequene in the query file. This is done by setting the parameter <tt>max_targets_seq</tt> and <tt>culling_limit</tt>. This leads to the following command for blasting:
+
+    blastn -task blastn -outfmt 6 -max_target_seqs 1 -culling_limit 1 -query MLST.fasta -db sample.db -out sample.blast
 
 ### Computational Requirements
 Additionally to the quality of the different classifiers, the computational requirements are compared, i.e. the runtime for classification and database construction, if possible. They are measured using the <tt>benchmark</tt> option in <tt>snakemake</tt>, which returns the wall clock time of a task. <br>
@@ -226,32 +238,21 @@ The runs are performed on <tt>Linux prost 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1
 
 # Results and Discussion
 ## Comparison using the metrics
-### Area under Preicison Recall Curve
-|    |    |    |    |    |    | 
-|:--:|:--:|:--:|:--:|:--:|:--:|
-|![Gridion364: PR Curve, Diamond (default)](../stats/pics/gridion364_default.diamond.prc.jpeg)|![Gridion364: PR Curve, Kaiju (default)](../stats/pics/gridion364_default.kaiju.prc.jpeg)|![Gridion364: PR Curve, CCMetagen (default)](../stats/pics/gridion364_default.ccmetagen.prc.jpeg)|![Gridion364: PR Curve, Centrifuge (default)](../stats/pics/gridion364_default.centrifuge.prc.jpeg)|![Gridion364: PR Curve, Clark (default)](../stats/pics/gridion364_default.clark.prc.jpeg)|![Gridion364: PR Curve, Kraken2 (default)](../stats/pics/gridion364_default.kraken2.prc.jpeg)|
-| **Gridion364: PR Curve for Diamond (default)**. | **Gridion364: PR Curve for Kaiju (default)**.   |  **Gridion364: PR Curve for CCMetagen (default)**.  | **Gridion364: PR Curve for Centrifuge (default)**.  | **Gridion364: PR Curve for Clark (default)**.  |  **Gridion364: PR Curve for Kraken2 (default)**.  | 
-| AUC: 0.7029369 | AUC: 0.7253469| AUC: 0.5786301 | AUC: 1.0 |AUC: 0.7029369 | AUC: 1.0 | 
+### Area under Precision Recall Curve
+With the Area under Precision Recall Curve (AUPR), it is possible to evaluate precision and recall using only one value. Using the R script [visPRCurve.R](scripts/../../scripts/visPRCurve.R), the values in Table XYZ are calculated. <br>
+Both, Centrifuge und Kraken2 reach a value of 1.0 for the CS Even samples, which equals the result a perfect classifier would reach. The corresponding precision-recall curve can be seen in Figure A_PRC1. The best classifier regarding the AUPR for the CS Log samples seems to be Clark with 0.76 and 0.82 (GridION 366 and PromethION 367, respectively). Kaiju achieved the worst result for the CS Log samples with 0.39 and 0.4, Diamond is slightly better with 0.54 for GridION366. <br>
+In general no trend is to be observed that the classifiers uniformly perform better with greather sequencing depth or species abundances. Kaiju seems to work better with CS Even, so do Diamond (based on the GridION samples), Centrifuge and Kraken2. CCMetagen and Clark achieved higher values for the CS Log samples, althought the improvement for Clark is small. <br>
+There does not seem to be any connection to the different classification approaches, since Kraken2 and Clark both perform with k-mers but show different trends. However, both tools using the FM-Index (Kaiju and Centrifuge) perform better for CS Even samples. <br>
+A trend that can be observes is that Diamond and Kaiju, both using protein classification, seem to perform better for CS Even samples with their default database. <br>
+It has to be considered that only Kraken2 and CCMetagen have fungal sequences in their default database, therefore the other tools might perform 
+|                	| Diamond   	| Kaiju     	| CCMetagen 	| Centrifuge 	| Clark     	| Kraken2   	|
+|----------------	|-----------	|-----------	|-----------	|------------	|-----------	|-----------	|
+| GridION 364    	| 0.7029369 	| 0.7253469 	| 0.5786301 	| 1.0        	| 0.7029369 	| 1.0       	|
+| PromethION 365 	|           	| 0.5702636 	|           	| 1.0        	| 0.7029369 	| 1.0       	|
+| GridION 366    	| 0.5357696 	| 0.3873827 	| 0.7760189 	| 0.6062113  	| 0.7600671 	| 0.6724297 	|
+| PromethION 367 	|           	| 0.4024634 	|           	| 0.6138137  	| 0.8156916 	| 0.6965986 	|
 
-|    |    |    |    |
-|:--:|:--:|:--:|:--:|
-|![Promethion365: PR Curve, Kaiju (default)](../stats/pics/promethion365_default.kaiju.prc.jpeg)|![Promethion365: PR Curve, Centrifuge (default)](../stats/pics/promethion365_default.centrifuge.prc.jpeg)|![Promethion365: PR Curve, Clark (default)](../stats/pics/promethion365_default.clark.prc.jpeg)|![Promethion365: PR Curve, Kraken2 (default)](../stats/pics/promethion365_default.kraken2.prc.jpeg)|
-| **Promethion365: PR Curve for Kaiju (default)**.   |  **Promethion365: PR Curve for Centrifuge (default)**.  | **Promethion365: PR Curve for Clark (default)**.  |  **Promethion365: PR Curve for Kraken2 (default)**.  | 
-| AUC: 0.5702636 | AUC: 0.1.0| AUC: 0.7029369 | AUC: 1.0 |
-
-
-|    |    |    |    |    |    | 
-|:--:|:--:|:--:|:--:|:--:|:--:|
-|![Gridion366: PR Curve, Diamond (default)](../stats/pics/gridion366_default.diamond.prc.jpeg)|![Gridion366: PR Curve, Kaiju (default)](../stats/pics/gridion366_default.kaiju.prc.jpeg)|![Gridion366: PR Curve, CCMetagen (default)](../stats/pics/gridion366_default.ccmetagen.prc.jpeg)|![Gridion366: PR Curve, Centrifuge (default)](../stats/pics/gridion366_default.centrifuge.prc.jpeg)|![Gridion366: PR Curve, Clark (default)](../stats/pics/gridion366_default.clark.prc.jpeg)|![Gridion366: PR Curve, Kraken2 (default)](../stats/pics/gridion366_default.kraken2.prc.jpeg)|
-| **Gridion366: PR Curve for Diamond (default)**. | **Gridion366: PR Curve for Kaiju (default)**.   |  **Gridion366: PR Curve for CCMetagen (default)**.  | **Gridion366: PR Curve for Centrifuge (default)**.  | **Gridion366: PR Curve for Clark (default)**.  |  **Gridion366: PR Curve for Kraken2 (default)**.  | 
-| AUC: 0.5357696 | AUC: 0.3873827| AUC: 0.7760189 | AUC: 0.6062113 |AUC: 0.7600671 | AUC: 0.6724297 | 
-
-|    |    |    |    |
-|:--:|:--:|:--:|:--:|
-|![Promethion367: PR Curve, Kaiju (default)](../stats/pics/promethion365_default.kaiju.prc.jpeg)|![Promethion365: PR Curve, Centrifuge (default)](../stats/pics/promethion367_default.centrifuge.prc.jpeg)|![Promethion367: PR Curve, Clark (default)](../stats/pics/promethion367_default.clark.prc.jpeg)|![Promethion367: PR Curve, Kraken2 (default)](../stats/pics/promethion367_default.kraken2.prc.jpeg)|
-| **Promethion367: PR Curve for Kaiju (default)**.   |  **Promethion367: PR Curve for Centrifuge (default)**.  | **Promethion367: PR Curve for Clark (default)**.  |  **Promethion367: PR Curve for Kraken2 (default)**.  | 
-| AUC: 0.5702636 | AUC: 0.6138137| AUC: 0.8156916 | AUC: 0.6965986 |
-
+***Table XYZ.*** This table shows the calculated Area under Precision Recall Curve for the different tools and samples using their default database. Note that CCMetagen and Diamond are not able to perform on the PromethION samples, therefore those values are missing. There is no trend to be observed regarding the AUPR and different sequencing depths. However, some tools seem to perform better with the CS Even samples (e.g. Diamond, Centrifuge, Kraken2), whereas Kaiju, CCMetagen and Clarks seem to perform better for the CS Log samples.
 ### Abundance Profile Similarity
 | Classified Species 	| *B. subtilis*          	| *L. monocytogenes*     	| *E. faecalis*          	| *S. aureus*            	| *S. enterica*           	| *E. coli*               	| *P. aeruginosa*         	| *L. fermentum*        	| *S. cerevisiae*        	| *C. neoformans*         	|
 |--------------------	|----------------------	|----------------------	|----------------------	|----------------------	|-----------------------	|-----------------------	|-----------------------	|---------------------	|----------------------	|-----------------------	|
@@ -300,7 +301,8 @@ The runs are performed on <tt>Linux prost 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1
 ***Table XYZ_367. This table does not contain entries for Diamond and CCMetagen since those tools could not deal with the PromethION samples in appropiate time or space.***
 
 - da wird eh nur species level machen, ist strain level egal bei den MLST, also sollte es keine probleme geben, welches ich genommen hab
-### Multi Locus Sequence Typing
+his means that the species are, as expected, in the samples and can even be identified using only seven gene fragments with each up to 500 bp.
+
 ### Time
 
 |            	| kma            	| ccmetagen      	| clark                 	| centrifuge     	| kaiju          	| kraken2        	| diamond                 	|
@@ -346,6 +348,12 @@ Although the runtime of Diamond is comparably worse, the time for database creat
 ***Table Time32: Overview of time consumption database creation.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front.The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/databases. <br> <br>
 
 The runtime of BugSeq can not be evaluated accordingly since the cloud service offers no information about the time the classification needed and no custom database is build.
+
+## Multi Locus Sequence Typing
+Blasting the housekeeping-genes against the samples revealed for each of the chose genes in evey species at least one hit. The sequence identities for GridION364 range from 88.831% to 99.045% with an average hit length of 468 nt. The hit lengths vary from 311 to 645. The greatest e-value is 7.83e-171, the majority of values is 0.0. <br>
+Considering the other CS Even sample, PromethION 365, the MLST blast revealed...
+
+Blasting the MLSTs against GridION366 shows that for each gene at least one hit. The average sequence identity is 85.57% with values ranging from 66.08% to 99.34%. The average math length is comparatively small with 363 nt (ranging from 27 nt to 760 nt) compared to the CS Even match lengths. The average e-value is 0.25 which again is higher not as good as the e-values for the CS Even samples.
 ## Classification Results
 The following section shows the species in the diagrams that had an abundance of at least one per cent. Reads that were not assigned to a species but other taxa, or are below the 1% mark, are summarized in "Others".
 ### Diamond
@@ -544,6 +552,31 @@ Considering the CS Log samples, the results are similar as well. The majority of
 ## Stuff that didn't work
 # Conclusion
 # Attachments and Supplementary Information
+|    |    |    |    |    |    | 
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|![Gridion364: PR Curve, Diamond (default)](../stats/pics/gridion364_default.diamond.prc.jpeg)|![Gridion364: PR Curve, Kaiju (default)](../stats/pics/gridion364_default.kaiju.prc.jpeg)|![Gridion364: PR Curve, CCMetagen (default)](../stats/pics/gridion364_default.ccmetagen.prc.jpeg)|![Gridion364: PR Curve, Centrifuge (default)](../stats/pics/gridion364_default.centrifuge.prc.jpeg)|![Gridion364: PR Curve, Clark (default)](../stats/pics/gridion364_default.clark.prc.jpeg)|![Gridion364: PR Curve, Kraken2 (default)](../stats/pics/gridion364_default.kraken2.prc.jpeg)|
+| **Gridion364: PR Curve for Diamond (default)**. | **Gridion364: PR Curve for Kaiju (default)**.   |  **Gridion364: PR Curve for CCMetagen (default)**.  | **Gridion364: PR Curve for Centrifuge (default)**.  | **Gridion364: PR Curve for Clark (default)**.  |  **Gridion364: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.7029369 | AUC: 0.7253469| AUC: 0.5786301 | AUC: 1.0 |AUC: 0.7029369 | AUC: 1.0 | 
+
+|    |    |    |    |
+|:--:|:--:|:--:|:--:|
+|![Promethion365: PR Curve, Kaiju (default)](../stats/pics/promethion365_default.kaiju.prc.jpeg)|![Promethion365: PR Curve, Centrifuge (default)](../stats/pics/promethion365_default.centrifuge.prc.jpeg)|![Promethion365: PR Curve, Clark (default)](../stats/pics/promethion365_default.clark.prc.jpeg)|![Promethion365: PR Curve, Kraken2 (default)](../stats/pics/promethion365_default.kraken2.prc.jpeg)|
+| **Promethion365: PR Curve for Kaiju (default)**.   |  **Promethion365: PR Curve for Centrifuge (default)**.  | **Promethion365: PR Curve for Clark (default)**.  |  **Promethion365: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.5702636 | AUC: 1.0| AUC: 0.7029369 | AUC: 1.0 |
+
+
+|    |    |    |    |    |    | 
+|:--:|:--:|:--:|:--:|:--:|:--:|
+|![Gridion366: PR Curve, Diamond (default)](../stats/pics/gridion366_default.diamond.prc.jpeg)|![Gridion366: PR Curve, Kaiju (default)](../stats/pics/gridion366_default.kaiju.prc.jpeg)|![Gridion366: PR Curve, CCMetagen (default)](../stats/pics/gridion366_default.ccmetagen.prc.jpeg)|![Gridion366: PR Curve, Centrifuge (default)](../stats/pics/gridion366_default.centrifuge.prc.jpeg)|![Gridion366: PR Curve, Clark (default)](../stats/pics/gridion366_default.clark.prc.jpeg)|![Gridion366: PR Curve, Kraken2 (default)](../stats/pics/gridion366_default.kraken2.prc.jpeg)|
+| **Gridion366: PR Curve for Diamond (default)**. | **Gridion366: PR Curve for Kaiju (default)**.   |  **Gridion366: PR Curve for CCMetagen (default)**.  | **Gridion366: PR Curve for Centrifuge (default)**.  | **Gridion366: PR Curve for Clark (default)**.  |  **Gridion366: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.5357696 | AUC: 0.3873827| AUC: 0.7760189 | AUC: 0.6062113 |AUC: 0.7600671 | AUC: 0.6724297 | 
+
+|    |    |    |    |
+|:--:|:--:|:--:|:--:|
+|![Promethion367: PR Curve, Kaiju (default)](../stats/pics/promethion367_default.kaiju.prc.jpeg)|![Promethion365: PR Curve, Centrifuge (default)](../stats/pics/promethion367_default.centrifuge.prc.jpeg)|![Promethion367: PR Curve, Clark (default)](../stats/pics/promethion367_default.clark.prc.jpeg)|![Promethion367: PR Curve, Kraken2 (default)](../stats/pics/promethion367_default.kraken2.prc.jpeg)|
+| **Promethion367: PR Curve for Kaiju (default)**.   |  **Promethion367: PR Curve for Centrifuge (default)**.  | **Promethion367: PR Curve for Clark (default)**.  |  **Promethion367: PR Curve for Kraken2 (default)**.  | 
+| AUC: 0.5702636 | AUC: 0.6138137| AUC: 0.8156916 | AUC: 0.6965986 |
+
 | Classified Species 	| B. subtilis 	| L. monocytogenes 	| E. faecalis 	| S. aureus 	| E. coli 	| P. aeruginosa 	| Limosil. fermentum 	| S. sp. S048_01045  	| S. sp. S102_03650 	| S sp. S060_01291 	| B. spizizenii |L. innocua 	|   	| unclassified 	| others 	|
 |--------------------	|-------------	|------------------	|-------------	|-----------	|---------	|---------------	|--------------------	|--------------------	|-------------------	|------------------|----	|------------	|---	|--------------	|--------	|
 | CS Even            	|             	|                  	|             	|           	|         	|               	|                    	|                    	|                   	|                  |	|            	|   	|              	|        	|
