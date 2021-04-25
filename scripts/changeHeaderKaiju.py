@@ -1,34 +1,45 @@
-# this scripts changes the faa output headers accordingly to Kaiju regulatory: >prefix_taxID
-# first arg: list with headers, second arg: faa file
-import sys, os
-from ete3 import NCBITaxa
-import subprocess as sp
+# -*- coding: utf-8 -*-
+"""
+Script to add taxids to nt collection
+@ V.R.Marcelino
+Created on Fri Dec 28 10:37:56 2018
 
-def species2TaxID(species):
-    return NCBITaxa().get_name_translator([species])[str(species)][0]
+AN: From CCMetagen GitHub
+"""
+# fitted for my needs for Kaiju Headers
 
-def getName(line):
-    name = line.split("\n")[0].split("[")[1][:-1]
-    return name
+import re
+import sys
 
-counter=0
-headers = open(sys.argv[1], 'r')
-old_name=""
-old_taxid=0
-counter_headers=0
-for header in headers:
-    try:
-        name = getName(header)
-        if old_name==name:
-            counter+=1
-        else:
-            old_name=name
-            counter=1
-            taxid=species2TaxID(name)
-        headerStart=header.split(" ")[0]
-        os.system("sed -i 's/"+str(headerStart)+".*/>"+str(counter)+"_"+str(taxid)+"/' "+str(sys.argv[2]))
-        counter_headers+=1
-        if counter_headers % 100 == 0:
-            print(counter_headers)
-    except Exception:
-        pass
+seqid2taxid=sys.argv[1]
+nt_in=sys.argv[2]
+
+# function to  get taxids from accession numbers
+def get_tax_id_dic (accession, accession_dic):
+    taxid = accession_dic.get(accession)
+    if taxid == None:
+        taxid = "unk_taxid"
+    return taxid
+
+# read acc2taxid.map as dictionary
+with open(seqid2taxid) as a:
+    acc2tax_dic = dict(x.rstrip().split(None, 1) for x in a)
+
+# read fasta file and output new file on the fly
+# although it says 'open', it reads line by line and won't store the whole file in memory.
+    
+new_nt = open(sys.argv[3], 'w')
+
+with open(nt_in) as nt:
+    for line in nt:
+        if line.startswith(">"):
+            splited_rec = re.split (r'(>| )', line)
+            accession = splited_rec[2]
+            taxid = get_tax_id_dic(accession,acc2tax_dic)
+            line = ">" + taxid
+        new_nt.write(line)
+            
+new_nt.close()
+
+
+print ("Done!")

@@ -32,11 +32,8 @@ with open(nt_in) as nt:
     for line in nt:
         if line.startswith(">"):
             splited_rec = re.split (r'(>| )', line)
-            print(splited_rec)
             accession = splited_rec[2]
-            print(accession)
             taxid = get_tax_id_dic(accession,acc2tax_dic)
-            print(taxid)
             line = ">" + taxid + "|" + "".join(splited_rec[2:])
         new_nt.write(line)
             
