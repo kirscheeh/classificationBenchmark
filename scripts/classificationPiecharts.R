@@ -3,7 +3,7 @@
 
 args <- commandArgs(trailingOnly=TRUE)
 report <- read.csv(args[1], sep="\t")
-name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/areports/gridion366_custom.centrifuge.areport"
+name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/areports/gridion364_custom.kaiju.areport"
 report <- read.csv(name, sep="\t")
 sample.name.splitted <- strsplit(name, "/")
 sample.name.vector <- sample.name.splitted[[1]]

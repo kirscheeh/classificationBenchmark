@@ -71,7 +71,7 @@ To use DIAMOND for taxonomic classification, the output format has to be defined
 #### Kaiju
 Kaiju [Kaiju](https://doi.org/10.1186/s13062-018-0208-7 "Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*,* 7(1), 1-9.") is a fast and sensitive tool for taxonomic classification of metagenomic samples that uses a reference database of annotated protein-coding genes of microbial genomes. The DNA reads are translated into the six reading frames and split according to the stop codons. The resulting fragments are sorted regarding their length and due to the usage of the Ferragina and Mazini-Index (FM-Index), exact matches can be searched between read and database-reference in effient time by Kaiju. <br>
 The default database consists of the downloaded index <tt>kaiju\_db\_refseq\_2020-05-25</tt> which was downloaded from the [Kaiju webserver](http://kaiju.binf.ku.dk/server) as of 28/11/2020. <br>
-Building a custom database consists of two steps and the sequence headers need to consist of the NCBI taxonomic ID and optinally a prefix spearated with an underscore. To achieve this format, the protein sequence file [refseq_bac_fung.faa](/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa) is altered with the script [changeHeaderKaiju.py](scripts/../../scripts/changeHeaderkiaju.py). The commands to build the custom database can be seen in the following box.
+Building a custom database consists of two steps and the sequence headers need to consist of the NCBI taxonomic ID and optinally a prefix spearated with an underscore. To achieve this format, the protein sequence file [refseq_bac_fung.faa](/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa) is altered with the script [changeHeaderKaiju.py](scripts/../../scripts/changeHeaderkiaju.py), which is based on a script for [CCMetagen](https://github.com/vrmarcelino/CCMetagen/blob/master/benchmarking/rename_nt/rename_nt.py "Renaming script from CCMetagen"). The commands to build the custom database can be seen in the following box.
     
     kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {bwt} {input.faa}
     kaiju-mkfmi -r {bwt}
@@ -106,9 +106,9 @@ The used indexed database was downloaded from their [website](http://www.cbs.dtu
         # -ef   extended output file that includes percentage of classified reads
         # -c    minimum coverage of the reference sequence (%)
 
-The custom database using the refseq of bacteria and fungi can be created with the following command:
+The custom database using the refseq of bacteria and fungi need to be created with kma. The input sequence headers need to be altered to fit the necessary format. This is done with [changeHeaderCCMetagen.py](scripts/../../scripts/changeHeaderCCMetagen.py) which is based on the CCMetagen script for renaming nt sequenes ([CCMetagen script]((https://github.com/vrmarcelino/CCMetagen/blob/master/benchmarking/rename_nt/rename_nt.py "Renaming script from CCMetagen")))
 
-    NO IDEA 
+    kma_index -i {input} -o {output}
     
 #### Centrifuge
 Centrifuge [Centrifuge](https://doi.org/10.1101%2Fgr.210641.116 "Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.") is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found. <br>
@@ -156,11 +156,6 @@ For taxonomic classification, the following command is used:
         # --confidence          threshold that must be in [0,1]
         # --unclassified-out    prints unclassified sequences to filename
 
-#### MetaMaps
-This tool is for metagenomic long-read analyses, it is based on the mapping algorithm MetaMap. !!! fortsetzen
-
-    ./metamaps mapDirectly --all -r {database.fna} -q {input.fastq} -o {output.classification} -t {threads}
-    ./metamaps classify --mappings c{output.classification} --DB {database} -t {threads}
 
 ### Others
 Additional to the classification tools, conda [conda](https://docs.anaconda.com/ "Anaconda Software Distribution. (2020). Anaconda Documentation. Anaconda Inc. Retrieved from https://docs.anaconda.com/") is used to organise and coordinate the different requirements of the tools. The tools themselves and their execution are structured with snakemake [snakemake](https://snakemake.readthedocs.io/en/stable/ "Köster, J., & Rahmann, S. (2012). Snakemake—a scalable bioinformatics workflow engine. Bioinformatics, 28(19), 2520-2522."). Some analysis is done with Python, R and Bash (Table 3).
@@ -350,10 +345,18 @@ Although the runtime of Diamond is comparably worse, the time for database creat
 The runtime of BugSeq can not be evaluated accordingly since the cloud service offers no information about the time the classification needed and no custom database is build.
 
 ## Multi Locus Sequence Typing
-Blasting the housekeeping-genes against the samples revealed for each of the chose genes in evey species at least one hit. The sequence identities for GridION364 range from 88.831% to 99.045% with an average hit length of 468 nt. The hit lengths vary from 311 to 645. The greatest e-value is 7.83e-171, the majority of values is 0.0. <br>
-Considering the other CS Even sample, PromethION 365, the MLST blast revealed...
+The following don't consider MLST for *Saccharomyces cerevisiae* since no fitting explicit MLST scheme could be found. <br>
 
-Blasting the MLSTs against GridION366 shows that for each gene at least one hit. The average sequence identity is 85.57% with values ranging from 66.08% to 99.34%. The average math length is comparatively small with 363 nt (ranging from 27 nt to 760 nt) compared to the CS Even match lengths. The average e-value is 0.25 which again is higher not as good as the e-values for the CS Even samples.
+Blasting the housekeeping-genes against the samples revealed for each of the chose genes in evey species at least one hit. The sequence identities for GridION364 range from 88.831% to 99.045% with an average hit length of 468 nt. The hit lengths vary from 311 to 645. The greatest e-value is 7.83e-171, the majority of values is 0.0. <br>
+Considering the other CS Even sample, PromethION 365, the MLST blast shows sequences identities from 90.13% to 99.52% with an average hit length of 467 nt,which is similar to the hit length for GridION 364. The lengths vary from 308 nt to 642 nt. The average e-value is similar small with 2.200078e-143. <br>
+
+Blasting the MLSTs against GridION366 shows that for each gene at least one hit. The average sequence identity is 85.57% with values ranging from 66.08% to 99.34%. The average math length is comparatively small with 363 nt (ranging from 27 nt to 760 nt) compared to the CS Even match lengths. The average e-value is 0.25 which again is higher not as good as the e-values for the CS Even samples. <br>
+This can be observed within the PromethION 367 samples as well. The sequence identities range from 67.68% to 99.75% with an average of 89.59%, therefore having a wider range of identity. The hit length range from 29 nt to 742 nt with an average of 396 nt, which again is shorter than the average hit lengths in the CS Even samples. The average e-value is 0.057. <br>
+
+The slightly poorer results might be explained with the abundances of species in the sample. <br>
+Rhe predominant species in the CS Log samples is *Listeria monocytogenes*, considering only this species, the average sequence identifiy for both samples and all genes is 99.14, which is similar and even better than the reslult for both CS Even samples (98.62%). Considering a species with nearly no abundance, for example *Escherichia Coli*, the Log samples achieve less sequence identity (90.63% and 94.15%). <br>
+
+However, this method seems to be a valuable step for preprocessing if the species in the metagenomic sample are not known.
 ## Classification Results
 The following section shows the species in the diagrams that had an abundance of at least one per cent. Reads that were not assigned to a species but other taxa, or are below the 1% mark, are summarized in "Others".
 ### Diamond
@@ -547,9 +550,29 @@ The percentage of unclassified reads is similar (9.56% and 11.76%, respectively)
 Considering the CS Log samples, the results are similar as well. The majority of reads is assigend to *Listeria monocytogenes* with 81.607% and 80.044% for GridION and PromethION, respectively. Arpund 4.5% of reads are assigned to *Pseudomonas aeruginosa*. The number of reads that are not classified as well as the number of reads assigned to taxa that are not on species level or to species that didn't reach 1% abundance.
 
 ### BugSeq
-### MetaMaps
 
 ## Stuff that didn't work
+At the beginning of this comparison, a list with more than 12 classification tools existed. Some of those tools are specifically for long read data, others are not. <br>
+
+The Naive Bayes Classification Tool [NBC](https://academic.oup.com/bioinformatics/article/27/1/127/202209 "Rosen, G. L., Reichenberger, E. R., & Rosenfeld, A. M. (2011). NBC: the Naive Bayes Classification tool webserver for taxonomic classification of metagenomic reads. *Bioinformatics*, 27(1), 127-129.") should be used to test whether older classification approaches are able to handle the state-of-the-art long reads, but the webserver is only able to process 20 Mb files for gunal samples. The try to only use the bacterial database failed during the upload (GridiION 364), the page didn't respond. It seems that this tool is not able to process high throughput data. <br>
+
+K-SLAM [kslam](https://academic.oup.com/nar/article/45/4/1649/2674183 "Ainsworth, D., Sternberg, M. J., Raczy, C., & Butcher, S. A. (2017). k-SLAM: accurate and ultra-fast taxonomic classification and gene identification for large metagenomic data sets. *Nucleic acids research*, 45(4), 1649-1656.") claims to be able to process up to 10,000,000 reads, but repeats to throw the following error:
+
+    terminate called after throwing an instance of 'std::bad_alloc'
+    what():  std::bad_alloc
+    /bin/bash: line 1: 19208 Aborted
+
+After trying different <tt>--num-reads-at-once</tt> values, the tool run several weeks <tt>--num-reads-at-once 1000000</tt> without any visible progress or output. It was terminated and decided not to be used. <br>
+
+The lightweight alignment-free and assembly-free framework for metagenomic classification tool LiME [lime](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03628-w "Guerrini, V., Louza, F. A., & Rosone, G. (2020). Metagenomic analysis through the extended Burrows-Wheeler transform. *BMC bioinformatics*, 21(8), 1-25.") could not be installed via conda and the manual installation with git caused several errors while trying to install dependencies. It could not be installed. <br>
+
+taxMaps [taxmaps](https://genome.cshlp.org/content/28/5/751 "Corvelo, A., Clarke, W. E., Robine, N., & Zody, M. C. (2018). taxMaps: comprehensive and highly accurate taxonomic classification of short-read data in reasonable time. *Genome research*, 28(5), 751-758.") is a python based classification tool for short read data. Trying to use it for long read data resulted in several IndexErrors. <br>
+
+MetaOthello [metaothello](https://doi.org/10.1093/bioinformatics/btx432 "Liu, X., Yu, Y., Liu, J., Elliott, C. F., Qian, C., & Liu, J. (2018). A novel data structure to support ultra-fast taxonomic classification of metagenomic sequences with k-mer signatures. *Bioinformatics*, 34(1), 171-178.") is probabilistic hashing classifier for metagenomic reads. During the processing of a GridION sample, the tool repeatingly throws <tt>Segmentation Fraud</tt>s. It therefore was decided not to use the tool.
+
+- deepmicrobes
+
+CCMetagen and Diamond are two tools used within this comparison, but only for the samples with up to 3.5 million reads. The PromethION samples could not be classified using these tools in reasonable time. Diamond used up to two weeks for a PromethION sample and stopped without reason or result. Due to this, it was decided to only use Diamond for the GridION samples. Since CCMetagen is based on KMA, the failed preprocessing with KMA while finding k-mer ankers lead to the use of CCMetagen only for GridION samples.
 # Conclusion
 # Attachments and Supplementary Information
 |    |    |    |    |    |    | 
@@ -653,6 +676,15 @@ Considering the CS Log samples, the results are similar as well. The majority of
 
 [NCBISallmonella](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi)
 
+[NBC](https://academic.oup.com/bioinformatics/article/27/1/127/202209) Rosen, G. L., Reichenberger, E. R., & Rosenfeld, A. M. (2011). NBC: the Naive Bayes Classification tool webserver for taxonomic classification of metagenomic reads. *Bioinformatics*, 27(1), 127-129.
+
+[kslam](https://academic.oup.com/nar/article/45/4/1649/2674183) Ainsworth, D., Sternberg, M. J., Raczy, C., & Butcher, S. A. (2017). k-SLAM: accurate and ultra-fast taxonomic classification and gene identification for large metagenomic data sets. *Nucleic acids research*, 45(4), 1649-1656.
+
+[lime](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03628-w) Guerrini, V., Louza, F. A., & Rosone, G. (2020). Metagenomic analysis through the extended Burrows-Wheeler transform. *BMC bioinformatics*, 21(8), 1-25.
+
+[taxmaps](https://genome.cshlp.org/content/28/5/751) Corvelo, A., Clarke, W. E., Robine, N., & Zody, M. C. (2018). taxMaps: comprehensive and highly accurate taxonomic classification of short-read data in reasonable time. *Genome research*, 28(5), 751-758.
+
+[metaothello](https://doi.org/10.1093/bioinformatics/btx432) Liu, X., Yu, Y., Liu, J., Elliott, C. F., Qian, C., & Liu, J. (2018). A novel data structure to support ultra-fast taxonomic classification of metagenomic sequences with k-mer signatures. *Bioinformatics*, 34(1), 171-178.
 
 ### rest
 - *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
