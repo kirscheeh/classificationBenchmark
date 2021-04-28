@@ -225,8 +225,8 @@ def get_prediction(report, th):
                     data.append(0)
     return data 
 
-report=sys.argv[1]
+#report=sys.argv[1]
 #config=sys.argv[2]
-tp, fp, tn, fn = calc_matrixOfConfusion(prediction=get_prediction(report, 0.1), groundTruth=get_groundTruth(report))
-print(get_balancedAcc(get_tpr(tp, fp, tn, fn), get_tnr(tp, fp, tn, fn)))
+#tp, fp, tn, fn = calc_matrixOfConfusion(prediction=get_prediction(report, 0.1), groundTruth=get_groundTruth(report))
+#print(get_balancedAcc(get_tpr(tp, fp, tn, fn), get_tnr(tp, fp, tn, fn)))
 

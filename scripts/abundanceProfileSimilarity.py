@@ -16,10 +16,10 @@ pred=list(predi)
 sampleName = getting.get_sampleName(areport)
 
 if sampleName =="gridion364":
-    truth=[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928, 0.0192, 0.0178]
+    truth=[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928,0.0192, 0.0178]
     #get_APS(areport, truth=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.02, 0.02], printing=True)
 elif sampleName=="promethion365":
-    truth=[0.1902, 0.1433, 0.1207, 0.1111, 0.1032, 0.1026, 0.1011, 0.0913, 0.0187, 0.0177]
+    truth=[0.1902, 0.1433, 0.1207, 0.1111, 0.1032, 0.1026, 0.1011, 0.0913,0.0187, 0.0177]
 else: #gridion366, promethion367
     truth=[0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
 
@@ -31,8 +31,8 @@ try:
 
 
     #print(areport.split("/")[-1])
-    print(areport, l20)
-    print(areport, l21)
+    print(areport, "l20 nope", l20)
+    print(areport, "l21", l21)
     #eturn l2
 except Exception as e:
     print("An error occured.", e)
