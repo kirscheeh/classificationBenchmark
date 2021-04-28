@@ -4,19 +4,19 @@
 # Material and Methods
 ## Data
 The present dataset consists of four samples of the underlying ZymoBIOMICS Microbial Community Standards CS and CSII ([ZymoEven](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard "Zymo Research Corporation, Irvine, CA, USA. Product D6300, Lot ZRC190633"), [ZymoLog](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard-ii-log-distribution "Zymo Research Corporation, Irvine, CA, USA. Product D6310, Lot ZRC190842"), [DataPaper](https://doi.org/10.1093/gigascience/giz043 "Nicholls, S. M., Quick, J. C., Tang, S., & Loman, N. J. (2019). Ultra-deep, long-read nanopore sequencing of mock microbial community standards. Gigascience, 8(5), giz043.")). Those mock communities are composed of ten microbial species, eight bacteria and two fungi (Table 1). Each of these two standards is sequenced with GridION and PromethION, resulting in four samples, two for each standard. 
-|      Name                    	|       Taxonomic ID        	| CS EVEN                	|                         	| CS LOG                 	|
-|--------------------------	|--------------	|------------------------	|-------------------------	|------------------------	|
+|      Name                    	|Type|       Taxonomic ID        	| CS EVEN                	|                         	| CS LOG                 	|
+|--------------------------	|--------------	|------|------------------------	|-------------------------	|------------------------	|
 |                      	| 	| Expected Abundancy (%) 	| Estimated Abundance (%) 	| Expected Abundancy (%) 	|
-| *Bacillus subtilis*        	| 1423         	| 12                     	| 19.32 (19.02)           	| 0.89                   	|
-| *Listeria monocytogenes*   	| 1639         	| 12                     	| 14.56 (14.33)           	| 89.1                   	|
-| *Enterococcus faecalis*    	| 1351         	| 12                     	| 12.24 (12.07)           	| 0.00089                	|
-| *Staphylococcus aureus*    	| 1280         	| 12                     	| 11.28 (11.11)           	| 0.000089               	|
-| *Salmonella enterica*      	| 28901        	| 12                     	| 9.99 (10.32)            	| 0.089                  	|
-| *Escherichia coli*         	| 562          	| 12                     	| 9.93 (10.26)            	| 0.089                  	|
-| *Pseudomonas aeruginosa*   	| 287          	| 12                     	| 9.7 (10.11)             	| 8.9                    	|
-| *Lactobacillus fermentum*  	| 1613         	| 12                     	| 9.28 (9.13)             	| 0.0089                 	|
-|  *Saccharomyces cerevisiae* 	| 4932         	| 2                      	| 1.92 (1.87)             	| 0.89                   	|
-| *Cryptococcus neoformans*  	| 5207         	| 2                      	| 1.78 (1.77)             	| 0.00089                	|
+| *Bacillus subtilis*        | Gram+	| 1423         	| 12                     	| 19.32 (19.02)           	| 0.89                   	|
+| *Listeria monocytogenes*   |Gram+	| 1639         	| 12                     	| 14.56 (14.33)           	| 89.1                   	|
+| *Enterococcus faecalis*    |Gram+	| 1351         	| 12                     	| 12.24 (12.07)           	| 0.00089                	|
+| *Staphylococcus aureus*    |Gram+	| 1280         	| 12                     	| 11.28 (11.11)           	| 0.000089               	|
+| *Salmonella enterica*      |Gram-	| 28901        	| 12                     	| 9.99 (10.32)            	| 0.089                  	|
+| *Escherichia coli*         |Gram-	| 562          	| 12                     	| 9.93 (10.26)            	| 0.089                  	|
+| *Pseudomonas aeruginosa*   |Gram-	| 287          	| 12                     	| 9.7 (10.11)             	| 8.9                    	|
+| *Lactobacillus fermentum*  |Gram+	| 1613         	| 12                     	| 9.28 (9.13)             	| 0.0089                 	|
+|  *Saccharomyces cerevisiae*|Yeast 	| 4932         	| 2                      	| 1.92 (1.87)             	| 0.89                   	|
+| *Cryptococcus neoformans*  |Yeast	| 5207         	| 2                      	| 1.78 (1.77)             	| 0.00089                	|
 
 ***Tabel 1: General information about the used species.*** This table shows the different species included in the mock communities with their taxonomic ID and expected as well as estimated proportion of genome. Note that the CS Even samples have differen measured proportions for GridION (PromethION) that expected. There is no information about the measured proportions for CS Log. The information are gathered from [DataPaper](https://doi.org/10.1093/gigascience/giz043 "Nicholls, S. M., Quick, J. C., Tang, S., & Loman, N. J. (2019). Ultra-deep, long-read nanopore sequencing of mock microbial community standards. Gigascience, 8(5), giz043."), [ZymoEven](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard "Zymo Research Corporation, Irvine, CA, USA. Product D6300, Lot ZRC190633") and [ZymoLog](https://www.zymoresearch.de/collections/zymobiomics-microbial-community-standards/products/zymobiomics-microbial-community-standard-ii-log-distribution "Zymo Research Corporation, Irvine, CA, USA. Product D6310, Lot ZRC190842").<br> <br>
 
@@ -45,7 +45,7 @@ Every tool is used on two different databases: The default database describes th
 |   Diamond    | 2.0.5      | Protein |        Alignment        | full Proteome Bacteria|http://www.diamondsearch.org/index.php |
 |     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  |refseq |              http://kaiju.binf.ku.dk/               |
 |   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)| refseq |     https://github.com/vrmarcelino/CCMetagen       |
-|  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | complete genomes|https://ccb.jhu.edu/software/centrifuge/manual.shtml |
+|  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | refseq|https://ccb.jhu.edu/software/centrifuge/manual.shtml |
 |     CLARK    |    1.2.5        |   DNA   |      (spaced) *k*-mer  | refseq |         http://clark.cs.ucr.edu/Overview/          |
 |    Kraken2   | 2.0.7-beta      |   DNA   |          *k*-mer          |-|         http://ccb.jhu.edu/software/kraken2/         |
 |BugSeq| v1 | DNA | Pipeline?? |-| https://bugseq.com/free |
@@ -112,7 +112,7 @@ The custom database using the refseq of bacteria and fungi need to be created wi
 #### Centrifuge
 Centrifuge [Centrifuge](https://doi.org/10.1101%2Fgr.210641.116 "Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.") is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found. <br>
 The used indices are downloaded from their [website](https://genome-idx.s3.amazonaws.com/centrifuge/p\_compressed_2018_4\_15.tar.gz) as of 15/01/2021. <br>
-The custom database can be created with the following command, where <tt>prefix</tt> is the prefic the index files will carry. The <tt>seqid2taxid.map</tt> file generated from Kraken2 during databse building is used. This spares the download of all sequences that should be included in the index.
+The custom database can be created with the following command, where <tt>prefix</tt> is the prefic the index files will carry. The <tt>seqid2taxid.map</tt> file generated from Kraken2 during database building is used. This spares the download of all sequences that should be included in the index.
 
     centrifuge-build -p {threads} --conversion-table {seqid2taxid.map} --taxonomy-tree {nodes.dmp} --name-table {names.dmp} {input.fna} {prefix}
 
@@ -240,21 +240,22 @@ The missing fungal sequences in the databases do not interfere with the precisio
 
 ***Table XYZ.*** This table shows the calculated Area under Precision Recall Curve for the different tools and samples using their default database. Note that CCMetagen and Diamond are not able to perform on the PromethION samples, therefore those values are missing. There is no trend to be observed regarding the AUPR and different sequencing depths. However, some tools seem to perform better with the CS Even samples (e.g. Diamond, Centrifuge, Kraken2), whereas Kaiju, CCMetagen and Clarks seem to perform better for the CS Log samples.
 
-
 |                	| Diamond   	| Kaiju     	| CCMetagen 	| Centrifuge 	| Clark     	| Kraken2   	|
 |----------------	|-----------	|-----------	|-----------	|------------	|-----------	|-----------	|
-| GridION 364    	| 0.6477213 	|  	|  	| 0.4535386     |  	| 0.6531318       	|
-| PromethION 365 	|           	|  	|           	| 0.4465851     |  	| 0.6342541       	|
-| GridION 366    	|           	|  	|  	| 0.3934339  	| | 0.6348088 	|
-| PromethION 367 	|           	|  	|           	| 0.3556934  	|  	| 0.658239 	|
+| GridION 364    	| 0.6477213 	|  0.6342541	|           	| 0.4535386     |           	| 0.6531318   	|
+| PromethION 365 	|           	|  0.355438	    |           	| 0.4465851     |           	| 0.6342541   	|
+| GridION 366    	|           	|  0.6342541 	|            	| 0.3934339  	|               | 0.6348088 	|
+| PromethION 367 	|           	|  0.4490638	|           	| 0.3556934  	|            	| 0.658239   	|
 
-***Table XYZ.*** !!!.
+***Table XYZ_2.*** This table shows the calculated Area under Precision Recall Curve for the different tools and samples using their custom database. Note that CCMetagen and Diamond are not able to perform on the PromethION samples, therefore those values are missing. !!!
 
-Considering the default database, it is visible that Centrifuge and Kraken2 do not reach the results of a perfect classifier anymore. The AUPR for the CS Even samples approach the AUPR for the CS Log samples!!!
+Considering the custom database, it is visible that Centrifuge and Kraken2 do not reach the results of a perfect classifier anymore. The AUPR for the CS Even samples approaches the AUPR for the CS Log samples. The average AUPR for all samples classified with Kraken2 is 0.645108425, whereas the average AUPR for the default database is higher with 0.842257075 (Table XYZ_2). The AUPR for Centrifuge shows a greater difference of 0.4 between default and custom database (0.80500625 and 0.41231275). Since the only change is the underlying database, this might be the reson for the poorer results. There might be more sequences to check against than in their default databases which leads to less accuracy. Although Kraken2 and Centrifuge do use refseq sequences in their corresponding default databases, the date of the index/database making might influence the known/included sequences. The index for Centrifuge ist from 2018, whereas the Kraken2 database seems to be from 2019. <br> 
+This explanation only partly fits for Diamond and Kaiju as well, because the bacterial proteome sequences are the same, just the fungal proteome is added to the databases. Although Diamond achieves less, Kaiju is able to achieve higher values for the CS Log samples. The CS Even samples result in smaller values (0.634 and 0.355 instead of 0.725 and 0.57 for GridION 264 and PromethION 265, respectively).
+
+<!-- The average balanced accuracy for Kraken2 for example is 1.0 and 0.83 respectively. <br> -->
 
 
-
-It has to be considered that only one dataset is not enough to access the results of the classification tools.
+It has to be considered that only one dataset is not enough to fully access the results of the classification tools.
 ### Abundance Profile Similarity
 | Classified Species 	| *B. subtilis*          	| *L. monocytogenes*     	| *E. faecalis*          	| *S. aureus*            	| *S. enterica*           	| *E. coli*               	| *P. aeruginosa*         	| *L. fermentum*        	| *S. cerevisiae*        	| *C. neoformans*         	|
 |--------------------	|----------------------	|----------------------	|----------------------	|----------------------	|-----------------------	|-----------------------	|-----------------------	|---------------------	|----------------------	|-----------------------	|
@@ -331,10 +332,10 @@ Centrifuge performed a slower which might be explained with the greater number o
 
 |            	| kma            	| ccmetagen      	| clark          | centrifuge           	| kaiju          	    | kraken2        	| diamond                 	|
 |------------	|----------------	|----------------	|--------------- |----------------      	|----------------    	|----------------	|-------------------------	|
-| gridion364 	|                	|                	| 	             | 5:09:32.420430       	| 3:05:24.622132 	    | 0:12:03.455402 	|         -                	|       	
-| gridion366 	|                	|                	|                | 5:31:10.976138       	|               	    | 0:12:31.477754 	|          	|       	
-| promethion365 |            -    	|                -	|                | 2 days, 6:49:22.551248   |                       | 1:26:16.939620    |         -                	|       	
-| promethion367 | -                 |-                  |                | 2 days, 3:59:35.103469   |                       |1:29:48.305022     |-                          |
+| gridion364 	|                	|                	| 	             | 5:09:32.420430       	| 3:05:24.622132 	    | 0:12:03.455402 	|  2 days, 17:38:23.548931               	|       	
+| gridion366 	|                	|                	|                | 5:31:10.976138       	| 3:12:15.641435        | 0:12:31.477754 	|          	|       	
+| promethion365 |            -    	|                -	|                | 2 days, 6:49:22.551248   | 1 day, 7:11:14.124467 | 1:26:16.939620    |         -                	|       	
+| promethion367 | -                 |-                  |                | 2 days, 3:59:35.103469   | 1 day, 3:12:06.381124 |1:29:48.305022     |-                          |
 
 ***Table Time 2: Overview of time consumption for the custom runs.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front. Cells with a dash symbolize runs that did start or took unreasonable much time to start. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/custom. <br> <br>
 
@@ -347,12 +348,12 @@ Although the runtime of Diamond is comparably worse, the time for database creat
 |---------	|-----	|-------	|------------------------	|--------------------	|---------	|----------------	|
 | runtime 	|     	|       	| 1 day, 14:04:24.423278 	| 0:58:52.067620     	|    ???    | 0:23:52.417193 	|
 
-***Table Time32: Overview of time consumption database creation.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front.The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/databases. <br> <br>
+***Table Time32: Overview of time consumption database creation.*** Time is given  as hh:mm:ss and if needed, the number of days is stated explicitly in front. The time benchmarks can be found in /mnt/fass1/kirsten/result/classification/benchmarks/databases. <br> <br>
 
 The runtime of BugSeq can not be evaluated accordingly since the cloud service offers no information about the time the classification needed and no custom database is build.
 
 ## Multi Locus Sequence Typing
-The following don't consider MLST for *Saccharomyces cerevisiae* since no fitting explicit MLST scheme could be found. <br>
+The following don't consider MLST for *Saccharomyces cerevisiae* since no fitting explicit MLST scheme could be found, no paper published sequence fragments and no database included the species. <br>
 
 Blasting the housekeeping-genes against the samples revealed for each of the chose genes in evey species at least one hit. The sequence identities for GridION364 range from 88.831% to 99.045% with an average hit length of 468 nt. The hit lengths vary from 311 to 645. The greatest e-value is 7.83e-171, the majority of values is 0.0. <br>
 Considering the other CS Even sample, PromethION 365, the MLST blast shows sequences identities from 90.13% to 99.52% with an average hit length of 467 nt,which is similar to the hit length for GridION 364. The lengths vary from 308 nt to 642 nt. The average e-value is similar small with 2.200078e-143. <br>
@@ -426,6 +427,9 @@ The CS Log samples are similar as well.  Kaiju is able to assign 57.905% and 58.
 
 ***Figure 4: Classification Results for Kaiju, CS Log, Default Database*** <br> <br>
 
+Using the custom database, Kaiju achieves poorer results. Using the defaultn database results in classification of all bacterial species, this is not achieved with the custom database. For GridION 364, 64.834% of reads are not assigned to a species but another taxonomic level, whereas 3.501% are not assigned to a species that reached 1% of abundance and 12.799% of reads are unclassified. The identified species are *Listeria monocytogenes* (6.85%), *Limosilactobacillus fermentum* (5.35%). *Enterococcus faecalis* (2.371%), *Staphylococcus aureus* (1.233%), *Saccharomyces cerevisiae* (1.37%) and *Cryptococcus neoformans* (1.508%). Although not all bacterial species are idntified, the fungal species can be classified this time. The results for PromethIoN 365, the other CS Even sample, are alike with similar percentages (Table A_KaijuCustom). <br>
+In the CS Log samples, *Listeria Monocytogenes* is again the predominant species, i.e. the only species that is identified with 42.248% or reads assigned to. 44.3% or reads are not assigned to anything on species level, 10.97% are unclassified and 2.481% of reads are assigned to a species that does not reach 1% of abundance. This can be observed in PromethION as well ((Table A_KaijuCustom).
+
 ### CCMetagen
 CCMetagen uses the KMA for aligning, which is designed to map reads against redundant databases. The tool is supposed to work for large datasets, however, no classification could be done for the deep sequences samples with PromethION. KAM throws an error stating not enough space on the device. Therefore, there are only one CS Even and one CS Log sample to analyse.
 |||
@@ -435,7 +439,7 @@ CCMetagen uses the KMA for aligning, which is designed to map reads against redu
 
 ***Figure X: Classification Results for CCMetagen, CS Even, GridION, Default Database*** <br> <br>
 
-CCMetagen is not able to classify 26.736% of the reads of CS Even and 19.458% of the reads could not be assigned to a taxon on species level. The remaining reads are assigned to species with abundances between 1.795% (Enterococcus faecalis) and 16.309 (*Bacillus spizizenii*). In general, CCMetagen is able to classify 5 species correctly (Figure). *Limosilactobacillus fermentum* and *Bacillus spizizenii* are, however, close relatives to *Lactobacillus fermentum* and *Bacillus subtilis* [QUELLE]. Again, the default databse does not include fungal genomes, therefore those cannot be considered here.
+CCMetagen is not able to classify 26.736% of the reads of CS Even and 19.458% of the reads could not be assigned to a taxon on species level. The remaining reads are assigned to species with abundances between 1.795% (Enterococcus faecalis) and 16.309 (*Bacillus spizizenii*). In general, CCMetagen is able to classify 5 species correctly (Figure). *Limosilactobacillus fermentum* and *Bacillus spizizenii* are, however, close relatives to *Lactobacillus fermentum* and *Bacillus subtilis* [QUELLE]. Again, the default database does not include fungal genomes, therefore those cannot be considered here.
 
 Considering the CS Log sample sequenced with GridION, CCMetagen is able to assign 71.494% of reads to *Listeria monocytogenes* and 2.822% to *Pseudomonas aeruginosa*. 0.279% are assigned to others and 25.405% are unclassified.
 

@@ -387,23 +387,3 @@ rule prc: #recision recall curve
     shell:
         '{params} {input} {output}'
 
-rule aps: # abundance profile similarity
-    input:
-        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
-    output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps"
-       # estimate="{PATH}/result/classification/stats/{run}/{sample}_{run}.estimate.aps",
-       # truthLog ="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthLog.aps"
-    conda:
-        "envs/main.yaml"
-    params:
-        script="{PATH}/result/classificationBenchmark/scripts/abundanceProfile.sh",
-        truthEven="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthEven.aps",
-        estimate = "{PATH}/result/classification/stats/{run}/{sample}_{run}.estimate.aps",
-        truthLog="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthLog.aps"
-    run:
-        if getting.get_sampleName(str({input})) in ['gridion364', 'promethion365']:
-            shell("{params.script} {input} [0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.02,0.02] {params.truthEven}"),
-            shell("{params.script} {input} [0.1932,0.1456,0.1224,0.1128,0.0999,0.0993,0.097,0.0928,0.0192,0.0178] {params.estimate}")
-        else:
-            shell("{params.script} {input} [0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089] {params.truthLog}")

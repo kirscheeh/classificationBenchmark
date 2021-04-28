@@ -14,7 +14,7 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-config='config.yaml' #'/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #
+config='/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #'config.yaml' #
 species = get_species(config)
 
 def get_path(config): #get path to working directory
@@ -196,6 +196,37 @@ def calc_accuracy(tp, fp, tn, fn):
     except ZeroDivisionError as e:
         return 0
 
+def get_tpr(tp,fp,tn,fn): #true positive rate
+    try:
+        return tp/(tp+fn)
+    except ZeroDivisionError as e:
+        return 0
 
+def get_tnr(tp,fp,tn,fn): #true negative rate
+    try:
+        return tn/(tn+fp)
+    except ZeroDivisionError as e:
+        return 0
 
+def get_balancedAcc(tpr, tnr):
+    return tpr+tnr/2
+
+def get_prediction(report, th):
+    data=[]
+    with open(report, 'r') as report:
+        lines = report.readlines()
+        for line in lines:
+            line=line.split("\t")
+
+            if line[2]=="S":
+                if line[4].split("\n")[0] in species and float(line[0])>=0.1:  
+                    data.append(1)
+                else:
+                    data.append(0)
+    return data 
+
+report=sys.argv[1]
+#config=sys.argv[2]
+tp, fp, tn, fn = calc_matrixOfConfusion(prediction=get_prediction(report, 0.1), groundTruth=get_groundTruth(report))
+print(get_balancedAcc(get_tpr(tp, fp, tn, fn), get_tnr(tp, fp, tn, fn)))
 
