@@ -51,7 +51,7 @@ Every tool is used on two different databases: The default database describes th
 |BugSeq| v1 | DNA | Pipeline?? |-| https://bugseq.com/free |
 
 ***Table X: Overview of used classification tools and general information.***
-
+!!! date of creation
 #### Diamond
 This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data [Diamond](https://doi.org/10.1038/nmeth.3176 "Buchfink, B., Xie, C., & Huson, D. H. (2015). Fast and sensitive protein alignment using DIAMOND. Nature methods, 12(1), 59-60."). <br>
 The default database is based on the full bacterial genomes (as of 27/07/2019), whereas the custom database consists of the beforementioned refseq sequences of bacteria and fungi. 
@@ -271,10 +271,15 @@ In this section, the abundance profile similarity is discussed as well as the ex
 | PromethION 367 	|                    	| 0.3207758103763161  	|                     	| 0.09035555349250719 	| 0.09783554454663505 	| 0.1057092749303736  	|
 | average        	| 0.520349632        	| 0.2910258460557562  	| 0.2319419772085476  	| 0.08697203716544576 	| 0.13169989246202848 	| 0.09994039746422748 	|
 
-***Table XYZ_APS. Abundance Profile Similarities, Default Database*** This table shows the Abundace Profile Similarity Scores for the different tools and samples. Since this value is based on the L2 distance, smaller values are better than higher ones. Hence, both protein samples show poorer results for the CS Log samples, whereas the other tools show better values for the CS Log samoles. The averages for Kraken2 and Centrifuge are the smallest with Centrifuge having 0.087 and Kraken2 ~0.1. Diamond has the highest average wih 0.52.
+***Table XYZ_APS. Abundance Profile Similarities, Default Database*** This table shows the Abundace Profile Similarity Scores for the different tools and samples. Since this value is based on the L2 distance, smaller values are better than higher ones. Hence, both protein samples show poorer results for the CS Log samples, whereas the other tools show better values for the CS Log samoles. The averages for Kraken2 and Centrifuge are the smallest with Centrifuge having 0.087 and Kraken2 ~0.1. Diamond has the highest average wih 0.52. Note that the APS for Kraken2 include the fungal abundancies, whereas the APS for the other tools do not take those into account here.
 
 Here, too, Kraken2 and Centrifuge perform best regarding the Abundance Proilfe Similarity (APS) value. Smaller values are better, since this metric is based on the L2 distance. Therefore, Centrifuge achieved the best APS with 0.699 for GridION 366 usisng the default database. This is also true for the average APS for all four samples, Centrifuge has an average APS of 0.087, Kraken2 follows with roughly 0.1. Clark only achieves small values for CS Log samples with 0.081 and 0. 0.099 for GridIOn and PromethION, respecitvely.<br>
-Diamond, Kaiju and CCMetagen have average scores of 0.52, 0.29 and 0.23 (Table XYZ_APS). However, the average scores only have limited significance. But the individual values for Kaiju range in that scope as well (0.25 to 0.32), whereas the two scores that can be considered for Diamond differ greatly: 0.333 for GridION 364 and 0.708 for GridION 366. The difference for the samples classified with CCMetagen is less great (0.277 and 0.186). <br>
+Diamond, Kaiju and CCMetagen have average scores of 0.52, 0.29 and 0.23 (Table XYZ_APS). However, the average scores only have limited significance. But the individual values for Kaiju range in that scope as well (0.25 to 0.32), whereas the two scores that can be considered for Diamond differ greatly: 0.333 for GridION 364 and 0.708 for GridION 366. The difference for the samples classified with CCMetagen is less great (0.277 and 0.186). <br> 
+
+The abundances for the species in the samples classified using the default databases can be seen in Tables A1-A4, etc. It can be seen that the protein based tools Kaiju and Diamond assign a minority of reads to the species in the sample. For Diamond (GridION 364), the percentage of assigned reads is between 0 and 1% with the exception of Listeria Monocytogenes with 2.89%. However, considering the genus level, Diamond is able to assign more reads to a genus included into the dataset. The genera with the most abundances are *Listeria*, (9.459%), *Staphylococcus* (7.004%)and *Pseudomonas* (4.54%), see Figure A_Anhang_DiamondGenus364. Two of the corresponding species in this dataset are Gram+, whereas *Listeria monocytogenes* is Gram-, hence there does not seem to be a trend which species are better to classify with Diamond. <br>
+Kaiju on the other hand assigns more reads to Gram+ species (4.151% - 12.503%), whereas Gram- species achieve less assigned reads (1.104% - 2.124%) in GridION 364. This is also true for the PromethION sample, the classified Gram+ species range from 3.98% to 12.033%, whereas the Gram- species have 1.111% to 2.101% of reads (Table XYZ_APS_365, Piechart Kaiju).
+
+- Das gleiche für custom database
 
 - da wird eh nur species level machen, ist strain level egal bei den MLST, also sollte es keine probleme geben, welches ich genommen hab
 his means that the species are, as expected, in the samples and can even be identified using only seven gene fragments with each up to 500 bp.
@@ -368,6 +373,7 @@ An explanation for the poor results might be that Diamonds key features are pair
 
 Due to the relatively long runtime [Table Time], no specifications and different parameters are used. <br> <br>
 
+!!! genus level angucken
 ### Kaiju
 |||
 |:--|:--|
