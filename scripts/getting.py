@@ -133,7 +133,7 @@ def get_MedianLengthOfBestMatch(classification): # for kaiju, returns median mat
 
 def get_groundTruth(report): # ground truth vector based on species level for all species
     data=[]
-
+    print(species)
     with open(report, 'r') as report:
         lines = report.readlines()
         for line in lines:

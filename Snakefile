@@ -104,17 +104,16 @@ rule kraken2:
         dbCustom=DB_custom['kraken2']
     run:
         # --confidence          threshold that must be in [0,1]
-        # --unclassified-out    prints unclassified sequences to filename
         # --classified-out      prints classified sequences to filename
         # --output              prints output to filename
         # --report              prints report with aggregate counts/clade to file
         
         if 'default' in {params.runID}:
-            shell('kraken2 --db {params.dbDefault} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
+            shell('kraken2 --db {params.dbDefault}  --report {output.report} --threads {threads} --output {output.files} {input.files}')
         elif 'customHit' in {params.runID}: # confidence set after benchmark paper
             shell('kraken2 --db {input.dbCustom} --report {output.report} --confidence 0.05 --threads {threads} --output {output.files} {input.files}')
         elif 'custom' in {params.runID}: 
-            shell('kraken2 --db {params.dbCustom} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
+            shell('kraken2 --db {params.dbCustom} --report {output.report} --threads {threads} --output {output.files} {input.files}')
             print("Sure") 
         else:
             print("Kraken2 -- Nothing to do here:", {params.runID})           
