@@ -38,7 +38,7 @@ The ZymoBIOMICS Microbial Community Standards come with knowledge about the abun
 ## Tools
 The detailed commands for the classifcation and postprocessing of the outputs can be seen in [Snakefile](../Snakefile), the detailed commands for database construction are saved in [Snakefile_DB](../Snakefile_DB). <br>
 
-Every tool is used on two different databases: The default database describes the databases or indices provided by the tool. The custom database for each tool is based on the same sequences: The refseq sequences for bacteria and fungi downloaded from [NCBI](!!! Link einfügen) as of ??/??/??. For the protein tools, the bacterial proteome sequences from HERE!!! are used, the fungal sequences are downloaded from [NCBI](Link!!!) as of ??/??/??.
+Every tool is used on two different databases: The default database describes the databases or indices provided by the tool. The custom database for each tool is based on the same sequences: The refseq sequences for bacteria and fungi downloaded from [NCBI](ftp://ftp.ncbi.nlm.nih.gov/ "FTP Server") as of 01/04/2021, see [command](../.paths.md "Line 1ff., 'Bacterial and Fungal RefSeq'"). For the protein tools, the bacterial proteome sequences present at this [location](../.paths.md "Line 4, 'Bacterial Proteome'") are used, the fungal sequences, stored [here](../.paths.md "Line 5, 'Fungal Proteome'") are downloaded from [NCBI](ftp://ftp.ncbi.nlm.nih.gov/ "FTP Server") as of 12/02/2021.
 ### Classification
 |     Tool     |   Version  |   Type  |         Approach        |Default Database| Reference                                 |
 |:------------:|:----------:|:-------:|:-----------------------:|:--------------:|:-----------------------------------------:|
@@ -46,15 +46,16 @@ Every tool is used on two different databases: The default database describes th
 |     Kaiju    |    1.7.4        | Protein |   FM-Index, Alignment  |refseq |              http://kaiju.binf.ku.dk/               |
 |   CCMetagen  |    1.2.3        |   DNA   |*k*-mer, Alignment (KMA)| refseq |     https://github.com/vrmarcelino/CCMetagen       |
 |  Centrifuge  |    1.0.4        |   DNA   |         FM-Index       | refseq|https://ccb.jhu.edu/software/centrifuge/manual.shtml |
-|     CLARK    |    1.2.5        |   DNA   |      (spaced) *k*-mer  | refseq |         http://clark.cs.ucr.edu/Overview/          |
+|     CLARK    |    1.2.5        |   DNA   |       *k*-mer  | refseq |         http://clark.cs.ucr.edu/Overview/          |
 |    Kraken2   | 2.0.7-beta      |   DNA   |          *k*-mer          |-|         http://ccb.jhu.edu/software/kraken2/         |
 |BugSeq| v1 | DNA | Pipeline?? |-| https://bugseq.com/free |
 
 ***Table X: Overview of used classification tools and general information.***
 !!! date of creation
+
 #### Diamond
 This tool is a sequence aligner for protein and translated DNA searches specifically designed for big sequence data [Diamond](https://doi.org/10.1038/nmeth.3176 "Buchfink, B., Xie, C., & Huson, D. H. (2015). Fast and sensitive protein alignment using DIAMOND. Nature methods, 12(1), 59-60."). <br>
-The default database is based on the full bacterial genomes (as of 27/07/2019), whereas the custom database consists of the beforementioned refseq sequences of bacteria and fungi. 
+The default database is based on the [full bacterial proteome](../.paths.md "Line 4, 'Bacterial Proteome'") (as of 27/07/2019), whereas the custom database consists of the beforementioned refseq sequences of bacterial and fungal proteome.
 
     diamond makedb --in {input.faa} -d prefix --taxonmap {map} --taxonnodes {nodes} --taxonnames {names}
 
@@ -70,8 +71,8 @@ To use DIAMOND for taxonomic classification, the output format has to be defined
 
 #### Kaiju
 Kaiju [Kaiju](https://doi.org/10.1186/s13062-018-0208-7 "Menzel, P., Ng, K. L., & Krogh, A. (2016). Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nature communications*,* 7(1), 1-9.") is a fast and sensitive tool for taxonomic classification of metagenomic samples that uses a reference database of annotated protein-coding genes of microbial genomes. The DNA reads are translated into the six reading frames and split according to the stop codons. The resulting fragments are sorted regarding their length and due to the usage of the Ferragina and Mazini-Index (FM-Index), exact matches can be searched between read and database-reference in effient time by Kaiju. <br>
-The default database consists of the downloaded index <tt>kaiju\_db\_refseq\_2020-05-25</tt> which was downloaded from the [Kaiju webserver](http://kaiju.binf.ku.dk/server) as of 28/11/2020. <br>
-Building a custom database consists of two steps and the sequence headers need to consist of the NCBI taxonomic ID and optinally a prefix spearated with an underscore. To achieve this format, the protein sequence file [refseq_bac_fung.faa](/mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa) is altered with the script [changeHeaderKaiju.py](scripts/../../scripts/changeHeaderkiaju.py), which is based on a script for [CCMetagen](https://github.com/vrmarcelino/CCMetagen/blob/master/benchmarking/rename_nt/rename_nt.py "Renaming script from CCMetagen"). The commands to build the custom database can be seen in the following box.
+The default database consists of the downloaded index [<tt>kaiju\_db\_refseq\_2020-05-25</tt>](../.paths.md "Line 6, 'Kaiju Default Index'") which was downloaded from the [Kaiju webserver](http://kaiju.binf.ku.dk/server) as of 28/11/2020. <br>
+Building a custom database consists of two steps and the sequence headers need to consist of the NCBI taxonomic ID and optinally a prefix spearated with an underscore. To achieve this format, the protein sequence file [refseq_bac_fung.faa](../.paths.md "Line 7, 'RefSeq Proteome Bacteria and Fungi'") is altered with the script [changeHeaderKaiju.py](scripts/../../scripts/changeHeaderKaiju.py), which is based on a script of [CCMetagen](https://github.com/vrmarcelino/CCMetagen/blob/master/benchmarking/rename_nt/rename_nt.py "Renaming script from CCMetagen"). The commands to build the custom database can be seen in the following box.
     
     kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {bwt} {input.faa}
     kaiju-mkfmi -r {bwt}
@@ -81,7 +82,7 @@ Building a custom database consists of two steps and the sequence headers need t
     #   -r      removing unused files
     #   -o      name of the BWT output file
 
-<tt>kaiju-mkbwt</tt> takes a fasta file as an input and generates the corresponding Burrows-Wheeler-Transform (BWT), whereas <tt>kaiju-mkfmi</tt> the BWT as an input uses to generate the needed index file. <br>
+<tt>kaiju-mkbwt</tt> takes a fasta file as an input and generates the corresponding Burrows-Wheeler-Transform (BWT), whereas <tt>kaiju-mkfmi</tt> uses the BWT as an input to generate the needed index file. <br>
 
 To generate reports, the following command is used. Since this comparison is based on species level, the report is generated for species, hence the parameter <tt>-r species</tt>.
     
@@ -92,11 +93,11 @@ To generate reports, the following command is used. Since this comparison is bas
     #   -r      taxonomic rank
 
 #### BugSeq
-BugSeq [BugSeq](https://doi.org/10.1186/s12859-021-04089-5 "Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. BMC bioinformatics, 22(1), 1-12.") is a cloud-based pipeline for classification, therefore no parameters can be specified. The website can be reached with [https://bugseq.com/free](https://bugseq.com/free).
+BugSeq [BugSeq](https://doi.org/10.1186/s12859-021-04089-5 "Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. *BMC bioinformatics*, 22(1), 1-12.") is a cloud-based pipeline for classification, therefore no parameters can be specified. The website can be reached with [https://bugseq.com/free](https://bugseq.com/free).
 
 #### CCMetagen
-This classifier uses a k-mer alignment (KMA) \cite{kma} mapping method and produces ranked taxonomic classification results.<br>
-The used indexed database was downloaded from their [website](http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip) as of 08/12/2020.
+This classifier uses a k-mer alignment (KMA) [KMA!!!] mapping method and produces ranked taxonomic classification results.<br>
+The used [indexed database](../.paths.md "Line 8, 'CCMetagen Default Index'") was downloaded from their [website](http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/) as of 08/12/2020.
 
     CCMetagen.py  -o {output} -r RefSeq -i {kma} -ef y 
     
@@ -105,18 +106,18 @@ The used indexed database was downloaded from their [website](http://www.cbs.dtu
         # -i    path to kma result
         # -ef   extended output file that includes percentage of classified reads
 
-The custom database using the refseq of bacteria and fungi need to be created with kma. The input sequence headers need to be altered to fit the necessary format. This is done with [changeHeaderCCMetagen.py](scripts/../../scripts/changeHeaderCCMetagen.py) which is based on the CCMetagen script for renaming nt sequenes ([CCMetagen script]((https://github.com/vrmarcelino/CCMetagen/blob/master/benchmarking/rename_nt/rename_nt.py "Renaming script from CCMetagen")))
+The custom database using the refseq of bacteria and fungi needs to be created with kma. The input sequence headers need to be altered to fit the necessary format. This is done with [changeHeaderCCMetagen.py](../../scripts/changeHeaderCCMetagen.py) which is based on the CCMetagen script for renaming nt sequenes ([CCMetagen script]((https://github.com/vrmarcelino/CCMetagen/blob/master/benchmarking/rename_nt/rename_nt.py "Renaming script from CCMetagen")))
 
     kma_index -i {input} -o {output}
     
 #### Centrifuge
 Centrifuge [Centrifuge](https://doi.org/10.1101%2Fgr.210641.116 "Kim, D., Song, L., Breitwieser, F. P., & Salzberg, S. L. (2016). Centrifuge: rapid and sensitive classification of metagenomic sequences. *Genome research*, 26(12), 1721-1729.") is a classification tool for metagenomic microbial data. This FM-Index-based approach searches for forward and reverse complements of the given input reads in the corresponding database of species. If a match with a given seed length is found, that region is expanded until a mismatch is found. <br>
-The used indices are downloaded from their [website](https://genome-idx.s3.amazonaws.com/centrifuge/p\_compressed_2018_4\_15.tar.gz) as of 15/01/2021. <br>
-The custom database can be created with the following command, where <tt>prefix</tt> is the prefic the index files will carry. The <tt>seqid2taxid.map</tt> file generated from Kraken2 during database building is used. This spares the download of all sequences that should be included in the index.
+The [used indices](../.paths.md "Line 9, 'Centrifuge Default Index'") are downloaded from their [website](https://genome-idx.s3.amazonaws.com/centrifuge/) as of 15/01/2021. <br>
+The custom database can be created with the following command, where <tt>prefix</tt> is the prefix the index files will carry. The <tt>seqid2taxid.map</tt> file generated from Kraken2 during database building is used. This spares the download of all sequences that should be included in the index.
 
     centrifuge-build -p {threads} --conversion-table {seqid2taxid.map} --taxonomy-tree {nodes.dmp} --name-table {names.dmp} {input.fna} {prefix}
 
-For classification with Centrifuge, several parameters are usedd. <!-- The minimum hit length is set to the median read length of each sample.-->
+For classification with Centrifuge, the default parameters are used which can be seen in the following command box. The parameter <tt>ignore-quals</tt> classifies with assuming the quality of each read is 30. <!-- The minimum hit length is set to the median read length of each sample.-->
 
     centrifuge -q -x {index} {input.fastq} --report-file {report} -S {output} [--ignore-quals]
         
@@ -127,14 +128,14 @@ For classification with Centrifuge, several parameters are usedd. <!-- The minim
 <!-- # --min-hit-length  minimum length of partial hits -->
 
 #### CLARK
-CLARK is a taxonomic classification tool for metagenomic samples of any format (reads, contigs, scaffolds, assemblies, ...). The method is based on discriminativem k-mers which is used in supervised sequence classification. The bacterial (and virus) default database is build using the in-build script <tt>set\_targets.sh</tt> as of 7/12/2020. The custom database is build using the same script but custom sequences. Classification is done with the following command:
+CLARK is a taxonomic classification tool for metagenomic samples of any format (reads, contigs, scaffolds, assemblies, ...). The method is based on discriminativem k-mers which is used in supervised sequence classification. The bacterial (and virus) [default database](../.paths.md "Line 10, 'Clark Default Database'") is build using the in-build script <tt>set\_targets.sh</tt> as of 7/12/2020. The custom database is build using the same script but custom sequences. Classification is done with the following command:
 
     CLARK --long -O {input.fastq} -R {output} -D {database} -n {threads} -T {targets}
 
 
 #### Kraken2
 The taxonomic sequence classifier Kraken2 examines k-mers of a query sequence and uses those information to query a database. During the query, the k-mers are mapped to the lowest common ancestor of the genomes that contain a given k-mer. <br>
-The used default database is <tt>/mnt/fass1/database/kraken2-database</tt>. The custom database can be generated using the following commands with the <tt>clean</tt> command removing unnecessary files.
+The used default database is is located [here](../.paths.md "Line 11, 'Kraken2 Default Database'"). The custom database can be generated using the following commands with the <tt>clean</tt> command removing unnecessary files.
 
     kraken2-build --download-taxonomy --db {database}
     kraken2-build --add-to-library {input.fungi.fna} --db {database} --threads {threads}
@@ -187,6 +188,7 @@ Here, MLSTs are used as an additional validation of the classifiers performances
 The chosen sequence types for each species are retrieved from [PubMLST](https://pubmlst.org/) for most species. An overview of the used genes and alleles can be seen in Table XYZ. The first ST is selected for each species. <br>
 The database has no entry for *Lactobacillus fermentum* fermentum, therefore the MLST is retrieved from Poluektova et al. [MLSTfermentum](https://doi.org/10.1007/s00203-017-1346-5 "Poluektova, E. U., Yunes, R. A., Epiphanova, M. V., Orlova, V. S., & Danilenko, V. N. (2017). The Lactobacillus rhamnosus and Lactobacillus fermentum strains from human biotopes characterized with MLST and toxin-antitoxin gene polymorphism. *Archives of microbiology*, 199(5), 683-690."). The first entry for each gene is used. <br> 
 The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et al. [MLSTcryptococcus](https://doi.org/10.1080/13693780902953886 "Meyer, W., Aanensen, D. M., Boekhout, T., Cogliati, M., Diaz, M. R., Esposto, M. C., ... & Kwon-Chung, J. (2009). Consensus multi-locus sequence typing scheme for Cryptococcus neoformans and Cryptococcus gattii. *Medical mycology*, 47(6), 561-570."), the sequences are gathered from the [International Fungal Multi Locus sequence Typing Database](https://mlst.mycologylab.org/). For the Allele Type Number, one is chosen across all genes. <br>
+The sequences chosen for *Saccharomyces cerevisiae* are based on Eeom, YJ., Son, SY., Jung, DH. et al. [MLST_Saccharomyces](https://doi.org/10.1007/s10068-018-0335-z "Eeom, Y. J., Son, S. Y., Jung, D. H., Hur, M. S., Kim, C. M., Park, S. Y., ... & Park, C. S. (2018). Diversity analysis of Saccharomyces cerevisiae isolated from natural sources by multilocus sequence typing (MLST). *Food science and biotechnology*, 27(4), 1119-1127.") and gathered from [GenBank](https://www.ncbi.nlm.nih.gov/genbank/). The specific files can be seen [here](../.paths.md "Lines 13ff, 'MLST Saccharomyces Cerevisiae'").
 
 |      	|      	|      	|      	|      	|      	|      	|      	| |                          	|       	|      	|      	|      	|      	|      	|      	|      	|
 |------------------------	|------	|------	|------	|------	|------	|------	|------	|-|--------------------------	|-------	|------	|------	|------	|------	|------	|------	|------	|
@@ -199,9 +201,9 @@ The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et 
 | [*Enterococcus faecalis*](https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, E. faecalis")   	|      	|      	|      	|      	|      	|      	|      	| | [*Lactobacillus fermentum*](https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaObjects/203_2017_1346_MOESM1_ESM.docx "MLST from Supplements [MLSTfermentum], L. fermentum")  	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| gdh  	| gyd  	| pstS 	| gki  	| aroE 	| xpt  	| yqiL 	| |                          	| parB  	| ychF 	| pyrG 	| atpF 	| recA 	| ileS 	| recG 	| leuS 	|
 |                        	| 3    	| 1    	| 16   	| 1    	| 1    	| 1    	| 1    	| |                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|
-| [*Staphylococcus aurueus*](https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, S. aureus") 	|      	|      	|      	|      	|      	|      	|      	|| Saccharomyces cerevisiae 	|       	|      	|      	|      	|      	|      	|      	|      	|
+| [*Staphylococcus aurueus*](https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=downloadProfiles&scheme_id=1 "MLST scheme, S. aureus") 	|      	|      	|      	|      	|      	|      	|      	|| [Saccharomyces cerevisiae](https://link.springer.com/article/10.1007/s10068-018-0335-z/tables/2 "Eeom, Y. J., Son, S. Y., Jung, D. H., Hur, M. S., Kim, C. M., Park, S. Y., ... & Park, C. S. (2018). Diversity analysis of Saccharomyces cerevisiae isolated from natural sources by multilocus sequence typing (MLST). *Food science and biotechnology*, 27(4), 1119-1127.") 	|    ACC1   	|    GLN4 	|    ADP1  	|   RPN2   	|   META4   	| NUP116     	|      	|      	|
 |                        	| arcC 	| aroE 	| glpF 	| gmk  	| pta  	| tpi  	| yqiL 	||                          	|       	|      	|      	|      	|      	|      	|      	|      	|
-|                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	||                          	|       	|      	|      	|      	|      	|      	|      	|      	|
+|                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	||                          	|     r  	|   f   	|    r  	|    r  	|   f   	|   r   	|      	|      	|
 | [*Salmonella enterica*](https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=downloadProfiles&scheme_id=2 "MLST scheme, S. enterica")    	|      	|      	|      	|      	|      	|      	|      	|| [*Cryptococcus neoformans*](https://mlst.mycologylab.org/page/CN%20Main "Database, C. neoformans")  	|       	|      	|      	|      	|      	|      	|      	|      	|
 |                        	| aroC 	| dnaN 	| hemD 	| hisD 	| purE 	| sucA 	| thrA 	||                          	| cap59 	| gpd1 	| lac1 	| plb1 	| sod1 	| ura5 	| lgs1 	|      	|
 |                        	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	| 5    	||                          	| 1     	| 1    	| 1    	| 1    	| 1    	| 1    	| 1    	|      	|
@@ -209,7 +211,7 @@ The MLST housekeeping-genes for *Cryptococcus neoformans* are based on Meyer et 
 **Table XYZ: Overview of MLST schemes for given species**. This table shows the selected gene fragments for each species. The first line contains the included genes whereas the second line states which locus is used in that allelic profile. <br>
 the used MLS schemes or origins from where the sequences are gatheres are linked with the species name. <br>
 
-The sequences are concatenated into the file [MLSTS.fasta](/mnt/fass1/kirsten/results/classification/mlst/species/MLSTS.fasta) and blasted against each sample. To generate a database for each sample, the following command is used:
+The sequences are concatenated into the file [MLSTS.fasta](../.paths.md "Line 12, 'MLST'") and blasted against each sample. To generate a database for each sample, the following command is used:
 
     makeblastdb -in input.fasta -parse_seqids -dbtype nucl -out output.prefix
 
@@ -225,12 +227,18 @@ The runs are performed on <tt>Linux prost 4.9.0-13-amd64 #1 SMP Debian 4.9.228-1
 # Results and Discussion
 ## Comparison using the metrics
 ### Area under Precision Recall Curve
-With the Area under Precision Recall Curve (AUPR), it is possible to evaluate precision and recall using only one value. Using the R script [visPRCurve.R](scripts/../../scripts/visPRCurve.R), the values in Table XYZ are calculated. <br>
-Both, Centrifuge und Kraken2 reach a value of 1.0 for the CS Even samples, which equals the result a perfect classifier would achieve. The corresponding precision-recall curve can be seen in Figure A_PRC1. The best classifier regarding the AUPR for the CS Log samples seems to be Clark with 0.76 and 0.82 (GridION 366 and PromethION 367, respectively). Kaiju achieved the worst result for the CS Log samples with 0.39 and 0.4, Diamond is slightly better with 0.54 for GridION366. <br>
-In general no trend is to be observed that the classifiers uniformly perform better with greater sequencing depth or species abundances. Kaiju seems to work better with CS Even, so do Diamond (based on the GridION samples), Centrifuge and Kraken2. This can be explained with the small proportion of reads for some of species, that make up for less than a percent in the sample. CCMetagen and Clark achieved higher values for the CS Log samples, although the improvement for Clark is small. <br>
-There does not seem to be any connection to the different classification approaches, since Kraken2 and Clark both perform with k-mers but show different trends. However, both tools using the FM-Index (Kaiju and Centrifuge) perform better for CS Even samples. <br>
-A trend that can be observes is that Diamond and Kaiju, both using protein classification, seem to perform better for CS Even samples with their default database. <br>
-The missing fungal sequences in the databases do not interfere with the precision recall curves (e.g. Figure A_PRC_NOFUNGI). <br>
+With the Area under Precision-Recall Curve (AUPR), it is possible to evaluate precision and recall using only one value. Using the R script [visPRCurve.R](scripts/../../scripts/visPRCurve.R), the values in Table XYZ are calculated for the default database. <br>
+For this metric, higher values are better than smaller values. <br>
+
+The protein tools Diamond and Kaiju both achieve similar scores for GridION 364 (0.7 and 0.73, respectively), but Diamond’s performance for GridION 366 is slightly better with 0.54 and 0.39, respectively. Kaiju’s scores for the PromethION samples are in the same scope as those for its GridION samples. However, Kaiju scores lowest for the CS Log samples. Other tools achieve at least a score of 0.54, the majority of tools even exceed 0.65. An explanation for this behaviour might be the different types of databases since Diamond and Kaiju perform based on protein sequences. Both tools allow for the elongation of exact matches, therefore should probably perform better for long reads than tools with static k-mer lengths [BugSeq](https://doi.org/10.1186/s12859-021-04089-5 "Fan, J., Huang, S., & Chorlton, S. D. (2021). BugSeq: a highly accurate cloud platform for long-read metagenomic analyses. *BMC bioinformatics*, 22(1), 1-12."). Nevertheless, the differences for GridION 366 might be caused by different seed lengths. Kaiju has a default minimum length of 11, whereas Diamond uses blastx for the computation of alignments and blastx has a default word length of 6 positions (This value is used with the blastx [interface](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastx&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome "BLASTx Home")). Since a longer seed sequence results in less sensitivity, Diamond is more sensitive than Kaiju which could explain the differences in the AUPR score. <br>
+With the exception of CCMetagen and Clark, the tools perform better on the CS Even samples, Centrifuge and Kraken2 even achieve an AUPR score of 1.0, which equals the result that a perfect classifier would achieve. This seems reasonable since some abundances of species are really small and therefore only produce a small number of reads. <br>
+CCMetagen has a score of 0.58 for GridION 364 and 0.78 for GridION 366, the results for Clark are all in the range of 0.7 to 0.82, the CS Even samples even achieve the exact same AUPR of 0.703. The best result with CLARK is achieved with the PromethION 367 sample, it also outperforms the AUPRs of the other tools with respect to these samples -- it is the highest AUPR for the CS Log samples. With a default k-mer length of 31 nt it is expected to be more sensitive than tools with longer k-mer lengths (Kraken2: 35 nt), this might be a reason why the AUPR on the CS Log samples is higher, but it does not explain the AUPR of 0.702 on the CS Even samples compared to Kraken2’s 1.0 score. <br>
+Considering Kraken2 and Centrifuge and the CS Log samples, Kraken2 achieves higher results with values of 0.672 and 0.696 for GridION and PromethION, whereas Centrifuge achieves scores of 0.606 and 0.614, respectively. This is surprising since Centrifuge has a minimum match length of 22 nt, but elongates the matches, whereas Kraken2 uses a fixed k-mer length of 35 nt. Therefore, Centrifuge’s sensitivity should be greater than Kraken2’s. <br>
+
+However, there does not seem to be a trend whether one of the approaches works best with the long reads of this dataset, the sequencing depth does not seem to influence the AUPR on a big scale either. Most tools achieve slightly better results with the PromethION samples, but the improvements are small (Kaiju: 0.39 to 0.4, Centrifuge: 0.606 to 0.614, Clark: 0.76 to 0.82, Kraken2: 0.672 to 0.697). <br>
+A trend that can be observed is that Diamond and Kaiju, both using protein classification, seem to perform better for CS Even samples with their default database. <br>
+The missing fungal sequences in the databases do not interfere with the precision-recall curves (e.g. [Figure A_PRC_NOFUNGI!!!](../stats/pics/noFungi/gridion364_default.diamond.noFung.prc.jpeg), [Figure A_PRC_NOFUNGI!!!](../stats/pics/noFungi/gridion364_default.centrifuge.noFung.prc.jpeg)).
+
 
 |                	| Diamond   	| Kaiju     	| CCMetagen 	| Centrifuge 	| Clark     	| Kraken2   	|
 |----------------	|-----------	|-----------	|-----------	|------------	|-----------	|-----------	|
@@ -244,17 +252,13 @@ The missing fungal sequences in the databases do not interfere with the precisio
 |                	| Diamond   	| Kaiju     	| CCMetagen 	| Centrifuge 	| Clark     	| Kraken2   	|
 |----------------	|-----------	|-----------	|-----------	|------------	|-----------	|-----------	|
 | GridION 364    	| 0.6477213 	|  0.6342541	|           	| 0.4535386     |           	| 0.6531318   	|
-| PromethION 365 	|           	|  0.355438	    |           	| 0.4465851     |           	| 0.6342541   	|
-| GridION 366    	|           	|  0.6342541 	|            	| 0.3934339  	|               | 0.6348088 	|
+| PromethION 365 	|           	|  0.6342541	    |           	| 0.4465851     |           	| 0.6342541   	|
+| GridION 366    	|           	|  0.355438 	|            	| 0.3934339  	|               | 0.6348088 	|
 | PromethION 367 	|           	|  0.4490638	|           	| 0.3556934  	|            	| 0.658239   	|
 
 ***Table XYZ_2.*** This table shows the calculated Area under Precision Recall Curve for the different tools and samples using their custom database. Note that CCMetagen and Diamond are not able to perform on the PromethION samples, therefore those values are missing. !!!
 
-Considering the custom database, it is visible that Centrifuge and Kraken2 do not reach the results of a perfect classifier anymore. The AUPR for the CS Even samples approaches the AUPR for the CS Log samples. The average AUPR for all samples classified with Kraken2 is 0.645108425, whereas the average AUPR for the default database is higher with 0.842257075 (Table XYZ_2). The AUPR for Centrifuge shows a greater difference of 0.4 between default and custom database (0.80500625 and 0.41231275). Since the only change is the underlying database, this might be the reson for the poorer results. There might be more sequences to check against than in their default databases which leads to less accuracy. Although Kraken2 and Centrifuge do use refseq sequences in their corresponding default databases, the date of the index/database making might influence the known/included sequences. The index for Centrifuge ist from 2018, whereas the Kraken2 database seems to be from 2019. <br> 
-This explanation only partly fits for Diamond and Kaiju as well, because the bacterial proteome sequences are the same, just the fungal proteome is added to the databases. Although Diamond achieves less, Kaiju is able to achieve higher values for the CS Log samples. The CS Even samples result in smaller values (0.634 and 0.355 instead of 0.725 and 0.57 for GridION 264 and PromethION 265, respectively).
-- ccmetagen
-- clark
-- !!!
+
 
 - comparison to paper?!!!
 <!-- The average balanced accuracy for Kraken2 for example is 1.0 and 0.83 respectively. <br> -->
@@ -276,7 +280,7 @@ In this section, the abundance profile similarity is discussed as well as the ex
 Here, too, Kraken2 and Centrifuge perform best regarding the Abundance Proilfe Similarity (APS) value. Smaller values are better, since this metric is based on the L2 distance. Therefore, Centrifuge achieved the best APS with 0.699 for GridION 366 usisng the default database. This is also true for the average APS for all four samples, Centrifuge has an average APS of 0.087, Kraken2 follows with roughly 0.1. Clark only achieves small values for CS Log samples with 0.081 and 0. 0.099 for GridIOn and PromethION, respecitvely.<br>
 Diamond, Kaiju and CCMetagen have average scores of 0.52, 0.29 and 0.23 (Table XYZ_APS). However, the average scores only have limited significance. But the individual values for Kaiju range in that scope as well (0.25 to 0.32), whereas the two scores that can be considered for Diamond differ greatly: 0.333 for GridION 364 and 0.708 for GridION 366. The difference for the samples classified with CCMetagen is less great (0.277 and 0.186). <br> 
 
-The abundances for the species in the samples classified using the default databases can be seen in Tables A1-A4, etc. It can be seen that the protein based tools Kaiju and Diamond assign a minority of reads to the species in the sample. For Diamond (GridION 364), the percentage of assigned reads is between 0 and 1% with the exception of Listeria Monocytogenes with 2.89%. However, considering the genus level, Diamond is able to assign more reads to a genus included into the dataset. The genera with the most abundances are *Listeria*, (9.459%), *Staphylococcus* (7.004%)and *Pseudomonas* (4.54%), see Figure A_Anhang_DiamondGenus364. Two of the corresponding species in this dataset are Gram+, whereas *Listeria monocytogenes* is Gram-, hence there does not seem to be a trend which species are better to classify with Diamond. <br>
+The abundances for the species in the samples classified using the default databases can be seen in Tables A1-A4, etc. It can be seen that the protein based tools Kaiju and Diamond assign a minority of reads to the species in the sample. For Diamond (GridION 364), the percentage of assigned reads is between 0 and 1% with the exception of Listeria Monocytogenes with 2.89%. However, considering the genus level, Diamond is able to assign more reads to a genus included into the dataset. The genera with the most abundances are *Listeria*, (9.459%), *Staphylococcus* (7.004%) and *Pseudomonas* (4.54%), see Figure A_Anhang_DiamondGenus364. Two of the corresponding species in this dataset are Gram+, whereas *Listeria monocytogenes* is Gram-, hence there does not seem to be a trend which species are better to classify with Diamond. <br>
 Kaiju on the other hand assigns more reads to Gram+ species (4.151% - 12.503%), whereas Gram- species achieve less assigned reads (1.104% - 2.124%) in GridION 364. This is also true for the PromethION sample, the classified Gram+ species range from 3.98% to 12.033%, whereas the Gram- species have 1.111% to 2.101% of reads (Table XYZ_APS_365, Piechart Kaiju).
 
 - Das gleiche für custom database
@@ -723,6 +727,7 @@ CCMetagen and Diamond are two tools used within this comparison, but only for th
 
 [blast](https://doi.org/10.1016/S0022-2836(05)80360-2) Altschul, S. F., Gish, W., Miller, W., Myers, E. W., & Lipman, D. J. (1990). Basic local alignment search tool. *Journal of molecular biology*, 215(3), 403-410.
 
+[MLST_Saccharomyces](https://doi.org/10.1007/s10068-018-0335-z) Eeom, Y. J., Son, S. Y., Jung, D. H., Hur, M. S., Kim, C. M., Park, S. Y., ... & Park, C. S. (2018). Diversity analysis of Saccharomyces cerevisiae isolated from natural sources by multilocus sequence typing (MLST). *Food science and biotechnology*, 27(4), 1119-1127.
 ### rest
 - *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
 - *Listeria monocytogenes* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=schemeInfo&scheme_id=2

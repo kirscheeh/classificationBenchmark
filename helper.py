@@ -1,6 +1,9 @@
 with open('help', 'r') as f:
-    counter=0
-    for line in f:
-        counter+=float(line)
-
-print(counter/4)
+    lines=f.readlines()
+    seq=""
+    for line in lines:
+        seq+=line
+new_seq=seq.replace(" ", "")
+seq=new_seq.replace("\n", "")
+print(len(seq))
+print(seq[866:1367] ,len(seq[866:1367]))
