@@ -256,12 +256,18 @@ The missing fungal sequences in the databases do not interfere with the precisio
 | GridION 366    	|           	|  0.355438 	|            	| 0.3934339  	|               | 0.6348088 	|
 | PromethION 367 	|           	|  0.4490638	|           	| 0.3556934  	|            	| 0.658239   	|
 
-***Table XYZ_2.*** This table shows the calculated Area under Precision Recall Curve for the different tools and samples using their custom database. Note that CCMetagen and Diamond are not able to perform on the PromethION samples, therefore those values are missing. !!!
+***Table XYZ_2.*** This table shows the calculated Area under Precision Recall Curve for the different tools and samples using their custom database. Note that CCMetagen and Diamond are not able to perform on the PromethION samples, therefore those values are missing. The scores for Kraken2 and Centrifuge are lower than those achieved with the default database. However, for Kraken2, the CS log samples have higher values, whereas Centrifuge scrores higher with the CS Even samples. Kaiju improves for the CS Log samples, but results in lower scores for CS Even samples. !!! Diamond, CCMetagen, CLARK
 
+The results of AUPR analysis regarding the custom databases show a different outcome (Table XYZ_2). Centrifuge and Kraken2 are no longer able to perform like a perfect classifier. The AUPRs for Centrifuge range from 0.356 to 0.454, which is a strong deterioration compared to the previously discussed results. The degradation for Kraken2 is not that strong, the values approach the scores Kraken2 achieved on the CS Log samples with the default database, ranging from 0.634 to 0.658, but the CS Log samples result in better AUPRs than the CS Even samples. An explanation for the general worsening might be the custom database since it is the only change between runs, although both default databases are based on RefSeq sequences as are the custom databases. Variations might be due to different building timepoints and therefore distinctions in the included sequences. The index for Centrifuge is from 2018, whereas the Kraken2 database is generated in 2019, but the custom database relies on sequences that are last updated in 2021. These changes also lead to a loss in balanced accuracy. With the default database, Kraken2 has an accuracy of 1.0 for GridION 364, but with the custom database, Kraken2 only reaches 0.83, this is the same for PromethION 365. A similar difference can be seen for Centrifuge. Balanced accuracy is the proportion of added False Positive Rate and True Negative Rate divided by two. It is used when the classes for classification are imbalanced, i.e. there are more species not in the sample than species that are in the sample. <br>
+For Kaiju, the CS Even samples achieve an AUPR of 0.634 both, which is an improvement for the PromethION sample, but a worsening for the GridION sample. The same goes for the CS Log sample: The GridION sample deteriorates, whereas the PromethION sample improves. Overall, the CS Even samples approximate the Kraken2 results. This is true for the AUPRs of Diamond too !!!Gridion366. The underlying sequences for the protein databases are the same for the bacterial sequences, therefore differences in the included sequences are only possible for the fungal sequences. Since the changes are not as drastic as for the other tools, the smaller amount for fungal changes might account for the slight deterioration. <br>
+- CLARK
+- CCMETAGEN
+- second DIAMOND
+- 
+It seems like the tools perform better on their (downloaded) default databases/indices.
 
-
-- comparison to paper?!!!
-<!-- The average balanced accuracy for Kraken2 for example is 1.0 and 0.83 respectively. <br> -->
+<!-- lass ich das drin? -->
+Most of the tools are also used in a benchmarking study for short reads by Simon H. Ye et al. [benchmark](https://doi.org/10.1016/j.cell.2019.07.010 "Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794."). In that study, most tools achieved scores between 0.9 and 1.0 with their default database, except for Centrifuge which scored between 0.3 and 0.4. Using a RefSeq CG database, all tools are able to score between 0.9 and 1.0. This stands in contrast to the results presented here. The custom databases seem to result in inferior AUPR scores than the classifications with the default databases.
 
 It has to be considered that only one dataset is not enough to fully access the results of the classification tools.
 ### Abundance Profile Similarity
@@ -728,6 +734,9 @@ CCMetagen and Diamond are two tools used within this comparison, but only for th
 [blast](https://doi.org/10.1016/S0022-2836(05)80360-2) Altschul, S. F., Gish, W., Miller, W., Myers, E. W., & Lipman, D. J. (1990). Basic local alignment search tool. *Journal of molecular biology*, 215(3), 403-410.
 
 [MLST_Saccharomyces](https://doi.org/10.1007/s10068-018-0335-z) Eeom, Y. J., Son, S. Y., Jung, D. H., Hur, M. S., Kim, C. M., Park, S. Y., ... & Park, C. S. (2018). Diversity analysis of Saccharomyces cerevisiae isolated from natural sources by multilocus sequence typing (MLST). *Food science and biotechnology*, 27(4), 1119-1127.
+
+[benchmark](https://doi.org/10.1016/j.cell.2019.07.010) Simon, H. Y., Siddle, K. J., Park, D. J., & Sabeti, P. C. (2019). Benchmarking metagenomics tools for taxonomic classification. *Cell*, 178(4), 779-794.
+
 ### rest
 - *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
 - *Listeria monocytogenes* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=schemeInfo&scheme_id=2
