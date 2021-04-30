@@ -1,8 +1,6 @@
 #!/usr/bin/env Rscript
 # piecharts based on the areports 
 
-install.packages("ggrepel")
-
 args <- commandArgs(trailingOnly=TRUE)
 report <- read.csv(args[1], sep="\t")
 name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/areports/gridion364_default.diamond.areport"
@@ -36,53 +34,8 @@ labels <- c(labels, "others")
 species.percent <- round(species.slices/sum(species.slices)*100, 3)
 labels <- paste(labels, species.percent) # add percentages to labels
 labels <- paste(labels,"%",sep="") # add % to labels
+
 save <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/stats/pics/gridion364_default.diamond.genus.piechart.jpeg"
-#jpeg(filename=save, width=850, height=632)
-library(ggplot2)
-df <- data.frame(value=species.slices, group=labels)
-#pie(species.slices,labels,main=sample.name, cex=1)
-df <- data.frame(
-  group=LETTERS[1:5],
-  value=c(13,7,9,21,2)
-)
-ggplot(df, aes(x="", y=value, fill=group))+
-geom_bar(stat="identity", width=1, color="white") +
-  coord_polar("y", start=0) +
-  theme_void() # remove background, grid, numeric labels
-install.packages("dplyr")
-library(dplyr)
-library(ggrepel)
-set.seed(42)
-data <- df %>% 
-  arrange(desc(group)) %>%
-  mutate(prop = value / sum(data$value) *100) %>%
-  mutate(ypos = cumsum(prop)- 0.5*prop )
-
-# Basic piechart
-ggplot(data, aes(x="", y=prop, fill=group)) +
-  geom_bar(stat="identity", width=1, color="white", cex=0.5) +
-  coord_polar("y", start=0) +
-  theme_void() + 
-  theme(legend.position="none") +
-  geom_text(aes(y = ypos, label = group), nudge_x=0.5, nudge_y=0.25,color = "black", size=3) +
-  scale_fill_brewer(palette="Set1")
-
-
-#dev.off()
-
-
-# Load ggplot2
-library(ggplot2)
-
-# Create Data
-data <- data.frame(
-  group=LETTERS[1:5],
-  value=c(13,7,9,21,2)
-)
-
-# Basic piechart
-ggplot(data, aes(x="", y=value, fill=group)) +
-  geom_bar(stat="identity", width=1) +
-  coord_polar("y", start=0)
-
-
+jpeg(filename=save, width=850, height=632)
+pie(species.slices,labels,main=sample.name, cex=1)
+dev.off()
