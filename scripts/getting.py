@@ -4,6 +4,7 @@ import os, yaml, sys
 import numpy as np
 from numpy import array
 from numpy.linalg import norm
+from ete3 import NCBITaxa
 
 def get_species(config): # expected species in sample
     if os.path.isfile(config):
@@ -54,6 +55,16 @@ def get_numberSpecies(areport): # returns classified taxa on species level
                 number+=1
     return number
 
+def get_taxIDs(species):
+    taxids=[]
+    result=[]
+    for sp in species:
+        taxid = NCBITaxa().get_name_translator([sp]) # because order is important, every species is translated on its own
+        result.append(taxid[sp][0])
+    return result
+
+#species= ['Bacillus subtilis', 'Listeria monocytogenes', 'Enterococcus faecalis', 'Staphylococcus aureus', 'Salmonella enterica', 'Escherichia coli', 'Pseudomonas aeruginosa', 'Lactobacillus fermentum', 'Saccharomyces cerevisiae', 'Cryptococcus neoformans']
+#print(get_taxIDs(species))
 def get_toolsClassification(config): # returns classification tools
     if os.path.isfile(config):
         with open(config, 'r') as c:
@@ -65,21 +76,22 @@ def get_toolsClassification(config): # returns classification tools
 
 def get_abundanceSampleSpecies(areport, config): #returns abundance of expected species
     species = get_species(config)
-    predictions={sp:0 for sp in species}
+    taxids=get_taxIDs(species)
 
-    for s in species:
+    predictions={sp:0 for sp in taxids}
+    for t in taxids: # for s in species:
         # grepping entries that include species name
-        os.system('grep -n "{spec}" {file} > helping.log'.format(file=areport, spec=s))
+        os.system('grep -n "{spec}" {file} > helping.log'.format(file=areport, spec=t))
         with open('helping.log', 'r') as f:
             lines = f.readlines()
 
             for line in lines:
                 line = line.split("\t")
-                if line[4][:-1] == s and line[2]=="S": # species level
-                    predictions[s] = float(line[0].split(":")[1])
+                if int(line[3]) == t and line[2]=="S": # species level# if line[4][:-1] == s and line[2]=="S": # species level
+                    predictions[t] = float(line[0].split(":")[1])
 
             
-            if not s in predictions: # if no fitting entry is found, filling with 0
+            if not t in predictions: # if no fitting entry is found, filling with 0
                 predictions[s]=0
                 
         os.system('rm helping.log')
@@ -134,16 +146,23 @@ def get_MedianLengthOfBestMatch(classification): # for kaiju, returns median mat
 def get_groundTruth(report): # ground truth vector based on species level for all species
     data=[]
     print(species)
+    taxids=get_taxIDs(species)
     with open(report, 'r') as report:
         lines = report.readlines()
         for line in lines:
             line=line.split("\t")
 
             if line[2]=="S":
-                if line[4].split("\n")[0] in species:  
-                    data.append(1)
-                else:
+               # print(line[3])
+                try: 
+                    if int(line[3]) in taxids:  #line[4][:-1] in species:#
+                        print(line)
+                        data.append(1)
+                    else:
+                        data.append(0)
+                except ValueError:
                     data.append(0)
+    print(sum(data))
     return data
 
 def get_abundances(report): #returns abundances for classifis species
@@ -211,7 +230,7 @@ def get_tnr(tp,fp,tn,fn): #true negative rate
 def get_balancedAcc(tpr, tnr):
     return tpr+tnr/2
 
-def get_prediction(report, th):
+def get_prediction(report, th): #values above 1% only
     data=[]
     with open(report, 'r') as report:
         lines = report.readlines()
@@ -225,8 +244,8 @@ def get_prediction(report, th):
                     data.append(0)
     return data 
 
-report=sys.argv[1]
-config=sys.argv[2]
-tp, fp, tn, fn = calc_matrixOfConfusion(prediction=get_prediction(report, 0.1), groundTruth=get_groundTruth(report))
-print(get_balancedAcc(get_tpr(tp, fp, tn, fn), get_tnr(tp, fp, tn, fn)))
+#report=sys.argv[1]
+#config=sys.argv[2]
+#tp, fp, tn, fn = calc_matrixOfConfusion(prediction=get_prediction(report, 0.1), groundTruth=get_groundTruth(report))
+#print(get_balancedAcc(get_tpr(tp, fp, tn, fn), get_tnr(tp, fp, tn, fn)))
 

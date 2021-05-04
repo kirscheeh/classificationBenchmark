@@ -14,6 +14,12 @@ predi = getting.get_abundanceSampleSpecies(areport, config).values()
 pred=list(predi)
 
 sampleName = getting.get_sampleName(areport)
+toolName =getting.get_toolsClassification(config)
+
+
+taxids = getting.get_taxIDs(getting.get_species(config)) 
+print(getting.get_species(config))
+print(taxids)
 
 if sampleName =="gridion364":
     truth=[0.1932, 0.1456, 0.1224, 0.1128, 0.0999, 0.0993, 0.097, 0.0928,0.0192, 0.0178]
@@ -24,14 +30,24 @@ else: #gridion366, promethion367
     truth=[0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089]
 
 try:
-    t = np.array(truth)
-    p = np.array(pred)
+    if "default" in sys.argv[1]:
+        if toolName == "kraken2":
+            t = np.array(truth)
+            p = np.array(pred)
+        else:
+            print("here")
+            t = np.array(truth[:-2])
+            p = np.array(pred[:-2])
+    else:
+        t = np.array(truth[:-2])
+        p = np.array(pred[:-2])
     l20 = np.sum(np.power((t-p),2))
     l21 = distance.euclidean(t, p)
 
 
-    #print(areport.split("/")[-1])
+    #print()
     print(areport, "l20 nope", l20)
+    print()
     print(areport, "l21", l21)
     #eturn l2
 except Exception as e:
