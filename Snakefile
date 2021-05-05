@@ -182,7 +182,6 @@ rule clark:
     run:
         # --long    for long reads (only for full mode)
         # -t        minimum of k-mer frequency/occurence for the discriminative k-mers (default:0)
-
         if 'default' in {params.runID}:
             shell('CLARK --long -O {input.fastq} -R {params.result} -D {params.dbDefault} -n {threads} -T {input.targets}')
         elif 'custom' in {params.runID}:

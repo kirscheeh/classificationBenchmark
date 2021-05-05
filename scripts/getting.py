@@ -87,8 +87,11 @@ def get_abundanceSampleSpecies(areport, config): #returns abundance of expected 
 
             for line in lines:
                 line = line.split("\t")
-                if int(line[3]) == t and line[2]=="S": # species level# if line[4][:-1] == s and line[2]=="S": # species level
-                    predictions[t] = float(line[0].split(":")[1])
+                try:
+                    if int(line[3]) == t and line[2]=="S": # species level# if line[4][:-1] == s and line[2]=="S": # species level
+                        predictions[t] = float(line[0].split(":")[1])
+                except ValueError:
+                    print(line)
 
             
             if not t in predictions: # if no fitting entry is found, filling with 0
