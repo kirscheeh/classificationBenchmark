@@ -58,30 +58,34 @@ rule kraken2_db:
         fungi="/mnt/fass1/kirsten/databases/refseq_bac_fungi/fungi.fna",
         bacteria="/mnt/fass1/kirsten/databases/refseq_bac_fungi/bacteria.fna",
     output:
-        "/mnt/fass1/kirsten/databases/custom/kraken2/hash.k2d"
+        "/mnt/fass2/projects/kirsten/kraken2/hash.k2d" # "/mnt/fass1/kirsten/databases/custom/kraken2/hash.k2d"
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/kraken2.custom_db.benchmark.txt"
     conda:
         "envs/main.yaml"
     threads: 16
     params:
-        "/mnt/fass1/kirsten/databases/custom/kraken2"
+        "/mn2/fass2/projects/kirsten/kraken2/" # "/mnt/fass1/kirsten/databases/custom/kraken2"
     run:
-        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {params}'),
-        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {params} --threads {threads}'),
-        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {params} --threads {threads}'),
-        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db /dev/null'),
-        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --clean')
+        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {params}'),
+        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {params} --threads {threads}'),
+        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {params} --threads {threads}'),
+        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db {params}'),
+        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --clean')
 
 
 rule clark_db:
     input:
-        refseq ="/mnt/fass1/kirsten/databases/custom/clark/"
+        "/mnt/fass2/projects/kirsten/clark/"
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/clark.custom_db.benchmark.txt"
     output:
-        "/mnt/fass1/kirsten/databases/custom/clark/helper.txt"
+        "/mnt/fass2/projects/kirsten/clark/helper.txt"
     threads: 16
+   # conda:
+#	"envs/main.yaml"
+   # params:
+#	folder=
     run:
         shell('/mnt/fass1/kirsten/tools/CLARKSCV1.2.6.1/set_targets.sh {input} custom'),
         shell('touch {output}') 
@@ -108,13 +112,13 @@ rule ccmetagen_db:
     input:
         fna = "/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.ccmetagen.fna"
     output:
-        "/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.kma.name"
+        "/mnt/fass2/projects/kirsten/ccmetagen/refseq_bac_fung.kma.name"
     benchmark:
         "/mnt/fass1/kirsten/result/classification/benchmarks/databases/kma.custom_db.benchmark.txt"
     conda:
         "envs/main.yaml"
     params:
-	"/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.kma"
+        "/mnt/fass2/projects/kirsten/refseq_bac_fung.kma"
     shell:
-        "kma_index -i {input} -o {params}"
+        "kma_index -i {input.fna} -o {params} -Sparse"
 
