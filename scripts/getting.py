@@ -15,7 +15,7 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-config='/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #'config.yaml' #
+config='config.yaml' # '/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #'config.yaml' #
 species = get_species(config)
 
 def get_path(config): #get path to working directory
