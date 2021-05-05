@@ -14,13 +14,13 @@ require(PRROC)
 
 # extract data sheet
 args <- commandArgs(trailingOnly=TRUE)
-sample.data <- read.csv(args[1], sep="\t")
-print(args)
+#file <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/helper.tsv"
+sample.data <- read.csv(args[1], sep="\t") #args[1]
+
 # name for plot
 sample.name.splitted <- strsplit(args[3], "/")
 sample.name.vector <- sample.name.splitted[[1]]
 sample.name <- sample.name.vector[length(sample.name.vector)]
-print(sample.name)
 
 groundTruth <- sample.data[,1]
 abundances <- sample.data[,2]
@@ -33,10 +33,16 @@ jpeg(file=args[2], width=850, height=632)
 
 pr <- pr.curve(scores.class0 = fg, scores.class1 = bg, curve = T)
 plot(pr, main=sample.name, col="black", panel.first= grid(), cex.main = 2);
-#print(pr)
+print(sample.name)
+print(pr)
 
 baseline <- sum(groundTruth)/length(groundTruth)
 abline(h=baseline, col="black", cex.main = 1, lty=2)
 #print(baseline)
 
 dev.off()
+
+#x <- c(fg, bg)
+#lab<- c(rep(1,length(fg)),rep(0,length(bg)))
+#pr <- pr.curve(scores.class0 = x, weights.class0 = lab, curve=T)
+#plot(pr, main=sample.name, col="black", panel.first= grid(), cex.main = 2);

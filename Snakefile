@@ -104,17 +104,16 @@ rule kraken2:
         dbCustom=DB_custom['kraken2']
     run:
         # --confidence          threshold that must be in [0,1]
-        # --unclassified-out    prints unclassified sequences to filename
         # --classified-out      prints classified sequences to filename
         # --output              prints output to filename
         # --report              prints report with aggregate counts/clade to file
         
         if 'default' in {params.runID}:
-            shell('kraken2 --db {params.dbDefault} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
+            shell('kraken2 --db {params.dbDefault}  --report {output.report} --threads {threads} --output {output.files} {input.files}')
         elif 'customHit' in {params.runID}: # confidence set after benchmark paper
             shell('kraken2 --db {input.dbCustom} --report {output.report} --confidence 0.05 --threads {threads} --output {output.files} {input.files}')
         elif 'custom' in {params.runID}: 
-            shell('kraken2 --db {params.dbCustom} --unclassified-out {output.unclassified} --report {output.report} --threads {threads} --output {output.files} {input.files}')
+            shell('kraken2 --db {params.dbCustom} --report {output.report} --threads {threads} --output {output.files} {input.files}')
             print("Sure") 
         else:
             print("Kraken2 -- Nothing to do here:", {params.runID})           
@@ -392,23 +391,3 @@ rule prc: #recision recall curve
     shell:
         '{params} {input} {output}'
 
-rule aps: # abundance profile similarity
-    input:
-        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
-    output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps"
-       # estimate="{PATH}/result/classification/stats/{run}/{sample}_{run}.estimate.aps",
-       # truthLog ="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthLog.aps"
-    conda:
-        "envs/main.yaml"
-    params:
-        script="{PATH}/result/classificationBenchmark/scripts/abundanceProfile.sh",
-        truthEven="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthEven.aps",
-        estimate = "{PATH}/result/classification/stats/{run}/{sample}_{run}.estimate.aps",
-        truthLog="{PATH}/result/classification/stats/{run}/{sample}_{run}.truthLog.aps"
-    run:
-        if getting.get_sampleName(str({input})) in ['gridion364', 'promethion365']:
-            shell("{params.script} {input} [0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.12,0.02,0.02] {params.truthEven}"),
-            shell("{params.script} {input} [0.1932,0.1456,0.1224,0.1128,0.0999,0.0993,0.097,0.0928,0.0192,0.0178] {params.estimate}")
-        else:
-            shell("{params.script} {input} [0.0089, 0.891, 0.0000089, 0.00000089, 0.00089, 0.00089, 0.089, 0.000089, 0.0089, 0.000089] {params.truthLog}")
