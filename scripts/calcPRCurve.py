@@ -67,14 +67,16 @@ for p in probability_thresholds:
     tpr_scores.append(tpr)
     fpr_scores.append(fpr)
 
-
+length=len(gt)
 average_precision = average_precision_score(gt, ab)
 print(average_precision)
 #print(precision_scores[1:10], recall_scores[1:10])
 fig, ax = plt.subplots(figsize=(6,6))
-ax.plot(recall_scores, precision_scores, label='Logistic Regression')
-#baseline = len(gt[gt==1]) / len(gt)
-#ax.plot([0, 1], [baseline, baseline], linestyle='--', label='Baseline')
+ax.plot(recall_scores, precision_scores, label='')
+
+baseline = sum(gt) / len(gt)
+ax.plot([0, 1], [baseline, baseline], linestyle='--', label='Baseline')
 ax.set_xlabel('Recall')
 ax.set_ylabel('Precision')
+plt.title("gridion364_default.diamond.areport\nAUC= "+str(average_precision))
 plt.show()
