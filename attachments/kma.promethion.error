@@ -1,0 +1,32 @@
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	2	kma
+	3[0m
+[32m[0m
+[32mrule kma:
+    input: /mnt/fass1/kirsten/data/promethion367.fastq
+    output: /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.res
+    log: /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.log
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/promethion367.kma.benchmark.txt
+    wildcards: sample=promethion367, PATH=/mnt/fass1/kirsten
+    threads: 8[0m
+[32m[0m
+# Collecting k-mer scores.
+# Reading inputfile: 	/mnt/fass1/kirsten/data/promethion367.fastq
+# Phred scale:	33
+#
+# Total time used for DB loading: 192.27 s.
+#
+# Finding k-mer ankers
+Error: 28 (No space left on device)
+^C[33mTerminating processes on user request.[0m
+[31mError in job kma while creating output files /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.mapstat, /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.res.[0m
+[31mRuleException:
+CalledProcessError in line 361 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'kma -i /mnt/fass1/kirsten/data/promethion367.fastq -t_db /mnt/fass1/kirsten/databases/ccmetagen/compress_ncbi_nt/ncbi_nt -o /mnt/fass1/kirsten/result/classification/ccmetagen/promethion367.kma.intermediate.res[:-4] -t 8 -1t1 -mem_mode -and -ef' returned non-zero exit status -2
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 361, in __rule_kma
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
