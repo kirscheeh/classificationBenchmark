@@ -91,23 +91,6 @@ rule clark_db:
         shell('touch {output}') 
 
 
-
-rule metamaps_db:
-    input:
-        refseq ="/mnt/fass1/kirsten/databases/refseq_bac_fungi"
-    output:
-        folder="/mnt/fass1/kirsten/databases/custom/metamaps",
-        taxonomy = "/mnt/fass1/kirsten/databases/custom/metamaps/taxonomy",
-        uniqueID = "/mnt/fass1/kirsten/databases/custom/metamaps/taxonomy_uniqueID"
-    benchmark:
-        "/mnt/fass1/kirsten/result/classification/benchmarks/databases/metamaps.custom_db.benchmark.txt"
-    conda:
-        "envs/metamaps.yaml"
-    run:
-        #shell('perl /home/re85gih/projectClassification/MetaMaps/downloadRefSeq.pl --sequencesOutDirectory {output.folder} --taxonomyOutDirectory {output.taxonomy} --targetBranches '),
-        shell('perl /home/re85gih/projectClassification/MetaMaps/annotateRefSeqSequencesWithUniqueTaxonIDs.pl --refSeqDirectory {input.refseq} --taxonomyInDirectory {output.taxonomy} --taxonomyOutDirectory {output.uniqueID}'),
-        shell('perl /home/re85gih/projectClassification/MetaMaps/buildDB.pl --DB {output.db} --taxonomy {output.uniqueID}')
-
 rule ccmetagen_db:
     input:
         fna = "/mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.ccmetagen.fna"
