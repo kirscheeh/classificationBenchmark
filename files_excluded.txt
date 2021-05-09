@@ -1,6 +1,0 @@
-The following files have been excluded from the targets definition
-/mnt/fass2/projects/kirsten/clark//Custom/bacteria.1910.1.genomic.fna
-/mnt/fass2/projects/kirsten/clark//Custom/bacteria.2398.1.genomic.fna
-/mnt/fass2/projects/kirsten/clark//Custom/bacteria.220.1.genomic.fna
-/mnt/fass2/projects/kirsten/clark//Custom/bacteria.211.1.genomic.fna
-/mnt/fass2/projects/kirsten/clark//Custom/bacteria.410.1.genomic.fna
