@@ -4,7 +4,5 @@ projectMAIN main.yaml
 taxmaps taxmaps.yaml
 DeepMicrobes deepmicrobes.yaml
 kslam kslam.yaml
-catbat catbat.yaml
 diamond diamond.yaml
-metamaps metamaps.yaml
 r_env renv.yaml
