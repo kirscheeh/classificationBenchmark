@@ -18,7 +18,7 @@ for (i in 1:length(report[,1])){
   if (abundances[i, 1] >= 0.01 && ("S" == abundances[i, 2] || grepl("U", abundances[i, 2])))
   {
     if (abundances[i, 3] == "Limosilactobacillus fermentum") {
-      species <- c(species, abundances[i,1], as.character(abundances[i, 2]), as.character("Lactobacillus fermentum"))
+      # species <- c(species, abundances[i,1], as.character(abundances[i, 2]), as.character("Lactobacillus fermentum"))
     }
     else{
       species <- c(species, abundances[i,1], as.character(abundances[i, 2]), as.character(abundances[i, 3]))

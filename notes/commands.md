@@ -5,18 +5,17 @@ This file contains the commands used after the tools have been successfully inst
 
 |     Tool     |   Version  |   Type  |         Approach        |                       Reference                      |   conda  |
 |:------------:|:----------:|:-------:|:-----------------------:|:----------------------------------------------------:|:--------:|
+|   Diamond    | 2.0.5     | Protein |        Alignment        | http://www.diamondsearch.org/index.php                |projectMAIN|
 |     Kaiju    |    1.7.4   | Protein |   FM-Index, Alignment   |               http://kaiju.binf.ku.dk/               |projectMAIN|
-|    Kraken2   | 2.0.7-beta |   DNA   |          k-mer          |         http://ccb.jhu.edu/software/kraken2/         |projectMAIN|
-|  Centrifuge  |    1.0.4   |   DNA   |         FM-Index        | https://ccb.jhu.edu/software/centrifuge/manual.shtml |classification|
-|    taxMaps   |     0.2    |   DNA   |         FM-Index        |          https://github.com/nygenome/taxmaps         |taxmaps|
-| DeepMicrobes |git rev. 43b654b  |DNA| Machine Learning, k-mer |      https://github.com/MicrobeLab/DeepMicrobes      |DeepMicrobes|
-|  MetaOthello |git rev. 15ded5e  |DNA|          k-mer          |         https://github.com/xa6xa6/metaOthello        |projectMAIN|
-|    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |kslam|
-|     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
 |   CCMetagen  |    1.2.3   |   DNA   |                         |       https://github.com/vrmarcelino/CCMetagen       |diamond|
-|   Diamond    | 2.0.5     | Protein |        Alignment        | http://www.diamondsearch.org/index.php               |projectMAIN|
+|  Centrifuge  |    1.0.4   |   DNA   |         FM-Index        | https://ccb.jhu.edu/software/centrifuge/manual.shtml |classification|
+|     CLARK    |    1.2.5   |   DNA   |      (spaced) k-mer     |           http://clark.cs.ucr.edu/Overview/          |projectMAIN|
+|    Kraken2   | 2.0.7-beta |   DNA   |          k-mer          |         http://ccb.jhu.edu/software/kraken2/         |projectMAIN|
+| DeepMicrobes |git rev. 43b654b  |DNA| Machine Learning, k-mer |      https://github.com/MicrobeLab/DeepMicrobes      |DeepMicrobes|
+|    k-SLAM    |     1.0    |   DNA   |          k-mer          |            https://github.com/aindj/k-SLAM           |kslam|
+|  MetaOthello |git rev. 15ded5e  |DNA|          k-mer          |         https://github.com/xa6xa6/metaOthello        |projectMAIN|
 | NBC           |           | DNA | |http://nbc.ece.drexel.edu/| Webserver |
-|CAT and BAT| 5.1.2| Protein/DNA||https://github.com/dutilh/CAT| catbat|
+|    taxMaps   |     0.2    |   DNA   |         FM-Index        |          https://github.com/nygenome/taxmaps         |taxmaps|
 
 conda 4.7.5, snakemake 3.10.0
 
@@ -52,7 +51,7 @@ _Preparation_
 <!-- for usability-->
     export PATH=$PATH:/home/re85gih/projectClassification/taxmaps/
 
-<!-- Stand der Downloads: 06.03.18 -->
+<!-- as of 06.03.18 -->
     wget -P /mnt/fass1/kirsten/taxmaps "ftp://ftp.nygenome.org/taxmaps/Indexes/refseq_complete_bacarchvir/*"
     
     wget -P /mnt/fass1/kirsten/taxmaps "ftp://ftp.nygenome.org/taxmaps/Indexes/taxonomy.tbl.gz"
@@ -100,7 +99,7 @@ _Installation_
     conda install -c bioconda clark
 
 _Preparation_
-
+<!-- Kevin did it, not me -->
     # 07.12.2020
     # KL - set up DB for Jasmin
     /data/prostlocal2/projects/jb_chlamydomonasvirome_mittag/clark/CLARKSCV1.2.6.1/set_targets.sh /data/fass1/database/clark_db bacteria viruses
@@ -151,26 +150,6 @@ _Preparation_
     diamond makedb --in /mnt/fass1/genomes/new_bacteria/bacteria_blast_db/proteome/full_proteome_bacteria.faa -d nr --taxonmap /mnt/fass1/genomes/new_bacteria/bacteria_blast_db/prot_accession2taxid.txt --taxonnames names.dmp --taxonnodes nodes.dmp
 
 <!-- bisschen tricky, die richtige Version rauszufinden, bei den vorherigen ging taxonnames nicht-->
-## CAT and BAT
-_Installation_
 
-    conda install -c bioconda cat
 
-_Preparation_
-
-    wget -P /mnt/fass1/kirsten/catbat tbb.bio.uu.nl/bastiaan/CAT_prepare/CAT_prepare_20200618.tar.gz
-    tar -xvzf CAT_prepare_20200618.tar.gz
-    
-<!-- grep version 2020-06-18.CAT_prepare.fresh.log-->
-
-## MetaMaps
-_Installation_
-    conda create -n metamaps -c conda-forge autoconf boost zlib icu==64.2
-    conda activate metamaps
-    git clone https://github.com/DiltheyLab/MetaMaps
-    cd MetaMaps
-    ./bootstrap.sh
-    ./configure --with-boost=$CONDA_PREFIX --prefix=$CONDA_PREFIX
-    export CXXFLAGS=-Wl,-rpath,$CONDA_PREFIX/lib
-    make metamaps
 
