@@ -150,3 +150,27 @@ started around 04/03/2021, failed on 04/20/2021
 
 - kma db
 /bin/bash: line 1: 15671 Killed                  kma_index -i /mnt/fass1/kirsten/databases/custom/ccmetagen/refseq_bac_fung.ccmetagen.fna -o /mnt/fass2/projects/kirsten/refseq_bac_fung.kma
+
+### rest
+- *Bacillus subtilis* https://pubmlst.org/bigsdb?db=pubmlst_bsubtilis_seqdef&page=schemeInfo&scheme_id=1
+- *Listeria monocytogenes* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=schemeInfo&scheme_id=2
+  - https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_listeria_seqdef&page=downloadProfiles&scheme_id=2
+- *Enterococcus faecalis* https://pubmlst.org/bigsdb?db=pubmlst_efaecalis_seqdef&page=schemeInfo&scheme_id=1
+- *Staphylococcus aureus* https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef&page=schemeInfo&scheme_id=1
+- *Salmonella enterica* https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=schemeInfo&scheme_id=2
+- https://pubmlst.org/bigsdb?db=pubmlst_mlst_seqdef&page=downloadProfiles&scheme_id=2
+- *Escherichia coli* https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_ecoli_seqdef&page=schemeInfo&scheme_id=1
+   - https://bigsdb.pasteur.fr/cgi-bin/bigsdb/bigsdb.pl?db=pubmlst_ecoli_seqdef&page=downloadProfiles&scheme_id=1
+- *Pseudomonas aeruginosa* https://pubmlst.org/bigsdb?db=pubmlst_paeruginosa_seqdef&page=schemeInfo&scheme_id=1
+- *Lactobacillus fermentum* parB, ychF, pyrG, atpF, recA, ileS, recG, and leuS https://link.springer.com/article/10.1007/s00203-017-1346-5 https://link.springer.com/article/10.1007/s00203-017-1346-5/tables/2
+    - https://doi.org/10.1007/s00203-017-1346-5
+    - 
+    - https://static-content.springer.com/esm/art%3A10.1007%2Fs00203-017-1346-5/MediaObjects/203_2017_1346_MOESM1_ESM.docx
+
+    - found in additional information
+- *Saccharomyces cerevisiae*
+  - ACC1, ADP1, GLN4, MET4, NUP116, and RPN2, https://link.springer.com/content/pdf/10.1007/s10068-018-0335-z.pdf
+- *Cryptococcus neoformans* CAP59, GPD1, LAC1, PLB1, SOD1, URA5 and IGS1. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2884100/
+  - https://mlst.mycologylab.org/page/Allele_Search/30707
+  - https://academic.oup.com/view-large/16644048
+  - based on second links genes, the database of first link was used to get a sequence for each loci --> allele location 1
