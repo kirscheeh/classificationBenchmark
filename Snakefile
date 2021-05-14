@@ -9,14 +9,14 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES ="gridion364".split(" ") # list(config["samples"])
+SAMPLES ="gridion366".split(" ") # list(config["samples"])
 TOOLS="diamond" # .split(" ") #'diamond centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
-RUNS='default'# custom customHit'.split(" ")
+RUNS='custom'# custom customHit'.split(" ")
 
 rule all:
     input:
 # CLASSIFICATION 
-        expand("/mnt/fass2/projects/kirsten/diamondDefault/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), # /mnt/fass2/projects/kirsten/ # {path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification
+        expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), # /mnt/fass2/projects/kirsten/ # {path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification
 ## KMA (for CCMetagen)
 #        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 ## for CLARK-Output
@@ -24,7 +24,7 @@ rule all:
 # REPORT
 #        expand("/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # GENERATING (comparable) REPORTS
-#        expand("/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PIECHARTS
 #        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
 # PRECISION RECALL CURVE
@@ -320,7 +320,7 @@ rule diamond:
     input:
         files = "/mnt/fass1/kirsten/data/{sample}.fastq" # "{PATH}/data/{sample}.fastq"
     output:
-        files="/mnt/fass2/projects/kirsten/diamondDefault/{sample}_{run}.{tool}.classification" #files="{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification"
+        files="/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification" #files="{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification"
     benchmark:
        "/mnt/fass1/kirsten/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt"  #"{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt"
     threads: 8
@@ -338,7 +338,7 @@ rule diamond:
         if 'default' in {params.runID}:
             shell('diamond blastx --db {params.dbDefault} -q {input.files} -o {output.files} -p {threads} --outfmt 102')
         elif 'custom' in {params.runID}:
-            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b0.5')
+            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /mnt/fass2/projects/kirsten/diamond_tmp')
         elif 'customHit' in {params.runID}:
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 --id {params.medianHitLength}')
         else:
@@ -346,15 +346,15 @@ rule diamond:
 
 rule areport:
     input: 
-        classification = "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.classification" #"{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
+        classification = "/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification" #"{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
     output:
-        areport="/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.areport"        
+        areport="/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport"        
         #areport="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     conda:
         "envs/main.yaml"
     params:
         #report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
-        report="/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report",
+        #report="/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report",
         tool=get_tool,
 	    script="/mnt/fass1/kirsten/result/classificationBenchmark/scripts/" # "{PATH}/result/classificationBenchmark/scripts/"
     run:
