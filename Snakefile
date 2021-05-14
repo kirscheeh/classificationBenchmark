@@ -338,7 +338,7 @@ rule diamond:
         if 'default' in {params.runID}:
             shell('diamond blastx --db {params.dbDefault} -q {input.files} -o {output.files} -p {threads} --outfmt 102')
         elif 'custom' in {params.runID}:
-            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /mnt/fass2/projects/kirsten/diamond_tmp')
+            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /home/re85gih/projectClassification/')
         elif 'customHit' in {params.runID}:
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 --id {params.medianHitLength}')
         else:

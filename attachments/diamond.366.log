@@ -1,0 +1,286 @@
+/data/fass1/kirsten/result/classificationBenchmark/scripts/getting.py:11: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  parsed_yaml = yaml.load(c)
+[33mProvided cores: 8[0m
+[33mRules claiming more threads will be scaled down.[0m
+[33mJob counts:
+	count	jobs
+	1	all
+	1	areport
+	1	diamond
+	3[0m
+[32m[0m
+[32mrule diamond:
+    input: /mnt/fass1/kirsten/data/gridion366.fastq
+    output: /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification
+    jobid: 1
+    benchmark: /mnt/fass1/kirsten/result/classification/benchmarks/custom/gridion366_custom.diamond.benchmark.txt
+    wildcards: sample=gridion366, run=custom, tool=diamond
+    threads: 8[0m
+[32m[0m
+/data/fass1/kirsten/result/classificationBenchmark/scripts/getting.py:11: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  parsed_yaml = yaml.load(c)
+diamond v2.0.5.143 (C) Max Planck Society for the Advancement of Science
+Documentation, support and updates available at http://www.diamondsearch.org
+
+#CPU threads: 8
+Scoring parameters: (Matrix=BLOSUM62 Lambda=0.267 K=0.041 Penalties=11/1)
+Temporary directory: /mnt/fass2/projects/kirsten
+Opening the database...  [0.423s]
+Percentage range of top alignment score to report hits: 10
+Reference = /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd
+Sequences = 49346610
+Letters = 16008656284
+Block size = 2000000000
+Loading taxonomy mapping...  [3.194s]
+Loading taxonomy nodes...  [0.033s]
+Opening the input file...  [0.399s]
+Opening the output file...  [0.01s]
+Loading query sequences...  [47.618s]
+Masking queries...  [32.08s]
+Building query seed set...  [0.056s]
+[1;33mThe host system is detected to have 541 GB of RAM. It is recommended to increase the block size for better performance using these parameters : -b12 -c1
+[0;39mAlgorithm: Double-indexed
+Building query histograms...  [13.808s]
+Allocating buffers...  [0s]
+Loading reference sequences...  [16.357s]
+Masking reference...  [32.599s]
+Initializing temporary storage...  [0.044s]
+Building reference histograms...  [17.194s]
+Allocating buffers...  [0s]
+Processing query block 1, reference block 1/9, shape 1/2, index chunk 1/4.
+Building reference seed array...  [9.766s]
+Building query seed array...  [7.849s]
+Computing hash join...  [4.477s]
+Building seed filter...  [0.797s]
+Searching alignments...  [23.079s]
+Processing query block 1, reference block 1/9, shape 1/2, index chunk 2/4.
+Building reference seed array...  [9.821s]
+Building query seed array...  [8.356s]
+Computing hash join...  [4.521s]
+Building seed filter...  [0.442s]
+Searching alignments...  [27.6s]
+Processing query block 1, reference block 1/9, shape 1/2, index chunk 3/4.
+Building reference seed array...  [10.125s]
+Building query seed array...  [8.37s]
+Computing hash join...  [4.167s]
+Building seed filter...  [0.481s]
+Searching alignments...  [24.137s]
+Processing query block 1, reference block 1/9, shape 1/2, index chunk 4/4.
+Building reference seed array...  [9.476s]
+Building query seed array...  [8.019s]
+Computing hash join...  [4.319s]
+Building seed filter...  [0.409s]
+Searching alignments...  [23.981s]
+Processing query block 1, reference block 1/9, shape 2/2, index chunk 1/4.
+Building reference seed array...  [9.241s]
+Building query seed array...  [7.815s]
+Computing hash join...  [4.154s]
+Building seed filter...  [0.387s]
+Searching alignments...  [22.588s]
+Processing query block 1, reference block 1/9, shape 2/2, index chunk 2/4.
+Building reference seed array...  [10.086s]
+Building query seed array...  [8.272s]
+Computing hash join...  [4.218s]
+Building seed filter...  [0.653s]
+Searching alignments...  [86.605s]
+Processing query block 1, reference block 1/9, shape 2/2, index chunk 3/4.
+Building reference seed array...  [10.028s]
+Building query seed array...  [8.197s]
+Computing hash join...  [4.184s]
+Building seed filter...  [0.552s]
+Searching alignments...  [42.049s]
+Processing query block 1, reference block 1/9, shape 2/2, index chunk 4/4.
+Building reference seed array...  [9.563s]
+Building query seed array...  [7.94s]
+Computing hash join...  [4.136s]
+Building seed filter...  [0.698s]
+Searching alignments...  [24.741s]
+Deallocating buffers...  [1.027s]
+Clearing query masking...  [1.045s]
+Opening temporary output file...  [0.011s]
+Computing alignments...  [443.138s]
+Deallocating reference...  [0.181s]
+Loading reference sequences...  [14.763s]
+Masking reference...  [33.62s]
+Initializing temporary storage...  [0.043s]
+Building reference histograms...  [17.405s]
+Allocating buffers...  [0s]
+Processing query block 1, reference block 2/9, shape 1/2, index chunk 1/4.
+Building reference seed array...  [9.741s]
+Building query seed array...  [7.725s]
+Computing hash join...  [3.73s]
+Building seed filter...  [0.249s]
+Searching alignments...  [52.874s]
+Processing query block 1, reference block 2/9, shape 1/2, index chunk 2/4.
+Building reference seed array...  [9.895s]
+Building query seed array...  [7.95s]
+Computing hash join...  [3.527s]
+Building seed filter...  [0.195s]
+Searching alignments...  [36.981s]
+Processing query block 1, reference block 2/9, shape 1/2, index chunk 3/4.
+Building reference seed array...  [10.213s]
+Building query seed array...  [8.22s]
+Computing hash join...  [3.517s]
+Building seed filter...  [0.223s]
+Searching alignments...  [35.074s]
+Processing query block 1, reference block 2/9, shape 1/2, index chunk 4/4.
+Building reference seed array...  [9.609s]
+Building query seed array...  [7.717s]
+Computing hash join...  [3.648s]
+Building seed filter...  [0.244s]
+Searching alignments...  [34.669s]
+Processing query block 1, reference block 2/9, shape 2/2, index chunk 1/4.
+Building reference seed array...  [8.9s]
+Building query seed array...  [7.516s]
+Computing hash join...  [3.773s]
+Building seed filter...  [0.249s]
+Searching alignments...  [28.819s]
+Processing query block 1, reference block 2/9, shape 2/2, index chunk 2/4.
+Building reference seed array...  [9.977s]
+Building query seed array...  [7.983s]
+Computing hash join...  [3.741s]
+Building seed filter...  [0.25s]
+Searching alignments...  [28.102s]
+Processing query block 1, reference block 2/9, shape 2/2, index chunk 3/4.
+Building reference seed array...  [10.091s]
+Building query seed array...  [8.238s]
+Computing hash join...  [3.692s]
+Building seed filter...  [0.224s]
+Searching alignments...  [30.667s]
+Processing query block 1, reference block 2/9, shape 2/2, index chunk 4/4.
+Building reference seed array...  [9.503s]
+Building query seed array...  [7.783s]
+Computing hash join...  [3.618s]
+Building seed filter...  [0.289s]
+Searching alignments...  [28.308s]
+Deallocating buffers...  [0.953s]
+Clearing query masking...  [1.028s]
+Opening temporary output file...  [0.012s]
+Computing alignments...  [1632.98s]
+Deallocating reference...  [0.215s]
+Loading reference sequences...  [15.394s]
+Masking reference...  [33.237s]
+Initializing temporary storage...  [0.051s]
+Building reference histograms...  [17.795s]
+Allocating buffers...  [0s]
+Processing query block 1, reference block 3/9, shape 1/2, index chunk 1/4.
+Building reference seed array...  [9.375s]
+Building query seed array...  [7.784s]
+Computing hash join...  [3.755s]
+Building seed filter...  [0.281s]
+Searching alignments...  [31.476s]
+Processing query block 1, reference block 3/9, shape 1/2, index chunk 2/4.
+Building reference seed array...  [10.231s]
+Building query seed array...  [8.348s]
+Computing hash join...  [3.868s]
+Building seed filter...  [0.299s]
+Searching alignments...  [75.923s]
+Processing query block 1, reference block 3/9, shape 1/2, index chunk 3/4.
+Building reference seed array...  [10.263s]
+Building query seed array...  [9.466s]
+Computing hash join...  [3.925s]
+Building seed filter...  [0.313s]
+Searching alignments...  [28.398s]
+Processing query block 1, reference block 3/9, shape 1/2, index chunk 4/4.
+Building reference seed array...  [9.662s]
+Building query seed array...  [7.892s]
+Computing hash join...  [3.791s]
+Building seed filter...  [0.301s]
+Searching alignments...  [28.457s]
+Processing query block 1, reference block 3/9, shape 2/2, index chunk 1/4.
+Building reference seed array...  [9.42s]
+Building query seed array...  [7.611s]
+Computing hash join...  [3.685s]
+Building seed filter...  [0.361s]
+Searching alignments...  [25.095s]
+Processing query block 1, reference block 3/9, shape 2/2, index chunk 2/4.
+Building reference seed array...  [9.722s]
+Building query seed array...  [8.491s]
+Computing hash join...  [3.81s]
+Building seed filter...  [0.329s]
+Searching alignments...  [24.26s]
+Processing query block 1, reference block 3/9, shape 2/2, index chunk 3/4.
+Building reference seed array...  [10.085s]
+Building query seed array...  [8.168s]
+Computing hash join...  [3.642s]
+Building seed filter...  [0.304s]
+Searching alignments...  [20.94s]
+Processing query block 1, reference block 3/9, shape 2/2, index chunk 4/4.
+Building reference seed array...  [9.654s]
+Building query seed array...  [7.964s]
+Computing hash join...  [3.754s]
+Building seed filter...  [0.308s]
+Searching alignments...  [20.925s]
+Deallocating buffers...  [0.972s]
+Clearing query masking...  [0.463s]
+Opening temporary output file...  [0.005s]
+Computing alignments...  [667.165s]
+Deallocating reference...  [0.203s]
+Loading reference sequences...  [16.634s]
+Masking reference...  [32.533s]
+Initializing temporary storage...  [0.044s]
+Building reference histograms...  [17.362s]
+Allocating buffers...  [0s]
+Processing query block 1, reference block 4/9, shape 1/2, index chunk 1/4.
+Building reference seed array...  [9.799s]
+Building query seed array...  [7.782s]
+Computing hash join...  [3.801s]
+Building seed filter...  [0.318s]
+Searching alignments...  [32.717s]
+Processing query block 1, reference block 4/9, shape 1/2, index chunk 2/4.
+Building reference seed array...  [10.195s]
+Building query seed array...  [8.331s]
+Computing hash join...  [3.679s]
+Building seed filter...  [0.228s]
+Searching alignments...  [30.09s]
+Processing query block 1, reference block 4/9, shape 1/2, index chunk 3/4.
+Building reference seed array...  [10.525s]
+Building query seed array...  [8.153s]
+Computing hash join...  [3.697s]
+Building seed filter...  [0.222s]
+Searching alignments...  [30.247s]
+Processing query block 1, reference block 4/9, shape 1/2, index chunk 4/4.
+Building reference seed array...  [9.817s]
+Building query seed array...  [7.851s]
+Computing hash join...  [3.856s]
+Building seed filter...  [0.217s]
+Searching alignments...  [29.709s]
+Processing query block 1, reference block 4/9, shape 2/2, index chunk 1/4.
+Building reference seed array...  [9.406s]
+Building query seed array...  [7.875s]
+Computing hash join...  [3.61s]
+Building seed filter...  [0.247s]
+Searching alignments...  [25.46s]
+Processing query block 1, reference block 4/9, shape 2/2, index chunk 2/4.
+Building reference seed array...  [9.765s]
+Building query seed array...  [8.022s]
+Computing hash join...  [3.777s]
+Building seed filter...  [0.279s]
+Searching alignments...  [24.935s]
+Processing query block 1, reference block 4/9, shape 2/2, index chunk 3/4.
+Building reference seed array...  [10.48s]
+Building query seed array...  [8.295s]
+Computing hash join...  [3.854s]
+Building seed filter...  [0.256s]
+Searching alignments...  [24.478s]
+Processing query block 1, reference block 4/9, shape 2/2, index chunk 4/4.
+Building reference seed array...  [9.46s]
+Building query seed array...  [7.972s]
+Computing hash join...  [3.927s]
+Building seed filter...  [0.315s]
+Searching alignments...  [25.762s]
+Deallocating buffers...  [0.89s]
+Clearing query masking...  [0.76s]
+Opening temporary output file...  [0.062s]
+Computing alignments... terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+/bin/bash: line 1: 26490 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102
+[31mError in job diamond while creating output file /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification.[0m
+[31mRuleException:
+CalledProcessError in line 341 of /data/fass1/kirsten/result/classificationBenchmark/Snakefile:
+Command 'diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102' returned non-zero exit status 134
+  File "/data/fass1/kirsten/result/classificationBenchmark/Snakefile", line 341, in __rule_diamond
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run[0m
+[31mExiting because a job execution failed. Look above for error message[0m
+[33mWill exit after finishing currently running jobs.[0m
+[31mExiting because a job execution failed. Look above for error message[0m
