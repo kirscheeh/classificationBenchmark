@@ -149,7 +149,7 @@ For classifying the samples with the custom database, CLARK-l is used, which wor
 
 #### Kraken2
 The taxonomic sequence classifier Kraken2 examines k-mers of a query sequence and uses those information to query a database. During the query, the k-mers are mapped to the lowest common ancestor of the genomes that contain a given k-mer [[4]](https://doi.org/10.1186/s13059-019-1891-0 "Wood, D. E., Lu, J., & Langmead, B. (2019). Improved metagenomic analysis with Kraken 2. *Genome biology*, 20(1), 1-13."). <br>
-The used default database is is located [here](../.paths.md "Line 11, 'Kraken2 Default Database'"). The custom database can be generated using the following commands with the <tt>clean</tt> command removing unnecessary files.
+The used default database is is located [here](../.paths.md "Line 11, 'Kraken2 Default Database'"). The custom database can be generated using the following commands with the <tt>clean</tt> command removing unnecessary files. The used scripts for this build are version 2.1.1, the classification, however, is performed with version 2.0.7-beta (***Table 3***).
 
     kraken2-build --download-taxonomy --db {database}
     kraken2-build --add-to-library {input.fungi.fna} --db {database} --threads {threads}

@@ -1,6 +1,4 @@
 # Snakefile for project work of benchmarking different classification tools regarding their usability for long reads
-import scripts.getting as getting
-
 configfile: "config.yaml"
 
 ########## VARIABLE DEFINITION ##########
@@ -9,28 +7,25 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES ="gridion366".split(" ") # list(config["samples"])
-TOOLS="diamond" # .split(" ") #'diamond centrifuge kraken2 kaiju'.split(" ") #list(config["classification"])
-RUNS='custom'# custom customHit'.split(" ")
+SAMPLES =list(config["samples"])
+TOOLS = list(config["classification"])
+RUNS = 'custom default'. split(" ") # not used: customHit
+
+
+#         expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), # /mnt/fass2/projects/kirsten/ # {path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification
 
 rule all:
     input:
+# KMA (for CCMetagen)
+        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 # CLASSIFICATION 
-        expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), # /mnt/fass2/projects/kirsten/ # {path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification
-## KMA (for CCMetagen)
-#        expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
-## for CLARK-Output
-#        expand("/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv", run=RUNS, sample=SAMPLES, path=PATH),
-# REPORT
+        expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification', run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+## for CLARK classification
+        expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.clark.classification.csv', run=RUNS, sample=SAMPLES, path=PATH), # "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv"
+# REPORT (some tools)
 #        expand("/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-# GENERATING (comparable) REPORTS
-        expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-# PIECHARTS
-#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-# PRECISION RECALL CURVE
-#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg",run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
-# ABUNANCE PROFILE SIMILARITY
-#        expand("{path}/result/classification/stats/{run}/{sample}_{run}.{tool}.truthEven.aps", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH)
+# GENERATING (comparable) REPORTS --> areport
+        expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport', run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), #/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport
 
 # creating the project structure
 rule create:
@@ -43,11 +38,12 @@ def get_run(wildcards): #returns the current value of variable/wildcard run
 def get_tool(wildcards): #returns the current value of variable/wildcard run
     return wildcards.tool
 
-def get_medianHitLength(wildcards):
-    if "medianHitLength" in wildcards.run:
-        return scripts.getting.get_seqLength(str(PATH[0])+"/data/"+str(wildcards.sample)+".fastq")/2
-    else:
-        return 22 # default 
+#def get_medianHitLength(wildcards): NOT USED
+#   import scripts.getting as getting
+#   if "medianHitLength" in wildcards.run:
+#       return scripts.getting.get_seqLength(str(PATH[0])+"/data/"+str(wildcards.sample)+".fastq")/2
+#   else:
+#       return 22 # default 
 
 def get_sample(wildcards):
     return wildcards.sample
@@ -67,7 +63,7 @@ rule centrifuge:
         runID=get_run,
 	    dbDefault = DB_default["centrifuge"],
         dbCustom = DB_custom["centrifuge"],
-        medianlength=get_medianHitLength
+        #medianlength=get_medianHitLength
     run:
         # -q 				files are fastq
     	# -x 				index files
@@ -130,127 +126,94 @@ rule kaiju:
         "envs/main.yaml"
     params:
         runID=get_run,
-        medianHitLength=get_medianHitLength,
         dbDefault = DB_default['kaiju']+"/kaiju_db_refseq.fmi",
         dbCustom = DB_custom['kaiju']+"/refseqBacFung.kaiju.fmi",
-        nodes = DB_default['nodes'],
+        nodesDefault = DB_default['kaiju']+"/nodes.dmp",
+        nodesCustom = DB_custom['nodes'],
+        # medianHitLength=get_medianHitLength,
     run:
         # -t    name of nodes.dmp file
         # -f    name of database (.fmi) file
-        # -i    input file containing fasta/fastq
-        # -o    name of output file  
         # -m    minimum match length (default: 11)        
         if 'default' in {params.runID}:
-            shell('kaiju -t {params.nodes} -f {params.dbDefault} -i {input.fastq} -o {output.files} -z {threads} -v')
+            shell('kaiju -t {params.nodesDefault} -f {params.dbDefault} -i {input.fastq} -o {output.files} -z {threads} -v')
         if 'custom' in {params.runID}:
-            shell('kaiju -t {params.nodes} -f {params.dbCustom} -i {input.fastq} -o {output.files} -z {threads} -v')
+            shell('kaiju -t {params.nodesCustom} -f {params.dbCustom} -i {input.fastq} -o {output.files} -z {threads} -v')
         elif 'customHit' in {params.runID}:
-            shell('kaiju -t {params.nodes} -f {params.dbCustom} -i {input.files} -o {output.fastq} -z {threads} -v -m {params.medianHitLength}')
+            shell('kaiju -t {params.nodesCustom} -f {params.dbCustom} -i {input.files} -o {output.fastq} -z {threads} -v -m {params.medianHitLength}')
         else:
             print("Kaiju -- Nothing to do here:", {params.runID})
 
 rule kaiju_summary:
     input:
-        nodes = DB_default['nodes'],
-        names= DB_default['names'],
-        files = "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification" 
+        nodesDefault = DB_default['kaiju']+"/nodes.dmp",
+        namesDefault = DB_default['kaiju']+"/names.dmp",
+        nodesCustom = DB_custom['nodes'],
+        namesCustom = DB_custom['names'],
+        files = "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.classification",
+        runID=get_run 
     output:
         "{PATH}/result/classification/kaiju/{run}/{sample}_{run}.kaiju.report"
     conda:
         "envs/main.yaml"
-    shell:
-        "kaiju2table -t {input.nodes} -n {input.names} -r species -o {output} {input.files}"   
+    run:
+        if 'default' in {params.runID}:
+            shell("kaiju2table -t {input.nodesDefault} -n {input.namesDefault} -r species -o {output} {input.files}")
+        else:
+            shell("kaiju2table -t {input.nodesCustom} -n {input.namesCustom} -r species -o {output} {input.files}")
 
         
 rule clark:
     input:
-        fastq =  "/mnt/fass1/kirsten/data/{sample}.fastq",
-        targets = DB_custom["clark_targets"] #"/mnt/fass1/database/clark_database/targets.txt"
+        fastq = "{PATH}/data/{sample}.fastq"
+        # fastq = "/mnt/fass1/kirsten/data/{sample}.fastq"
     output:
-        csv = "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv",  # "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv",
-        #stats="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification_stats.csv" 
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" 
+        #"/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv"
     benchmark:
-        "/mnt/fass1/kirsten/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt" # "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt"
+        "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt" 
+        # "/mnt/fass1/kirsten/result/classification/benchmarks/{run}/{sample}_{run}.clark.benchmark.txt" # 
     threads: 8
     conda:
         "envs/main.yaml"
     params:
         dbDefault = DB_default["clark"],
         dbCustom = DB_custom["clark"],
+        targetsDefault = DB_default["clark_targets"],
+        targetsCustom = DB_custom["clark_targets"],
         runID=get_run,
-        result = "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification" # "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
+        result = "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" #  "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification"
     run:
         # --long    for long reads (only for full mode)
         # -t        minimum of k-mer frequency/occurence for the discriminative k-mers (default:0)
         if 'default' in {params.runID}:
-            shell('CLARK --long -O {input.fastq} -R {params.result} -D {params.dbDefault} -n {threads} -T {input.targets}')
+            shell('CLARK --long -O {input.fastq} -R {params.result} -D {params.dbDefault} -n {threads} -T {params.targetsDefault}')
         elif 'custom' in {params.runID}:
-            shell('CLARK-l --long -O {input.fastq} -R {params.result} -D {params.dbCustom} -n {threads} -T {input.targets}')
+            shell('CLARK-l --long -O {input.fastq} -R {params.result} -D {params.dbCustom} -n {threads} -T {params.targetsCustom}')
         elif 'customHit' in {params.runID}:
-            shell('CLARK --long -O {input.fastq} -R {params.result} -D {params.dbCustom} -n {threads} -T {input.targets} -t 2')
+            shell('CLARK --long -O {input.fastq} -R {params.result} -D {params.dbCustom} -n {threads} -T {params.targetsCustom} -t 2')
         else:
             print("CLARK -- Nothing to do here:", {params.runID})
 
 rule clark_abundance:
     input:
-        "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv" # "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv"
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" # "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv" 
     output:
-        report= "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.report",
- # "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report",
-        #unnamed="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
+        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report" #"/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.report"
     params:
-        taxonomy= "/mnt/fass2/projects/kirsten/clark", # DB_default['clark_taxonomy'],       
-      # dbDefault = DB_default["clark"], #"/mnt/fass1/database/clark_database",
-        #dbCustom = DB_custom["clark"],
+        taxonomyDefault = DB_default['clark_taxonomy'],  
+        taxonomyCustom =DB_custom['clark_taxonomy'],     
         runID=get_run,
-        unnamed= "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification" #"{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
+        unnamed= "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification" #"/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification"
     conda:
         "envs/main.yaml"    
     run:
         if 'default' in {params.runID}:
-            shell("/mnt/fass1/kirsten/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomy} > {output}"),
+            shell("/mnt/fass1/kirsten/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomyDefault} > {output}"),
             shell("mv {input} {params.unnamed}")
         else:
-            shell("/mnt/fass1/kirsten/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomy} > {output}"),
+            shell("/mnt/fass1/kirsten/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomyCustom} > {output}"),
             shell("mv {input} {params.unnamed}")
-
-rule taxmaps: # many folders, fix output
-    input:
-        dbDefault = DB_default['taxmaps']+"/refseq_complete_bacarchvir.lcak300.gem",
-        taxonomy = DB_default['taxmaps']+"/taxonomy.tbl.gz",
-        nodes = DB_default['nodes'],
-        files = "{PATH}/data/{sample}.fastq"
-    benchmark:
-        '{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.taxmaps.benchmark.txt'
-    output:
-        o = '{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.classification',
-	folder = '{PATH}/result/classification/taxmaps/{run}/{sample}' 
-    threads: 8
-    params:
-        runid=get_run,
-	prefix = "{sample}_{run}.taxmaps.classification"
-    log:
-        "{PATH}/result/classification/taxmaps/{run}/{sample}_{run}.taxmaps.log"
-    conda:
-        'envs/taxmaps.yaml' 
-    run:
-        # -f        input fastq
-        # -l        in preprocessing: minimum read length for mapping
-        # -C        in preprocessing: entropy cutoff for low complexity filtering
-        # -d        index files
-        # -t        taxonomic rable
-        # --cov     coverage histogram
-        # -o        output directory
-        if 'default' in {params.runid}:
-            shell('export PERL5LIB=/home/re85gih/miniconda3/envs/taxmaps/opt/krona/lib/'),
-            shell('export PATH=$PATH:/home/re85gih/projectClassification/taxmaps/'),
-            shell('taxMaps -f {input.files} -c {threads} -t {input.taxonomy} -d {input.dbDefault} -o {output.folder} -p {params.prefix}')
-        elif 'medium' in {params.runid}:
-            pass
-        elif 'restrictive' in {params.runid}:
-            pass   
-        else:
-            print("TaxMaps -- Nothing to do here:", {params.runid})
         
 # preprocessing for ccmetagen
 rule kma:
@@ -265,22 +228,20 @@ rule kma:
         "envs/main.yaml"
     threads: 8
     params:
-        dbDefault = DB_default["ccmetagen"]+"/ncbi_nt",
-        dbCustom = DB_custom["ccmetagen"],
+        dbDefault = DB_default["ccmetagen"],
+        dbCustom = DB_default["ccmetagen"],
         result="{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.intermediate",
         sample=get_sample,
         runID=get_run,
-        script="{PATH}/result/classificationBenchmark/scripts/ccmetagen.piecer.sh"
     run:
-        if 'promethion' in {params.sample}:
-            shell('{params.script} {input} helper.fastq {params.dbDefault} {output.result}')
-        else:
+        if 'default' in {params.runID}:
             shell('kma -i {input} -t_db {params.dbDefault} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef')
+        else: #unused
+            shell('kma -i {input} -t_db {params.dbCustom} -o {output.result} -t {threads} -1t1 -mem_mode -and -ef')
 
 rule ccmetagen:
     input:
         kma = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res",
-        #fastq = "{PATH}/data/{sample}.fastq",
         mapstat = "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.mapstat"
     output:
         "{PATH}/result/classification/ccmetagen/{run}/{sample}_{run}.ccmetagen.classification.csv",
@@ -318,19 +279,22 @@ rule rename_ccmetagen:
 
 rule diamond:
     input:
-        files = "/mnt/fass1/kirsten/data/{sample}.fastq" # "{PATH}/data/{sample}.fastq"
+        files = "{PATH}/data/{sample}.fastq" 
+        # files = "/mnt/fass1/kirsten/data/{sample}.fastq" 
     output:
-        files="/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification" #files="{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification"
+        files="{PATH}/result/classification/diamond/{run}/{sample}_{run}.diamond.classification" 
+        # files="/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification"
     benchmark:
-       "/mnt/fass1/kirsten/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt"  #"{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt"
+       "{PATH}/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt" 
+       #"/mnt/fass1/kirsten/result/classification/benchmarks/{run}/{sample}_{run}.diamond.benchmark.txt" 
     threads: 8
     conda:
         "envs/diamond.yaml"
     params:
         runID=get_run,
-        dbDefault = DB_default["diamond"],#+"/nr"
+        dbDefault = DB_default["diamond"],
         dbCustom = DB_custom["diamond"],
-	# medianHitLength=get_medianHitLength
+	    # medianHitLength=get_medianHitLength
     run:
         # --outfmt defines format as taxonomic classification
         # --more-sensitive more sensitive than sensitive, which is <40% identity
@@ -338,7 +302,11 @@ rule diamond:
         if 'default' in {params.runID}:
             shell('diamond blastx --db {params.dbDefault} -q {input.files} -o {output.files} -p {threads} --outfmt 102')
         elif 'custom' in {params.runID}:
+<<<<<<< HEAD
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /home/re85gih/projectClassification/')
+=======
+            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /home/re85gih/projectClassification')
+>>>>>>> 6218a38adae7b1485e166eddccc9ad686fb3608a
         elif 'customHit' in {params.runID}:
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 --id {params.medianHitLength}')
         else:
@@ -346,15 +314,15 @@ rule diamond:
 
 rule areport:
     input: 
-        classification = "/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification" #"{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification"
+        classification = "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification" # "/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification"
     output:
-        areport="/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport"        
-        #areport="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
+       # areport="/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport"        
+        areport="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
     conda:
         "envs/main.yaml"
     params:
-        #report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
-        #report="/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report",
+        report="{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report",
+        # report="/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report",
         tool=get_tool,
 	    script="/mnt/fass1/kirsten/result/classificationBenchmark/scripts/" # "{PATH}/result/classificationBenchmark/scripts/"
     run:
@@ -366,27 +334,4 @@ rule areport:
         else: 
             shell('python {params.script}{params.tool}Output.py {params.report} {output.areport}')
         
-rule piechart:
-    input:
-        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
-    output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.piechart.png"
-    conda:
-        "envs/main.yaml"
-    params:
-        "{PATH}/result/classificationBenchmark/scripts/classificationPiecharts.R"
-    shell:
-        'Rscript {params} {input} {output}'
-
-rule prc: #recision recall curve
-    input:
-        "{PATH}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport"
-    output:
-        "{PATH}/result/classification/stats/{run}/{sample}_{run}.{tool}.prc.jpeg"
-    conda:
-        "envs/renv.yaml"
-    params:
-        "{PATH}/result/classificationBenchmark/scripts/PRCurve.sh"
-    shell:
-        '{params} {input} {output}'
 

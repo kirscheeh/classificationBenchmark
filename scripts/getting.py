@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # Script with several useful functions needed across the different scripts
+# needs to be called from /PATH/TO/classificationBenchmark
 import os, yaml, sys
 import numpy as np
 from numpy import array
 from numpy.linalg import norm
-#from ete3 import NCBITaxa
+from ete3 import NCBITaxa
 
 def get_species(config): # expected species in sample
     if os.path.isfile(config):
@@ -15,10 +16,10 @@ def get_species(config): # expected species in sample
     else:
         print('Error! No config file', config)
 
-config= '/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/config.yaml' #'config.yaml' #
+config= 'config.yaml' 
 species = get_species(config)
 
-def get_path(config): #get path to working directory
+def get_path(config): # get path to working directory
     if os.path.isfile(config):
         with open(config, 'r') as c:
             parsed_yaml = yaml.load(c)
@@ -63,8 +64,6 @@ def get_taxIDs(species):
         result.append(taxid[sp][0])
     return result
 
-#species= ['Bacillus subtilis', 'Listeria monocytogenes', 'Enterococcus faecalis', 'Staphylococcus aureus', 'Salmonella enterica', 'Escherichia coli', 'Pseudomonas aeruginosa', 'Lactobacillus fermentum', 'Saccharomyces cerevisiae', 'Cryptococcus neoformans']
-#print(get_taxIDs(species))
 def get_toolsClassification(config): # returns classification tools
     if os.path.isfile(config):
         with open(config, 'r') as c:
@@ -88,7 +87,7 @@ def get_abundanceSampleSpecies(areport, config): #returns abundance of expected 
             for line in lines:
                 line = line.split("\t")
                 try:
-                    if int(line[3]) == t and line[2]=="S": # species level# if line[4][:-1] == s and line[2]=="S": # species level
+                    if int(line[3]) == t and line[2]=="S": # species level
                         predictions[t] = float(line[0].split(":")[1])
                 except ValueError:
                     print(line)
@@ -155,9 +154,8 @@ def get_groundTruth(report): # ground truth vector based on species level for al
             line=line.split("\t")
 
             if line[2]=="S":
-               # print(line[3])
                 try: 
-                    if int(line[3]) in taxids:  #line[4][:-1] in species:#
+                    if int(line[3]) in taxids: 
                         print(line)
                         data.append(1)
                     else:
@@ -204,7 +202,7 @@ def calc_recall(tp, fp, tn, fn):
     except ZeroDivisionError as e:
         return 0
 
-def calc_fpr(tp, fp, tn, fn): # not used
+def calc_fpr(tp, fp, tn, fn):
     # calculate false positive rate
     try:
         return fp/(tn+fp)
@@ -246,8 +244,4 @@ def get_prediction(report, th): #values above 1% only
                     data.append(0)
     return data 
 
-#report=sys.argv[1]
-#config=sys.argv[2]
-#tp, fp, tn, fn = calc_matrixOfConfusion(prediction=get_prediction(report, 0.1), groundTruth=get_groundTruth(report))
-#print(get_balancedAcc(get_tpr(tp, fp, tn, fn), get_tnr(tp, fp, tn, fn)))
 
