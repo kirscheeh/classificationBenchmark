@@ -3,22 +3,20 @@
 
 args <- commandArgs(trailingOnly=TRUE)
 report <- read.csv(args[1], sep="\t")
-name <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/areports/promethion365_custom.clark.areport"
-report <- read.csv(name, sep="\t")
-sample.name.splitted <- strsplit(name, "/")
-sample.name.vector <- sample.name.splitted[[1]]
-sample.name <- sample.name.vector[length(sample.name.vector)] #"gridion364_custom.diamond.areport - Genus"
 
+# getting title figure
+sample.name.splitted <- strsplit(args[1], "/")
+sample.name.vector <- sample.name.splitted[[1]]
+sample.name <- sample.name.vector[length(sample.name.vector)] 
 abundances <- report[,c(1, 3,5)]
-sum(abundances[,1])
 
 # getting species with at least 1% abundance
 species <- c()
 for (i in 1:length(report[,1])){
-  if (abundances[i, 1] >= 0.01 && ("S" == abundances[i, 2] || grepl("U", abundances[i, 2])))
+  if (abundances[i, 1] >= 0.01 && ("S" == abundances[i, 2] || grepl("U", abundances[i, 2]))) #"G" == abundances[i, 2] for genus
   {
-    if (abundances[i, 3] == "Limosilactobacillus fermentum") {
-      # species <- c(species, abundances[i,1], as.character(abundances[i, 2]), as.character("Lactobacillus fermentum"))
+    if (abundances[i, 3] == "Limosilactobacillus fermentum") { #renaming
+      species <- c(species, abundances[i,1], as.character(abundances[i, 2]), as.character("Lactobacillus fermentum"))
     }
     else{
       species <- c(species, abundances[i,1], as.character(abundances[i, 2]), as.character(abundances[i, 3]))
@@ -41,7 +39,7 @@ species.percent <- round(species.slices/sum(species.slices)*100, 3)
 labels <- paste(labels, species.percent) # add percentages to labels
 labels <- paste(labels,"%",sep="") # add % to labels
 
-save <- "/home/kirscheeh/university/projectCLASSIFICATION/classificationBenchmark/stats/pics/promethion367_custom.clark.piechart.jpeg"
-jpeg(filename=save, width=850, height=632)
-pie(species.slices,labels,main=sample.name, cex=1)
+# saving
+jpeg(filename=args[2], width=850, height=632)
+pie(species.slices,labels,main=sample.name, cex=1.0, clockwise = TRUE)
 dev.off()

@@ -1,3 +1,5 @@
+# transforming the ccmetagen output into a 'universal' format --> areport
+
 import sys
 from ete3 import NCBITaxa
 import getting
@@ -56,14 +58,16 @@ else:
     
     numReadsUnclassified=sampleSize-numReadsClassified
     
-    for key in classifiedEntry.values():
+    for key in classifiedEntry.values(): # add abundances
         abundance = key[1]/sampleSize
         areport.write(str(abundance)+"\t"+str(key[1])+"\t"+str(key[2])+"\t"+str(key[3])+"\t"+str(key[4])+"\n")
     areport.close()
     
     abundanceUnclassified=numReadsUnclassified/numReadsClassified
     
-    with open(sys.argv[2], 'r') as f:
+    #add first line 
+    
+    with open(sys.argv[2], 'r') as f: 
         lines=f.readlines()
         lines[1]=str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified\n"
 

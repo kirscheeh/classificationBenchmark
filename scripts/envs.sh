@@ -1,5 +1,5 @@
 #!/bin/bash
-# This scripts exports the used conda environments into yaml-files
+# This scripts exports the used conda environments into yaml files
 # execution while being in base
 
 INPUT="../envs/README.md"

@@ -5,7 +5,7 @@ import getting
 
 def get_rank(lineage):
     tax = lineage.split(";")
-    rankCode = {'6': 'S', '5': 'G', '4': 'F', '3':'O', '2':'C', '1':'P', '1': 'K'}#, '0': 'D'}
+    rankCode = {'6': 'S', '5': 'G', '4': 'F', '3':'O', '2':'C', '1':'P', '1': 'K'}
     return rankCode[str(len(tax))]
 
 if not len(sys.argv) == 3:

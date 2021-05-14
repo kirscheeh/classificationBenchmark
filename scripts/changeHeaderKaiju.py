@@ -3,16 +3,21 @@
 Script to add taxids to nt collection
 @ V.R.Marcelino
 Created on Fri Dec 28 10:37:56 2018
-
-AN: From CCMetagen GitHub
 """
-# fitted for my needs for Kaiju Headers
+# from: https://github.com/vrmarcelino/CCMetagen/tree/master/benchmarking/rename_nt
+
+# fitted for my needs --> this script is initially used to renamce nt database sequences
+# here: renaming of RefSeq database sequences to fit format of Kaiju: >ID_taxID or >taxID
 
 import re
 import sys
 
-seqid2taxid=sys.argv[1]
-nt_in=sys.argv[2]
+try:
+    seqid2taxid=sys.argv[1]
+    nt_in=sys.argv[2]
+except IndexError:
+    print("Wrong number of arguments.")
+    print("Usage: python changeHeaderCCMetagen.py seqid2taxid.map database_file.fasta")
 
 # function to  get taxids from accession numbers
 def get_tax_id_dic (accession, accession_dic):
@@ -38,7 +43,7 @@ with open(nt_in) as nt:
             accession = splited_rec[2]
             print(accession)
             taxid = get_tax_id_dic(accession,acc2tax_dic)
-            line = ">" + taxid+"\n"
+            line = ">" + taxid+"\n" #changed here
         new_nt.write(line)
             
 new_nt.close()

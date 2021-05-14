@@ -8,7 +8,7 @@ def get_rank(filename):
 
 if not len(sys.argv) == 3:
     print("An error occured.")
-    print("Usage: python kaijuOutput.py file.REPORT new_file.areport")
+    print("Usage: python kaijuOutput.py file.report new_file.areport")
 else:
     areport = open(sys.argv[2], "w")
     areport.write("Abundance\tnumReads\ttaxRank\ttaxID\tName\n")
@@ -27,11 +27,12 @@ else:
                 hits = int(l[2])
                 taxID = l[3]
                 species_name=l[4][:-1]
-                abundance=float(l[1])/100
+                abundance=float(l[1])/100 # Kaiju has entry, but in %
 
                 areport.write("\n"+str(abundance)+"\t"+str(hits)+"\tS"+"\t"+str(taxID)+"\t"+str(species_name)) #rank is always S, just species in report
     areport.close()
     
+    # add first line
     with open(sys.argv[2], 'r') as f:
         lines = f.readlines()
         lines[1]= "\n"+str(abundance_unclassified)+"\t"+str(numReadsEntry)+"\tU"+"\t"+str(0)+"\tunclassified\n"

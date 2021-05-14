@@ -4,13 +4,20 @@ Script to add taxids to nt collection
 @ V.R.Marcelino
 Created on Fri Dec 28 10:37:56 2018
 """
-# fitted for my needs
+# from: https://github.com/vrmarcelino/CCMetagen/tree/master/benchmarking/rename_nt
+
+# fitted for my needs --> this script is initially used to renamce nt database sequences
+# here: renaming of RefSeq database sequences
 
 import re
 import sys
 
-seqid2taxid=sys.argv[1]
-nt_in=sys.argv[2]
+try:
+    seqid2taxid=sys.argv[1]
+    nt_in=sys.argv[2]
+except IndexError:
+    print("Wrong number of arguments.")
+    print("Usage: python changeHeaderCCMetagen.py seqid2taxid.map database_file.fasta")
 
 # function to  get taxids from accession numbers
 def get_tax_id_dic (accession, accession_dic):

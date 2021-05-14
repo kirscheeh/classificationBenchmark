@@ -17,7 +17,7 @@ def get_rank(taxid):
 
 if not len(sys.argv) == 3:
     print("An error occured.")
-    print("Usage: python diamondOutput.py file.CLASSIFICATION new_file.areport")
+    print("Usage: python diamondOutput.py file.classification new_file.areport")
 else:
     unclassified=0
     
@@ -44,7 +44,7 @@ else:
             else:
                 taxID = l[1]
                 
-                try: # basically check if already entry
+                try: # basically check if already an entry
                     hits=matches[taxID][1]+1
                 except KeyError:
                     hits=1
@@ -57,7 +57,7 @@ else:
             lineCounter+=1
             if lineCounter == 10000:
                 countingSteps+=1
-                print(str(countingSteps)+"/"+str(round(numReadsTotal/10000)))
+                print(str(countingSteps)+"/"+str(round(numReadsTotal/10000))) #update
                 lineCounter=0
     
     abundance_unclassified=unclassified/numReadsTotal

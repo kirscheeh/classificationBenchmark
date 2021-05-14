@@ -1,5 +1,5 @@
 #!/bin/sh
-# new assignment of path to use abundance-script
+# changed: new assignment of path to use abundance-script
 
 LDIR="/mnt/prostlocal/programs/clark/1.2.5"
 

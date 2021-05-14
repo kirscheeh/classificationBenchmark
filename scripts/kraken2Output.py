@@ -3,13 +3,7 @@
 import sys
 import getting
 
-def check_rank(rank):
-    if rank in ["S", "G", "F", "O", "C", "P", "K", "D"]:
-        return True
-    else:
-        return False
-
-def get_name(name_long): # name of entry from
+def get_name(name_long): # scientific name
     name_list = name_long.split(" ")
     name_list[-1]=name_list[-1].split("\t")[0]
     name=""

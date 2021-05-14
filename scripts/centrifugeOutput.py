@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# translating kslam output into areport
+# translating centrifuge output into areport
 import sys
 import getting
 def get_rank(name):
@@ -12,46 +12,35 @@ def get_rank(name):
 
 if not len(sys.argv) == 4:
     print("An error occured.")
-    print("Usage: python centrifugeOutput.py PATH/TO/file.CLASSIFICATION PATH/TOfile.REPORT PATH/TO/NEW_FILE.areport")
+    print("Usage: python centrifugeOutput.py file.classification file.REPORT file.areport")
 else:
     numReadsUnclassified=0
-    with open (sys.argv[1], 'r') as classify: # vllt. kann ich das umgehen, wenn ich numReadsClassified mitrechne?
+    with open (sys.argv[1], 'r') as classify: # centrifuge assigns a read to more than one species, therefore number of total assignments is important
         lines=classify.readlines()
         
         for line in lines[1:]:
             if line.split("\t")[1] == "unclassified":
                     numReadsUnclassified +=1
-        numReadsTotal=len(lines)-1 #header
-    sample = getting.get_sampleName(sys.argv[1]) #number of lines in classificatoin file doesnt correspond to number of reads
-    #numReadsTotal = 0 #getting.get_numberReadsSample(sample)
+        numberAssignments=len(lines)-1 # due to header
+    sample = getting.get_sampleName(sys.argv[1]) 
 
-    abundanceUnclassified=numReadsUnclassified/numReadsTotal
+    abundanceUnclassified=numReadsUnclassified/numberAssignments
 
     areport = open(sys.argv[3], "w")
     areport.write("Abundance\tnumReads\ttaxRank\ttaxID\tName\n")
-    areport.write(str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified") #areport.write(str(0)+"\t"+str(0)+"\t"+"U\t0\tunclassified")
-    unclassified_test=0
+    areport.write(str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\t"+"U\t0\tunclassified") 
+    
     with open(sys.argv[2], "r") as report:
         lines = report.readlines()
 
         for line in lines[1:]:
             l = line.split("\t")
             hits = int(l[4])
-     #       numReadsTotal+=hits
-            unclassified_test+=hits
-            abundance = hits/numReadsTotal
+            abundance = hits/numberAssignments
             rank = get_rank(l[2])            
             taxID = l[1]
             speciesName=l[0]
-            if not rank == 0:
+
+            if not rank == 0: # rank 0: read unclassified or assigned to irrelevant taxonomic rank
                 areport.write("\n"+str(abundance)+"\t"+str(hits)+"\t"+str(rank)+"\t"+str(taxID)+"\t"+str(speciesName))
     areport.close()
-
-   # abundanceUnclassified=numReadsUnclassified/numReadsTotal
-   # print(numReadsTotal)
-   # with open(sys.argv[3], 'r') as f:
-   #     lines=f.readlines()
-   #     lines[1]=str(abundanceUnclassified)+"\t"+str(numReadsUnclassified)+"\tU\t0\tunclassified\n"
-   # with open (sys.argv[3], 'w') as f:
-   #     for line in lines:
-   #         f.write(line)
