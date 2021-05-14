@@ -14,6 +14,7 @@ rule centrifuge_db:
     conda:
         "envs/centrifuge.yaml"
     shell:
+    # conversion ttable used from Kraken2
         "centrifuge-build -p {threads} --conversion-table {input.map} --taxonomy-tree {input.nodes} --name-table {input.names} {input.fna} {params}"
 
 
@@ -49,6 +50,7 @@ rule kaiju_db:
         bwt="/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju"
     threads: 16
     run:
+    # -a: used alphabet
         shell('kaiju-mkbwt -n {threads} -a ACDEFGHIKLMNPQRSTVWY -o {params.bwt} {input}'),
         shell('kaiju-mkfmi -filenm {params.bwt}')
 
@@ -67,11 +69,12 @@ rule kraken2_db:
     params:
         "/mn2/fass2/projects/kirsten/kraken2/" # "/mnt/fass1/kirsten/databases/custom/kraken2"
     run:
-        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {params}'),
-        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {params} --threads {threads}'),
-        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {params} --threads {threads}'),
-        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db {params}'),
-        shell('time /home/re85gih/projectClassification/kraken2/kraken2-build --clean')
+    # version 2.1.1
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --download-taxonomy --db {params}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.fungi} --db {params} --threads {threads}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --add-to-library {input.bacteria} --db {params} --threads {threads}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --build --threads {threads} --db {params}'),
+        shell('/home/re85gih/projectClassification/kraken2/kraken2-build --clean')
 
 
 rule clark_db:
@@ -82,13 +85,11 @@ rule clark_db:
     output:
         "/mnt/fass2/projects/kirsten/clark/helper.txt"
     threads: 16
-   # conda:
-#	"envs/main.yaml"
-   # params:
-#	folder=
+    conda:
+        "envs/main.yaml"
     run:
         shell('/mnt/fass1/kirsten/tools/CLARKSCV1.2.6.1/set_targets.sh {input} custom'),
-        shell('touch {output}') 
+        shell('touch {output}') # just to have an output file
 
 
 rule ccmetagen_db:
