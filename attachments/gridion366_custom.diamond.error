@@ -1,0 +1,29 @@
+Computing alignments... terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+/bin/bash: line 1: 26490 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102
+
+Computing alignments... terminate called without an active exception
+/bin/bash: line 1: 42886 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102
+
+Computing alignments... Input/output error
+terminate called after throwing an instance of 'File_read_exception'
+  what():  Error reading file /mnt/fass2/projects/kirsten/diamond-tmp-H62fbL
+Input/output error
+terminate called recursively
+/bin/bash: line 1: 50005 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102 -b1.0
+
+Joining output blocks... Input/output error
+terminate called after throwing an instance of 'File_read_exception'
+  what():  Error reading file /mnt/fass2/projects/kirsten/diamond-tmp-JEibhO
+/bin/bash: line 1: 25670 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102 -b0.5
+
+Building reference seed array... Input/output error
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Error closing file /mnt/fass2/projects/kirsten/diamond-tmp-p3zRgz
+/bin/bash: line 1: 19486 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/gridion366_custom.diamond.classification -p 8 --outfmt 102 -b0.25
+
+Computing alignments... Input/output error
+terminate called after throwing an instance of 'File_write_exception'
+  what():  Error writing file /mnt/fass2/projects/kirsten/diamond_tmp/diamond-tmp-DMZeZ7
+/bin/bash: line 1: 33192 Aborted                 diamond blastx --db /mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd -q /mnt/fass1/kirsten/data/gridion366.fastq -o /mnt/fass2/projects/kirsten/diamond/gridion366_custom.diamond.classification -p 8 --outfmt 102 -b1.0 -t /mnt/fass2/projects/kirsten/diamond_tmp
+

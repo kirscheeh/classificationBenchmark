@@ -23,3 +23,5 @@
     - Primer, forward: 5'-CGAGGATAAGCCGAGCAA-3'
   - NUP116: [Saccharomyces cerevisiae S288C chromosome XIII, complete sequence](https://www.ncbi.nlm.nih.gov/nuccore/NC_001145.3?report=fasta)
     - Primer, revers: 5'-CTTCCCCATCGTTCTTTGAG-3'
+- Benchmark Files, Default: /mnt/fass1/kirsten/result/classification/benchmarks/default
+- Benchmark Files, Custom: /mnt/fass1/kirsten/result/classification/benchmarks/custom
