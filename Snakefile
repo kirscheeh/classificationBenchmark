@@ -7,10 +7,12 @@ DB_custom= dict(config["DB_custom"])
 
 PATH = config["path"]
 
-SAMPLES =list(config["samples"])
+SAMPLES = list(config["samples"])
 TOOLS = list(config["classification"])
 RUNS = 'custom default'. split(" ") # not used: customHit
 
+TOOLS_WO_C = "diamond kaiju ccmetagen centrifuge kraken2".split(" ") # needed for classification
+TOOLS_W_REPORT = "kaiju ccmetagen clark".split(" ") # tools that generate ereport externally
 
 #         expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), # /mnt/fass2/projects/kirsten/ # {path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification
 
@@ -19,11 +21,11 @@ rule all:
 # KMA (for CCMetagen)
         expand("{path}/result/classification/ccmetagen/{run}/{sample}_{run}.kma.res", run=RUNS, sample=SAMPLES, path=PATH),
 # CLASSIFICATION 
-        expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification', run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification', run=RUNS, sample=SAMPLES, tool=TOOLS_WO_C, path=PATH),
 ## for CLARK classification
-        expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.clark.classification.csv', run=RUNS, sample=SAMPLES, path=PATH), # "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv"
+        expand('{path}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv', run=RUNS, sample=SAMPLES, path=PATH), # "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv"
 # REPORT (some tools)
-#        expand("/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH),
+        expand("{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.report", run=RUNS, sample=SAMPLES, tool=TOOLS_W_REPORT, path=PATH), # "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.{tool}.report"
 # GENERATING (comparable) REPORTS --> areport
         expand('{path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.areport', run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), #/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.areport
 
@@ -199,7 +201,8 @@ rule clark_abundance:
     input:
         "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification.csv" # "/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.classification.csv" 
     output:
-        "{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report" #"/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.report"
+        report="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.report", #"/mnt/fass2/projects/kirsten/clark_index/{sample}_{run}.clark.report"
+        un="{PATH}/result/classification/clark/{run}/{sample}_{run}.clark.classification"
     params:
         taxonomyDefault = DB_default['clark_taxonomy'],  
         taxonomyCustom =DB_custom['clark_taxonomy'],     
@@ -210,10 +213,10 @@ rule clark_abundance:
     run:
         if 'default' in {params.runID}:
             shell("/mnt/fass1/kirsten/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomyDefault} > {output}"),
-            shell("mv {input} {params.unnamed}")
+            shell("mv {input.report} {params.unnamed}")
         else:
             shell("/mnt/fass1/kirsten/result/classificationBenchmark/scripts/clark.estimate_abundance.sh -F {input} -D {params.taxonomyCustom} > {output}"),
-            shell("mv {input} {params.unnamed}")
+            shell("mv {input.report} {params.unnamed}")
         
 # preprocessing for ccmetagen
 rule kma:
@@ -302,11 +305,7 @@ rule diamond:
         if 'default' in {params.runID}:
             shell('diamond blastx --db {params.dbDefault} -q {input.files} -o {output.files} -p {threads} --outfmt 102')
         elif 'custom' in {params.runID}:
-<<<<<<< HEAD
-            shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /home/re85gih/projectClassification/')
-=======
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 -b1.0 -t /home/re85gih/projectClassification')
->>>>>>> 6218a38adae7b1485e166eddccc9ad686fb3608a
         elif 'customHit' in {params.runID}:
             shell('diamond blastx --db {params.dbCustom} -q {input.files} -o {output.files} -p {threads} --outfmt 102 --id {params.medianHitLength}')
         else:

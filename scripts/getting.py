@@ -5,7 +5,7 @@ import os, yaml, sys
 import numpy as np
 from numpy import array
 from numpy.linalg import norm
-from ete3 import NCBITaxa
+#from ete3 import NCBITaxa
 
 def get_species(config): # expected species in sample
     if os.path.isfile(config):

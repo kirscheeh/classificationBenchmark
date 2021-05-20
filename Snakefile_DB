@@ -1,3 +1,11 @@
+rule all:
+    input:
+        "/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.1.cf",
+        "/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd",
+        "/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju.fmi",
+        "/mnt/fass2/projects/kirsten/clark/helper.txt",
+        #"/mnt/fass2/projects/kirsten/ccmetagen/refseq_bac_fung.kma.name"
+
 rule centrifuge_db:
     input:
         map = "/mnt/fass1/kirsten/databases/custom/centrifuge/seqid2taxid.map", #copied from Kraken2
