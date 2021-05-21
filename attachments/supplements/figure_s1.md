@@ -1,0 +1,3 @@
+![GridION364: PR Curve, Diamond (default), Python](../../stats/pics/prc/gridion364_default.diamond.prc.python.png "GridION364: PR Curve, Diamond (default), Python")
+
+[***Figure-S1: GridION364: PR Curve, Diamond (default), Python.***](../../stats/pics/prc/gridion364_default.diamond.prc.python.png "GridION364: PR Curve, Diamond (default), Python") This figure shows a precision-recall curve computed with pathon's sklearn.metrics package. The used script can be seen [here](../../scripts/calcPRCurve.py).

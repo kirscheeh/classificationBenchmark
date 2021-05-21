@@ -1,0 +1,4 @@
+
+![GridION364: Piechart for Classification Results of Diamond (custom)](../../stats/pics/gridion364_custom.diamond.piechart.jpeg "GridION364: Piechart for Classification Results of Diamond (custom)")
+
+[***Figure-S4: Classification Results of Diamond, Custom Database, GridION364.***](../stats/pics/gridion364_custom.diamond.piechart.jpeg "GridION364: Piechart for Classification Results of Diamond (custom)") It can be seen that the classification against the custom database resulted in the same idnetified species with similar abundancies. The diagram shows the three species classified with more than 1% of reads assigned: *Listeria monocytogenes* (2.879%), *Enterococcus faecalis* (1.01%) and *Limosilactobacillus fermentum* (4.799%). 78.81% of the reads could not be assigned to a species, but other taxa and 12.492% of the reads could not be assigned at all.

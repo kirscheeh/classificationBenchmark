@@ -1,0 +1,10 @@
+| Classified species 	| *L. monocytogenes*| *E. faecalis* | *S. aureus*  |*L. fermentum*  |*C. neoformans*| *S. cerevisiae*|   	| unclassified 	| others 	|     different taxon level   	|
+|--------------------	|------------------	|-------------	|-----------   |--------------	|    -----      |---             |---	|--------------	|--------	|--------	|
+| CS Even            	|                  	|             	|          	   |               	|               |   	         |      |              	|        	|        	|
+| GridION364        	| 6.85            	| 2.371      	| 1.233   	   | 5.535         	|   1.508       |     1.37       |      | 12.799       	| 3.501  	| 64.834 	|
+| PromethION365     	| 6.641            	| 2.295       	| 1.172        | 5.323       	|   1.484       |  1.344         |      | 16.391       	| 3.786  	| 39.812 	|
+| CS Log             	|                  	|             	|              |             	|            	|                |      |   	        |           |           |
+| GridION366        	| 42.248           	| -           	| -            | -           	|           	|   	         |      | 10.97       	| 2.481  	| 44.3 	|
+| PromethION367     	| 42.823           	| -           	| -            | -           	| -          	| -              | -    |   12.707      | 2.263  	| 42.407 	|
+
+***Table-S6: Abundances of classified species, Kaiju, (custom).*** The table shows the classification results of Kaiju for all four samples considering the custom database (in %). Here, the fungal species are classified, but some bacterial species are missing: *Bacillus subtilis* (which was also missing in the classification wit the default database), *Salmonella enterica*, *Escherichia coli*, and *Pseudomonas aeruginosa*. In general, slightly less reads are unclassified, but a majority of could not be identifies on species level. The abundances of identified species are smaller.

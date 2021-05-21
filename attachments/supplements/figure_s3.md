@@ -1,0 +1,4 @@
+
+![GridION364: Piechart for Classification Results of Diamond (default), Genus Level.](../../stats/pics/gridion364_default.diamond.genus.piechart.jpeg "GridION364: Piechart for Classification Results of Diamond (default), Genus Level.")
+
+[***Figure-S3: Piecharts of Classification Results, Diamond, Default Database, Genus Level.***](../../stats/pics/gridion364_default.diamond.genus.piechart.jpeg "GridION364: Piechart for Classification Results of Diamond (default), Genus Level.") Diamond is able to identify at least six genera that are included in the sample (abundances ranging from 1.799% to 9.495% for GridION364, default database). Considering the CS Log sample, Diamond identifies *Listeria** (59.844%) and *Pseudomonas* (4.035%). With the custom database, Diamond achieves similar abundances.
