@@ -1,0 +1,10 @@
+| Classified species 	| *B. subtilis* | *L. monocytogenes* 	| *E. faecalis* 	| *S. aureus* 	| *S. enterica* 	| *E. coli* 	| *P. aeruginosa* 	| *L. fermentum* 	|   	| unclassified 	| other 	|
+|--------------------	|-------------	|------------------	|-------------	|-----------	|-------------	|---------	|---------------	|--------------	|---	|--------------	|-------	|
+| CS Even            	|             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|       	|
+| GridION364        	| 18.368      	| 13.514           	| 11.182      	| 11.244    	| 6           	| 5.933   	| 5.21          	| 14.513       	|   	| 10.496 (366,458)       	| 3.541 	|
+| PromethION365     	| 17.724      	| 13.018           	| 10.803      	| 10.782    	| 5.936       	| 5.886   	| 5.204         	| 13.759       	|   	| 12.914 (4,624,479)       	| 3.974 	|
+| CS Log             	|             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|       	|
+| GridION366        	| 1.085       	| 84.591           	|     -        	|    -       	|     -        	|       -  	| 4.653         	|      -        |   	| 7.214 (264,559)       	| 2.457 	|
+| PromethION367     	| 1.069       	| 82.068           	|      -       	|   -        	|       -      	|      -   	| 4.532         	|       -       |   	| 9.649 (3,335,852)       	| 2.682 	|
+
+***Table 16: Abundances of classified species, Centrifuge, Default Database.*** The table shows the classification results of Centrifuge for all four samples considering the default database (in %). The two fungi can not be identified with the default database, because it only includes microbial genomes. The column "unclassified" also contains the absolute number of unclassified reads.<br> <br>

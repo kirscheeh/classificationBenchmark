@@ -1,0 +1,8 @@
+| Classified Species 	| *B. subtilis* 	| *L. monocytogenes* 	| *E. faecalis* 	| *S. aureus* 	| *E. coli* 	| *P. aeruginosa* 	| *L. fermentum* 	| *S. cerevisiae* 	| *C. neoformans* 	|   	| unclassified 	| others 	|
+|--------------------	|---------------	|--------------------	|---------------	|-------------	|-----------	|-----------------	|----------------	|-----------------	|-----------------	|---	|--------------	|--------	|
+| CS Even            	|               	|                    	|               	|             	|           	|                 	|                	|                 	|                 	|   	|              	|        	|
+| GridION364         	| 18.881        	| 13.743             	| 12.003        	| 11.678      	| 6.267     	| 5.531           	| 15.202         	| 2.362           	| 1.957           	|   	| 2.889        	| 3.237  	|
+| CS Log             	|               	|                    	|               	|             	|           	|                 	|                	|                 	|                 	|   	|              	|        	|
+| GridION366         	| 1.087         	| 88.053             	| -             	| -           	| -         	| 4.913           	| -              	| -               	| -               	|   	| 2.494        	| 3.454  	|
+
+***Table 19: Abundances of classified species, BugSeq, Default Database.*** This table shows the calculated abundances for the GridION samples using BugSeq (in %). It can be seen that the calculated abundances correspond to the estimated values. This is true for the CS Even as well as the CS Log sample.

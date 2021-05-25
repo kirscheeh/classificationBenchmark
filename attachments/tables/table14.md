@@ -1,0 +1,10 @@
+| Classified species 	| *L. monocytogenes* 	| *E. faecalis* 	| *S. aureus* 	| *S. enterica* 	| *E. coli* 	| *P. aeruginosa* 	| *L. fermentum* 	|   	| unclassified 	| others 	|     different taxon level   	|
+|--------------------	|------------------	|-------------	|-----------	|-------------	|---------	|---------------	|--------------	|---	|--------------	|--------	|--------	|
+| CS Even            	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|        	|        	|
+| GridION364        	| 9.322            	| 10.269      	| 4.151     	| 1.779       	| 2.124   	| 1.104         	| 12.503       	|   	| 14.078       	| 3.883  	| 40.786 	|
+| PromethION365     	| 9.046            	| 9.956       	| 3.98      	| 1.784       	| 2.101   	| 1.111         	| 12.033       	|   	| 16.391       	| 3.786  	| 39.812 	|
+| CS Log             	|                  	|             	|           	|             	|         	|               	|              	|   	|              	|        	|        	|
+| GridION366        	| 57.905           	| -           	| -         	| -           	| -       	| -             	| -            	|   	| 11.062       	| 3.389  	| 27.644 	|
+| PromethION367     	| 58.031           	| -           	| -         	| -           	| -       	| -             	| -            	|   	| 12.866       	| 3.135  	| 25.968 	|
+
+***Table 14: Abundances of classified species, Kaiju, Default Database.*** The table shows the classification results of Kaiju for all four samples considering the default database (in %). Note that the species that is present in the reference database but not classified is *Bacillus subtilis*. The two fungis cannot be identified with the default database, because it only includes bacterial genomes or proteomes. <br> <br>

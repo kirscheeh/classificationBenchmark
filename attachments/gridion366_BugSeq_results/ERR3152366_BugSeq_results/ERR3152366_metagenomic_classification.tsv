@@ -1,0 +1,146 @@
+Samples	ERR3152366	ERR3152366	ERR3152366	Details	Details
+Stats	count	unassigned	score	Rank	Name
+Id					
+1	3422683	87530	62.737303746797494	no_rank	root
+2	3308659	1401	64.25986026362949	superkingdom	Bacteria
+1224	176048	4	61.1772982368445	phylum	Proteobacteria
+1236	176044	0	61.17801799550112	class	Gammaproteobacteria
+72274	172552	2	61.14423478139923	order	Pseudomonadales
+135621	172550	0	61.14487974500145	family	Pseudomonadaceae
+286	172550	60	61.14487974500145	genus	Pseudomonas
+136841	172449	0	61.15987915267702	species_group	Pseudomonas aeruginosa group
+287	172449	172234	61.15987915267702	species	Pseudomonas aeruginosa
+941193	22	22	46.04545454545455	strain	Pseudomonas aeruginosa M18
+1009714	117	117	41.51282051282051	strain	Pseudomonas aeruginosa PAK
+1123015	11	11	39.09090909090909	strain	Pseudomonas aeruginosa DSM 50071 = NBRC 12689
+1448140	44	44	44.52272727272727	strain	Pseudomonas aeruginosa YL84
+1457392	21	21	39.523809523809526	strain	Pseudomonas aeruginosa PA96
+196821	41	0	34.853658536585364	no_rank	unclassified Pseudomonas
+2545800	41	41	34.853658536585364	species	Pseudomonas sp. FDAARGOS_761
+91347	3492	0	62.84736540664376	order	Enterobacterales
+543	3492	7	62.84736540664376	family	Enterobacteriaceae
+561	1791	0	63.003350083752096	genus	Escherichia
+562	1791	1739	63.003350083752096	species	Escherichia coli
+83333	29	16	58.206896551724135	strain	Escherichia coli K-12
+1245474	13	13	64.15384615384616	no_rank	Escherichia coli ER2796
+2605619	23	23	61.65217391304348	no_rank	Escherichia coli O16:H48
+590	1694	0	62.760920897284535	genus	Salmonella
+28901	1694	7	62.760920897284535	species	Salmonella enterica
+59201	1687	226	62.86959098992294	subspecies	Salmonella enterica subsp. enterica
+90371	1421	1421	63.22519352568614	no_rank	Salmonella enterica subsp. enterica serovar Typhimurium
+119912	40	7	63.75	no_rank	Salmonella enterica subsp. enterica serovar Choleraesuis
+938142	33	33	65.06060606060606	strain	Salmonella enterica subsp. enterica serovar Choleraesuis str. ATCC 10708
+1783272	3131210	0	64.44428447788557	no_rank	Terrabacteria group
+1239	3131202	1	64.44432808870206	phylum	Firmicutes
+91061	3131201	248	64.44433589539608	class	Bacilli
+1385	3129263	153	64.44331173186788	order	Bacillales
+186817	38191	1	63.785551569741564	family	Bacillaceae
+1386	38190	22	63.787038491751765	genus	Bacillus
+653685	38157	12	63.81067694001101	species_group	Bacillus subtilis group
+1423	38145	38126	63.814838117708746	species	Bacillus subtilis
+96241	19	0	29.789473684210527	subspecies	Bacillus subtilis subsp. spizizenii
+655816	8	8	34.75	strain	Bacillus subtilis subsp. spizizenii str. W23
+703612	11	11	26.181818181818183	strain	Bacillus subtilis subsp. spizizenii ATCC 6633
+1963032	11	11	19.90909090909091	species	Bacillus intestinalis
+186820	3090919	0	64.45268866638048	family	Listeriaceae
+1637	3090919	32	64.45268866638048	genus	Listeria
+1638	24	8	41.625	species	Listeria ivanovii
+202752	16	16	49.125	subspecies	Listeria ivanovii subsp. londoniensis
+1639	3090847	2940536	64.45347213886683	species	Listeria monocytogenes
+393118	71	71	50.04225352112676	strain	Listeria monocytogenes FSL J1-175
+393119	9	9	20.444444444444443	strain	Listeria monocytogenes FSL J1-208
+863767	9	9	33.0	strain	Listeria monocytogenes serotype 7 str. SLCC2482
+879088	5709	5709	48.10789980732177	strain	Listeria monocytogenes SLCC2378
+879089	120	120	47.833333333333336	strain	Listeria monocytogenes SLCC2540
+882094	41	41	37.0	strain	Listeria monocytogenes L312
+882095	170	170	46.3235294117647	strain	Listeria monocytogenes ATCC 19117
+930781	1658	1658	51.39264173703257	strain	Listeria monocytogenes J1816
+930782	9	9	23.88888888888889	strain	Listeria monocytogenes J1-220
+932919	45	45	44.55555555555556	strain	Listeria monocytogenes SLCC2755
+1027396	680	680	49.245588235294115	strain	Listeria monocytogenes str. Scott A
+1126011	52	52	40.46153846153846	strain	Listeria monocytogenes 07PF0776
+1299895	143	143	42.98601398601399	strain	Listeria monocytogenes CFSAN002349
+1437838	25	25	32.68	strain	Listeria monocytogenes R479a
+1457188	51559	51559	58.29484668050195	strain	Listeria monocytogenes WSLC1042
+2065118	89977	5734	54.880147148715785	serotype	Listeria monocytogenes serotype 4b
+265669	1833	1833	46.6481178396072	strain	Listeria monocytogenes serotype 4b str. F2365
+568819	30	30	44.666666666666664	strain	Listeria monocytogenes serotype 4b str. CLIP 80459
+1196159	1344	1344	44.326636904761905	strain	Listeria monocytogenes serotype 4b str. 81-0558
+1196160	51089	51089	58.90271878486563	strain	Listeria monocytogenes serotype 4b str. 81-0592
+1196161	1441	1441	43.65371269951422	strain	Listeria monocytogenes serotype 4b str. 81-0861
+1196162	4268	4268	47.56255857544517	strain	Listeria monocytogenes serotype 4b str. 10-0809
+1196171	13198	13198	52.74920442491287	strain	Listeria monocytogenes serotype 4b str. 02-1103
+1196172	1790	1790	44.24078212290503	strain	Listeria monocytogenes serotype 4b str. 02-1289
+1196173	4182	4182	48.20157819225251	strain	Listeria monocytogenes serotype 4b str. 02-1792
+1196174	269	269	48.00371747211896	strain	Listeria monocytogenes serotype 4b str. 02-6679
+1196175	236	236	48.66101694915254	strain	Listeria monocytogenes serotype 4b str. 02-6680
+1230340	4563	4563	48.0195047118124	strain	Listeria monocytogenes serotype 4b str. LL195
+2291966	34	2	36.411764705882355	serotype	Listeria monocytogenes serotype 1/2b
+1196163	7	7	28.857142857142858	strain	Listeria monocytogenes serotype 1/2b str. 10-0810
+1196164	25	25	40.92	strain	Listeria monocytogenes serotype 1/2b str. 10-0811
+1642	16	16	19.375	species	Listeria innocua
+186826	1690	6	67.40118343195266	order	Lactobacillales
+33958	176	2	59.41477272727273	family	Lactobacillaceae
+2742598	174	0	59.735632183908045	genus	Limosilactobacillus
+1613	174	174	59.735632183908045	species	Limosilactobacillus fermentum
+81852	1508	0	68.49336870026524	family	Enterococcaceae
+1350	1508	0	68.49336870026524	genus	Enterococcus
+1351	1508	1508	68.49336870026524	species	Enterococcus faecalis
+201174	8	1	47.375	phylum	Actinobacteria
+1760	7	7	50.714285714285715	class	Actinobacteria
+2759	26408	3	62.47652226598001	superkingdom	Eukaryota
+33154	26405	0	62.482938837341415	no_rank	Opisthokonta
+4751	26366	0	62.517636349844494	kingdom	Fungi
+451864	26366	0	62.517636349844494	subkingdom	Dikarya
+4890	26339	0	62.52302669045901	phylum	Ascomycota
+716545	26339	1	62.52302669045901	no_rank	saccharomyceta
+147537	26338	0	62.525134786240415	subphylum	Saccharomycotina
+4891	26338	0	62.525134786240415	class	Saccharomycetes
+4892	26338	0	62.525134786240415	order	Saccharomycetales
+4893	26338	3	62.525134786240415	family	Saccharomycetaceae
+4930	26335	0	62.53016897664705	genus	Saccharomyces
+4932	26302	0	62.5509086761463	species	Saccharomyces cerevisiae
+559292	26302	26302	62.5509086761463	strain	Saccharomyces cerevisiae S288C
+27291	33	33	46.0	species	Saccharomyces paradoxus
+5204	27	0	57.25925925925926	phylum	Basidiomycota
+5302	27	0	57.25925925925926	subphylum	Agaricomycotina
+155616	27	0	57.25925925925926	class	Tremellomycetes
+5234	27	0	57.25925925925926	order	Tremellales
+1884633	27	4	57.25925925925926	family	Cryptococcaceae
+5206	23	0	59.08695652173913	genus	Cryptococcus
+1897064	23	0	59.08695652173913	species_group	Cryptococcus neoformans species complex
+5207	23	6	59.08695652173913	species	Cryptococcus neoformans
+40410	17	10	55.64705882352941	variety	Cryptococcus neoformans var. neoformans
+214684	7	7	52.0	strain	Cryptococcus neoformans var. neoformans JEC21
+33208	39	0	39.02564102564103	kingdom	Metazoa
+6072	39	0	39.02564102564103	no_rank	Eumetazoa
+33213	39	0	39.02564102564103	no_rank	Bilateria
+33511	39	0	39.02564102564103	no_rank	Deuterostomia
+7711	39	0	39.02564102564103	phylum	Chordata
+89593	39	0	39.02564102564103	subphylum	Craniata
+7742	39	0	39.02564102564103	no_rank	Vertebrata
+7776	39	0	39.02564102564103	no_rank	Gnathostomata
+117570	39	0	39.02564102564103	no_rank	Teleostomi
+117571	39	0	39.02564102564103	no_rank	Euteleostomi
+8287	39	0	39.02564102564103	superclass	Sarcopterygii
+1338369	39	0	39.02564102564103	no_rank	Dipnotetrapodomorpha
+32523	39	0	39.02564102564103	no_rank	Tetrapoda
+32524	39	0	39.02564102564103	no_rank	Amniota
+40674	39	0	39.02564102564103	class	Mammalia
+32525	39	0	39.02564102564103	no_rank	Theria
+9347	39	0	39.02564102564103	no_rank	Eutheria
+1437010	39	0	39.02564102564103	no_rank	Boreoeutheria
+314146	39	0	39.02564102564103	superorder	Euarchontoglires
+9443	39	0	39.02564102564103	order	Primates
+376913	39	0	39.02564102564103	suborder	Haplorrhini
+314293	39	0	39.02564102564103	infraorder	Simiiformes
+9526	39	0	39.02564102564103	parvorder	Catarrhini
+314295	39	0	39.02564102564103	superfamily	Hominoidea
+9604	39	0	39.02564102564103	family	Hominidae
+207598	39	0	39.02564102564103	subfamily	Homininae
+9605	39	0	39.02564102564103	genus	Homo
+9606	39	39	39.02564102564103	species	Homo sapiens
+2787854	86	0	50.53488372093023	no_rank	other entries
+28384	86	0	50.53488372093023	no_rank	other sequences
+81077	86	0	50.53488372093023	no_rank	artificial sequences
+32630	86	86	50.53488372093023	species	synthetic construct

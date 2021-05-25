@@ -1,0 +1,8 @@
+|                	| Diamond   	| Kaiju     	| CCMetagen 	| Centrifuge 	| CLARK     	| Kraken2   	|
+|----------------	|-----------	|-----------	|-----------	|------------	|-----------	|-----------	|
+| GridION364    	|  0.902987 	|  0.7602105	|         -  	| 0.69504       | 0.5257158     | 0.8988399   	|
+| PromethION365 	|         -  	|  0.7602105    |      -     	| 0.6879514     | 0.523079   	| 0.8700717   	|
+| GridION366    	|      -     	|  0.3398543 	|        -    	| 0.361886  	| 0.5102082     | 0.5979277 	|
+| PromethION367 	|        -   	|  0.4339642	|         -  	| 0.3265234  	| 0.5100713 	| 0.6200843   	|
+
+***Table 7: AUPR values, Custom Database.*** This table shows the calculated AUPR for the different tools and samples using their custom database. Note that Diamond is not able to perform on the PromethION samples, therefore those values are missing. The scores for Kraken2 and Centrifuge are lower than those achieved with the default database. However, for Kraken2, the CS log samples have higher values, whereas Centrifuge scrores higher with the CS Even samples. Kaiju improves for the CS Log samples, but results in lower scores for CS Even samples. CLARK is able to achieve a AUPR between 0.51 and 0.53 over all for samples, which is the poorest result. The corresponding plots can be seen in [***Figure-S10***](../supplements/figure_s10.md "Supplements, Figure 10")) or [here](../../stats/pics/prc "Folder of Precision-Recall-Curves"). There are no values for CCMetagen since KMA is not able to build an index due to memory limits and it is not possible to evaluate results for GridION366 and Diamond because of the same reason. <br> <br>

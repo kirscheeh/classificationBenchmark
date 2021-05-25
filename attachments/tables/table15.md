@@ -1,0 +1,8 @@
+| Classified Species 	| *L. monocytogenes* 	| *E. faecalis* 	| *S. aureus* 	| *E. coli* 	| *P. aeruginosa* 	| *L. fermentum* 	| *B. spizizenii* 	|   	| unclassified 	| others 	|
+|--------------------	|--------------------	|---------------	|-------------	|-----------	|-----------------	|----------------	|-----------------	|---	|--------------	|--------	|
+| CS Even            	|                    	|               	|             	|           	|                 	|                	|                 	|   	|              	|        	|
+| GridION364        	| 11.326             	| 1.795         	| 9.837       	| 2.069     	| 3.387           	| 9.083          	| 16.309          	|   	| 26.736       	| 19.458 	|
+| CS Log             	|                    	|               	|             	|           	|                 	|                	|                 	|   	|              	|        	|
+| GridION366        	| 71.494             	| -             	| -           	| -         	| 2.822           	| -              	| -               	|   	| 25.405       	| 0.279  	|
+
+***Table 15: Abundances of classified species, CCMetagen, Default Database.*** The table shows the classification results of CCMetagen for the default database and GridION samples (in %). CCMetagen is able to identify the majority of bacterial species in the dataset and is able to identify *Listeria monocytogenes* as predominant species in the CS Log sample. However, nearly 25% of reads are unclassified in each sample. <br> <br>

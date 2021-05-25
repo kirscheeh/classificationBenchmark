@@ -8,7 +8,7 @@ report <- read.csv(args[1], sep="\t")
 sample.name.splitted <- strsplit(args[1], "/")
 sample.name.vector <- sample.name.splitted[[1]]
 sample.name <- sample.name.vector[length(sample.name.vector)] 
-abundances <- report[,c(1, 3,5)]
+abundances <- report[,c(1, 3, 5)]
 
 # getting species with at least 1% abundance
 species <- c()
@@ -28,7 +28,6 @@ species.matrix <- matrix(species, ncol=3, byrow=TRUE)
 
 # preparing slices
 species.slices <- as.numeric(species.matrix[,1])
-sum(species.slices)
 underOnePercent <- 1-sum(species.slices)
 species.slices <- c(species.slices, underOnePercent)
 

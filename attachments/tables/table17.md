@@ -1,0 +1,10 @@
+| Classified species 	| *B. subtilis* 	| *L. monocytogenes* 	| *E. faecalis* 	| *S. aureus* 	| *S. enterica* 	| *E. coli* 	| *P. aeruginosa* 	| *L. fermentum* 	| *B. vallismortis* 	|   	| unclassified 	| other 	|
+|--------------------	|-------------	|------------------	|-------------	|-----------	|-------------	|---------	|---------------	|--------------	|-----------------	|---	|--------------	|-------	|
+| CS Even            	|             	|                  	|             	|           	|             	|         	|               	|              	|                 	|   	|              	|       	|
+| GridION364        	| 7.332       	| 13.242           	| 11.445      	| 11.208    	| 5.649       	| 4.961   	| 4.562         	| 14.609       	| 1.046           	|   	| 21.888       	| 4.068 	|
+| PromethION365     	| 7.219       	| 12.79            	| 11.064      	| 10.809    	| 5.651       	| 5.092   	| 4.66          	| 13.894       	| 1.041           	|   	| 22.801       	| 4.979 	|
+| CS Log             	|             	|                  	|             	|           	|             	|         	|               	|              	|                 	|   	|              	|       	|
+| GridION366        	| -           	| 82.708           	| -           	| -         	| -           	| -       	| 3.997         	| -            	| -               	|   	| 11.764       	| 1.531 	|
+| PromethION367     	| -           	| 80.632           	| -           	| -         	| -           	| -       	| 4.021         	| -            	| -               	|   	| 13.261       	| 2.086 	|
+
+***Table 17: Abundances of classified species, CLARK, Default Database.*** The table shows the classification results of CLARK for all four samples considering the default database (in %). The two fungis cannot be identified with the default database, because it only includes microbial genomes.<br> <br>

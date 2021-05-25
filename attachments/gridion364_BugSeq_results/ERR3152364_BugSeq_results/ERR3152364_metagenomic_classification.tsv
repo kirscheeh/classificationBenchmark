@@ -1,0 +1,740 @@
+Samples	ERR3152364	ERR3152364	ERR3152364	Details	Details
+Stats	count	unassigned	score	Rank	Name
+Id					
+1	3263590	97098	64.33215385511048	no_rank	root
+2	3017434	2491	66.24029158549946	superkingdom	Bacteria
+1224	607398	0	65.24927806808714	phylum	Proteobacteria
+1236	607395	181	65.24943570493664	class	Gammaproteobacteria
+72274	185886	0	64.10426282775461	order	Pseudomonadales
+135621	185886	0	64.10426282775461	family	Pseudomonadaceae
+286	185886	14	64.10426282775461	genus	Pseudomonas
+136841	185865	0	64.10724988566967	species_group	Pseudomonas aeruginosa group
+287	185865	185547	64.10724988566967	species	Pseudomonas aeruginosa
+208964	19	19	55.36842105263158	strain	Pseudomonas aeruginosa PAO1
+388272	8	8	47.875	strain	Pseudomonas aeruginosa PACS2
+557722	1	1	26.0	strain	Pseudomonas aeruginosa LESB58
+910265	2	2	20.5	strain	Pseudomonas aeruginosa C-NN2
+941193	1	1	15.0	strain	Pseudomonas aeruginosa M18
+1009714	219	219	48.77168949771689	strain	Pseudomonas aeruginosa PAK
+1093787	1	1	18.0	strain	Pseudomonas aeruginosa DK2
+1123015	2	2	69.5	strain	Pseudomonas aeruginosa DSM 50071 = NBRC 12689
+1193501	24	24	43.541666666666664	strain	Pseudomonas aeruginosa SJTD-1
+1279007	7	7	42.0	strain	Pseudomonas aeruginosa PA1
+1279008	7	7	48.142857142857146	strain	Pseudomonas aeruginosa PA1R
+1356855	14	14	52.642857142857146	strain	Pseudomonas aeruginosa DK1
+1400868	2	2	21.5	strain	Pseudomonas aeruginosa VRFPA04
+1408273	1	1	43.0	strain	Pseudomonas aeruginosa LESB65
+1408275	1	1	37.0	strain	Pseudomonas aeruginosa LESlike4
+1415629	1	1	7.0	strain	Pseudomonas aeruginosa MTB-1
+1427342	8	8	42.25	strain	Pseudomonas aeruginosa SCV20265
+136843	2	0	13.0	species_group	Pseudomonas fluorescens group
+294	2	2	13.0	species	Pseudomonas fluorescens
+196821	5	0	59.4	no_rank	unclassified Pseudomonas
+1978467	1	1	68.0	species	Pseudomonas sp. AK6U
+2545800	4	4	57.25	species	Pseudomonas sp. FDAARGOS_761
+91347	421327	1	65.76322903587949	order	Enterobacterales
+543	421323	317	65.7636468932387	family	Enterobacteriaceae
+544	9	0	18.333333333333332	genus	Citrobacter
+35703	2	2	33.0	species	Citrobacter amalonaticus
+1344959	3	0	11.333333333333334	species_group	Citrobacter freundii complex
+546	2	2	11.5	species	Citrobacter freundii
+57706	1	1	11.0	species	Citrobacter braakii
+1563222	1	1	25.0	species	Citrobacter pasteurii
+2644389	3	0	13.333333333333334	no_rank	unclassified Citrobacter
+2742622	1	1	7.0	species	Citrobacter sp. RHB21-C01
+2742635	1	1	26.0	species	Citrobacter sp. RHBSTW-00107
+2742653	1	1	7.0	species	Citrobacter sp. RHBSTW-00524
+547	4	0	33.0	genus	Enterobacter
+354276	4	0	33.0	species_group	Enterobacter cloacae complex
+158836	2	0	27.0	species	Enterobacter hormaechei
+1812934	2	2	27.0	subspecies	Enterobacter hormaechei subsp. hoffmannii
+208224	1	1	45.0	species	Enterobacter kobei
+1812935	1	1	33.0	species	Enterobacter roggenkampii
+561	210635	11	66.18428561255251	genus	Escherichia
+562	210603	201280	66.18956520087559	species	Escherichia coli
+37762	3	3	52.0	strain	Escherichia coli B
+83333	6195	3437	65.05827280064567	strain	Escherichia coli K-12
+316385	1	1	61.0	no_rank	Escherichia coli str. K-12 substr. DH10B
+316407	3	3	31.333333333333332	no_rank	Escherichia coli str. K-12 substr. W3110
+511145	1445	1445	65.01660899653979	no_rank	Escherichia coli str. K-12 substr. MG1655
+679895	1	1	13.0	no_rank	Escherichia coli BW25113
+879462	1307	1307	65.3726090283091	no_rank	Escherichia coli str. K-12 substr. MG1655star
+1245474	1	1	52.0	no_rank	Escherichia coli ER2796
+83334	55	50	46.163636363636364	serotype	Escherichia coli O157:H7
+1328859	5	5	60.6	strain	Escherichia coli O157:H7 str. SS17
+244319	1	1	16.0	serotype	Escherichia coli O26:H11
+244320	6	0	67.83333333333333	serotype	Escherichia coli O55:H7
+701177	2	2	78.0	strain	Escherichia coli O55:H7 str. CB9615
+1048689	4	4	62.75	strain	Escherichia coli O55:H7 str. RM12579
+316401	5	5	34.4	strain	Escherichia coli ETEC H10407
+331112	4	4	43.25	strain	Escherichia coli HS
+340186	20	20	54.35	strain	Escherichia coli E110019
+362663	1	1	15.0	strain	Escherichia coli 536
+376725	12	11	51.0	serotype	Escherichia coli O103:H2
+585395	1	1	14.0	no_rank	Escherichia coli O103:H2 str. 12009
+409438	1	1	40.0	strain	Escherichia coli SE11
+413997	4	4	67.25	strain	Escherichia coli B str. REL606
+481805	57	57	55.473684210526315	strain	Escherichia coli ATCC 8739
+498388	127	127	62.37795275590551	strain	Escherichia coli C
+536056	19	19	58.10526315789474	strain	Escherichia coli DH1
+566546	4	4	56.25	strain	Escherichia coli W
+577675	1	1	38.0	strain	Escherichia coli O91:H21
+585035	2	2	43.5	strain	Escherichia coli S88
+585055	7	7	53.285714285714285	strain	Escherichia coli 55989
+595495	37	37	48.16216216216216	strain	Escherichia coli KO11FL
+696406	6	6	54.333333333333336	strain	Escherichia coli UMNK88
+745156	101	101	61.257425742574256	strain	Escherichia coli 1303
+861906	6	0	41.833333333333336	serotype	Escherichia coli O44:H18
+216592	6	6	41.833333333333336	strain	Escherichia coli 042
+866789	4	4	54.75	strain	Escherichia coli DSM 30083 = JCM 1649 = ATCC 11775
+913091	2	2	62.5	strain	Escherichia coli TW10598
+930406	9	9	37.22222222222222	strain	Escherichia coli O157:H16
+941322	1	1	21.0	strain	Escherichia coli O25b:H4-ST131
+941323	544	544	63.612132352941174	strain	Escherichia coli VR50
+1038927	67	43	47.97014925373134	serotype	Escherichia coli O104:H4
+1048254	10	10	46.0	strain	Escherichia coli O104:H4 str. C227-11
+1133852	6	6	45.833333333333336	strain	Escherichia coli O104:H4 str. 2011C-3493
+1133853	2	2	47.5	strain	Escherichia coli O104:H4 str. 2009EL-2071
+1134782	6	6	46.666666666666664	strain	Escherichia coli O104:H4 str. 2009EL-2050
+1045010	7	7	55.57142857142857	serogroup	Escherichia coli O157
+1050617	1157	1157	63.561797752808985	strain	Escherichia coli UMNF18
+1055538	30	30	47.4	serogroup	Escherichia coli O145
+1078034	10	0	31.7	serotype	Escherichia coli O145:H28
+1248915	10	10	31.7	strain	Escherichia coli O145:H28 str. RM13516
+1200752	4	4	61.0	strain	Escherichia coli NCCP15648
+1329907	1	1	15.0	strain	Escherichia coli APEC IMT5155
+1335916	1	1	61.0	strain	Escherichia coli LY180
+1358422	8	8	52.875	strain	Escherichia coli PCN061
+1382700	1	1	63.0	strain	Escherichia coli PMV-1
+1392858	1	1	48.0	strain	Escherichia coli M12
+1412834	2	2	36.0	strain	Escherichia coli FAP1
+1435461	2	2	49.5	strain	Escherichia coli KLY
+1441627	1	1	19.0	strain	Escherichia coli str. Sanji
+1446701	2	2	54.5	strain	Escherichia coli O169:H41
+1446707	2	2	58.5	serotype	Escherichia coli O25:NM
+1446746	38	38	60.10526315789474	serotype	Escherichia coli O6:H16
+1603259	6	0	45.5	serotype	Escherichia coli O139:H28
+331111	6	6	45.5	strain	Escherichia coli O139:H28 str. E24377A
+2027293	1	1	47.0	serotype	Escherichia coli O8:H8
+2048777	10	10	38.7	strain	Escherichia coli O15:H11
+2048780	2	2	60.5	strain	Escherichia coli O25:H16
+2048781	25	25	43.36	strain	Escherichia coli O27:H7
+2233553	4	0	47.75	serogroup	Escherichia coli O43
+1055541	4	4	47.75	no_rank	Escherichia coli O43 str. RM10042
+2603836	10	10	62.2	serotype	Escherichia coli O10:H32
+2605619	543	543	62.78821362799263	no_rank	Escherichia coli O16:H48
+2773705	107	107	59.94392523364486	no_rank	Escherichia coli O18ac:H14
+2773706	41	41	59.048780487804876	no_rank	Escherichia coli O68:H12
+2773707	6	6	43.166666666666664	no_rank	Escherichia coli O19:H7
+564	12	12	30.583333333333332	species	Escherichia fergusonii
+208962	5	5	37.0	species	Escherichia albertii
+1499973	3	3	8.666666666666666	species	Escherichia marmotae
+2608889	1	0	36.0	no_rank	unclassified Escherichia
+2044467	1	1	36.0	species	Escherichia sp. E4742
+570	9	0	36.888888888888886	genus	Klebsiella
+573	7	7	28.857142857142858	species	Klebsiella pneumoniae
+244366	1	1	75.0	species	Klebsiella variicola
+1134687	1	1	55.0	species	Klebsiella michiganensis
+590	210227	64	65.3757414604214	genus	Salmonella
+28901	210100	2035	65.38500237981918	species	Salmonella enterica
+59201	208045	116402	65.57703862145213	subspecies	Salmonella enterica subsp. enterica
+594	1	0	8.0	no_rank	Salmonella enterica subsp. enterica serovar Gallinarum
+550538	1	1	8.0	strain	Salmonella enterica subsp. enterica serovar Gallinarum str. 287/91
+595	173	152	44.46242774566474	no_rank	Salmonella enterica subsp. enterica serovar Infantis
+596155	21	21	41.04761904761905	strain	Salmonella enterica subsp. enterica serovar Infantis str. SARB27
+596	31	31	37.935483870967744	no_rank	Salmonella enterica subsp. enterica serovar Muenchen
+600	160	133	44.206250000000004	no_rank	Salmonella enterica subsp. enterica serovar Thompson
+935705	25	25	48.84	strain	Salmonella enterica subsp. enterica serovar Thompson str. ATCC 8391
+1064551	2	2	48.0	strain	Salmonella enterica subsp. enterica serovar Thompson str. RM6836
+604	17	0	56.470588235294116	no_rank	Salmonella enterica subsp. enterica serovar Gallinarum/pullorum
+1081093	7	7	50.42857142857143	strain	Salmonella enterica subsp. enterica serovar Gallinarum/pullorum str. RKS5078
+1225522	10	10	60.7	strain	Salmonella enterica subsp. enterica serovar Gallinarum/pullorum str. CDC1983-67
+605	9	1	37.888888888888886	no_rank	Salmonella enterica subsp. enterica serovar Pullorum
+1029979	8	8	38.125	strain	Salmonella enterica subsp. enterica serovar Pullorum str. ATCC 9120
+611	103	81	46.53398058252427	no_rank	Salmonella enterica subsp. enterica serovar Heidelberg
+1124936	17	17	54.11764705882353	strain	Salmonella enterica subsp. enterica serovar Heidelberg str. 41578
+1271864	5	5	44.4	strain	Salmonella enterica subsp. enterica serovar Heidelberg str. CFSAN002069
+28142	83	83	46.855421686746986	no_rank	Salmonella enterica subsp. enterica serovar Berta
+28144	9	9	37.888888888888886	no_rank	Salmonella enterica subsp. enterica serovar Derby
+28147	43	43	39.23255813953488	no_rank	Salmonella enterica subsp. enterica serovar Oranienburg
+28150	20	20	39.55	no_rank	Salmonella enterica subsp. enterica serovar Senftenberg
+29474	2	2	66.5	no_rank	Salmonella enterica subsp. enterica serovar California
+29482	43	0	41.16279069767442	no_rank	Salmonella enterica subsp. enterica serovar Abony
+1029983	43	43	41.16279069767442	strain	Salmonella enterica subsp. enterica serovar Abony str. 0014
+48409	74	74	45.229729729729726	no_rank	Salmonella enterica subsp. enterica serovar Virchow
+54388	13	12	31.46153846153846	no_rank	Salmonella enterica subsp. enterica serovar Paratyphi A
+295319	1	1	37.0	strain	Salmonella enterica subsp. enterica serovar Paratyphi A str. ATCC 9150
+57045	31	2	45.32258064516129	no_rank	Salmonella enterica subsp. enterica serovar Paratyphi B
+224729	15	15	44.46666666666667	strain	Salmonella enterica subsp. enterica serovar Java
+1016998	14	14	46.642857142857146	strain	Salmonella enterica subsp. enterica serovar Paratyphi B str. SPB7
+57046	257	0	48.599221789883266	no_rank	Salmonella enterica subsp. enterica serovar Paratyphi C
+476213	257	257	48.599221789883266	strain	Salmonella enterica subsp. enterica serovar Paratyphi C str. RKS4594
+57741	16	16	39.375	no_rank	Salmonella enterica subsp. enterica serovar Blockley
+57743	12	11	39.0	no_rank	Salmonella enterica subsp. enterica serovar Weltevreden
+1173939	1	1	15.0	strain	Salmonella enterica subsp. enterica serovar Weltevreden str. 1655
+58095	63	57	40.42857142857143	no_rank	Salmonella enterica subsp. enterica serovar Agona
+1072590	1	1	20.0	strain	Salmonella enterica subsp. enterica serovar Agona str. 392869-2
+1406860	5	5	39.6	strain	Salmonella enterica subsp. enterica serovar Agona str. 24249
+58096	190	109	45.2	no_rank	Salmonella enterica subsp. enterica serovar Bareilly
+1173456	1	1	5.0	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000228
+1182172	2	2	23.5	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000661
+1182174	10	10	43.6	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000669
+1182177	28	28	42.857142857142854	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000752
+1182178	1	1	53.0	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000753
+1182180	4	4	45.25	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000951
+1183391	18	18	40.0	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN000968
+1208622	8	8	54.25	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN001118
+1208629	2	2	42.5	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN001112
+1208630	7	7	39.142857142857146	strain	Salmonella enterica subsp. enterica serovar Bareilly str. CFSAN001115
+58101	1	1	24.0	no_rank	Salmonella enterica subsp. enterica serovar Waycross
+58712	192	166	46.140625	no_rank	Salmonella enterica subsp. enterica serovar Anatum
+984211	7	7	52.142857142857146	strain	Salmonella enterica subsp. enterica serovar Anatum str. ATCC BAA-1592
+1399029	4	4	22.0	strain	Salmonella enterica subsp. enterica serovar Anatum str. CFSAN003961
+1454583	1	1	13.0	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1783
+1454585	6	6	41.833333333333336	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1735
+1454586	2	2	58.0	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1736
+1454589	1	1	41.0	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1728
+1454590	2	2	11.0	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1175
+1454593	2	2	7.5	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1765
+1454596	1	1	26.0	strain	Salmonella enterica subsp. enterica serovar Anatum str. USDA-ARS-USMARC-1781
+82689	7	6	52.714285714285715	no_rank	Salmonella enterica subsp. enterica serovar Muenster
+1124958	1	1	71.0	strain	Salmonella enterica subsp. enterica serovar Muenster str. 0315
+90105	198	195	46.84848484848485	no_rank	Salmonella enterica subsp. enterica serovar Saintpaul
+702982	3	3	19.666666666666668	strain	Salmonella enterica subsp. enterica serovar Saintpaul str. SARA26
+90370	107	105	41.373831775700936	no_rank	Salmonella enterica subsp. enterica serovar Typhi
+220341	2	2	59.0	strain	Salmonella enterica subsp. enterica serovar Typhi str. CT18
+90371	40338	40262	65.87651841935647	no_rank	Salmonella enterica subsp. enterica serovar Typhimurium
+99287	6	1	50.166666666666664	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. LT2
+588858	5	5	51.8	no_rank	Salmonella enterica subsp. enterica serovar Typhimurium str. 14028S
+568708	9	9	41.333333333333336	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. D23580
+996633	1	1	75.0	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. L-3553
+1008297	1	1	75.0	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. 798
+1029978	1	1	42.0	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. SARA13
+1454636	1	1	74.0	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. USDA-ARS-USMARC-1896
+1454640	1	1	28.0	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. CDC H2662
+1454645	1	1	18.0	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. CDC 2009K-2059
+1454647	53	53	44.283018867924525	strain	Salmonella enterica subsp. enterica serovar Typhimurium str. USDA-ARS-USMARC-1810
+1620419	2	2	46.5	no_rank	Salmonella enterica subsp. enterica serovar Typhimurium var. 5-
+98360	121	38	46.247933884297524	no_rank	Salmonella enterica subsp. enterica serovar Dublin
+439851	6	6	49.5	strain	Salmonella enterica subsp. enterica serovar Dublin str. CT_02021853
+687860	76	76	48.80263157894737	strain	Salmonella enterica subsp. enterica serovar Dublin str. ATCC 39184
+909945	1	1	34.0	strain	Salmonella enterica subsp. enterica serovar Dublin str. SD3246
+108619	319	167	45.76802507836991	no_rank	Salmonella enterica subsp. enterica serovar Newport
+796730	7	7	50.42857142857143	strain	Salmonella enterica subsp. enterica serovar Newport str. CVM 22425
+796731	3	3	38.666666666666664	strain	Salmonella enterica subsp. enterica serovar Newport str. CVM 21538
+796732	2	2	55.5	strain	Salmonella enterica subsp. enterica serovar Newport str. CVM 22513
+858305	8	8	61.0	strain	Salmonella enterica subsp. enterica serovar Newport str. CVM 22462
+858306	13	13	51.30769230769231	strain	Salmonella enterica subsp. enterica serovar Newport str. CVM N18486
+858307	5	5	38.2	strain	Salmonella enterica subsp. enterica serovar Newport str. CVM N1543
+930778	13	13	47.84615384615385	strain	Salmonella enterica subsp. enterica serovar Newport str. Levine 1
+930779	25	25	40.52	strain	Salmonella enterica subsp. enterica serovar Newport str. Levine 15
+997339	7	7	43.142857142857146	strain	Salmonella enterica subsp. enterica serovar Newport str. WA_14882
+1454614	8	8	51.625	strain	Salmonella enterica subsp. enterica serovar Newport str. CDC 2012K-0938
+1454618	24	24	40.0	strain	Salmonella enterica subsp. enterica serovar Newport str. USDA-ARS-USMARC-1925
+1454619	3	3	32.666666666666664	strain	Salmonella enterica subsp. enterica serovar Newport str. USDA-ARS-USMARC-1926
+1454620	8	8	41.75	strain	Salmonella enterica subsp. enterica serovar Newport str. USDA-ARS-USMARC-1927
+1454625	10	10	42.0	strain	Salmonella enterica subsp. enterica serovar Newport str. CDC 2009K-1331
+1454627	16	16	40.0625	strain	Salmonella enterica subsp. enterica serovar Newport str. CDC 2010K-2159
+115981	11	6	35.54545454545455	no_rank	Salmonella enterica subsp. enterica serovar Montevideo
+1454601	2	2	37.0	strain	Salmonella enterica subsp. enterica serovar Montevideo str. USDA-ARS-USMARC-1913
+1454608	3	3	44.666666666666664	strain	Salmonella enterica subsp. enterica serovar Montevideo str. CDC 08-1942
+117541	13	13	45.30769230769231	no_rank	Salmonella enterica subsp. enterica serovar Ohio
+119912	46781	27711	64.81349265727539	no_rank	Salmonella enterica subsp. enterica serovar Choleraesuis
+321314	285	285	48.35087719298246	strain	Salmonella enterica subsp. enterica serovar Choleraesuis str. SC-B67
+904139	287	287	48.637630662020904	strain	Salmonella enterica subsp. enterica serovar Choleraesuis str. SCSA50
+938142	18498	18498	65.12239160990377	strain	Salmonella enterica subsp. enterica serovar Choleraesuis str. ATCC 10708
+134047	1	1	66.0	no_rank	Salmonella enterica subsp. enterica serovar Bredeney
+143221	8	8	34.0	no_rank	Salmonella enterica subsp. enterica serovar Tennessee
+149385	101	101	45.81188118811881	no_rank	Salmonella enterica subsp. enterica serovar Hadar
+149386	1	0	5.0	no_rank	Salmonella enterica subsp. enterica serovar Chester
+941190	1	1	5.0	strain	Salmonella enterica subsp. enterica serovar Chester str. ATCC 11997
+149388	4	4	23.75	no_rank	Salmonella enterica subsp. enterica serovar Mikawasima
+149390	5	5	37.0	no_rank	Salmonella enterica subsp. enterica serovar London
+149391	103	78	45.116504854368934	no_rank	Salmonella enterica subsp. enterica serovar Braenderup
+930771	25	25	45.4	strain	Salmonella enterica subsp. enterica serovar Braenderup str. ATCC BAA-664
+149539	716	594	51.5572625698324	no_rank	Salmonella enterica subsp. enterica serovar Enteritidis
+550537	1	1	74.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. P125109
+886715	5	5	59.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. CDC_2010K_0968
+998822	8	8	67.5	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. RM2968
+1243621	1	1	65.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20110356
+1244111	2	2	55.5	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20110357
+1244122	33	33	53.18181818181818	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20111174
+1412451	1	1	36.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20110223
+1412455	28	28	53.07142857142857	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20110221
+1412490	5	5	53.4	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. SA20083636
+1412492	2	2	54.5	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. SA20095440
+1412495	6	6	47.166666666666664	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. SA20123395
+1412499	7	7	64.28571428571429	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. SA19994216
+1412507	1	1	71.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. SA20095309
+1412515	1	1	75.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. SA20094389
+1412525	10	10	45.5	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20121541
+1412529	4	4	57.75	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20120200
+1412571	1	1	77.0	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20121812
+1412586	6	6	43.666666666666664	strain	Salmonella enterica subsp. enterica serovar Enteritidis str. EC20100100
+181798	3	0	57.0	no_rank	Salmonella enterica subsp. enterica serovar Sloterdijk
+938141	3	3	57.0	strain	Salmonella enterica subsp. enterica serovar Sloterdijk str. ATCC 15791
+189201	5	0	38.6	no_rank	Salmonella enterica subsp. enterica serovar Cubana
+1271863	5	5	38.6	strain	Salmonella enterica subsp. enterica serovar Cubana str. CFSAN002050
+192953	87	87	47.241379310344826	no_rank	Salmonella enterica subsp. enterica serovar Stanley
+192954	11	6	35.90909090909091	no_rank	Salmonella enterica subsp. enterica serovar Mbandaka
+984237	5	5	41.6	strain	Salmonella enterica subsp. enterica serovar Mbandaka str. ATCC 51958
+192955	5	2	62.2	no_rank	Salmonella enterica subsp. enterica serovar Kentucky
+1242102	3	3	66.66666666666667	strain	Salmonella enterica subsp. enterica serovar Kentucky str. SA20030505
+211968	23	23	43.82608695652174	no_rank	Salmonella enterica subsp. enterica serovar Albany
+224727	38	38	40.5	no_rank	Salmonella enterica subsp. enterica serovar Kottbus
+260367	19	19	31.473684210526315	no_rank	Salmonella enterica subsp. enterica serovar Aberdeen
+260368	7	0	33.42857142857143	no_rank	Salmonella enterica subsp. enterica serovar Bergen
+1240708	7	7	33.42857142857143	strain	Salmonella enterica subsp. enterica serovar Bergen str. ST350
+260678	100	100	43.74	no_rank	Salmonella enterica subsp. enterica serovar Goldcoast
+286782	86	51	43.151162790697676	no_rank	Salmonella enterica subsp. enterica serovar Stanleyville
+1194159	35	35	48.542857142857144	strain	Salmonella enterica subsp. enterica serovar Stanleyville str. CFSAN000624
+286783	25	25	44.2	no_rank	Salmonella enterica subsp. enterica serovar Indiana
+340188	124	88	42.54838709677419	no_rank	Salmonella enterica subsp. enterica serovar Cerro
+1410916	36	36	49.416666666666664	strain	Salmonella enterica subsp. enterica serovar Cerro str. CFSAN001588
+340189	17	17	41.529411764705884	no_rank	Salmonella enterica subsp. enterica serovar Manhattan
+399583	2	0	77.0	no_rank	Salmonella enterica subsp. enterica serovar Blegdam
+1240694	2	2	77.0	strain	Salmonella enterica subsp. enterica serovar Blegdam str. S-1824
+436295	1	0	25.0	no_rank	Salmonella enterica subsp. enterica serovar Poona
+1124962	1	1	25.0	strain	Salmonella enterica subsp. enterica serovar Poona str. ATCC BAA-1673
+440524	9	9	48.44444444444444	no_rank	Salmonella enterica subsp. enterica serovar 4,[5],12:i:-
+483687	27	27	42.851851851851855	no_rank	Salmonella enterica subsp. enterica serovar Concord
+486994	188	51	43.16489361702128	no_rank	Salmonella enterica subsp. enterica serovar Hvittingfoss
+1242097	137	137	42.59124087591241	strain	Salmonella enterica subsp. enterica serovar Hvittingfoss str. SA20014981
+570935	1	1	38.0	no_rank	Salmonella enterica subsp. enterica serovar Pomona
+593905	8	8	45.125	no_rank	Salmonella enterica subsp. enterica serovar Corvallis
+913070	7	0	46.0	no_rank	Salmonella enterica subsp. enterica serovar Gaminara
+1242094	7	7	46.0	strain	Salmonella enterica subsp. enterica serovar Gaminara str. SA20063285
+913074	24	0	39.375	no_rank	Salmonella enterica subsp. enterica serovar Inverness
+941187	24	24	39.375	strain	Salmonella enterica subsp. enterica serovar Inverness str. ATCC 10720
+913085	17	0	48.470588235294116	no_rank	Salmonella enterica subsp. enterica serovar Wandsworth
+1243595	17	17	48.470588235294116	strain	Salmonella enterica subsp. enterica serovar Wandsworth str. SA20092095
+915158	2	0	47.5	no_rank	Salmonella enterica subsp. enterica serovar Manchester
+1242108	2	2	47.5	strain	Salmonella enterica subsp. enterica serovar Manchester str. ST278
+932733	40	40	46.75	no_rank	Salmonella enterica subsp. enterica serovar Bardo
+1077085	24	24	38.875	no_rank	Salmonella enterica subsp. enterica serovar Fresno
+1129117	36	36	45.333333333333336	no_rank	Salmonella enterica subsp. enterica serovar Nitra
+1160769	1	1	68.0	no_rank	Salmonella enterica subsp. enterica serovar Worthington
+1242079	1	0	70.0	no_rank	Salmonella enterica subsp. enterica serovar Apapa
+1242088	1	1	70.0	strain	Salmonella enterica subsp. enterica serovar Apapa str. SA20060561
+1242081	1	0	69.0	no_rank	Salmonella enterica subsp. enterica serovar Hillingdon
+1242096	1	1	69.0	strain	Salmonella enterica subsp. enterica serovar Hillingdon str. N1529-D3
+1242084	12	0	43.333333333333336	no_rank	Salmonella enterica subsp. enterica serovar Krefeld
+1242106	12	12	43.333333333333336	strain	Salmonella enterica subsp. enterica serovar Krefeld str. SA20030536
+1242085	2	0	8.0	no_rank	Salmonella enterica subsp. enterica serovar Macclesfield
+1242107	2	2	8.0	strain	Salmonella enterica subsp. enterica serovar Macclesfield str. S-1643
+1243577	20	0	41.75	no_rank	Salmonella enterica subsp. enterica serovar Milwaukee
+1243578	20	20	41.75	strain	Salmonella enterica subsp. enterica serovar Milwaukee str. SA19950795
+1243585	13	4	39.53846153846154	no_rank	Salmonella enterica subsp. enterica serovar Ouakam
+1243586	9	9	47.44444444444444	strain	Salmonella enterica subsp. enterica serovar Ouakam str. SA20034636
+1243590	12	0	41.0	no_rank	Salmonella enterica subsp. enterica serovar Quebec
+1243591	12	12	41.0	strain	Salmonella enterica subsp. enterica serovar Quebec str. S-1267
+1243599	5	0	49.2	no_rank	Salmonella enterica subsp. enterica serovar Yovokome
+1243600	5	5	49.2	strain	Salmonella enterica subsp. enterica serovar Yovokome str. S-1850
+1962641	185	185	45.71891891891892	no_rank	Salmonella enterica subsp. enterica serovar Birkenhead
+1967643	1	1	75.0	no_rank	Salmonella enterica subsp. enterica serovar Albert
+2021403	1	1	61.0	no_rank	Salmonella enterica subsp. enterica serovar Adjame
+2024273	2	2	56.5	no_rank	Salmonella enterica subsp. enterica serovar Sundsvall
+2583588	74	74	48.24324324324324	no_rank	Salmonella enterica subsp. enterica serovar 1,4,[5],12:i:-
+59202	9	3	36.22222222222222	subspecies	Salmonella enterica subsp. salamae
+297361	3	3	32.333333333333336	no_rank	Salmonella enterica subsp. salamae serovar Greenside
+1243601	2	0	59.0	no_rank	Salmonella enterica subsp. salamae serovar 55:k:z39
+1243602	2	2	59.0	strain	Salmonella enterica subsp. salamae serovar 55:k:z39 str. 1315K
+2577863	1	1	13.0	no_rank	Salmonella enterica subsp. salamae serovar 56:z10:e,n,x
+59203	4	0	28.75	subspecies	Salmonella enterica subsp. arizonae
+1243605	3	0	16.333333333333332	no_rank	Salmonella enterica subsp. arizonae serovar 53:-:-
+1243606	3	3	16.333333333333332	strain	Salmonella enterica subsp. arizonae serovar 53:-:- str. SA20100345
+1243607	1	1	66.0	no_rank	Salmonella enterica subsp. arizonae serovar 63:g,z51:-
+59204	4	4	15.5	subspecies	Salmonella enterica subsp. diarizonae
+59205	3	0	43.0	subspecies	Salmonella enterica subsp. houtenae
+58100	3	3	43.0	no_rank	Salmonella enterica subsp. houtenae serovar Houten
+54736	2	0	37.5	species	Salmonella bongori
+41527	1	0	22.0	no_rank	Salmonella bongori serovar 48:z41:--
+1382510	1	1	22.0	strain	Salmonella bongori serovar 48:z41:-- str. RKS3044
+1197719	1	1	53.0	strain	Salmonella bongori N268-08
+2614656	61	0	51.14754098360656	no_rank	unclassified Salmonella
+2500543	5	5	29.8	species	Salmonella sp. SSDFZ69
+2664291	55	55	52.90909090909091	species	Salmonella sp. HNK130
+2686305	1	1	61.0	species	Salmonella sp. S13
+620	120	4	45.075	genus	Shigella
+621	35	35	38.68571428571428	species	Shigella boydii
+622	4	4	15.0	species	Shigella dysenteriae
+623	74	71	49.148648648648646	species	Shigella flexneri
+424718	2	0	69.0	serotype	Shigella flexneri 5a
+1086030	2	2	69.0	strain	Shigella flexneri 5a str. M90T
+2049486	1	1	61.0	strain	Shigella flexneri 7b
+2629414	3	0	68.0	no_rank	unclassified Shigella
+1813821	3	3	68.0	species	Shigella sp. PAMC 28760
+158483	1	0	19.0	genus	Cedecea
+158822	1	1	19.0	species	Cedecea neteri
+160674	1	0	40.0	genus	Raoultella
+575	1	1	40.0	species	Raoultella planticola
+1903412	2	0	29.5	family	Hafniaceae
+635	2	0	29.5	genus	Edwardsiella
+67780	2	2	29.5	species	Edwardsiella ictaluri
+1903414	1	0	11.0	family	Morganellaceae
+583	1	0	11.0	genus	Proteus
+584	1	1	11.0	species	Proteus mirabilis
+135623	1	0	47.0	order	Vibrionales
+641	1	0	47.0	family	Vibrionaceae
+662	1	0	47.0	genus	Vibrio
+190893	1	1	47.0	species	Vibrio coralliilyticus
+28216	3	0	33.333333333333336	class	Betaproteobacteria
+80840	2	0	43.0	order	Burkholderiales
+75682	2	0	43.0	family	Oxalobacteraceae
+29580	2	2	43.0	genus	Janthinobacterium
+206351	1	0	14.0	order	Neisseriales
+481	1	0	14.0	family	Neisseriaceae
+482	1	0	14.0	genus	Neisseria
+485	1	1	14.0	species	Neisseria gonorrhoeae
+1783270	1	0	26.0	no_rank	FCB group
+68336	1	0	26.0	no_rank	Bacteroidetes/Chlorobi group
+976	1	0	26.0	phylum	Bacteroidetes
+117743	1	0	26.0	class	Flavobacteriia
+200644	1	0	26.0	order	Flavobacteriales
+49546	1	0	26.0	family	Flavobacteriaceae
+237	1	1	26.0	genus	Flavobacterium
+1783272	2407544	0	66.51361428908463	no_rank	Terrabacteria group
+1239	2407538	4	66.51366375110173	phylum	Firmicutes
+91061	2407533	1213	66.51373626031294	class	Bacilli
+1385	1491928	966	67.29068829058774	order	Bacillales
+90964	393033	0	68.47065259151266	family	Staphylococcaceae
+1279	393033	98	68.47065259151266	genus	Staphylococcus
+1280	392462	391326	68.48952510051927	species	Staphylococcus aureus
+46170	1130	465	56.508849557522126	subspecies	Staphylococcus aureus subsp. aureus
+93062	3	3	82.0	strain	Staphylococcus aureus subsp. aureus COL
+158878	5	5	53.6	strain	Staphylococcus aureus subsp. aureus Mu50
+158879	1	1	80.0	strain	Staphylococcus aureus subsp. aureus N315
+282459	3	3	31.666666666666668	strain	Staphylococcus aureus subsp. aureus MSSA476
+359786	1	1	51.0	strain	Staphylococcus aureus subsp. aureus JH9
+359787	1	1	32.0	strain	Staphylococcus aureus subsp. aureus JH1
+418127	1	1	38.0	strain	Staphylococcus aureus subsp. aureus Mu3
+426430	118	118	62.13559322033898	strain	Staphylococcus aureus subsp. aureus str. Newman
+663951	2	2	30.5	strain	Staphylococcus aureus subsp. aureus TW20
+681288	219	219	60.7351598173516	strain	Staphylococcus aureus subsp. aureus ED98
+889933	2	2	36.0	strain	Staphylococcus aureus subsp. aureus ECT-R 2
+1006543	6	6	32.166666666666664	strain	Staphylococcus aureus subsp. aureus T0131
+1074252	3	3	12.666666666666666	strain	Staphylococcus aureus subsp. aureus HO 5096 0412
+1074919	137	137	55.197080291970806	strain	Staphylococcus aureus subsp. aureus ST228
+1123523	3	3	23.333333333333332	strain	Staphylococcus aureus subsp. aureus 11819-97
+1196216	2	0	65.0	strain	Staphylococcus aureus subsp. aureus ST72
+1193576	2	2	65.0	no_rank	Staphylococcus aureus subsp. aureus CN1
+1241616	31	31	63.225806451612904	strain	Staphylococcus aureus subsp. aureus DSM 20231
+1343064	111	111	50.891891891891895	strain	Staphylococcus aureus subsp. aureus ST772-MRSA-V
+1381115	16	16	47.875	strain	Staphylococcus aureus subsp. aureus Tager 104
+703339	4	4	48.0	strain	Staphylococcus aureus 04-02981
+1458279	2	2	12.5	strain	Staphylococcus aureus USA300-ISMMS1
+1283	9	9	60.0	species	Staphylococcus haemolyticus
+283734	463	463	56.68898488120951	species	Staphylococcus pseudintermedius
+985002	1	1	15.0	species	Staphylococcus argenteus
+186817	636063	3	66.2712985977804	family	Bacillaceae
+1386	636059	262	66.271518837089	genus	Bacillus
+86661	73	38	55.80821917808219	species_group	Bacillus cereus group
+1396	24	11	47.541666666666664	species	Bacillus cereus
+222523	1	1	49.0	strain	Bacillus cereus ATCC 10987
+361100	1	1	63.0	strain	Bacillus cereus Q1
+405535	1	1	77.0	strain	Bacillus cereus AH820
+526969	5	5	30.8	strain	Bacillus cereus m1550
+526973	3	3	25.0	strain	Bacillus cereus m1293
+526992	1	1	69.0	strain	Bacillus cereus AH1271
+1126681	1	1	66.0	strain	Bacillus cereus F
+1428	3	3	47.666666666666664	species	Bacillus thuringiensis
+2026186	6	6	61.666666666666664	species	Bacillus paranthracis
+2026187	2	2	78.5	species	Bacillus pacificus
+185979	20	5	26.2	no_rank	unclassified Bacillus
+1127744	5	5	17.4	species	Bacillus sp. JS
+1574141	1	1	58.0	species	Bacillus sp. YP1
+1837130	6	6	38.0	species	Bacillus sp. FJAT-14266
+2009331	2	2	13.0	species	Bacillus sp. MD-5
+2762329	1	1	14.0	species	Bacillus sp. PAMC26543
+653685	634715	92	66.3356025932899	species_group	Bacillus subtilis group
+1423	634541	633505	66.34011829022869	species	Bacillus subtilis
+86029	7	7	46.42857142857143	subspecies	Bacillus subtilis subsp. natto
+96241	828	0	27.1219806763285	subspecies	Bacillus subtilis subsp. spizizenii
+655816	554	554	27.146209386281587	strain	Bacillus subtilis subsp. spizizenii str. W23
+703612	239	239	26.04602510460251	strain	Bacillus subtilis subsp. spizizenii ATCC 6633
+1052585	35	35	34.08571428571429	strain	Bacillus subtilis subsp. spizizenii TU-B-10
+135461	105	90	47.05714285714286	subspecies	Bacillus subtilis subsp. subtilis
+535024	8	8	36.625	strain	Bacillus subtilis subsp. subtilis str. SMY
+535025	2	2	51.5	strain	Bacillus subtilis subsp. subtilis str. JH642
+535026	1	1	16.0	strain	Bacillus subtilis subsp. subtilis NCIB 3610 = ATCC 6051
+1052588	1	1	11.0	strain	Bacillus subtilis subsp. subtilis str. RO-NN-1
+1404258	3	3	48.0	strain	Bacillus subtilis subsp. subtilis str. OH 131.1
+483913	48	48	43.0	subspecies	Bacillus subtilis subsp. inaquosorum
+1204342	21	21	51.476190476190474	strain	Bacillus subtilis BEST7003
+1220533	11	11	32.0	strain	Bacillus subtilis QB928
+1415167	16	16	32.5625	strain	Bacillus subtilis PY79
+1452	3	2	54.0	species	Bacillus atrophaeus
+1239783	1	1	57.0	strain	Bacillus atrophaeus UCMB-5137
+72361	6	6	20.333333333333332	species	Bacillus vallismortis
+227866	2	2	12.0	species	Bacillus tequilensis
+653388	41	10	46.34146341463415	species_subgroup	Bacillus mojavensis subgroup
+72360	6	6	55.5	species	Bacillus mojavensis
+260554	25	25	40.64	species	Bacillus halotolerans
+1938374	30	7	41.8	species_subgroup	Bacillus amyloliquefaciens group
+1390	1	1	22.0	species	Bacillus amyloliquefaciens
+492670	22	22	43.5	species	Bacillus velezensis
+1441095	1	1	9.0	species	Bacillus gobiensis
+1664069	1	1	65.0	species	Bacillus glycinifermentans
+1963032	987	987	29.303951367781156	species	Bacillus intestinalis
+2675231	1	0	9.0	genus	Mesobacillus
+129985	1	1	9.0	species	Mesobacillus jeotgali
+186820	461865	0	67.73493336797553	family	Listeriaceae
+1637	461865	6	67.73493336797553	genus	Listeria
+1638	3	3	50.666666666666664	species	Listeria ivanovii
+1639	461851	450426	67.73578058724571	species	Listeria monocytogenes
+393118	2	2	23.5	strain	Listeria monocytogenes FSL J1-175
+393119	3	3	13.666666666666666	strain	Listeria monocytogenes FSL J1-208
+393130	1	1	12.0	strain	Listeria monocytogenes J0161
+863767	1	1	50.0	strain	Listeria monocytogenes serotype 7 str. SLCC2482
+879088	389	389	49.347043701799485	strain	Listeria monocytogenes SLCC2378
+879089	3	3	39.0	strain	Listeria monocytogenes SLCC2540
+879090	1	1	9.0	strain	Listeria monocytogenes SLCC7179
+882094	2	2	24.5	strain	Listeria monocytogenes L312
+882095	19	19	40.05263157894737	strain	Listeria monocytogenes ATCC 19117
+930781	1506	1506	60.47742363877822	strain	Listeria monocytogenes J1816
+930782	19	19	59.73684210526316	strain	Listeria monocytogenes J1-220
+932919	2	2	44.5	strain	Listeria monocytogenes SLCC2755
+1027396	5	5	61.4	strain	Listeria monocytogenes str. Scott A
+1126011	286	286	56.18881118881119	strain	Listeria monocytogenes 07PF0776
+1299895	115	115	48.08695652173913	strain	Listeria monocytogenes CFSAN002349
+1457188	454	454	52.88325991189427	strain	Listeria monocytogenes WSLC1042
+2065118	8607	3930	54.35819681654467	serotype	Listeria monocytogenes serotype 4b
+265669	755	755	50.973509933774835	strain	Listeria monocytogenes serotype 4b str. F2365
+568819	1	1	5.0	strain	Listeria monocytogenes serotype 4b str. CLIP 80459
+1196159	371	371	50.82479784366577	strain	Listeria monocytogenes serotype 4b str. 81-0558
+1196160	343	343	50.457725947521865	strain	Listeria monocytogenes serotype 4b str. 81-0592
+1196161	369	369	50.21138211382114	strain	Listeria monocytogenes serotype 4b str. 81-0861
+1196162	376	376	50.91755319148936	strain	Listeria monocytogenes serotype 4b str. 10-0809
+1196171	588	588	52.07993197278912	strain	Listeria monocytogenes serotype 4b str. 02-1103
+1196172	592	592	51.65878378378378	strain	Listeria monocytogenes serotype 4b str. 02-1289
+1196173	594	594	51.282828282828284	strain	Listeria monocytogenes serotype 4b str. 02-1792
+1196174	4	4	24.25	strain	Listeria monocytogenes serotype 4b str. 02-6679
+1196175	2	2	55.0	strain	Listeria monocytogenes serotype 4b str. 02-6680
+1230340	682	682	52.294721407624635	strain	Listeria monocytogenes serotype 4b str. LL195
+2291966	10	2	57.8	serotype	Listeria monocytogenes serotype 1/2b
+1196163	4	4	40.25	strain	Listeria monocytogenes serotype 1/2b str. 10-0810
+1196164	4	4	65.25	strain	Listeria monocytogenes serotype 1/2b str. 10-0811
+1640	1	1	70.0	species	Listeria seeligeri
+1642	4	4	36.25	species	Listeria innocua
+186822	1	0	7.0	family	Paenibacillaceae
+85151	1	0	7.0	no_rank	Aneurinibacillus group
+55079	1	0	7.0	genus	Aneurinibacillus
+2642329	1	0	7.0	no_rank	unclassified Aneurinibacillus
+1450761	1	1	7.0	species	Aneurinibacillus sp. XH2
+186826	914392	25	65.27055136090429	order	Lactobacillales
+1300	4	0	32.5	family	Streptococcaceae
+1301	4	3	32.5	genus	Streptococcus
+671232	1	0	37.0	species_group	Streptococcus anginosus group
+1328	1	1	37.0	species	Streptococcus anginosus
+33958	510964	54	63.97537987020612	family	Lactobacillaceae
+1253	3	2	20.0	genus	Pediococcus
+1255	1	1	5.0	species	Pediococcus pentosaceus
+1578	4	3	22.75	genus	Lactobacillus
+1584	1	1	8.0	species	Lactobacillus delbrueckii
+2742598	510882	0	63.978045810970045	genus	Limosilactobacillus
+1598	1	1	49.0	species	Lactobacillus reuteri
+1613	510877	510779	63.97839205914535	species	Limosilactobacillus fermentum
+334390	11	11	26.818181818181817	strain	Lactobacillus fermentum IFO 3956
+767453	16	16	26.4375	strain	Lactobacillus fermentum F-6
+1381124	71	71	29.816901408450704	strain	Lactobacillus fermentum 3872
+35787	1	1	17.0	species	Lactobacillus pontis
+97478	3	3	25.666666666666668	species	Lactobacillus mucosae
+2759736	4	1	51.0	genus	Lacticaseibacillus
+1597	3	3	61.333333333333336	species	Lacticaseibacillus paracasei
+2767842	2	0	17.5	genus	Lactiplantibacillus
+1590	2	2	17.5	species	Lactiplantibacillus plantarum
+2767879	1	0	71.0	genus	Companilactobacillus
+83526	1	1	71.0	species	Lactobacillus paralimentarius
+2767881	2	0	18.0	genus	Fructilactobacillus
+1625	2	2	18.0	species	Lactobacillus sanfranciscensis
+2767886	5	0	33.0	genus	Levilactobacillus
+1580	5	5	33.0	species	Lactobacillus brevis
+2767887	2	0	39.5	genus	Ligilactobacillus
+1622	1	1	44.0	species	Lactobacillus murinus
+1624	1	0	35.0	species	Ligilactobacillus salivarius
+362948	1	1	35.0	strain	Lactobacillus salivarius UCC118
+2767890	1	0	62.0	genus	Paucilactobacillus
+1296540	1	1	62.0	species	Lactobacillus nenjiangensis
+2767892	2	0	35.0	genus	Secundilactobacillus
+240427	2	2	35.0	species	Lactobacillus paracollinoides
+2767893	2	0	19.5	genus	Lentilactobacillus
+1581	1	0	29.0	species	Lactobacillus buchneri
+511437	1	1	29.0	strain	Lactobacillus buchneri NRRL B-30929
+1588	1	1	10.0	species	Lactobacillus hilgardii
+81850	2	0	34.5	family	Leuconostocaceae
+1243	1	0	17.0	genus	Leuconostoc
+1244	1	0	17.0	species	Leuconostoc gelidum
+115778	1	0	17.0	subspecies	Leuconostoc gelidum subsp. gasicomitatum
+1165892	1	1	17.0	strain	Leuconostoc gelidum subsp. gasicomitatum KG16-1
+46255	1	0	52.0	genus	Weissella
+2506420	1	1	52.0	species	Weissella cryptocerci
+81852	403394	0	66.9131568640089	family	Enterococcaceae
+1350	403391	13	66.91334214199128	genus	Enterococcus
+1351	403367	402901	66.91436086739868	species	Enterococcus faecalis
+474186	5	5	26.8	strain	Enterococcus faecalis OG1RF
+565651	3	3	14.666666666666666	strain	Enterococcus faecalis ARO1/DG
+699186	3	3	17.333333333333332	strain	Enterococcus faecalis R712
+1157365	38	38	40.1578947368421	strain	Enterococcus faecalis EnGen0107
+1201292	131	131	35.42748091603053	strain	Enterococcus faecalis ATCC 29212
+1206105	215	215	39.76279069767442	strain	Enterococcus faecalis D32
+1261557	3	3	11.0	strain	Enterococcus faecalis str. Symbioflor 1
+1287066	68	68	39.955882352941174	strain	Enterococcus faecalis DENG1
+1352	9	9	46.666666666666664	species	Enterococcus faecium
+2005703	2	2	16.5	species	Enterococcus wangshanyuanii
+2737	1	0	46.0	genus	Vagococcus
+2648499	1	0	46.0	no_rank	unclassified Vagococcus
+2714947	1	1	46.0	species	Vagococcus sp. HDW17B
+33969	1	0	54.0	genus	Melissococcus
+33970	1	1	54.0	species	Melissococcus plutonius
+51668	1	0	26.0	genus	Tetragenococcus
+51669	1	1	26.0	species	Tetragenococcus halophilus
+186827	1	0	60.0	family	Aerococcaceae
+1375	1	1	60.0	genus	Aerococcus
+186828	2	0	22.5	family	Carnobacteriaceae
+29393	1	0	9.0	genus	Dolosigranulum
+29394	1	1	9.0	species	Dolosigranulum pigrum
+1470540	1	1	36.0	genus	Jeotgalibaca
+186801	1	0	37.0	class	Clostridia
+186802	1	0	37.0	order	Clostridiales
+68298	1	0	37.0	family	Syntrophomonadaceae
+129001	1	0	37.0	genus	Syntrophothermus
+86170	1	0	37.0	species	Syntrophothermus lipocalidus
+643648	1	1	37.0	strain	Syntrophothermus lipocalidus DSM 12680
+201174	6	0	46.666666666666664	phylum	Actinobacteria
+1760	6	0	46.666666666666664	class	Actinobacteria
+85004	2	0	22.5	order	Bifidobacteriales
+31953	2	0	22.5	family	Bifidobacteriaceae
+196081	2	0	22.5	genus	Scardovia
+78259	2	0	22.5	species	Scardovia inopinata
+1150468	2	2	22.5	strain	Scardovia inopinata JCM 12537
+85009	4	0	58.75	order	Propionibacteriales
+31957	4	0	58.75	family	Propionibacteriaceae
+1912216	4	0	58.75	genus	Cutibacterium
+1747	4	4	58.75	species	Cutibacterium acnes
+2157	1	0	39.0	superkingdom	Archaea
+28890	1	0	39.0	phylum	Euryarchaeota
+2290931	1	0	39.0	no_rank	Stenosarchaea group
+183963	1	0	39.0	class	Halobacteria
+1644055	1	0	39.0	order	Haloferacales
+1644056	1	0	39.0	family	Haloferacaceae
+2251	1	0	39.0	genus	Haloferax
+255616	1	1	39.0	species	Haloferax sulfurifontis
+2759	148762	1	63.96329035640822	superkingdom	Eukaryota
+33154	148756	0	63.965554330581625	no_rank	Opisthokonta
+4751	148703	0	63.96848752210783	kingdom	Fungi
+451864	148703	30	63.96848752210783	subkingdom	Dikarya
+4890	79536	0	65.40809193321265	phylum	Ascomycota
+716545	79536	1	65.40809193321265	no_rank	saccharomyceta
+147537	79533	0	65.40849710183194	subphylum	Saccharomycotina
+4891	79533	0	65.40849710183194	class	Saccharomycetes
+4892	79533	1	65.40849710183194	order	Saccharomycetales
+4893	79531	1	65.40961386126165	family	Saccharomycetaceae
+4930	79523	0	65.41203173924525	genus	Saccharomyces
+4932	79377	0	65.44682968618113	species	Saccharomyces cerevisiae
+559292	79377	79377	65.44682968618113	strain	Saccharomyces cerevisiae S288C
+27291	144	144	46.90277777777778	species	Saccharomyces paradoxus
+1080349	2	2	17.0	species	Saccharomyces eubayanus
+4948	2	1	30.0	genus	Torulaspora
+48254	1	1	15.0	species	Torulaspora globosa
+33170	2	1	26.0	genus	Eremothecium
+33169	1	0	33.0	species	Eremothecium gossypii
+284811	1	1	33.0	strain	Eremothecium gossypii ATCC 10895
+278028	1	0	63.0	genus	Naumovozyma
+27289	1	0	63.0	species	Naumovozyma dairenensis
+1071378	1	1	63.0	strain	Naumovozyma dairenensis CBS 421
+374468	1	0	34.0	genus	Nakaseomyces
+600669	1	0	34.0	no_rank	Nakaseomyces/Candida clade
+5478	1	1	34.0	species	[Candida] glabrata
+1196389	1	0	71.0	genus	Zygotorulaspora
+42260	1	1	71.0	species	Zygotorulaspora mrakii
+34353	1	0	7.0	family	Dipodascaceae
+1232588	1	0	7.0	genus	Saprochaete
+2606893	1	1	7.0	species	Saprochaete ingens
+147538	2	0	46.5	subphylum	Pezizomycotina
+716546	2	1	46.5	no_rank	leotiomyceta
+147545	1	0	52.0	class	Eurotiomycetes
+451871	1	0	52.0	subclass	Eurotiomycetidae
+5042	1	0	52.0	order	Eurotiales
+1131492	1	0	52.0	family	Aspergillaceae
+5052	1	1	52.0	genus	Aspergillus
+5204	69137	0	62.320985868637635	phylum	Basidiomycota
+5302	69136	0	62.32114961814395	subphylum	Agaricomycotina
+155616	69136	1	62.32114961814395	class	Tremellomycetes
+5234	69135	0	62.32124105011933	order	Tremellales
+1884633	69135	220	62.32124105011933	family	Cryptococcaceae
+5206	65830	0	62.72292267962935	genus	Cryptococcus
+104669	15	0	16.333333333333332	species	Cryptococcus amylolentus
+1295533	15	15	16.333333333333332	strain	Cryptococcus amylolentus CBS 6039
+1884637	42	0	47.642857142857146	species_group	Cryptococcus gattii species complex
+37769	42	0	47.642857142857146	species	Cryptococcus gattii VGI
+367775	42	42	47.642857142857146	strain	Cryptococcus gattii WM276
+1897064	65773	0	62.743131680172716	species_group	Cryptococcus neoformans species complex
+5207	65773	136	62.743131680172716	species	Cryptococcus neoformans
+40410	40052	6485	62.42669529611505	variety	Cryptococcus neoformans var. neoformans
+214684	6912	6912	63.45167824074074	strain	Cryptococcus neoformans var. neoformans JEC21
+283643	26655	26655	61.87225661226787	strain	Cryptococcus neoformans var. neoformans B-3501A
+178876	25585	0	63.36275161227282	variety	Cryptococcus neoformans var. grubii
+235443	25585	25585	63.36275161227282	strain	Cryptococcus neoformans var. grubii H99
+490731	3085	0	54.97050243111831	genus	Kwoniella
+1734106	3085	3085	54.97050243111831	species	Kwoniella shandongensis
+452284	1	0	51.0	subphylum	Ustilaginomycotina
+1538075	1	0	51.0	class	Malasseziomycetes
+162474	1	0	51.0	order	Malasseziales
+742845	1	0	51.0	family	Malasseziaceae
+55193	1	0	51.0	genus	Malassezia
+76775	1	1	51.0	species	Malassezia restricta
+33208	53	0	55.735849056603776	kingdom	Metazoa
+6072	53	0	55.735849056603776	no_rank	Eumetazoa
+33213	53	0	55.735849056603776	no_rank	Bilateria
+33511	53	0	55.735849056603776	no_rank	Deuterostomia
+7711	53	0	55.735849056603776	phylum	Chordata
+89593	53	0	55.735849056603776	subphylum	Craniata
+7742	53	0	55.735849056603776	no_rank	Vertebrata
+7776	53	0	55.735849056603776	no_rank	Gnathostomata
+117570	53	0	55.735849056603776	no_rank	Teleostomi
+117571	53	0	55.735849056603776	no_rank	Euteleostomi
+8287	53	0	55.735849056603776	superclass	Sarcopterygii
+1338369	53	0	55.735849056603776	no_rank	Dipnotetrapodomorpha
+32523	53	0	55.735849056603776	no_rank	Tetrapoda
+32524	53	0	55.735849056603776	no_rank	Amniota
+40674	53	0	55.735849056603776	class	Mammalia
+32525	53	0	55.735849056603776	no_rank	Theria
+9347	53	0	55.735849056603776	no_rank	Eutheria
+1437010	53	0	55.735849056603776	no_rank	Boreoeutheria
+314146	53	0	55.735849056603776	superorder	Euarchontoglires
+9443	53	0	55.735849056603776	order	Primates
+376913	53	0	55.735849056603776	suborder	Haplorrhini
+314293	53	0	55.735849056603776	infraorder	Simiiformes
+9526	53	0	55.735849056603776	parvorder	Catarrhini
+314295	53	0	55.735849056603776	superfamily	Hominoidea
+9604	53	0	55.735849056603776	family	Hominidae
+207598	53	0	55.735849056603776	subfamily	Homininae
+9605	53	0	55.735849056603776	genus	Homo
+9606	53	53	55.735849056603776	species	Homo sapiens
+2698737	5	0	7.0	no_rank	Sar
+33630	5	0	7.0	no_rank	Alveolata
+5794	5	0	7.0	phylum	Apicomplexa
+1280412	5	0	7.0	class	Conoidasida
+5796	5	0	7.0	subclass	Coccidia
+75739	5	0	7.0	order	Eucoccidiorida
+423054	5	0	7.0	suborder	Eimeriorina
+5799	1	0	6.0	family	Eimeriidae
+5800	1	0	6.0	genus	Eimeria
+5804	1	1	6.0	species	Eimeria maxima
+5809	4	1	7.25	family	Sarcocystidae
+5810	3	0	7.0	genus	Toxoplasma
+5811	3	0	7.0	species	Toxoplasma gondii
+508771	3	3	7.0	strain	Toxoplasma gondii ME49
+10239	1	0	63.0	superkingdom	Viruses
+2731341	1	0	63.0	no_rank	Duplodnaviria
+2731360	1	0	63.0	no_rank	Heunggongvirae
+2731618	1	0	63.0	phylum	Uroviricota
+2731619	1	0	63.0	class	Caudoviricetes
+28883	1	0	63.0	order	Caudovirales
+10699	1	0	63.0	family	Siphoviridae
+196894	1	0	63.0	no_rank	unclassified Siphoviridae
+1458852	1	1	63.0	species	Listeria phage LP-030-3
+2787854	294	0	51.76190476190476	no_rank	other entries
+28384	294	0	51.76190476190476	no_rank	other sequences
+81077	294	0	51.76190476190476	no_rank	artificial sequences
+32630	294	294	51.76190476190476	species	synthetic construct

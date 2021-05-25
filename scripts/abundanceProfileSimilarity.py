@@ -34,7 +34,7 @@ else: #gridion366, promethion367 --> expected abundances
 
 try:
     if "default" in sys.argv[1]: # because if fungi: except for Kraken2, those abundances are not considered
-        if toolName in ["kraken2", "ccmetagen"]:
+        if toolName in ["kraken2", "ccmetagen", "bugseq"]:
             t = np.array(truth)
             p = np.array(pred)
         else:

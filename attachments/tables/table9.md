@@ -1,0 +1,8 @@
+|                	| Diamond            	| Kaiju               	| CCMetagen           	| Centrifuge          	| CLARK               	| Kraken2            	|
+|----------------	|--------------------	|---------------------	|---------------------	|---------------------	|---------------------	|---------------------	|
+| GridION364    	| 0.3236971          	| 0.3007596           	|      -               	| 0.2272981          	| 0.2970810          	| 0.1769953           	|
+| PromethION365 	|         -          	| 0.3017296           	|         -            	| 0.229281          	| 0.2925519         	| 0.1779121         	|
+| GridION366    	|        -            	| 0.476431          	|           -           	| 0.1671362          	| 0.6879505          	| 0.0870177          	|
+| PromethION367 	|         -           	| 0.4707885           	|           -          	| 0.1931905          	| 0.6799135         	| 0.101036          	|
+
+***Table 9: Abundance Profile Similarities, Custom Database.*** This table shows the Abundance Profile Similarity scores for the different tools and samples, rounded to seven digits. Since this value is based on the L2 distance, smaller values are better than higher ones. Hence, both protein samples show poorer results for the CS Log samples, whereas the other tools show better values for the CS Log samples. Although this trend stays the same for default and custom database, there is a strong degradation, all tools show values above 0.1, with the exception for Kraken2's GridION366 sample. <br> <br>
