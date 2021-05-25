@@ -26,3 +26,4 @@
 - Benchmark Files, Default: /mnt/fass1/kirsten/result/classification/benchmarks/default
 - Benchmark Files, Custom: /mnt/fass1/kirsten/result/classification/benchmarks/custom
 - Benchmkark files, Databases: /mnt/fass1/kirsten/result/classification/benchmarks/databases
+- Results Classification: /mnt/fass1/kirsten/result/classification/
