@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#was!/usr/bin/env python
 # Script with several useful functions needed across the different scripts
 # needs to be called from /PATH/TO/classificationBenchmark
 import os, yaml, sys
 import numpy as np
 from numpy import array
 from numpy.linalg import norm
-#from ete3 import NCBITaxa
+from ete3 import NCBITaxa
 
 def get_species(config): # expected species in sample
     if os.path.isfile(config):

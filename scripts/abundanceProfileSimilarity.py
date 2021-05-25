@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#what the hell !/usr/bin/env python
 # calculating abundance profile similarities with L2 distance and scipy
 
 import getting 
@@ -34,7 +34,7 @@ else: #gridion366, promethion367 --> expected abundances
 
 try:
     if "default" in sys.argv[1]: # because if fungi: except for Kraken2, those abundances are not considered
-        if toolName == "kraken2":
+        if toolName in ["kraken2", "ccmetagen"]:
             t = np.array(truth)
             p = np.array(pred)
         else:
