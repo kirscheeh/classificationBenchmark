@@ -14,8 +14,6 @@ RUNS = 'custom default'. split(" ") # not used: customHit
 TOOLS_WO_C = "diamond kaiju ccmetagen centrifuge kraken2".split(" ") # needed for classification
 TOOLS_W_REPORT = "kaiju ccmetagen clark".split(" ") # tools that generate ereport externally
 
-#         expand("/mnt/fass2/projects/kirsten/diamond/{sample}_{run}.{tool}.classification", run=RUNS, sample=SAMPLES, tool=TOOLS, path=PATH), # /mnt/fass2/projects/kirsten/ # {path}/result/classification/{tool}/{run}/{sample}_{run}.{tool}.classification
-
 rule all:
     input:
 # KMA (for CCMetagen)
