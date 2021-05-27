@@ -1,4 +1,3 @@
-#what the hell !/usr/bin/env python
 # calculating abundance profile similarities with L2 distance and scipy
 
 import getting 

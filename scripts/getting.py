@@ -1,4 +1,3 @@
-#was!/usr/bin/env python
 # Script with several useful functions needed across the different scripts
 # needs to be called from /PATH/TO/classificationBenchmark
 import os, yaml, sys

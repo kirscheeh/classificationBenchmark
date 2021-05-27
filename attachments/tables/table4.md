@@ -8,4 +8,4 @@
 |makeblastdb| 2.5.0+|https://blast.ncbi.nlm.nih.gov/Blast.cgi |
 |blastn|2.7.1+|https://blast.ncbi.nlm.nih.gov/Blast.cgi|
 
-***Table 4: Overview of additional Software and the Used Versions.*** The usage of BLAST [[18]](https://doi.org/10.1016/S0022-2836(05)80360-2 "Altschul, S. F., Gish, W., Miller, W., Myers, E. W., & Lipman, D. J. (1990). Basic local alignment search tool. *Journal of molecular biology*, 215(3), 403-410.") is explained in more detailed in the section of Multi Locus Sequence Typing. <br> <br>
+***Table 4: Overview of additional Software and the Used Versions.*** The usage of BLAST [[18]](https://doi.org/10.1016/S0022-2836(05)80360-2 "Altschul, S. F., Gish, W., Miller, W., Myers, E. W., & Lipman, D. J. (1990). Basic local alignment search tool. *Journal of molecular biology*, 215(3), 403-410.") is explained in more detailed in the section of [Multi Locus Sequence Typing](#multi-locus-sequence-typing). <br> <br>

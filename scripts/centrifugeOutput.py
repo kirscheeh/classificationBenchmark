@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # translating centrifuge output into areport
 import sys
 import getting

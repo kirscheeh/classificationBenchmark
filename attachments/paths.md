@@ -1,16 +1,16 @@
-- Bacterial and Fungal RefSeq
+- (1) Bacterial and Fungal RefSeq
    - Bacteria: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/bacteria/bacteria.*.genomic.fna.gz
    - Fungi: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/fungi/fungi.*.genomic.fna.gz
-- Bacterial Proteome: /mnt/fass1/genomes/new_bacteria/bacteria_blast_db/proteome/full_proteome_bacteria.faa
-- Fungal Proteome: /mnt/fass1/database/refseq204_fungi/
-- Kaiju Default Index: http://kaiju.binf.ku.dk/database/kaiju_db_refseq_2020-05-25.tgz
-- RefSeq Proteome Bacteria and Fungi: /mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa
-- CCMetagen Default Index: http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip
-- Centrifuge Default Index: https://genome-idx.s3.amazonaws.com/centrifuge/p\_compressed_2018_4\_15.tar.gz
-- Clark Default Database: /mnt/fass1/database/clark_database
-- Kraken2 Default Database: /mnt/fass1/database/kraken2-database
-- MLST: /mnt/fass1/kirsten/results/classification/mlst/species/MLSTS.fasta
-- MLST *Saccharomyces Cerevisiae*
+- (4) Bacterial Proteome: /mnt/fass1/genomes/new_bacteria/bacteria_blast_db/proteome/full_proteome_bacteria.faa
+- (5) Fungal Proteome: /mnt/fass1/database/refseq204_fungi/
+- (6) Kaiju Default Index: http://kaiju.binf.ku.dk/database/kaiju_db_refseq_2020-05-25.tgz
+- (7) RefSeq Proteome Bacteria and Fungi: /mnt/fass1/kirsten/databases/custom/diamond/refseq_bac_fung.faa
+- (8) CCMetagen Default Index: http://www.cbs.dtu.dk/public/CGE/databases/CCMetagen/ncbi_nt_kma.zip
+- (9) Centrifuge Default Index: https://genome-idx.s3.amazonaws.com/centrifuge/p\_compressed_2018_4\_15.tar.gz
+- (10) Clark Default Database: /mnt/fass1/database/clark_database
+- (11) Kraken2 Default Database: /mnt/fass1/database/kraken2-database
+- (12) MLST: /mnt/fass1/kirsten/results/classification/mlst/species/MLSTS.fasta
+- (13) MLST *Saccharomyces Cerevisiae*
   - ACC1: [S.cerevisiae chromosome XIV reading frame ORF YNR016c](https://www.ncbi.nlm.nih.gov/nuccore/Z71631.1?report=fasta)
     - Primer, revers: 5'-TTCATCAACATCATCTAAaTG-3'
   - GLN4: [S.cerevisiae chromosome XV reading frame ORF YOR168w](https://www.ncbi.nlm.nih.gov/nuccore/Z75076.1?report=fasta)
@@ -23,7 +23,7 @@
     - Primer, forward: 5'-CGAGGATAAGCCGAGCAA-3'
   - NUP116: [Saccharomyces cerevisiae S288C chromosome XIII, complete sequence](https://www.ncbi.nlm.nih.gov/nuccore/NC_001145.3?report=fasta)
     - Primer, revers: 5'-CTTCCCCATCGTTCTTTGAG-3'
-- Benchmark Files, Default: /mnt/fass1/kirsten/result/classification/benchmarks/default
-- Benchmark Files, Custom: /mnt/fass1/kirsten/result/classification/benchmarks/custom
-- Benchmkark files, Databases: /mnt/fass1/kirsten/result/classification/benchmarks/databases
-- Results Classification: /mnt/fass1/kirsten/result/classification/
+- (26) Benchmark Files, Default: /mnt/fass1/kirsten/result/classification/benchmarks/default
+- (27) Benchmark Files, Custom: /mnt/fass1/kirsten/result/classification/benchmarks/custom
+- (28) Benchmkark files, Databases: /mnt/fass1/kirsten/result/classification/benchmarks/databases
+- (29) Results Classification: /mnt/fass1/kirsten/result/classification/

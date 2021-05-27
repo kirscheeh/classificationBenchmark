@@ -1,5 +1,3 @@
-
-#!/usr/bin/env python
 # translating diamond output into areport
 
 import sys

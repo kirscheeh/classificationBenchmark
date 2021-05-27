@@ -6,10 +6,8 @@ DB_default: {clark_taxonomy: '/mnt/fass1/database/clark_database', clark_targets
 
 # database build on refseq of fungi and bacteria
 DB_custom: {clark_taxonomy: "/mnt/fass2/projects/kirsten/clark", clark_targets: "/mnt/fass2/projects/kirsten/clark/targets.txt", names: '/mnt/fass1/kirsten/databases/custom/names.dmp',nodes: '/mnt/fass1/kirsten/databases/custom/nodes.dmp', kaiju: '/mnt/fass1/kirsten/databases/custom/kaiju/refseqBacFung.kaiju.fmi', kraken2: '/mnt/fass1/kirsten/databases/custom/kraken2', centrifuge: '/mnt/fass1/kirsten/databases/custom/centrifuge/refseqBacFun.centrifuge',clark: '/mnt/fass2/projects/kirsten/clark', diamond: '/mnt/fass1/kirsten/databases/custom/diamond/refseqBacFung.diamond.dmnd',  ccmetagen: '/mnt/fass1/kirsten/databases/ccmetagen'}
+
 # incorporated tools
-
-# preprocessing: {} ???
-
 classification: {kaiju, diamond, kraken2, centrifuge, clark, ccmetagen}
 
 samples: {gridion364: '/mnt/fass1/kirsten/data/gridion364.fastq', gridion366: '/mnt/fass1/kirsten/data/gridion366.fastq', promethion365: '/mnt/fass1/kirsten/data/promethion365.fastq', promethion367: '/mnt/fass1/kirsten/data/promethion367.fastq'}

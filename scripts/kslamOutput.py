@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # translating kslam output into areport
 import sys
 from ete3 import NCBITaxa

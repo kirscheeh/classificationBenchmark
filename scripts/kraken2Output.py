@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # translating kraken2 output into areport
 import sys
 import getting

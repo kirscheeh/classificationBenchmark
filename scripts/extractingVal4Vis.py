@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # script for extracting ground truth and abundances of species for given areport
 # parameter needed: areport
 import sys

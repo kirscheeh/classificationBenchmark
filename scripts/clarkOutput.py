@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # translating clark output into areport
 import sys
 import getting

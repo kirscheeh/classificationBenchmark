@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # translating kaiju output into areport
 import sys
 

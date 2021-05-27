@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # translating bugseq output into areport
 import sys
 import getting
